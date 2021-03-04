@@ -17,9 +17,9 @@ import org.apache.logging.log4j.LogManager;
 
 
 @Slf4j
-public class SeleniumWebDriverTestDemo {
+public class SeleniumWebDriverDOMTestDemo {
 
-	static Logger logger = LogManager.getLogger(SeleniumWebDriverTestDemo.class);
+	static Logger logger = LogManager.getLogger(SeleniumWebDriverDOMTestDemo.class);
 	public static void main(String[] args) {
 		// declaration and instantiation of objects/variables
 
