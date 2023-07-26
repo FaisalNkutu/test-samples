@@ -31,3 +31,14 @@ Integrating IBM's Master Data Management (MDM) solution offers significant effic
 6. Scalability and Performance: IBM's MDM handles large volumes of data and adapts to business needs, ensuring efficient processing and scalability without performance issues.
 
 Overall, IBM's MDM empowers organizations with centralized, standardized, and high-quality data, automated processes, streamlined governance, and seamless integration, leading to time and resource savings, reduced errors, and faster decision-making. These efficiency gains enhance overall productivity and competitiveness.
+-----------------------------------------------------------
+Potential for tapping into MDM
+   Are we doing it every day? Data Might Not be UptoData
+   Where is MDM getting data from currently?
+   Can we leverage Kafka to update MDM Curently as well as MDM ? And then gradually retire CIS
+   - Prioritize which interfaces (what are the easiest things that are no brainer and what are complex)
+   ***MDM is out of the box - And not easily Customizable unlike CIS
+   - Develop a RoadMap/Start with 1 years but end state migration plan ( Present plan to Arunesh)
+   - I have to talk with MDM and CIS,
+     (today is going to MDM using a file)
+    - No one will use MDM until it has accurate data
