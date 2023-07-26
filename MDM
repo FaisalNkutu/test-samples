@@ -42,3 +42,31 @@ Potential for tapping into MDM
    - I have to talk with MDM and CIS,
      (today is going to MDM using a file)
     - No one will use MDM until it has accurate data
+------------------------------------------------------------------------------------------
+Exploring MDM Potential and Data Update Strategy
+
+Everyday MDM Usage and Data Currency
+Are we utilizing the full potential of MDM on a daily basis? It's essential to ensure the data is up-to-date.
+
+Current Data Sources for MDM
+Where is MDM currently obtaining its data? Understanding the existing data inflow is crucial for optimization.
+
+Leveraging Kafka for MDM Updates and Gradual CIS Retirement
+Can we leverage Kafka for updating both MDM and CIS? This approach could lead to a smoother transition, eventually phasing out CIS.
+
+Interface Prioritization for Migration
+To streamline the migration process, let's prioritize interfaces based on complexity. Identify the no-brainer, easy tasks and the more complex ones.
+
+MDM's Out-of-the-Box Nature and Limited Customizability Compared to CIS
+Keep in mind that MDM is an out-of-the-box solution, not as easily customizable as CIS. This factor should be considered while planning the migration.
+
+Developing a 1-Year RoadMap and Migration Plan
+Let's craft a comprehensive roadmap for migration, covering the next year, and present it to Arunesh for review and approval.
+
+Engaging with MDM and CIS Stakeholders
+To facilitate smooth communication and collaboration, we need to engage with both MDM and CIS stakeholders. Currently, data is being sent to MDM using a file, but we can explore more efficient methods.
+
+Data Accuracy is Key to MDM Adoption
+It's essential to ensure that MDM contains accurate data. No one will utilize MDM until they have confidence in the reliability of its data.
+
+By addressing these points, we can tap into MDM's potential and create a well-defined strategy for data update and migration to improve overall efficiency and data accuracy.
