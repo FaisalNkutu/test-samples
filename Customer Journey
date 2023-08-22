@@ -1,0 +1,35 @@
+1.Supposing a customer buys a Policy, using the Admin System  
+
+2.The request then goes to CIS to create a customer master record 
+
+3.Then to MDM – which contains a Single View of a customer  
+
+4. MDM then sends the information to Salesforce. This is bidirectional;  
+
+a. MDM will register the new customers and Salesforce will create a record for the Customer and send back an SF 		identifier 
+
+b. Salesforce will create a Contact record, 
+
+6. When a user authenticates through My Canada Life (MyCL); 
+
+   	a. Salesforce submits the salesforce identity to APIGEE and issues a JWT or SAML provided by APIGEE from the Tokens 	API - this based on OAuth 2.0  
+
+b. a User record is created which contains the identity record provided in MyCL based on the Policy number and Postal Code 
+
+   Once that is matched, a link is established between Contact and User Records. 
+
+7. If the system/user attempts to access any of the Business APIs via APIGEE, the Data Layer Security (DLS) Microservices 		will be invoked by passing an APIGEE JWT which is constructed by APIGEE - it contains an SF id. The rules 	governing 	authorization are in DLS. 
+
+a. Microservices has its own cache called Microservices Aligned Data Stores (MADS). This looks up the SF ID and 		   determine relationships, like customer policies etc. MADS gets it data from MDM. There are many microservices 		   for each line of business,  such as; Contracts, Agreements etc, each Microservice has its own data store 
+
+  
+
+   **User OnBoarding exists in Salesforce, ideally should be talking to MDM but we have replicated that data in Salesforce 
+
+          - This the PartySync Mechanism (Minute 17:41) 
+
+The above is based on one Customer IdP through SalesForce, if Quadrus has been implemented 
+
+there is potentially a second non-Canada Life vendor IdP (to find out from Business) - Do they have access to the Dealer 
+
+System for Mutual funds? 
