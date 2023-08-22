@@ -1,35 +1,27 @@
-1.Supposing a customer buys a Policy, using the Admin System  
+Here is the cleaned-up version of the text with improved grammar and clarity:
 
-2.The request then goes to CIS to create a customer master record 
+1. If a customer purchases a policy using the Admin System:
 
-3.Then to MDM – which contains a Single View of a customer  
+2. The request is then forwarded to CIS in order to create a customer master record.
 
-4. MDM then sends the information to Salesforce. This is bidirectional;  
+3. Subsequently, the request reaches MDM, which contains a comprehensive single view of the customer.
 
-a. MDM will register the new customers and Salesforce will create a record for the Customer and send back an SF 		identifier 
+4. MDM then transmits the information to Salesforce bidirectionally. This process involves:
 
-b. Salesforce will create a Contact record, 
+   a. MDM registering new customers, while Salesforce generates a Customer record and sends back an SF identifier.
+   
+   b. Salesforce creating a Contact record.
 
-6. When a user authenticates through My Canada Life (MyCL); 
+5. When a user authenticates through My Canada Life (MyCL):
 
-   	a. Salesforce submits the salesforce identity to APIGEE and issues a JWT or SAML provided by APIGEE from the Tokens 	API - this based on OAuth 2.0  
+   a. Salesforce submits the Salesforce identity to APIGEE and generates a JWT or SAML via APIGEE's Tokens API, based on OAuth 2.0.
+   
+   b. A User record is established containing the identity record from MyCL, derived from the Policy number and Postal Code. Once a match is found, a link between Contact and User Records is established.
 
-b. a User record is created which contains the identity record provided in MyCL based on the Policy number and Postal Code 
+6. In case the system/user attempts to access any of the Business APIs via APIGEE, the Data Layer Security (DLS) Microservices are invoked. This is achieved by passing an APIGEE JWT, constructed by APIGEE and containing an SF ID. The authorization rules are defined within DLS.
 
-   Once that is matched, a link is established between Contact and User Records. 
+   a. The Microservices operate with their cache called Microservices Aligned Data Stores (MADS). MADS looks up the SF ID to determine relationships, such as customer policies, and so on. MADS obtains its data from MDM. Multiple microservices exist for different lines of business, including Contracts, Agreements, each with its own data store.
 
-7. If the system/user attempts to access any of the Business APIs via APIGEE, the Data Layer Security (DLS) Microservices 		will be invoked by passing an APIGEE JWT which is constructed by APIGEE - it contains an SF id. The rules 	governing 	authorization are in DLS. 
+   b. Note that User Onboarding is present in Salesforce; ideally, it should interact with MDM. However, we have duplicated that data in Salesforce. This duplication process is referred to as the PartySync Mechanism (Minute 17:41).
 
-a. Microservices has its own cache called Microservices Aligned Data Stores (MADS). This looks up the SF ID and 		   determine relationships, like customer policies etc. MADS gets it data from MDM. There are many microservices 		   for each line of business,  such as; Contracts, Agreements etc, each Microservice has its own data store 
-
-  
-
-   **User OnBoarding exists in Salesforce, ideally should be talking to MDM but we have replicated that data in Salesforce 
-
-          - This the PartySync Mechanism (Minute 17:41) 
-
-The above is based on one Customer IdP through SalesForce, if Quadrus has been implemented 
-
-there is potentially a second non-Canada Life vendor IdP (to find out from Business) - Do they have access to the Dealer 
-
-System for Mutual funds? 
+Lastly, the mentioned information pertains to a single Customer IdP interaction through Salesforce. If Quadrus has been implemented, there's a possibility of a second non-Canada Life vendor IdP. It's recommended to consult the Business to determine whether they have access to the Dealer System for Mutual Funds.
