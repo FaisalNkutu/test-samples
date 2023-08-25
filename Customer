@@ -1,9 +1,7 @@
-There are two different types of applications for the customer intake journey; 
+There are two different types of applications for the customer intake journey: one for accepting paper applications and another for electronic applications. New Business applications (NB) are used for this purpose, including NB WebApp, Simple Protect, AURA, and LOPA. 
 
-For accepting paper application or electronic application New Business applications (NB) is used which includes; NB WebApp, Simple Protect, AURA, LOPA. 
+These applications assist in processing insurance applications and determining the appropriate insurance coverage amount. They also assess the customer's risk profile. Once all assessments are completed, insurance is issued to the customer.
 
-These applications help in take insurance apps and determine how much insurance coverage amount can be offered, what kind of risk the customer has, once all assessment is done, insurance is issued to the customer 
+Once insurance is issued, customer information is transferred to Policy Administration applications, which include Ingenium 5.4, Ingenium 7, IB, FM, and others.
 
-When insurance is issued, customer information is passed to Policy Administration applications which include; Ingenium 5.4, Ingenium 7, IB, FM, etc. 
-
-The Strategic direction is to merge all policy admin systems into one which is Ingenium 7. 
+The strategic direction is to merge all policy administration systems into one, specifically Ingenium 7.
