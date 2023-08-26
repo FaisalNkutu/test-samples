@@ -1,0 +1,37 @@
+**Architectural Vision: Empowering Seamless Single Sign-On for Customers and Advisors through Unified Role Synchronization via Kafka Events and Master Database Integration**
+
+**Introduction:**
+In the era of digital connectivity, providing a unified and secure experience for both customers and advisors is paramount. Canada Life's existing Authentication and Authorization Architecture, while functional, no longer meets the demands of modern users who expect seamless access to services. This architectural vision outlines a transformative strategy to migrate Canada Life's Legacy Authentication and Authorization Architecture towards a system that synchronizes ISAM, SIEBEL, IBM MDM, and Salesforce roles using Kafka events and stores them in a central master database. This approach will enable Single Sign-On (SSO) for both customers and advisors, ensuring efficiency, security, and improved user satisfaction.
+
+**Vision:**
+The proposed architectural vision revolves around creating a unified ecosystem that seamlessly synchronizes roles across ISAM, SIEBEL, IBM MDM, and Salesforce platforms. This synchronization will be achieved through Kafka events and role-related data will be stored in a master database, resulting in a comprehensive system tailored for both customers and advisors. Key principles of this vision include:
+
+1. **Holistic Role Synchronization:**
+   The core of this architecture is the synchronization of roles across ISAM, SIEBEL, IBM MDM, and Salesforce. Roles and permissions will be harmonized across platforms, ensuring that customers and advisors have consistent access to the right resources.
+
+2. **Kafka Events for Real-time Synchronization:**
+   Kafka will serve as the real-time event streaming platform. Events such as role modifications, access grants, or updates will trigger Kafka messages, promptly propagating role changes across systems and ensuring a coherent experience.
+
+3. **Centralized Master Database:**
+   A centralized master database will store up-to-date role information. This database will act as the single source of truth, eliminating role discrepancies and making role management more efficient.
+
+4. **Single Sign-On (SSO) Implementation:**
+   With synchronized roles, Single Sign-On will be enabled for both customers and advisors. Users will log in once and gain access to multiple services seamlessly, enhancing convenience and user satisfaction.
+
+5. **Dynamic Role Assignments:**
+   The synchronized roles will enable dynamic role assignments. As customers or advisors' profiles evolve, their roles and permissions will be updated in real time across all relevant systems, reflecting their current status accurately.
+
+6. **Robust Security Measures:**
+   Security will be a top priority. Strong authentication mechanisms, secure token handling, and role-based access controls will safeguard sensitive data and ensure appropriate access levels.
+
+7. **Scalable Microservices Architecture:**
+   The architecture will adopt a microservices approach, ensuring modularity and scalability. Each microservice will focus on specific functionalities such as role synchronization, Kafka event processing, and database management.
+
+8. **API-Driven Integration:**
+   Well-defined APIs will facilitate smooth interaction between components. This approach will enable integrations with existing and future systems, enabling Canada Life to adapt to changing requirements seamlessly.
+
+9. **Enhanced User Experience:**
+   By implementing this architecture, customers and advisors will benefit from a streamlined experience. They will enjoy a single, secure sign-on process across various platforms, making their interactions with Canada Life more efficient and satisfying.
+
+**Conclusion:**
+The architectural vision of migrating Canada Life's Legacy Authentication and Authorization Architecture to a unified system focused on ISAM, SIEBEL, IBM MDM, and Salesforce role synchronization via Kafka events and a master database represents a significant leap towards modernization. By embracing this visionary approach, Canada Life will provide a secure, efficient, and unified experience for both customers and advisors. This architecture lays the foundation for an agile, customer-centric digital ecosystem, poised to meet the evolving demands of the digital age.
