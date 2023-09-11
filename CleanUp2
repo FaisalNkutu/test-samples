@@ -1,11 +1,21 @@
-MDM will be the only place with Master Records (Client Data and Addresses) - it 
+In the end state, MDM will be the only place with Master Records containing client data and addresses; it 
 
 Receives event messaging from MADS Environment 
 
-Does Event Processing; Validates, verifies, approves and fixes Addresses  
+Performs Event Processing; validates, verifies, approves and fixes addresses then 
 
-Publishes an MDM Golden Copy. 
+Publishes the data as an MDM Golden Copy. 
 
-Initially - The Goldent Copy was consumed by CIS and the Microservice - Everything was kept in synch using Event Messaging 
+Currently, the Golden Copy is consumed by CIS and the Microservice and everything is kept in synch using Event Messaging. 
 
-CIS is a 24/7 highly stable and highly resilient application, which will be replaced by MDM, so if we are hooking up more systems directly to MDM via a Microservice- They need to take the Load that CIS took. 
+CIS is a 24/7 highly stable and highly resilient application, which will be replaced by MDM, so in order to integrate more systems directly to MDM via a Microservice, they will need to take the load that CIS took. In order to do so, it is recommended to; 
+
+Switch to the proposed real-time event-driven architecture to handle data integration between MDM to Microservice Aligned Data Storage (MADS) and sunset the current nightly batch ETL synch process between MDM and MADS.  
+
+In the meantime, implement safeguards to prevent simultaneous operations from causing outages or overwriting of records in MADS. This might involve using locking mechanisms or implementing appropriate data synchronization techniques. 
+
+Consider using versioning or timestamping to track changes and prevent overwriting of records. 
+
+Monitor the system closely during the transition to identify and address any potential issues. 
+
+Ensure that the Microservice architecture is scalable and can handle the load previously managed by CIS. 
