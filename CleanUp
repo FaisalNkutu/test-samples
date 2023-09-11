@@ -1,0 +1,9 @@
+CIS Is being removed (24/7 application - that is highly stable and highly resilient), so if we are hooking up more
+           systems directly to MDM via a Microservice- They need to take the Load that CIS took.
+         - There is a risk of outages if the Microservice and Batch/ETL are working at the same time and overwriting of records on a regular basis
+         - How is the refresh of data real time? - Because we don't want it down (Abhi/Varun)
+         - There are outages right now and rejections, because the Batch/ETL is not 24/7
+         - We need to replace Batch/ETL with Realtime Eventing - Integration with MDM and MADS needs to be realtime updates
+         - Eventing is preferred over ETL
+         - Are you doing full Eventing and Messaging and Not overwriting records Every night? Then that is fine but if there is overwriting
+           of records then that is an issue.
