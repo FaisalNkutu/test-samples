@@ -1,4 +1,11 @@
-MDM is the only place with Master Records (Client Data and Addresses) - It validates and fixes Addresses
-MADS Environment does event massing to MDM - MDM Does Event Processing (Validates/Verifies/Approves). And Publishes an MDM Golden Copy
-Initially - The Goldent Copy was consumed by CIS and the Microservice - Everything was kept in synch using Event Messaging
-Recently - CIS Is being removed (24/7 application - that is highly stable and highly resilient), so if we are hooking up more
+MDM will be the only place with Master Records (Client Data and Addresses) - it 
+
+Receives event messaging from MADS Environment 
+
+Does Event Processing; Validates, verifies, approves and fixes Addresses  
+
+Publishes an MDM Golden Copy. 
+
+Initially - The Goldent Copy was consumed by CIS and the Microservice - Everything was kept in synch using Event Messaging 
+
+CIS is a 24/7 highly stable and highly resilient application, which will be replaced by MDM, so if we are hooking up more systems directly to MDM via a Microservice- They need to take the Load that CIS took. 
