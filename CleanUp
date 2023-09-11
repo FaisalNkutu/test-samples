@@ -1,9 +1,30 @@
-CIS Is being removed (24/7 application - that is highly stable and highly resilient), so if we are hooking up more
-           systems directly to MDM via a Microservice- They need to take the Load that CIS took.
-         - There is a risk of outages if the Microservice and Batch/ETL are working at the same time and overwriting of records on a regular basis
-         - How is the refresh of data real time? - Because we don't want it down (Abhi/Varun)
-         - There are outages right now and rejections, because the Batch/ETL is not 24/7
-         - We need to replace Batch/ETL with Realtime Eventing - Integration with MDM and MADS needs to be realtime updates
-         - Eventing is preferred over ETL
-         - Are you doing full Eventing and Messaging and Not overwriting records Every night? Then that is fine but if there is overwriting
-           of records then that is an issue.
+It seems like you're discussing a technical transition from a system called CIS to a Microservice architecture for handling data integration. Here are some key points and considerations based on the information provided:
+
+1. **Transition from CIS to Microservice**:
+   - CIS, a 24/7 application, is being removed and replaced with a Microservice architecture.
+   - The Microservice will need to handle the same load that CIS used to manage.
+
+2. **Risk of Outages**:
+   - There is a risk of outages if the Microservice and Batch/ETL processes are running simultaneously and potentially overwriting records.
+  
+3. **Real-time Data Refresh**:
+   - Abhi and Varun are concerned about ensuring real-time data updates without downtime.
+
+4. **Current Outages and Rejections**:
+   - There are ongoing outages and rejections due to the Batch/ETL process not running 24/7.
+
+5. **Replacing Batch/ETL with Real-time Eventing**:
+   - The preference is to replace Batch/ETL with Real-time Eventing for integration with MDM (Master Data Management) and MADS (Master Data Service) to enable real-time updates.
+
+6. **Avoiding Record Overwriting**:
+   - It's important to ensure that records are not overwritten on a regular basis. Full Eventing and Messaging are preferred if they prevent overwriting.
+
+Based on this information, here are some suggestions:
+
+- Implement real-time event-driven architecture to handle data integration instead of relying on batch processes.
+- Ensure that the Microservice architecture is capable of handling the load previously managed by CIS.
+- Implement safeguards to prevent simultaneous operations from causing outages or overwriting of records. This might involve using locking mechanisms or implementing appropriate data synchronization techniques.
+- Consider using versioning or timestamping to track changes and prevent overwriting of records.
+- Monitor the system closely during the transition to identify and address any potential issues.
+
+Remember to consult with your technical team and consider conducting a thorough risk assessment before making any significant architectural changes.
