@@ -1,0 +1,9 @@
+The Client data in CIS is also referred to as Party data, party data contains tombstone data and data for the contract party and contract relationship.
+
+Advisor Workspace is an application used by Advisor to manage party and contract data. It has synchronizing mechanisms to consume data in the following ways;
+1. A synchronous method which is ETL based runs every night on weekdays, it generates extracts from various DB2 tables.And loads data in the Salesforce platform.
+a. An ETL job that combines contract data and party data from the extracted files, to create a party and contract relationship for a given advisor.
+b. The next day, again the same file is generated based on the CIS extracts and then compared 
+it with the Salesforce data that was loaded the previous night. 
+Based on the comparison of these two data sets, business events are generated. These events contain information such
+as; attribute changes on existing contracts.
