@@ -1,0 +1,10 @@
+Second use case where every party contract data in sales force, which is the platform where advisor Workspace is built on.
+
+Tries to keep its data In Sync with CIS based on the business events identified by comparing yesterday's data with today's data. , it's asynchronous process, which means any business changes that are taking place in case today.
+
+Will be captured in the extract generated tonight by CIS, and that file is consumed.
+
+Tomorrow night by the ETL job for Workspace, which means any changes that are happening today on a Thursday in case will reflect on a Saturday morning.
+, the timeline is you make some changes in case in in case system tonight case will run and extract job those extract files are generally available to us at like 4:00 o'clock or 7:00 o'clock in the morning we cannot consume them during our business hours. we consume them in the night. tomorrow night on Friday night we will consume them. Our job takes somewhere from four to six hours to load that data into sales force.
+
+Which takes it to like 1:00 AM Saturday morning.
