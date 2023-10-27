@@ -1,0 +1,517 @@
+
+Integration Point 
+
+Complexity 
+
+Current Integration Pattern 
+
+Comments 
+
+Integration Direction 
+
+Timeline (ESTD-Year 
+
+RPS 
+
+Medium 
+
+MESH Replication/ETL 
+
+Data feed sent today only to CIS via ETL and MESH – In future Data Feed will go to MDM via MADS. 
+
+Producer 
+
+25/26 
+
+RPS 
+
+  
+
+MESH Replication 
+
+  
+
+Consumer 
+
+25/26 
+
+ 
+
+NBN 
+
+Medium 
+
+Mesh Replication 
+
+  
+
+Producer 
+
+25/26 
+
+NBN 
+
+  
+
+Stored Procedure calls through MESH 
+
+  
+
+Consumer 
+
+ 
+
+PIP 
+
+  
+
+  
+
+Deprecated 
+
+Producer 
+
+ 
+
+PIP 
+
+Low 
+
+API 
+
+Deprecated 
+
+Consumer 
+
+ 
+
+Ingenium 7.7 
+
+Medium 
+
+MESH Replication/ETL 
+
+ Special Handling 
+
+Producer 
+
+25/26 
+
+Ingenium 5.4 
+
+Medium 
+
+Mesh Replication/ETL 
+
+ Special Handling 
+
+Producer 
+
+25/26 
+
+ 
+
+Ingenium 7.7,5.4 
+
+  
+
+Mesh Replication 
+
+ Special Handling 
+
+Consumer 
+
+ 
+
+lilytics 
+
+Low 
+
+FTP (File Transfer Protocol) 
+
+Reports 
+
+  
+
+24/25 
+
+IDM 
+
+Low 
+
+ETL 
+
+  
+
+Consumer 
+
+24/25 
+
+AGM 
+
+Medium 
+
+  
+
+Deprecated 
+
+Producer 
+
+ 
+
+Client Maintenance Reports 
+
+Low 
+
+FTP 
+
+Certain processes owned by CIS will be taken over by MDM 
+
+Consumer 
+
+24/25 
+
+ 
+
+Client Sites (LL, GWL, CL) 
+
+Medium 
+
+Mesh Services 
+
+Deprecation after Sept/October replaced by MCL – confirm with RIkenbhai Patel 
+
+Consumer 
+
+25/26 
+
+F55 Advisor Site (LL) CPI 
+
+High (will be deprecated soon by the end of this year) 
+
+Mesh Services 
+
+Deprecation after Sept/October replaced by AW 
+
+Consumer 
+
+ 
+
+Your Connection (GWLI) CPI 
+
+Low 
+
+Mesh Services 
+
+Deprecation be December replaced by AW (Advisor Workspace) 
+
+Consumer 
+
+24/25 
+
+RepNet (CL) Investment Inquiry Rapid 
+
+Low 
+
+Mesh Services 
+
+Deprecation after Sept/October replaced by AW (Advisor Workspace) 
+
+Consumer 
+
+24/25 
+
+RAPID 
+
+ Low 
+
+Direct Stored Procedure Calls 
+
+Deprecation after Sept/October replaced by AW (Advisor Workspace) 
+
+  
+
+24/25 
+
+MCL (No Direct Connection to CIS) 
+
+  
+
+Microservices/MDM Replication 
+
+Integrated with MDM and Microservices 
+
+  
+
+ 
+
+GWL/LL Call Centres 
+
+High 
+
+Connects with Pega Openspan (DAT) - Connected to Co-Pilot and use DLLs 
+
+Planned Future State - Operations Workbench or equivalent -  
+
+Consumer 
+
+26/27 
+
+CCM (move money Quick deposit) 
+
+High 
+
+Common Client (DLL Calls and Stored Procedures) 
+
+  
+
+Consumer 
+
+26/27 
+
+ 
+
+Business Request Manager 
+
+High 
+
+  
+
+Might be deprecated by end of 2023 
+
+Consumer 
+
+26/27 
+
+ 
+
+Alerts Manager 
+
+High 
+
+Connected to Co-Pilot and use DLLs 
+
+ 
+
+Consumer 
+
+26/27 
+
+ 
+
+Address Update 
+
+High 
+
+Common Client (DLL Calls and Stored Procedures) 
+
+  
+
+Producer/Consumer 
+
+26/27 
+
+ 
+
+Common Client 
+
+High 
+
+DLL Calls and Stored Procedures 
+
+  
+
+Producer/Consumer 
+
+26/27 
+
+ 
+
+Co-Pilot 
+
+High 
+
+Common Client (DLL Calls and Stored Procedures) 
+
+  
+
+Producer/Consumer 
+
+26/27 
+
+ 
+
+TAS 
+
+High 
+
+Within London Life Mainframe – It is no longer dependent on CIS – it depends on Unitrax 
+
+  
+
+Consumer 
+
+26/27 
+
+ 
+
+Sales Force/MCL 
+
+High 
+
+ETL 
+
+  
+
+Producer/Consumer 
+
+26/27 
+
+ 
+
+Unitrax 
+
+High 
+
+ETL and Mesh (or its equivalent) 
+
+  
+
+Producer/Consumer 
+
+26/27 
+
+ 
+
+Mailing and Tracking 
+
+High 
+
+ Common Client (DLL Calls and Stored Procedures) 
+
+ 
+
+ 
+
+Producer/Consumer 
+
+26/27 
+
+ 
+
+Advisor Workplace (Mesh, API) 
+
+High 
+
+Nightly ETL Batch/BOB API 
+
+ETL – data sending to MDM. API/Mesh/SP for Update from CIS to MDM 
+
+Consumer 
+
+26/27 
+
+ 
+
+Advisor Workspace (Mesh, API) 
+
+ High 
+
+Eventing (Google Pub/Sub) 
+
+  
+
+Producer 
+
+26/27 
+
+ 
+
+Vantage 
+
+Completed 
+
+  
+
+Sunset (Replaced by Unitrax) 
+
+Producer/Consumer 
+
+ 
+
+EWMS(Quadrus) 
+
+Medium (batch) 
+
+London Life Mainframe Batch 
+
+  
+
+Producer 
+
+ 
+
+IB15/IB21 (Insurance) 
+
+ High 
+
+Mesh Replication and ETL Batch 
+
+  
+
+Producer 
+
+26/27 
+
+ 
+
+IB15 (Wealth) 
+
+ Completed 
+
+  
+
+Decommissioned with M4/M5 August 2023 
+
+  
+
+ 
+
+SAS 
+
+ Completed 
+
+  
+
+Partially Sunset (Replaced by Unitrax) - CIS Component Decommissioned only FundCo Running Seg Gone 
+
+Producer/Consumer 
+
+ 
+
+FM 
+
+ High 
+
+Mesh Replication and ETL Batch 
+
+  
+
+  
+
+26/27 
+
+ 
+
+OnBase 
+
+  
+
+ETL/FTP? - The process to extract is not owned by CIS it might be individual job 
+
+Nightly Feed - Rajath to Confirm 
+
+  
+
+ 
+
