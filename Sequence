@@ -1,0 +1,11 @@
+So if you want to add that as a generic piece saying that CS also does the outbound replication based on updates made on CS directly
+
+Well, in all of those diagrams we haven't shown outbound replication right from CIS to IB 50 like.
+Shetty, Rajath 26 minutes 46 seconds
+We have shown from coming from the admin system into CIS, but there are many applications on CS like say address update or copilot and the IMS screens like there are green screens which directly are on mainframe can make changes to client information on CIS right? So once you make say a phone number change, IB 15 would want they'll have their own client database right? And that will be out of sync because now CS has a different phone number whereas IB 15 still has the old.
+Shetty, Rajath 27 minutes 18 seconds
+So we have an outbound replication process where an update that is made directly on CIS we create a trigger and that trigger is picked by mesh and they pull that information and put it into the required admin system. We have like a xref table. I don't want to go into complete technical detail level, but there's a table which gives you a relationship between the the CIS client ID and his equivalent client ID on his admin system. So say if he has, if I have three different policies and three different admin system.
+Shetty, Rajath 27 minutes 53 seconds
+I'll have the relationship between my csid with all those client IDs on that admin system, so mesh should be able to know where that information has to go so that they can update it on the admin system.
+Shetty, Rajath 28 minutes 6 seconds
+That's the outbound flow. So whatever you have shown right here, right is all inbound coming from admin into CIS. But there is also an outbound flow where CIS sends information back to admin system if an update is made on CS.
