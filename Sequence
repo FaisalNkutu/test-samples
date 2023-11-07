@@ -9,3 +9,19 @@ Shetty, Rajath 27 minutes 53 seconds
 I'll have the relationship between my csid with all those client IDs on that admin system, so mesh should be able to know where that information has to go so that they can update it on the admin system.
 Shetty, Rajath 28 minutes 6 seconds
 That's the outbound flow. So whatever you have shown right here, right is all inbound coming from admin into CIS. But there is also an outbound flow where CIS sends information back to admin system if an update is made on CS.
+
+Title: Outbound Replication from CIS to IB 50
+
+Participants:
+- CS
+- CIS
+- IB 15
+- Mesh
+
+Sequence of Events:
+
+1. CS -> CIS: Initiates update (e.g., phone number change)
+2. CIS -> Mesh: Creates trigger
+3. Mesh -> Mesh: Processes trigger, extracts updated info
+4. Mesh -> IB 15: Consults xref table for equivalent client ID
+5. IB 15 -> IB 15: Updates client database
