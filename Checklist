@@ -1,0 +1,94 @@
+
+Integrated Micro-Modernization Strategy Discussion Checklist:
+
+Document Changes from Previous Meeting:
+
+ Remove specific timelines (years and months) and avoid exact commitments.
+ Focus on the order of operations rather than precise commitments.
+ Express caution about making precise commitments and discuss potential consequences.
+ Emphasize the importance of estimates in the micro-modernization process.
+ Stress the involvement of delivery teams in the planning and execution process.
+Political Aspects, Privacy Concerns, and Recording:
+
+ Consider political aspects when presenting information.
+ Remove specific names for privacy in discussions and documentation.
+ Record changes made during discussions for future reference.
+ Maintain detailed documentation of decisions and considerations.
+Project Roadmap Organization and Categorization:
+
+ Discuss the organization of phases in the project roadmap.
+ Consider a categorization approach based on low, medium, and high complexity applications.
+ Clarify that application-level categorization serves as the basis for project phases.
+ Continuously consider changes and adjustments to the project approach.
+ Foster adaptability based on evolving discussions and requirements.
+Micro-Modernization Approach and Budget Considerations:
+
+ Discuss the application of micro-modernization without a dedicated budget.
+ Emphasize pushing for enhancements at an application and process level.
+ Identify applications using CIS and plan the transition to MDM.
+ Classify applications into low complexity for immediate transition to MDM.
+Implementation and Presentation of Micro-Modernization Strategy:
+
+ Implement the micro-modernization strategy based on team priorities.
+ Use low complexity integration points as a foundation for the overall strategy.
+ Confirm whether low complexity points are prerequisites for medium and high complexity.
+ Present the strategy diagrammatically with low, medium, and high complexity layers.
+ Clarify the chronological approach of accomplishing low complexity tasks first.
+ Emphasize showcasing common capabilities and potential parallel execution.
+ Create interim states representing low, medium, and high complexity with deliverables.
+ Seek confirmation and input from delivery teams for clarity in the strategy.
+Flexibility in Timeline and Switch to MDM:
+
+ Acknowledge that the presented timeline is not set in stone.
+ Discuss the timing of switching from CIS to MDM and potential milestones for the switch.
+Micro-Modernization Approach Checklist:
+
+ Select a simple application for the basic POC (e.g., Address Update).
+ Establish two-way communication between CIS and MDM.
+ Demonstrate the feasibility of micro-modernization.
+ Present benefits for the chosen use case.
+ Identify an application with medium complexity for the extended POC.
+ Implement two-way communication and replication with MDM.
+ Showcase scalability and broader benefits.
+ Highlight improvements achieved in the extended POC.
+Pattern-Based Documentation:
+
+ Document common patterns for micro-modernization.
+ Showcase application interactions with MDM using established patterns.
+ Emphasize simplicity and effectiveness of chosen approach.
+ Create a reference for future implementations.
+Gantt Chart Preparation:
+
+ Identify dependencies and sequence of micro-modernization tasks.
+ Establish milestones and timelines for each application.
+ Develop a visual roadmap for the entire micro-modernization process.
+ Highlight phased approach to avoid a Big Bang budget.
+Archival Data Strategy:
+
+ Discuss strategies for handling archive data during micro-modernization.
+ Plan for the migration of archive data during system shutdown.
+ Address concerns related to maintaining historical data integrity.
+ Propose solutions for managing archive data effectively.
+Senior Leadership Presentation:
+
+ Summarize benefits demonstrated in POCs.
+ Showcase Gantt chart and phased implementation plan.
+ Address concerns and gain feedback from senior leadership.
+ Seek approval and support for the micro-modernization strategy.
+Initiative for Foundational Infrastructure:
+
+ Assess the readiness of foundational infrastructure (e.g., Kafka queues).
+ Collaborate with the integration team to set up basic infrastructure.
+ Determine estimates and timelines for foundational elements.
+Engagement with Application Teams:
+
+ Present the micro-modernization approach to application teams.
+ Provide documentation and patterns for integration with MDM.
+ Encourage teams to evaluate their applications for micro-modernization.
+ Collaborate with teams to create initiative briefs for specific applications.
+Follow-Up Meetings:
+
+ Schedule follow-up meetings with integration and application teams.
+ Track progress of foundational infrastructure setup.
+ Adjust Gantt chart and roadmap based on feedback and progress.
+This consolidated checklist encompasses the entire micro-modernization strategy discussion and implementation process, ensuring a systematic and thorough approach to the initiative.
