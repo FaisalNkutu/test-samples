@@ -1,0 +1,1047 @@
+0:0:0.0 --> 0:0:4.120
+Nkutu, Faisal
+The the room of we were discussing yesterday.
+0:0:5.160 --> 0:0:6.720
+Nkutu, Faisal
+I wanted to make changes.
+0:0:7.860 --> 0:0:20.140
+Nkutu, Faisal
+I made a few minor changes myself. I I've changed the word release to faces and I took over the progress column that was here was a person of playing around with the image.
+0:0:19.840 --> 0:0:26.960
+Mahajan, Arunesh
+I think I think one other thing that we'd like to change, which I think Saab also wanted to change was.
+0:0:28.430 --> 0:0:35.230
+Mahajan, Arunesh
+The mention of the exact years and months right, I mean we do want a timeline.
+0:0:36.980 --> 0:0:44.180
+Mahajan, Arunesh
+Maybe quantified on a month or a year's basis, but not identified as 2024 or 2025, etcetera.
+0:0:45.990 --> 0:0:46.590
+Nkutu, Faisal
+OK.
+0:0:47.740 --> 0:0:51.660
+Mahajan, Arunesh
+Do do you all agree with that? I mean, do you guys also attended the meeting yesterday, so you can?
+0:0:49.910 --> 0:0:59.870
+Fadel, Adeeb
+Yeah, I I agree with that. I agree. Keep it, keep it more like a order of operations rather than an exact time.
+0:1:1.810 --> 0:1:2.170
+Nkutu, Faisal
+OK.
+0:1:5.620 --> 0:1:5.980
+Mahajan, Arunesh
+Yeah.
+0:1:1.540 --> 0:1:6.860
+Baker, Tim
+Yeah, because if you put a time down, you've committed to it. Don't do that. Commit to nothing.
+0:1:8.520 --> 0:1:9.40
+Nkutu, Faisal
+OK.
+0:1:8.560 --> 0:1:12.760
+Mahajan, Arunesh
+And and commitments can get you in trouble in Canada if you don't meet them so.
+0:1:16.440 --> 0:1:18.480
+Mahajan, Arunesh
+Oh, no, no, no, don't.
+0:1:13.320 --> 0:1:24.840
+Fadel, Adeeb
+Yeah, I don't think you're at the point where you've estimated everything to that and you'll need you'll need delivery teams to help you. So that's it's also a political you have to be careful how you, how you.
+0:1:24.400 --> 0:1:26.560
+Mahajan, Arunesh
+Absolutely, absolutely.
+0:1:26.280 --> 0:1:27.160
+Fadel, Adeeb
+Present this information.
+0:1:27.690 --> 0:1:33.410
+Mahajan, Arunesh
+Yeah, yeah. So one of the other, so, OK, so Faizal, can you just note down this change?
+0:1:34.520 --> 0:1:34.840
+Nkutu, Faisal
+Yeah.
+0:1:37.800 --> 0:1:38.40
+Nkutu, Faisal
+Yeah.
+0:1:34.530 --> 0:1:38.730
+Mahajan, Arunesh
+I mean, you can make that make the changes later on, right? If that's gonna be OK.
+0:1:39.760 --> 0:1:44.720
+Nkutu, Faisal
+Yeah, I'll make the changes. I'm also recording so, but I'll take notes on the sides.
+0:1:46.20 --> 0:1:46.740
+Mahajan, Arunesh
+OK, great.
+0:1:48.420 --> 0:1:51.420
+Mahajan, Arunesh
+Now Adeep and Tim and Katie. Yeah, sure.
+0:1:49.460 --> 0:1:52.380
+Fadel, Adeeb
+So I have a question about the phases. So.
+0:1:53.740 --> 0:1:56.300
+Fadel, Adeeb
+All those items in the underneath are they.
+0:1:58.660 --> 0:2:11.900
+Fadel, Adeeb
+Are they logical components or I mean are they independent solutions that can be delivered on their own? Or what are the are they components of a broader solution?
+0:2:13.500 --> 0:2:21.260
+Mahajan, Arunesh
+And we can give you a little bit of a context of that adeem. So maybe you know that'll help. So Faizal, can you bring up that low, medium high complexity list that we have?
+0:2:22.540 --> 0:2:35.860
+Nkutu, Faisal
+I have to go to rid of it as part of the the padding we we said at the table had too much stuff, so that column was removed. That's why I also use this table to kind of keep that kind of classification.
+0:2:36.460 --> 0:3:9.140
+Mahajan, Arunesh
+OK, OK. So so basically what we did is because we were gonna apply the approach of micro modernization, which is without having a dedicated budget for this entire programme. We were we were trying to push for enhancements to happen at an application on a process level to move their dependency, to remove their dependency from CIS. And you know, start relying on MDM as a primary source of data. So when we started looking at different applications, we created a list and wanted and understood.
+0:3:9.570 --> 0:3:35.690
+Mahajan, Arunesh
+One of those applications using CIS for and how hard is it for them? What kind of a process change or a technical change would it require for them to move to MDM so we identified the the applications which have just a read only. You know we don't requires dynamic data which requires static data, things like that which can immediately move over to MDM without having any repercussions.
+0:3:36.390 --> 0:3:46.270
+Mahajan, Arunesh
+Right. So we classified them as low complexity applications and that's application. So to answer your question, it was done on an application level.
+0:3:47.490 --> 0:3:56.690
+Fadel, Adeeb
+OK, so but when I look at phases, to me that doesn't map to those line items. To me a phase is.
+0:3:57.610 --> 0:4:1.130
+Fadel, Adeeb
+Is, you know, a complete package that gets delivered.
+0:4:3.600 --> 0:4:7.0
+Fadel, Adeeb
+So maybe we need to change that a bit, yeah.
+0:4:1.900 --> 0:4:7.660
+Mahajan, Arunesh
+Right, right. So, so Faizal had just renamed it from Faizal, has renamed it.
+0:4:8.920 --> 0:4:39.560
+Mahajan, Arunesh
+So there were three where we had basically identified 3 different categories of applications that was supposed to again modernise and move over to MDM progressively, which are low complexity, medium and high complexity. Now Faizal just renamed the word releases to phases, although it doesn't represent a proper phase here and that's why we're meeting here for like we are. We'll change that too. We'll change the approach here and we don't know.
+0:4:39.580 --> 0:4:41.260
+Mahajan, Arunesh
+You know, maybe group it some other way.
+0:4:44.220 --> 0:4:48.220
+Fadel, Adeeb
+So can you tell me what the first what the first delivery will be?
+0:4:49.310 --> 0:4:53.910
+Fadel, Adeeb
+In words like what do you what would you like to deliver the very first?
+0:4:55.270 --> 0:4:56.630
+Fadel, Adeeb
+Time that you start this road map.
+0:4:58.600 --> 0:5:3.40
+Mahajan, Arunesh
+Can can you explain the first change, present the first change where we are making of we're proposing, yeah.
+0:5:1.290 --> 0:5:9.530
+Nkutu, Faisal
+Yeah, the first change, what we decided was to do some complete two way replication from CIS to MDM. That's the first deliverable.
+0:5:11.70 --> 0:5:14.350
+Nkutu, Faisal
+That make sure that all the data the initial data is migrated to MDM.
+0:5:17.370 --> 0:5:18.170
+Nkutu, Faisal
+That's the first thing.
+0:5:18.770 --> 0:5:32.650
+Fadel, Adeeb
+That's the first one and and Seger are you saying for example the, you know that plus all the other things under low complexity that's going to be 1 deliverable or sorry that's going to be one phase.
+0:5:32.970 --> 0:5:52.410
+Mahajan, Arunesh
+So. So here's the thing. So ADI, this is where I think it gets confusing to everyone and I completely understand why. So these are all different independent tasks and applications and the work required for modernising each of these apps. There are independent of each other, they can be run parallelly.
+0:5:54.350 --> 0:6:11.310
+Mahajan, Arunesh
+We do not need a chronological order for them except for the first one like we would really want the first one to happen first, followed by the address update copilot and common client. After that from IDM real it takes and client maintenance on work. They can all be accomplished. Am I right, Faizal.
+0:6:11.620 --> 0:6:22.300
+Nkutu, Faisal
+Yeah, they're gonna be done independently in the micro modernization strategy based on the priorities under and you know considerations of each team.
+0:6:41.510 --> 0:6:41.710
+Mahajan, Arunesh
+Mm hmm.
+0:6:24.90 --> 0:6:44.450
+Fadel, Adeeb
+So. So that's where low complexity integration points, but I'm what I'm asking is just a generally are low complexity integration points a prereq prerequisite for medium complexity integration points 1st and also high complexity integration points? Or are they just just so happen to be phased in that in that way?
+0:6:46.800 --> 0:6:47.480
+Mahajan, Arunesh
+So so.
+0:6:45.700 --> 0:6:50.420
+Nkutu, Faisal
+Yeah, only the first one is a prerequisite because we need the date. All the others need the data.
+0:6:52.580 --> 0:6:59.340
+Mahajan, Arunesh
+So so I just want to, oh, ****, I lost my sorry. I lost my monitor. Guys, I'm sorry.
+0:7:1.310 --> 0:7:2.270
+Mahajan, Arunesh
+I see nothing.
+0:7:3.800 --> 0:7:4.40
+Nkutu, Faisal
+OK.
+0:7:4.990 --> 0:7:8.270
+Mahajan, Arunesh
+OK. Yeah, it's back. So adeep.
+0:7:10.290 --> 0:7:10.930
+Mahajan, Arunesh
+Can you hear me?
+0:7:11.150 --> 0:7:12.30
+Fadel, Adeeb
+Yep, I can hear you.
+0:7:12.480 --> 0:7:41.960
+Mahajan, Arunesh
+OK, so it depends. So like we said in the low complexity we were following, we were trying to follow the pyramid approach trying to get the baseline capabilities in order the least important ones to be done 1st and then progressively move towards some things that are more complex that have complex relationships with CIS, like for example in the low complexity we are trying to 1st accomplish and move all the read onlys.
+0:7:43.160 --> 0:7:45.280
+Mahajan, Arunesh
+Static calls to CIS to MDM.
+0:7:46.0 --> 0:7:48.120
+Mahajan, Arunesh
+Right. It's not, it's not.
+0:7:49.640 --> 0:7:51.760
+Mahajan, Arunesh
+You know it's not.
+0:7:51.920 --> 0:8:1.680
+Mahajan, Arunesh
+The the the work that can be accomplished in medium complexity or high complexity does not depend entirely on the low complexity stuff we were just trying to showcase.
+0:8:2.670 --> 0:8:2.790
+Baker, Tim
+The.
+0:8:3.80 --> 0:8:10.840
+Mahajan, Arunesh
+That how micro modernization can happen, and this is something that we had talked to Prasad about, which I think we missed yesterday.
+0:8:12.320 --> 0:8:27.880
+Mahajan, Arunesh
+The whole concept was to embed this thing with the ideology of macro modernization and present it to the leadership that, hey, we've been able to accomplish so much for the low complexity application just using the maintenance budget. We'd like to scale this up.
+0:8:28.980 --> 0:8:47.780
+Mahajan, Arunesh
+If you can give us some push with the applications, if you can bias, you know if you can give us a buy in, we can move this for the medium and the high complexity applications and try to utilise opportunities to move from CIS to MDN. That was supposed to be the approach so.
+0:8:49.150 --> 0:8:51.830
+Mahajan, Arunesh
+And I think it just got tossed out of the window yesterday.
+0:8:53.440 --> 0:9:4.560
+Mahajan, Arunesh
+But that was supposed to be the whole approach we were supposed to do. The low complexity presented as a more, you know, as as a successful POC or successful.
+0:9:6.360 --> 0:9:16.120
+Mahajan, Arunesh
+Demonstration of micro modernization and then move forward from there with all the other complexities that was supposed to be the approach right phason. And that's something that we had talked about.
+0:9:16.510 --> 0:9:20.270
+Nkutu, Faisal
+Yes, that's something we have discussed quite for quite a a long time, yes.
+0:9:20.240 --> 0:9:49.760
+Mahajan, Arunesh
+Yeah. And then that is the reason why Fazil took it in the next phase. So for example, if you see the yellow bar only goes till I think December 2024 and then the blue one starts with a medium and then the high complexity one. So the reason why we're not running things in parallel is because we are trying to club these things and accomplish together like as much as possible. If there are common capabilities that can be accomplished like for example if there's a pattern that can be followed for alerts, manager, mail in tracking.
+0:9:50.260 --> 0:10:21.940
+Mahajan, Arunesh
+Then the same pattern can be followed for advisor, Workspace and NBN and RPS things like that. So we can accomplish them independently or in parallel. That depends on the capacity of the teams, availability of the SMEs, all that like we cannot me and Faizal from a delivery perspective cannot comment on whether or not these can be done together or independently. We can only say yes, there's a possibility they can be done together or independently, but the confirmation has to be has to come from the delivery teams. It's not something that we can.
+0:10:22.20 --> 0:10:28.140
+Mahajan, Arunesh
+So from an architecture point, adeep, Tim and Katie, how would you like us to present this?
+0:10:36.820 --> 0:10:45.900
+Fadel, Adeeb
+Yeah, I think I think we need to like if we were looking at your that diagram, the target state diagram that you were sharing the other day.
+0:10:46.570 --> 0:10:47.10
+Mahajan, Arunesh
+Right.
+0:10:56.960 --> 0:10:58.600
+Mahajan, Arunesh
+You mean the layers, right, Adele?
+0:10:47.540 --> 0:11:1.20
+Fadel, Adeeb
+I think we we need to kind of work back from that and I think that's what you've done here. It's just it's not evident to me because I I'm not close to the diagram and and just to see like how can we.
+0:11:2.580 --> 0:11:7.100
+Fadel, Adeeb
+What you know, how can we look at the each and think of it as more a micro solution.
+0:11:7.660 --> 0:11:8.380
+Fadel, Adeeb
+Solution.
+0:11:10.20 --> 0:11:26.700
+Fadel, Adeeb
+As you kind of travel over time to your target state, so it's it's really what am I getting? What am I getting for each micro solution as I move you know down the road and does it and does it all map together properly?
+0:11:29.430 --> 0:11:30.70
+Fadel, Adeeb
+So.
+0:11:31.730 --> 0:11:37.530
+Fadel, Adeeb
+Before I like it's. It's hard for me to look at like this is to me. This is the summary of that.
+0:11:38.980 --> 0:11:56.420
+Mahajan, Arunesh
+Completely agree. I think. I think. I think what we should do is not look at this timeline for now. We should only focus on the different layers of low complexity followed by medium followed by high and try and show it diagnatically.
+0:11:56.750 --> 0:12:0.670
+Fadel, Adeeb
+I think so. Then you can because this will just be a natural.
+0:12:1.950 --> 0:12:3.750
+Fadel, Adeeb
+Outcome of what we yeah.
+0:12:1.360 --> 0:12:5.0
+Mahajan, Arunesh
+Yeah, this will be the natural flow. Yeah, exactly. Exactly, yeah.
+0:12:6.620 --> 0:12:30.60
+Mahajan, Arunesh
+Yeah, I think that's that's a great idea because you know, I I I can completely understand because we had, we have actually thought about it so many times. We have this thing embedded in our mind the way we want to approach it. But it's difficult for somebody who's coming in and looking at it from a third person's view. It's it's kind of difficult to understand why we're not doing it parallelly versus why we are. So I completely understand that.
+0:12:34.420 --> 0:12:35.300
+Mahajan, Arunesh
+Right, right.
+0:12:47.910 --> 0:12:48.430
+Mahajan, Arunesh
+Correct.
+0:12:29.250 --> 0:12:55.850
+Fadel, Adeeb
+I mean, we need to understand, you know, what are we getting at the end of the road? What? What? You know, that's for sure. Like we what are we getting? But if we're gonna talk to people about micro applications or micro solutions along the way they're gonna ask us, OK what am I getting at each milestone like. And so that's one thing and also architecturally what are we what are we doing? Are we making things more complex or is it going to be?
+0:12:57.170 --> 0:13:2.810
+Fadel, Adeeb
+So we need to also look at it from a architectural perspective and also a nonfunctional perspective.
+0:13:3.170 --> 0:13:7.10
+Fadel, Adeeb
+There's so for each delivery. What am I doing to the ecosystem?
+0:13:7.850 --> 0:13:11.810
+Mahajan, Arunesh
+Right, right. So so I think what we should do.
+0:13:14.150 --> 0:13:17.630
+Mahajan, Arunesh
+Basil, you already had the target state identified, right?
+0:13:18.70 --> 0:13:18.510
+Nkutu, Faisal
+Yes.
+0:13:19.370 --> 0:13:41.570
+Mahajan, Arunesh
+So let's let's create 2 interim states, one with the deliverables and the low complexity list, and 2nd iteration should be the media ones, right? And 3rd the final one is your something that you already have represented with proper legends and then run it through AV and Tim and Katie and you know Prasad.
+0:13:43.250 --> 0:13:50.370
+Mahajan, Arunesh
+To build that solid understanding of the ecosystem and how we are trying to approach it chronologically using micro modernization.
+0:13:50.870 --> 0:13:51.950
+Mahajan, Arunesh
+As a fundamental.
+0:13:53.930 --> 0:13:54.410
+Mahajan, Arunesh
+Right.
+0:13:58.260 --> 0:14:0.620
+Nkutu, Faisal
+So initially what we had for.
+0:14:1.750 --> 0:14:2.550
+Nkutu, Faisal
+Interim.
+0:14:3.960 --> 0:14:5.240
+Nkutu, Faisal
+Intermediate state.
+0:14:9.340 --> 0:14:9.540
+Mahajan, Arunesh
+Mm hmm.
+0:14:9.430 --> 0:14:10.310
+Nkutu, Faisal
+We had.
+0:14:11.590 --> 0:14:13.910
+Nkutu, Faisal
+All the admin systems except that.
+0:14:15.410 --> 0:14:19.210
+Nkutu, Faisal
+They were still pointing to see they were still using CIS and MDM.
+0:14:19.900 --> 0:14:22.380
+Fadel, Adeeb
+But so can you make this bigger if you don't?
+0:14:28.60 --> 0:14:28.780
+Nkutu, Faisal
+You're welcome.
+0:14:39.920 --> 0:14:40.640
+Nkutu, Faisal
+This is what?
+0:14:42.260 --> 0:14:50.100
+Nkutu, Faisal
+This is the with the target state was that in the end MDM will be gone, so RCI should be gone and we just have MDM.
+0:14:51.400 --> 0:14:52.960
+Nkutu, Faisal
+With all the applications.
+0:14:57.150 --> 0:14:59.510
+Nkutu, Faisal
+The intermediate this was the intermediate state.
+0:15:2.200 --> 0:15:5.440
+Nkutu, Faisal
+But we still have CIS and MDM in the picture.
+0:15:6.300 --> 0:15:7.740
+Nkutu, Faisal
+With admin systems.
+0:15:9.580 --> 0:15:9.900
+Nkutu, Faisal
+That's.
+0:15:9.270 --> 0:15:10.110
+Mahajan, Arunesh
+But.
+0:15:9.340 --> 0:15:14.180
+Fadel, Adeeb
+So is is this step one? Is this the first thing then that we would?
+0:15:13.550 --> 0:15:16.270
+Nkutu, Faisal
+Yeah, this is kind of this first thing, yeah.
+0:15:18.510 --> 0:15:29.950
+Mahajan, Arunesh
+OK. Can I ask one question here? Feather, maybe I'm a little confused. So when in in our journey, when we're moving from CIS to MDM, there is a time when we'll actually.
+0:15:31.490 --> 0:15:38.770
+Mahajan, Arunesh
+Lift the switch is that only flip the switch from MDM being a secondary to a primary, right? NCIS could be a second T.
+0:15:40.370 --> 0:15:41.210
+Nkutu, Faisal
+Yeah. Hold.
+0:15:40.440 --> 0:15:52.0
+Mahajan, Arunesh
+When will we? When are we planning to make that switch? Is that is that once we is that on the on the, on the on finishing of the high complexity stuff?
+0:15:53.810 --> 0:15:54.210
+Mahajan, Arunesh
+Right.
+0:16:0.250 --> 0:16:1.330
+Mahajan, Arunesh
+Right, right.
+0:16:8.350 --> 0:16:8.630
+Mahajan, Arunesh
+Mm hmm mm.
+0:15:53.340 --> 0:16:9.460
+Nkutu, Faisal
+At this point, we haven't talked about the complexity of each of this. We're just talking about flipping from CIS to MDM and we are saying that once MDM was a stable source of of of of single source of truth, we would then flip CIS.
+0:16:11.620 --> 0:16:14.940
+Nkutu, Faisal
+Sorry would sorry. Would switch off CIS and just use MDM.
+0:16:16.10 --> 0:16:37.290
+Mahajan, Arunesh
+So in reality, we won't really switch off CIS. We would continue to run CIS for quite quite some time because there are certain systems that are dependent on CIS and they cannot work with MDM directly. However, we we should be able to make that switch from MDM base second P to pan B, right Tim?
+0:16:39.510 --> 0:16:46.710
+Baker, Tim
+Ideally, if you're using the Kafka message, MDM does all your validation of the the customer, the address and all of that.
+0:16:49.70 --> 0:16:52.990
+Mahajan, Arunesh
+Right. But we will still need to maintain CS for a bit of time, right, like.
+0:16:52.790 --> 0:16:57.70
+Baker, Tim
+Well, see CIS and MDM have a real time feed between them today, right?
+0:17:7.450 --> 0:17:8.330
+Baker, Tim
+Well, until.
+0:16:58.660 --> 0:17:9.580
+Mahajan, Arunesh
+No, no, no. What? I'm what I'm saying is we we still need to have CIS as a system till the time we have dependency on our application such as FM and all that.
+0:17:9.800 --> 0:17:12.400
+Baker, Tim
+Until you clip off all the back ends, yes.
+0:17:11.590 --> 0:17:21.390
+Mahajan, Arunesh
+Yeah. Yeah, yeah, yeah. OK, OK. And we don't have, do you know about any plans on getting rid of FM adeep any timeline? Yeah.
+0:17:19.960 --> 0:17:23.320
+Fadel, Adeeb
+Yes, we are. We're working on it now.
+0:17:24.240 --> 0:17:24.760
+Mahajan, Arunesh
+OK, OK.
+0:17:25.410 --> 0:17:30.650
+Fadel, Adeeb
+Yeah, but it won't be done for probably until next the end of next year.
+0:17:31.730 --> 0:17:37.770
+Baker, Tim
+So FM and PV have the CIS database within them, one or the other of them, right, ADI?
+0:17:37.800 --> 0:17:39.760
+Fadel, Adeeb
+But yeah, our phone does. Yep.
+0:17:43.210 --> 0:17:43.410
+Fadel, Adeeb
+Yeah.
+0:17:39.940 --> 0:17:44.220
+Baker, Tim
+OK, so FM owns CIS, not PV.
+0:17:44.260 --> 0:17:53.780
+Baker, Tim
+So take that off your picture. But what we're saying here is even if you shut down FM, you can't shut down the CIS component of it yet until it's replaced.
+0:18:6.430 --> 0:18:6.830
+Mahajan, Arunesh
+Congr.
+0:18:9.900 --> 0:18:10.580
+Mahajan, Arunesh
+Yeah, yeah.
+0:17:56.0 --> 0:18:11.320
+Baker, Tim
+OK. So it's embedded in FM and that's why we said, well, FMS got its own customer database. That's it. You're not deleting CIS if FMS still alive and you can't get rid of CIS until you've got the full cap ending up and operational.
+0:18:10.840 --> 0:18:15.160
+Fadel, Adeeb
+I mean, I mean, if you think about it, if for now.
+0:18:16.560 --> 0:18:22.520
+Fadel, Adeeb
+Consider CIS, an FM application and not the centre of the world for client information.
+0:18:23.440 --> 0:18:23.600
+Baker, Tim
+Yeah.
+0:18:24.60 --> 0:18:25.60
+Fadel, Adeeb
+As you go forward.
+0:18:27.690 --> 0:18:28.570
+Fadel, Adeeb
+It it.
+0:18:26.440 --> 0:18:29.360
+Baker, Tim
+Please we conveniently bastardised it.
+0:18:29.770 --> 0:18:30.330
+Fadel, Adeeb
+Sorry.
+0:18:30.640 --> 0:18:32.520
+Baker, Tim
+We conveniently bastardised it.
+0:18:32.940 --> 0:18:38.340
+Fadel, Adeeb
+No. What I'm saying is today CIS is is client information system for everyone, right?
+0:18:39.620 --> 0:18:47.860
+Fadel, Adeeb
+And FM just so happens to be tightly coupled to it, and I'm saying tomorrow, as we start moving away from CIS.
+0:18:47.940 --> 0:18:49.700
+Fadel, Adeeb
+Even if FM is not ready.
+0:18:52.410 --> 0:18:57.570
+Fadel, Adeeb
+Can't we just consider it just its own client information database?
+0:19:7.0 --> 0:19:9.520
+Fadel, Adeeb
+That's right. That's right.
+0:19:10.940 --> 0:19:11.900
+Fadel, Adeeb
+OK, good.
+0:18:57.650 --> 0:19:13.450
+Baker, Tim
+So So what we did is we know in GENIUM 5, four and seven, seven have a customer component within them. That is not the CIS one like CIS feeds it and they store it in their own customer database. We treated FM the same way, saying FM cannot live without CIS.
+0:19:14.830 --> 0:19:15.310
+Mahajan, Arunesh
+You know.
+0:19:13.850 --> 0:19:16.690
+Fadel, Adeeb
+That's right, that's right. OK.
+0:19:16.120 --> 0:19:26.280
+Baker, Tim
+OK. So that's why that's why we put it within the FM and that might be why we put it within PV as well. PV doesn't have its own customer stuff without CIS, it cannot function.
+0:19:27.320 --> 0:19:29.240
+Baker, Tim
+Does that make sense for PV as well?
+0:19:32.850 --> 0:19:33.650
+Baker, Tim
+Does it?
+0:19:27.830 --> 0:19:33.990
+Fadel, Adeeb
+OK. Yeah, that's well, it's structured differently, but I guess logically.
+0:19:34.510 --> 0:19:37.910
+Baker, Tim
+Does it have its own customer database like INGENIUM 54?
+0:19:40.250 --> 0:19:42.770
+Fadel, Adeeb
+I have to check that I don't think so though.
+0:19:44.290 --> 0:19:53.250
+Baker, Tim
+I I think when we looked at it, we thought CIS was was the customer component for FM and PV at that's palm vector, isn't it?
+0:19:55.600 --> 0:19:56.160
+Baker, Tim
+What?
+0:19:59.380 --> 0:19:59.460
+Baker, Tim
+Mm.
+0:20:6.210 --> 0:20:6.450
+Baker, Tim
+OK.
+0:19:55.470 --> 0:20:15.70
+Fadel, Adeeb
+That is true. I know it's tightly coupled for FM. Is that data being replicated? I think you're right. I think it is also used for PV directly as well. It doesn't have separate tables for example that it's like like in genuine but genuine has separate tables that it's. Yeah. No, it's not like that. Yeah, I agree.
+0:20:17.130 --> 0:20:17.330
+Fadel, Adeeb
+Yeah.
+0:20:26.300 --> 0:20:26.620
+Fadel, Adeeb
+Yep.
+0:20:29.490 --> 0:20:29.650
+Fadel, Adeeb
+Yeah.
+0:20:30.520 --> 0:20:31.520
+Fadel, Adeeb
+Yep, the good thing.
+0:20:26.680 --> 0:20:32.600
+Baker, Tim
+Direct link out to the Mads environment. We cannot do that same as ingenium, it's got its internal one.
+0:20:33.170 --> 0:20:44.890
+Fadel, Adeeb
+The good thing is FM and PV are are targeted for migration, so that hasn't been taken off the table for for those systems. So that's that's good. The only thing that I'm concerned about is.
+0:20:47.70 --> 0:20:48.990
+Fadel, Adeeb
+You know.
+0:20:49.350 --> 0:20:58.670
+Fadel, Adeeb
+I don't think the the migration project has looked farther than just certain blocks of business on those the the my concern is archive data.
+0:21:0.310 --> 0:21:2.470
+Fadel, Adeeb
+What do we do with things like that?
+0:21:3.400 --> 0:21:4.0
+Baker, Tim
+So.
+0:21:3.870 --> 0:21:9.870
+Fadel, Adeeb
+That, but that might be a point in time information that we just keep separate somewhere and so.
+0:21:16.410 --> 0:21:16.930
+Fadel, Adeeb
+OK.
+0:21:25.300 --> 0:21:25.780
+Fadel, Adeeb
+OK.
+0:21:8.130 --> 0:21:29.770
+Baker, Tim
+Our archive data for wealth and things like that, they're looking at CDP where we can join it to the main MDM data for reporting purposes, and I would say the same thing if these system shuts down. We have a mapping from CIS to MDM, OK, and we'll have to maintain that and clean it up over time as well, right?
+0:21:29.610 --> 0:21:32.170
+Fadel, Adeeb
+OK. OK. So that's that's good.
+0:21:33.650 --> 0:21:33.810
+Fadel, Adeeb
+OK.
+0:21:35.680 --> 0:21:42.0
+Baker, Tim
+So get getting back to your other one like how we want to display this timeline. In my humble opinion.
+0:21:43.440 --> 0:22:5.120
+Baker, Tim
+I I I don't think that's appropriate. I understand what you're going with. Simple, complex, medium, blah blah blah. But what I would almost do is say you know, as part of our initial like stage one, we want to take some simpler systems and do this. And here's the benefit of doing the two way communica replication. Here's the benefit of doing these other ones because.
+0:22:10.900 --> 0:22:11.220
+Fadel, Adeeb
+Yeah.
+0:22:6.750 --> 0:22:34.470
+Baker, Tim
+Being recently hit if there's no business benefit, why do we do it? And I think that's where we fall down all the time, right? So we have to sit there and say if you want a single view of customer, this is our first step to get there. Is there an advantage to doing this? Well, how many times in the last week or two have I seen, hey, the address on this one is different. The name on this one is different. You know, we're we're having advisers complain like there's a reputational piece to this, right.
+0:22:38.640 --> 0:22:38.840
+Mahajan, Arunesh
+Mm hmm.
+0:22:34.670 --> 0:22:47.190
+Baker, Tim
+It's almost, I hate to say it like an ADR that says. Here's the pros of doing this. And by the way, here's some cons, but I don't think we'll win it on a cost benefit analysis at anytime soon.
+0:22:47.660 --> 0:22:49.300
+Fadel, Adeeb
+No, I don't think so.
+0:22:48.540 --> 0:22:54.420
+Mahajan, Arunesh
+No, no, no. So, so let me ask you this, would it be helpful for us to?
+0:22:55.960 --> 0:22:57.40
+Mahajan, Arunesh
+Sort of create these.
+0:22:58.640 --> 0:23:2.880
+Mahajan, Arunesh
+Functional milestones in terms of the groups that we have created.
+0:23:4.140 --> 0:23:9.60
+Mahajan, Arunesh
+In terms of micro modernization, like for example the basic stuff that we're doing, like you said to.
+0:23:10.610 --> 0:23:23.730
+Mahajan, Arunesh
+We do the basic stuff. That's first milestone. It has these many benefits. We can try and show it on the diagram and then, you know, write down all the pros of accomplishing all that work followed by the next.
+0:23:25.490 --> 0:23:42.410
+Mahajan, Arunesh
+Milestone right, which has which covers little more scope right which can help us delivers like you know we'll have a diagram that will showcase what is being communicated now with MD and what application is communicating directly with MDM.
+0:23:43.350 --> 0:23:49.350
+Mahajan, Arunesh
+Like I I wanna make sure that we have sort of patterns and the same patterns are clubbed together to form groups.
+0:24:1.790 --> 0:24:3.190
+Mahajan, Arunesh
+Oh yeah. Yep, Yep.
+0:23:52.630 --> 0:24:6.670
+Fadel, Adeeb
+Is is there an opportunity to just and I think this is just a follow on of what Tim was saying to take the most simple and I don't the the most simple application and use it as.
+0:24:8.20 --> 0:24:10.420
+Fadel, Adeeb
+Almost like a A perfect concept.
+0:24:9.370 --> 0:24:14.690
+Mahajan, Arunesh
+You see? Yeah. Yeah, exactly. I think that was the whole point of this exercise. And again.
+0:24:16.170 --> 0:24:42.330
+Mahajan, Arunesh
+I don't know. I think we we we kept on adding scope to this documentation but the whole concept was take the simple stuff do POC using micro modernization technique presented to the senior leadership and show them how this can be implemented, how we can we do not need to wait for that Big Bang budget one day to do this move from CIS to how we can accomplish with micro goals.
+0:24:43.900 --> 0:24:44.20
+Mahajan, Arunesh
+Do.
+0:24:43.200 --> 0:24:48.440
+Fadel, Adeeb
+But at least when you do that, you have set up your pattern right for moving forward.
+0:24:47.440 --> 0:24:53.960
+Mahajan, Arunesh
+Exactly. That was the best. That's the whole reason why we started creating this blueprint, but.
+0:24:55.200 --> 0:25:4.840
+Mahajan, Arunesh
+While creating the blueprint we we added a lot of scope and one of the things that was added was a preparation of a Gantt chart and that would depict of how.
+0:25:13.100 --> 0:25:14.420
+Mahajan, Arunesh
+Oh, yeah, yeah, absolutely.
+0:25:4.330 --> 0:25:23.130
+Fadel, Adeeb
+But, but that's fine. That's fine. What I'm saying is, can you start with the most simple and then build on it with the with just kind of it's I think we're saying the same thing. It's really what are those components like can we start for, I don't know which application is the most simple here, pick one, I don't know.
+0:25:35.350 --> 0:25:35.670
+Fadel, Adeeb
+Yeah.
+0:25:37.390 --> 0:25:37.590
+Fadel, Adeeb
+Yeah.
+0:25:40.280 --> 0:25:41.40
+Fadel, Adeeb
+K let's.
+0:25:20.460 --> 0:25:42.780
+Mahajan, Arunesh
+So so we have given it, we have given it on the left hand side and Faizal would you like to show it on the document what we have shown for address update. Copilot common client followed by IDM. Can you just show we have given the current state adeem followed by the future state right of how it would actually work be in proper detail.
+0:25:44.100 --> 0:25:45.620
+Fadel, Adeeb
+Yeah, maybe they'll give us a good.
+0:25:45.850 --> 0:25:49.210
+Mahajan, Arunesh
+Yeah, yeah, we we we actually done that.
+0:25:49.250 --> 0:26:7.770
+Mahajan, Arunesh
+That's the reason we went through each and every application, found out the relationship that it has with CIS and how would it work with MDM and then with Tim and ADI, with Ari's help, we kind of use the patterns to show exactly how the application will interact in future with MDM.
+0:26:11.370 --> 0:26:13.10
+Mahajan, Arunesh
+Take it easy app so.
+0:26:27.980 --> 0:26:30.780
+Mahajan, Arunesh
+And all this documentary has become 51 pages.
+0:26:34.700 --> 0:26:34.780
+Mahajan, Arunesh
+Ha.
+0:26:31.520 --> 0:26:35.400
+Fadel, Adeeb
+Oh, so if I so she get his PhD dissertation for it.
+0:26:37.810 --> 0:26:39.490
+Nkutu, Faisal
+Yeah, this would be good to use this one.
+0:26:41.760 --> 0:26:44.520
+Baker, Tim
+A drop for another meeting on getting pinged on so.
+0:26:45.420 --> 0:26:49.60
+Mahajan, Arunesh
+That's OK. Then you can give us any reason, but it's OK, we understand.
+0:26:49.210 --> 0:26:51.370
+Baker, Tim
+OK, I can't stand Aron ash. I'm outta here.
+0:26:52.450 --> 0:26:52.690
+McDonald, Katie
+Ha ha ha.
+0:26:51.940 --> 0:26:53.940
+Mahajan, Arunesh
+Ha ha ha ha.
+0:26:54.110 --> 0:26:57.430
+Baker, Tim
+Just kidding. No, I I actually have another meeting. Sorry guys.
+0:26:58.60 --> 0:26:59.980
+Mahajan, Arunesh
+Oh, take care then. Thanks, Tim. Thanks for joining.
+0:27:1.920 --> 0:27:3.440
+Mahajan, Arunesh
+Where's idm faizal?
+0:27:4.180 --> 0:27:5.940
+Nkutu, Faisal
+IBM the simplest is over here.
+0:27:6.390 --> 0:27:10.990
+Mahajan, Arunesh
+Yeah, let's open IDM. Whatever we have like, I just want to show an example to adeep.
+0:27:18.320 --> 0:27:25.800
+Mahajan, Arunesh
+Oh, there you go. There you go. So I think this is the interaction that I deal has with MDM. Where's the current state?
+0:27:27.260 --> 0:27:27.740
+Mahajan, Arunesh
+What is it?
+0:27:29.300 --> 0:27:34.780
+Nkutu, Faisal
+This is the future, but the current state would just have to replace with CIS instead of MDM to send.
+0:27:34.630 --> 0:27:38.990
+Fadel, Adeeb
+Direct connect to CIS and it's doing a a pulling a pulling data.
+0:27:39.390 --> 0:27:40.350
+Nkutu, Faisal
+That's right, yes.
+0:27:41.150 --> 0:27:43.790
+Mahajan, Arunesh
+So in in in CIAS case.
+0:27:42.60 --> 0:27:47.620
+Fadel, Adeeb
+And it's replicate, so it's really just a replication of data from of client data to IDM.
+0:27:48.580 --> 0:27:49.660
+Nkutu, Faisal
+Yeah, that's right.
+0:27:57.580 --> 0:27:57.820
+Mahajan, Arunesh
+Yeah.
+0:27:51.210 --> 0:28:7.370
+Fadel, Adeeb
+OK. But that does that give you? So that's the the base, the most basic use case you guys have in terms of for a solution and what would you have to do? It's just switching out MDM with CIS with MDM here?
+0:28:8.130 --> 0:28:10.530
+Nkutu, Faisal
+Yes, I'm creating, yes.
+0:28:9.700 --> 0:28:14.420
+Fadel, Adeeb
+And so so all the Kafka stuff, would you be setting all that stuff up as well?
+0:28:15.90 --> 0:28:17.690
+Nkutu, Faisal
+Here for this particular one not not an idea one.
+0:28:18.700 --> 0:28:27.260
+Fadel, Adeeb
+OK, so so you would be able to use it as almost like a a foundational layer for others to to leverage?
+0:28:28.750 --> 0:28:29.150
+Nkutu, Faisal
+Yeah.
+0:28:28.900 --> 0:28:30.820
+Fadel, Adeeb
+Others being other applications.
+0:28:31.10 --> 0:28:35.890
+Nkutu, Faisal
+Yes, yeah, this one under the address update that we have up there, Vista.
+0:28:37.90 --> 0:28:38.570
+Nkutu, Faisal
+Address update Copland.
+0:28:37.310 --> 0:28:39.430
+Fadel, Adeeb
+Yeah. So, OK.
+0:28:46.370 --> 0:28:46.610
+Nkutu, Faisal
+Yeah.
+0:28:45.710 --> 0:28:46.790
+Mahajan, Arunesh
+Yeah, yeah.
+0:28:40.590 --> 0:28:48.350
+Fadel, Adeeb
+So you guys, so those are independent deliverables. That's what I was asking earlier. So they are independent, OK.
+0:28:48.590 --> 0:28:49.470
+Mahajan, Arunesh
+Yeah, yeah.
+0:28:49.550 --> 0:28:51.590
+Fadel, Adeeb
+OK at the.
+0:28:50.830 --> 0:28:57.430
+Mahajan, Arunesh
+So, so the whole concept of micro modernization is to keep things independent and keep them at a.
+0:28:59.330 --> 0:29:1.730
+Mahajan, Arunesh
+Yeah, yeah, that is, that is a prerequisite, yeah.
+0:28:56.130 --> 0:29:3.330
+Fadel, Adeeb
+So the only one that is not is the top one. Compare. That's the the foundational piece for everything, right?
+0:29:3.660 --> 0:29:4.180
+Nkutu, Faisal
+Yes.
+0:29:2.910 --> 0:29:6.190
+Mahajan, Arunesh
+Correct. Yes. Yeah, we'd like to solve that first.
+0:29:7.510 --> 0:29:8.630
+Mahajan, Arunesh
+So that, yeah.
+0:29:20.830 --> 0:29:22.190
+Mahajan, Arunesh
+Mm hmm. Mm hmm mm hmm.
+0:29:23.570 --> 0:29:23.890
+Nkutu, Faisal
+Yeah.
+0:29:7.440 --> 0:29:24.800
+Fadel, Adeeb
+I would if that should probably be added too. Whatever the first application is, so that would be your that would be phase one in my opinion, like phase one would be your foundational elements plus one application or whatever that you have chosen.
+0:29:25.270 --> 0:29:26.390
+Nkutu, Faisal
+Yeah, we have a.
+0:29:28.770 --> 0:29:29.290
+Fadel, Adeeb
+And then.
+0:29:24.420 --> 0:29:37.900
+Mahajan, Arunesh
+Oh yeah, we can do that. We can do validate, but I think instead of writing it as writing it out as a prerequisite, let's just pheasant. Let's just put it as phase one first, first initiative, right.
+0:29:38.410 --> 0:29:39.770
+Nkutu, Faisal
+Yeah, we have them in.
+0:29:44.230 --> 0:29:44.350
+Fadel, Adeeb
+Hmm.
+0:29:39.300 --> 0:29:51.940
+Mahajan, Arunesh
+Or let's not call it phases. I would still like to call it a logical milestone, like when we complete this, but anyways we we'll talk about it later. I'm not worried about the road map. Let's focus on the diagrams and the layering that we can accomplish.
+0:29:53.320 --> 0:29:54.160
+Mahajan, Arunesh
+So I leave.
+0:29:53.170 --> 0:29:57.770
+Fadel, Adeeb
+Yeah. And then if that's the case, then it's actually up to.
+0:29:59.580 --> 0:30:1.780
+Mahajan, Arunesh
+Exactly. Exactly.
+0:30:3.220 --> 0:30:3.620
+Mahajan, Arunesh
+When?
+0:30:12.260 --> 0:30:12.940
+Mahajan, Arunesh
+Oh wow.
+0:29:59.210 --> 0:30:16.130
+Fadel, Adeeb
+Delivery and risk to to tell us which ones they wanna go. So for example, I was just in a meeting with illustrations and we're having. We're still having that issue with the Mads replication. So, so and that's gonna always continue, right because.
+0:30:17.650 --> 0:30:22.290
+Fadel, Adeeb
+Because the information replicated from CIS MDM to that Mads.
+0:30:22.760 --> 0:30:25.0
+Fadel, Adeeb
+There's a gap in the way they're doing it.
+0:30:26.460 --> 0:30:26.700
+Fadel, Adeeb
+So.
+0:30:27.990 --> 0:30:33.990
+Fadel, Adeeb
+The the faster we move to what just MDM instead of kiss the better it is going to be for everyone.
+0:30:34.790 --> 0:30:35.30
+Fadel, Adeeb
+Umm.
+0:30:34.540 --> 0:30:47.60
+Mahajan, Arunesh
+So adhik this is the reason why I mentioned it is, it is not. It is not us. The architecture team that can decide when an application team can take up the micro modernization work for moving from CIS to MBM.
+0:30:49.610 --> 0:30:50.650
+Mahajan, Arunesh
+Yes, exactly.
+0:30:46.540 --> 0:31:0.540
+Fadel, Adeeb
+But they will need, but they will need to know what to do. And so we need to come to them and say, hey, you're having issues with, you know, the replication. The answer is to make sure everything moves to MDM and then you don't have to worry about replication.
+0:30:59.610 --> 0:31:1.650
+Mahajan, Arunesh
+Yeah. Yeah, exactly.
+0:31:2.60 --> 0:31:5.780
+Fadel, Adeeb
+And so then they'll say, OK, how much is it gonna cost? What do I need to do?
+0:31:7.530 --> 0:31:8.890
+Mahajan, Arunesh
+But we don't have the cost.
+0:31:7.220 --> 0:31:16.380
+Fadel, Adeeb
+So if it's in genium in that case, because in genium is, it'll be ingenium in 577 and probably also 54 because.
+0:31:17.890 --> 0:31:37.130
+Fadel, Adeeb
+That's where the new business is being pulled for, for illustrations. And so if we if that could be, you know, something they work on. However, because of the migration programme, they might say, sorry, we can't work on that, but they might have to make a call if they really are worried about the replication issue.
+0:31:37.850 --> 0:31:56.490
+Mahajan, Arunesh
+Right. So adeep take yours. Your use case is A is a big one, right? I mean, because it requires a lot of effort. Now imagine if there were a use case such as IDM or something else, right where we could leverage the maintenance bucket for just accomplishing that move from CIS to MDN.
+0:31:58.270 --> 0:32:7.830
+Mahajan, Arunesh
+Right, that's the whole concept like we want to present it as a way like, you know, you have you, you fight small battles, you don't fight a big war but those small.
+0:32:9.290 --> 0:32:11.690
+Fadel, Adeeb
+Yeah, I think I think.
+0:32:9.60 --> 0:32:15.340
+Mahajan, Arunesh
+You know, small wins get together to bigger win. That's what we're trying to do here.
+0:32:19.480 --> 0:32:19.840
+Mahajan, Arunesh
+Yeah.
+0:32:15.570 --> 0:32:21.130
+Fadel, Adeeb
+Yeah, I think someone has to pay for the first one out the door and then the rest become what you're saying.
+0:32:22.490 --> 0:32:26.10
+Fadel, Adeeb
+You basically choose your time and you're poisoned and.
+0:32:27.610 --> 0:32:28.690
+Fadel, Adeeb
+And away you go.
+0:32:40.180 --> 0:32:40.380
+Fadel, Adeeb
+Yeah.
+0:32:26.650 --> 0:32:45.10
+Mahajan, Arunesh
+Yeah. Yeah, exactly. I mean it's it's it's it is, it is the delivery teams who have to look at this and say, hey, you know what, I'll make you do this opportunity for the next six months. I have the capacity, I can use my maintenance budget to fix something. It is those teams that have to come forward and say this, we cannot plan for when they're gonna do that.
+0:32:47.450 --> 0:32:50.890
+Fadel, Adeeb
+But you need to provide these solution. You need to provide.
+0:32:52.90 --> 0:32:53.330
+Fadel, Adeeb
+All the building blocks.
+0:32:54.750 --> 0:32:54.950
+Fadel, Adeeb
+Yep.
+0:32:49.320 --> 0:33:18.840
+Mahajan, Arunesh
+Yeah, yeah. And and and and that is and that is exactly what Faizal has done. He's got, he's got the current state for every single application. He's got the proposed future state for every single application. So if we go to an application team with the document and say, hey, can you find a solution for your application how to talk to MDM in the future, they have to say yes because there's a diagram that shows that. How exactly would they interact with MDM? Now it does not contain the specifics.
+0:33:20.110 --> 0:33:23.390
+Mahajan, Arunesh
+But then you do an application. It only focuses on the pattern Ade.
+0:33:24.840 --> 0:33:26.920
+Mahajan, Arunesh
+Right, we can only focus on the pattern.
+0:33:24.770 --> 0:33:38.730
+Fadel, Adeeb
+Yep. So they would have to work with you. Yeah. And present an initiative brief or whatever. It could be an initiative. Brief, but what you're saying is you want to do a part of health, but to see, you'll still need something to estimate.
+0:33:40.920 --> 0:33:41.880
+Fadel, Adeeb
+To put forward.
+0:33:42.840 --> 0:34:1.320
+Mahajan, Arunesh
+Right, right. But, but but what I'm trying to say is the decision that the estimates, the delivery timelines, the decision on when to do it, capacity, all of that is not in our hands. We are only providing the pattern and the guidelines that the pattern should follow, that's all.
+0:33:59.630 --> 0:34:11.190
+Fadel, Adeeb
+Yeah, I. But you you still need to provide the underlying infrastructure. So all the the foundational work around the Kafka queues, all that kind of stuff.
+0:34:10.380 --> 0:34:12.780
+Mahajan, Arunesh
+Yes, yes, absolutely, absolutely.
+0:34:12.630 --> 0:34:16.550
+Fadel, Adeeb
+That's why I think you need. You still need an initiative for the very first one out the door.
+0:34:17.560 --> 0:34:19.760
+Mahajan, Arunesh
+Yeah, I agree. I agree. Because.
+0:34:18.340 --> 0:34:21.220
+Fadel, Adeeb
+To to make make sure that's all available, yeah.
+0:34:27.690 --> 0:34:28.770
+Fadel, Adeeb
+Yeah, exactly.
+0:34:21.440 --> 0:34:30.400
+Mahajan, Arunesh
+Only only once the basic infrastructure is available can the teams actually go ahead with the micro modernization. That's that's what I was trying to say was a prerequisite.
+0:34:34.380 --> 0:34:40.380
+Mahajan, Arunesh
+So Fazil, I know we've gone over by 12 minutes. Let's do this. Let's create.
+0:34:47.580 --> 0:34:47.740
+Nkutu, Faisal
+Yeah.
+0:34:43.260 --> 0:34:56.220
+Mahajan, Arunesh
+Let's forget about this Diagon for now. Let's forget about the road map for now. Right. Let's create the interim layers that we need for low, medium, high, right and then at the same time.
+0:34:58.610 --> 0:35:7.50
+Mahajan, Arunesh
+We have to understand from the integration team, how soon can we have the basic infrastructure available already.
+0:35:8.90 --> 0:35:26.90
+Mahajan, Arunesh
+You know, for the first step, if you look at the left side, the complete two word application from CS to MDN. When can we accomplish that? When can we have the cafe Q setup? Like Adef said, we should be focused on that so that the other teams have faith in us and can actually go ahead and estimate their stuff.
+0:35:27.470 --> 0:35:32.30
+Mahajan, Arunesh
+Right. We can't be talking in the air without having some of the stuff already accomplished.
+0:35:33.430 --> 0:35:34.430
+Nkutu, Faisal
+Right, yeah.
+0:35:33.280 --> 0:35:38.280
+Mahajan, Arunesh
+Right. So we need estimates, we need to get the ball rolling on that side as well.
+0:35:39.140 --> 0:35:39.660
+Nkutu, Faisal
+OK.
+0:35:41.0 --> 0:35:41.440
+Nkutu, Faisal
+Sorry.
+0:35:40.630 --> 0:35:59.670
+Mahajan, Arunesh
+So you you have a conversation with Abby. If you need all of us as as portfolio architects to also join in your conversation with some of these strategic teams, please make sure you include us. You should be. We should be able to speak to the integration team and highlight on how we wanna proceed forward and what's required as a part of this, right.
+0:35:59.840 --> 0:36:0.840
+Fadel, Adeeb
+Yeah, exactly.
+0:36:2.140 --> 0:36:2.420
+Fadel, Adeeb
+Exactly.
+0:36:1.870 --> 0:36:2.430
+Mahajan, Arunesh
+Great.
+0:36:5.120 --> 0:36:5.560
+Fadel, Adeeb
+Alright.
+0:36:4.360 --> 0:36:7.160
+Mahajan, Arunesh
+So let's do that fezzle. I think as as a next.
+0:36:8.560 --> 0:36:14.160
+Mahajan, Arunesh
+To the time you mean like we meet again in in a weeks time, right? Because it's already today's work Wednesday.
+0:36:15.580 --> 0:36:21.260
+Mahajan, Arunesh
+Yeah. Next week before Wednesday, let's meet again and flush the diagrams and everything out, OK?
+0:36:23.220 --> 0:36:26.460
+Mahajan, Arunesh
+Alright, thank you so much. The OK there.
+0:36:28.210 --> 0:36:33.850
+Mahajan, Arunesh
+Thank you very much for joining a very important session with us and have a wonderful evening.
+0:36:34.600 --> 0:36:35.200
+McDonald, Katie
+Thanks you too.
+0:36:35.680 --> 0:36:36.240
+Nkutu, Faisal
+Thanks.
+0:36:37.220 --> 0:36:37.860
+McDonald, Katie
+OK, bye.
+0:36:36.240 --> 0:36:38.720
+Mahajan, Arunesh
+Thanks, Faisal. Good job. Thank you.
+0:36:37.410 --> 0:36:39.850
+Nkutu, Faisal
+Little bye bye.
