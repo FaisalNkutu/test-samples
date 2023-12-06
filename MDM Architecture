@@ -1,0 +1,37 @@
+In the end state, MDM (Master Data Management) will serve as the exclusive repository for Master Records containing client data and addresses. The following processes outline the integration and data handling procedures:
+
+Event Messaging from MADS Environment:
+
+MDM receives event messaging from the MADS (Master Address Data System) Environment.
+Event Processing:
+
+MDM performs event processing, including validation, verification, approval, and address fixes.
+Golden Copy Publication:
+
+After processing, MDM publishes the data as the MDM Golden Copy.
+Consumption by CIS and Microservice:
+
+Currently, the Golden Copy is consumed by CIS and the Microservice.
+Synchronization between MDM, CIS, and the Microservice is maintained using Event Messaging.
+Transition from CIS to MDM:
+
+CIS, a stable and resilient application, will be replaced by MDM.
+To accommodate more direct integrations with MDM via a Microservice, the Microservice must handle the load previously managed by CIS.
+Real-time Event-Driven Architecture:
+
+Implement the proposed real-time event-driven architecture for seamless data integration between MDM and Microservice Aligned Data Storage (MADS).
+Sunset the existing nightly batch ETL (Extract, Transform, Load) synchronization process between MDM and MADS.
+Safeguard Implementation:
+
+Introduce safeguards to prevent simultaneous operations from causing outages or record overwrites in MADS.
+Implement locking mechanisms or appropriate data synchronization techniques.
+Versioning or Timestamping:
+
+Consider using versioning or timestamping mechanisms to track changes and prevent inadvertent overwriting of records.
+Monitoring and Issue Resolution:
+
+Monitor the system closely during the transition phase to identify and address potential issues promptly.
+Microservice Scalability:
+
+Ensure that the Microservice architecture is scalable and capable of handling the data load previously managed by CIS.
+By following these steps, the organization can smoothly transition to an improved system architecture that leverages MDM as the central hub for managing and distributing master data.
