@@ -1,0 +1,15 @@
+Bill 64 aims to delete over-retained policies from upstream systems like Ingenium, unitrax, and univeris, which store information in CIS.
+
+The proposed solution involves sending a message from Ingenium to a messaging queue, triggering a purge command in CIS. Simultaneously, MDM, listening to the same delete command, removes the record. Currently, CIS and MDM are interconnected, necessitating a cleanup routine.
+
+While it would be ideal to eliminate CIS, budget constraints prevent rewriting all interfaces. The suggestion is to focus on the EWMS and downstream applications like Cap Intel systems, addressing data integrity issues in customer address information.
+
+EWMS can become the intake for customer and address data, validated and updated by MDM. A downstream system, instead of receiving a feed from EWMS, reads the message from MDM, ensuring synchronized, high-quality data.
+
+This proposal aligns with the initiative of MDM being a single source of truth, offering a strategic CIS to MDM Migration roadmap based on business priorities. The goal is to gradually replace systems dependent on CIS with MDM, addressing immediate issues while setting the foundation for a broader transition.
+
+The wealth address team is a potential adapter of this strategy
+
+The vision involves preventing the propagation of unvalidated addresses and data, ensuring that only MDM-validated information flows through the systems.
+
+This approach not only solves immediate problems but also sets the stage for a comprehensive transition away from CIS.
