@@ -1,0 +1,540 @@
+0:0:0.0 --> 0:0:3.250
+Nkutu, Faisal
+Because this meeting is because our national me.
+0:0:3.260 --> 0:0:7.0
+Nkutu, Faisal
+You're working on a very important project which is called Bill 64.
+0:0:8.260 --> 0:0:8.500
+Baker, Tim
+Yeah.
+0:0:9.370 --> 0:0:16.710
+Nkutu, Faisal
+And he was wondering whether, you know, I can meet with you and we kind of try to.
+0:0:17.440 --> 0:0:17.710
+Nkutu, Faisal
+Uh.
+0:0:19.580 --> 0:0:22.930
+Nkutu, Faisal
+Leverage some of your good work that you're working to see how it can.
+0:0:22.970 --> 0:0:28.510
+Nkutu, Faisal
+How can integrate with the MDM migration effort from CIS?
+0:0:34.270 --> 0:0:37.420
+Baker, Tim
+Well, obviously if CIS wasn't there be so much easier.
+0:0:38.410 --> 0:0:41.190
+Baker, Tim
+But the reality is that we're not gonna be able to get rid of it either.
+0:0:42.460 --> 0:0:43.450
+Nkutu, Faisal
+Yeah, not exactly.
+0:0:43.460 --> 0:0:44.290
+Nkutu, Faisal
+Yeah, for some time.
+0:0:44.300 --> 0:0:45.80
+Nkutu, Faisal
+Yes. Yeah.
+0:0:43.990 --> 0:0:53.440
+Baker, Tim
+So the way Bill 64 is working is the upstream systems like Ingenium, unitrax, univeris, all of those systems are policy and account systems.
+0:0:54.290 --> 0:0:54.540
+Nkutu, Faisal
+Right.
+0:0:54.900 --> 0:0:57.430
+Baker, Tim
+They store that information in CIS.
+0:0:57.680 --> 0:1:6.610
+Baker, Tim
+So Tim Baker has an ingenium 5, four account or multiple policies and seven seven accounts, and CIS keeps track of that and MDM keeps track of that.
+0:1:6.620 --> 0:1:10.900
+Baker, Tim
+So we know that for Tim Baker, this is all the business he has with Canada life.
+0:1:11.780 --> 0:1:12.80
+Nkutu, Faisal
+Right.
+0:1:12.10 --> 0:1:12.700
+Baker, Tim
+OK.
+0:1:12.760 --> 0:1:19.870
+Baker, Tim
+So what Bill 64 is going to do is if the policy is deemed to be over retained, it will delete it.
+0:1:20.880 --> 0:1:29.940
+Baker, Tim
+So ingenium 5 four is going to send a message out to a captcha messaging queue that CIS is going to get a command to do a purge on that record.
+0:1:31.90 --> 0:1:31.430
+Nkutu, Faisal
+Right.
+0:1:31.670 --> 0:1:41.620
+Baker, Tim
+That record will simultaneously be deleted from MDM because MDM's listening to the same delete because they have duplicate data right?
+0:1:41.710 --> 0:1:42.270
+Nkutu, Faisal
+It's yeah.
+0:1:41.670 --> 0:1:47.470
+Baker, Tim
+Right now CIS and MDM are tied together, so if CIS wasn't there, I wouldn't have to write that API.
+0:1:47.480 --> 0:1:49.900
+Baker, Tim
+I wouldn't have to do that clean up and I would just go MDM.
+0:1:51.40 --> 0:1:51.390
+Nkutu, Faisal
+Right.
+0:1:52.610 --> 0:1:54.620
+Baker, Tim
+OK, so but it is there.
+0:1:54.670 --> 0:1:59.140
+Baker, Tim
+So in the meantime, we're going to have to build the purge share routine on it and clean it up.
+0:1:59.630 --> 0:2:4.180
+Baker, Tim
+You know, is there a way of moving CIS along and getting it to MDM quicker?
+0:2:13.130 --> 0:2:13.330
+Nkutu, Faisal
+But.
+0:2:4.330 --> 0:2:16.90
+Baker, Tim
+We only way to do that would be to write rewrite all the APIs that CIS has going to all the target systems and that's the work that you're quoting out.
+0:2:18.580 --> 0:2:21.870
+Baker, Tim
+So those don't exist, so there's no moving over.
+0:2:21.880 --> 0:2:30.460
+Baker, Tim
+So, you know, would it be nice to say instead of doing the perjury team and CIS, go and rewrite all of these interfaces?
+0:2:30.470 --> 0:2:31.890
+Baker, Tim
+Well, there's no budget for that.
+0:2:32.760 --> 0:2:32.990
+Nkutu, Faisal
+Umm.
+0:2:32.230 --> 0:2:34.470
+Baker, Tim
+You're caught in the catch 22 again, right?
+0:2:35.90 --> 0:2:35.450
+Nkutu, Faisal
+Right.
+0:2:36.250 --> 0:2:38.850
+Baker, Tim
+So your proposal going forward makes sense.
+0:2:39.220 --> 0:2:51.410
+Baker, Tim
+Now what I'm going to say is, in your proposal you had EWMS and cap Intel, probably as more complex than save it to later, right, they're currently.
+0:2:50.820 --> 0:2:53.670
+Nkutu, Faisal
+Yeah, I don't remember copying to it, but I remember it WS.
+0:2:54.650 --> 0:2:58.680
+Baker, Tim
+Yeah, but currently those systems are experiencing.
+0:3:0.740 --> 0:3:4.690
+Baker, Tim
+Data integrity problems on the customer address information.
+0:3:6.590 --> 0:3:6.870
+Nkutu, Faisal
+OK.
+0:3:4.900 --> 0:3:8.450
+Baker, Tim
+It's corrupted because they're getting it from all over the place.
+0:3:8.620 --> 0:3:12.230
+Baker, Tim
+So one of the proposals I gave them just this morning was to tie that.
+0:3:14.90 --> 0:3:22.20
+Baker, Tim
+Problem fixed to your solution and what what I would propose is EWMS can be the intake of a customer in an address.
+0:3:22.330 --> 0:3:25.320
+Baker, Tim
+That address gets put into a queue for MDM.
+0:3:25.450 --> 0:3:29.380
+Baker, Tim
+MDM validates it, gold copies it and sends it back.
+0:3:29.470 --> 0:3:34.200
+Baker, Tim
+EWMS updates with the Gold Copy information and cap Intel.
+0:3:34.210 --> 0:3:44.190
+Baker, Tim
+Instead of getting a feed from EWMS reads that exact same message out of MDM and updates the cap Intel instance.
+0:3:44.940 --> 0:3:52.130
+Baker, Tim
+So now I've got your start to cap Intel and EWMS and they want this done.
+0:3:52.140 --> 0:3:58.580
+Baker, Tim
+So there's a nice fit to your proposal is it's not one of the easier ones, but it is easy per se.
+0:3:59.540 --> 0:4:7.10
+Baker, Tim
+If we do this loop, we start the process of who's next that's bringing it in, and Jenny and five four is well, OK.
+0:4:7.120 --> 0:4:8.230
+Baker, Tim
+And Jenny and five four.
+0:4:8.240 --> 0:4:10.150
+Baker, Tim
+You send that record out to MDM.
+0:4:10.160 --> 0:4:17.280
+Baker, Tim
+It publishes it and you draw it back in, and now we have a fully authorized Canada Post address.
+0:4:17.290 --> 0:4:23.170
+Baker, Tim
+That is good quality data across systems and you just keep clipping the systems in this way.
+0:4:24.420 --> 0:4:26.90
+Nkutu, Faisal
+OK, sounds good.
+0:4:26.100 --> 0:4:26.500
+Nkutu, Faisal
+Yeah. Yeah.
+0:4:25.570 --> 0:4:41.360
+Baker, Tim
+OK so so it fits with your pattern, but again it's clipping off those and pulling CIS out of the middle of it, upgrading the systems that are sending to CIS to send to MDM instead.
+0:4:41.670 --> 0:4:43.610
+Baker, Tim
+That is your proposal in a nutshell.
+0:4:44.350 --> 0:4:44.470
+Nkutu, Faisal
+Yes.
+0:4:45.680 --> 0:4:53.730
+Baker, Tim
+OK, so but now we've got funding and we've got business stuff and we've got corruption in our database that the business is trying to solve.
+0:4:53.740 --> 0:4:56.30
+Baker, Tim
+And I proposed your proposal.
+0:4:56.40 --> 0:4:57.30
+Baker, Tim
+Come to end game.
+0:4:59.690 --> 0:4:59.990
+Nkutu, Faisal
+Right.
+0:4:57.40 --> 0:5:7.570
+Baker, Tim
+So they're gonna be reaching out to you shortly and saying, what would it take to get this moving along and let's just pick, you're not gonna boil the ocean and do it all in one go.
+0:5:7.580 --> 0:5:16.530
+Baker, Tim
+But if I could pull EWMS and cap Intel out of there, that's too nice systems to get In Sync with the MDM.
+0:5:17.670 --> 0:5:17.790
+Nkutu, Faisal
+Yes.
+0:5:18.950 --> 0:5:24.500
+Baker, Tim
+OK, so I would do a road map based on business priority and business requirements.
+0:5:24.510 --> 0:5:28.240
+Baker, Tim
+Now they have a couple $100,000 in savings that they're looking at.
+0:5:30.920 --> 0:5:31.280
+Nkutu, Faisal
+Right.
+0:5:39.740 --> 0:5:40.10
+Nkutu, Faisal
+Umm.
+0:5:28.470 --> 0:5:43.770
+Baker, Tim
+If they could pull this off, you know, so that's a couple $100,000 in savings to build these build, maybe the cap to topic which already exists by the way build the messaging layers properly for address updates only.
+0:5:44.200 --> 0:5:57.130
+Baker, Tim
+I don't care about the rest of the customer and you know, going from there, you've got the foundation for starting to clip off every one of the other systems ingeniums no different.
+0:5:57.140 --> 0:6:0.730
+Baker, Tim
+They have a customer inside, they send it out to MDM.
+0:6:0.740 --> 0:6:1.510
+Baker, Tim
+MDM does it.
+0:6:1.520 --> 0:6:9.60
+Baker, Tim
+They read it back in and store it in their format, but now I've got a message that literally is Canada Post certified.
+0:6:10.570 --> 0:6:11.30
+Nkutu, Faisal
+Exactly.
+0:6:10.590 --> 0:6:12.420
+Baker, Tim
+No more corruption in our addresses.
+0:6:14.190 --> 0:6:15.230
+Nkutu, Faisal
+Yeah, sounds good.
+0:6:16.560 --> 0:6:20.690
+Baker, Tim
+So that's not a bill 64 per se.
+0:6:20.700 --> 0:6:23.320
+Baker, Tim
+Bill 64 is not cleaning up customers.
+0:6:23.520 --> 0:6:27.270
+Baker, Tim
+Bill 64 would like to get rid of CIS so we don't have to clean it up.
+0:6:27.500 --> 0:6:33.790
+Baker, Tim
+And right now, they're gonna write an API to remove policies and accounts from it as the source systems.
+0:6:33.800 --> 0:6:34.710
+Baker, Tim
+Delete those.
+0:6:35.140 --> 0:6:38.370
+Baker, Tim
+That's simplistic work, but that's not address update work.
+0:6:38.380 --> 0:6:39.0
+Baker, Tim
+You know what I mean?
+0:6:39.890 --> 0:6:41.60
+Nkutu, Faisal
+Yeah, I know what you mean.
+0:6:41.650 --> 0:6:44.850
+Baker, Tim
+And it's definitely not centralizing to 1 customer.
+0:6:46.30 --> 0:6:50.680
+Baker, Tim
+You know, CIS is in the middle of it all, but it it's I.
+0:6:50.690 --> 0:6:58.760
+Baker, Tim
+I think we approach it the other way and take projects like the one I'm handing you on a silver platter and going you're initiative solves their problem.
+0:6:59.720 --> 0:7:0.420
+Nkutu, Faisal
+Exactly, yeah.
+0:7:9.490 --> 0:7:10.380
+Nkutu, Faisal
+It's nothing like that.
+0:7:0.970 --> 0:7:15.940
+Baker, Tim
+And it moves us along like I I think CIS getting rid of it is probably a two to five year program realistically just you know so but now we've got two that want to do it and it solves this problem.
+0:7:17.760 --> 0:7:18.0
+Nkutu, Faisal
+Yeah.
+0:7:15.950 --> 0:7:18.920
+Baker, Tim
+That's a quick win, you know quick quote unquote.
+0:7:19.50 --> 0:7:22.770
+Baker, Tim
+But it sets the foundation up for everything else behind it.
+0:7:26.150 --> 0:7:26.560
+Baker, Tim
+OK.
+0:7:24.220 --> 0:7:27.100
+Nkutu, Faisal
+That's exactly right, yes. Yeah.
+0:7:26.880 --> 0:7:32.440
+Baker, Tim
+So that that's where I would go on some of this stuff is we have opportunities.
+0:7:32.530 --> 0:7:33.310
+Baker, Tim
+Do we wanna use them?
+0:7:37.280 --> 0:7:37.660
+Baker, Tim
+OK.
+0:7:34.80 --> 0:7:38.320
+Nkutu, Faisal
+Yeah, sounds good. Yeah.
+0:7:37.780 --> 0:7:47.790
+Baker, Tim
+So yeah, it's not quite what I think Arunesh was hoping for, but you know it again, could I simplify Bill 64 of CIS wasn't there?
+0:7:47.800 --> 0:7:48.310
+Baker, Tim
+Yes.
+0:7:48.840 --> 0:7:51.40
+Baker, Tim
+Could I do that within a time frame of two years?
+0:7:52.740 --> 0:7:58.890
+Baker, Tim
+I'm deleting today so I know why it's it's gonna start deleting in 2024.
+0:7:58.980 --> 0:8:1.880
+Baker, Tim
+You won't be able to remove CIS in 2024.
+0:8:3.540 --> 0:8:3.780
+Baker, Tim
+OK.
+0:8:3.190 --> 0:8:4.630
+Nkutu, Faisal
+No. Yeah.
+0:8:19.830 --> 0:8:20.90
+Nkutu, Faisal
+Yeah.
+0:8:5.310 --> 0:8:33.220
+Baker, Tim
+And the way we're doing our messaging, just so you know is I for Bill 64, I have told them you will post the message because CIS is downstream to delete policy XYZ from whatever right CIS will listen to that message and do a purge within CIS MDM is also listening to the message and doing a purge within MDM CIS is not orchestrating the purge to MDM.
+0:8:33.790 --> 0:8:38.690
+Baker, Tim
+Now I've disjointed MDM from CIS for Bill 64.
+0:8:41.580 --> 0:8:41.800
+Nkutu, Faisal
+Yeah.
+0:8:38.700 --> 0:8:44.120
+Baker, Tim
+Cleanup activities makes sense that so if you get rid of CIS.
+0:8:46.210 --> 0:8:47.320
+Baker, Tim
+My messaging queues there.
+0:8:47.330 --> 0:8:50.360
+Baker, Tim
+You're getting rid of the subscriber to CIS and it just doesn't do anything.
+0:8:50.370 --> 0:8:56.290
+Baker, Tim
+Go forward, you know, so I'm not making your problem worse with Bill 64.
+0:8:56.730 --> 0:8:57.770
+Baker, Tim
+That's the good news.
+0:8:58.90 --> 0:9:6.360
+Baker, Tim
+They had originally thought of writing a routine and CIS that does the purge and then writing an event that goes down into MDM and deletes down there.
+0:9:6.370 --> 0:9:15.580
+Baker, Tim
+And I said no, we're deleting policies, accounts, whatever MDM knows those it can write its own purge because in the future it's going to be directly talked to anyways.
+0:9:15.750 --> 0:9:20.990
+Baker, Tim
+So one message cleans up CIS and cleans up MDM at the same time.
+0:9:22.340 --> 0:9:22.460
+Nkutu, Faisal
+Yes.
+0:9:23.870 --> 0:9:24.70
+Baker, Tim
+OK.
+0:9:24.690 --> 0:9:25.240
+Nkutu, Faisal
+Yeah.
+0:9:25.290 --> 0:9:25.850
+Nkutu, Faisal
+Sounds good.
+0:9:27.620 --> 0:9:27.900
+Baker, Tim
+So.
+0:9:27.740 --> 0:9:28.470
+Nkutu, Faisal
+I'm just.
+0:9:28.560 --> 0:9:30.440
+Nkutu, Faisal
+Yeah, sorry.
+0:9:32.790 --> 0:9:32.930
+Nkutu, Faisal
+Yeah.
+0:9:30.50 --> 0:9:35.320
+Baker, Tim
+So they the meeting I had this morning and just let me see if I can find it quickly here.
+0:9:37.510 --> 0:9:39.230
+Baker, Tim
+At least got it narrowed down to a day.
+0:9:40.40 --> 0:9:50.160
+Baker, Tim
+Umm was called wealth address issues and the lady's name was Michelle Barbary BARVERI.
+0:9:51.70 --> 0:9:51.210
+Nkutu, Faisal
+But.
+0:9:52.930 --> 0:10:0.0
+Baker, Tim
+So I think she's gonna reach out to you, but reach out to her as well and just say, hey, I just had a chat with Tim about your requirements.
+0:10:0.90 --> 0:10:4.590
+Baker, Tim
+It'd be good to, you know, match this up with the proposal that we're we're looking to put forward.
+0:10:5.470 --> 0:10:6.960
+Nkutu, Faisal
+Yeah, I will look out for her.
+0:10:11.730 --> 0:10:11.870
+Nkutu, Faisal
+Yes.
+0:10:7.50 --> 0:10:12.640
+Baker, Tim
+But I really think there's a high synergy between what you're trying to do and fixing their problem.
+0:10:13.870 --> 0:10:15.190
+Nkutu, Faisal
+Yeah, I think so too.
+0:10:17.590 --> 0:10:18.870
+Nkutu, Faisal
+But I'm hearing this word.
+0:10:18.910 --> 0:10:24.280
+Nkutu, Faisal
+Uh, this application cap Intel for the first time, so I'm going to see how where that fits.
+0:10:25.570 --> 0:10:26.90
+Nkutu, Faisal
+I think it's just.
+0:10:25.840 --> 0:10:30.400
+Baker, Tim
+I it fits in the investment center area and it's for proposals.
+0:10:31.430 --> 0:10:31.890
+Nkutu, Faisal
+OK.
+0:10:34.470 --> 0:10:34.670
+Baker, Tim
+OK.
+0:10:33.520 --> 0:10:36.930
+Nkutu, Faisal
+Well, but yeah, thanks, Tim.
+0:10:36.940 --> 0:10:39.360
+Nkutu, Faisal
+This is a good a good intro.
+0:10:44.40 --> 0:10:44.200
+Nkutu, Faisal
+Yeah.
+0:10:38.660 --> 0:10:52.980
+Baker, Tim
+And again, it may not be tied directly to CIS yet, but your CIS solution I'm saying you're trying to fix this problem between these two because it always got it from EWMS.
+0:10:53.110 --> 0:10:58.300
+Baker, Tim
+I'm saying EWMS shouldn't be posting an address anywhere but to MDM.
+0:10:59.600 --> 0:10:59.930
+Nkutu, Faisal
+Right.
+0:10:59.400 --> 0:11:8.740
+Baker, Tim
+That's the the strategy as an architect that we should be proposing is if it hasn't been validated by MDM, do not propagate it anywhere else.
+0:11:9.820 --> 0:11:10.310
+Nkutu, Faisal
+E OK.
+0:11:11.390 --> 0:11:11.610
+Baker, Tim
+OK.
+0:11:10.320 --> 0:11:12.910
+Nkutu, Faisal
+Yeah, yeah.
+0:11:13.20 --> 0:11:26.610
+Nkutu, Faisal
+So CIS this capital Intel is going to be somehow connecting to to the, you know to to a module within the Kafka server or within a within MDM together information. OK.
+0:11:25.210 --> 0:11:40.780
+Baker, Tim
+Yes, as soon as he EWMS says I've got a new address, it goes to MDM MDM post set and everything we need for that address and that customer should be going to downstream to to cap Intel.
+0:11:41.130 --> 0:11:45.560
+Baker, Tim
+But it should be coming from a validated address, not a garbage one out of EWMS.
+0:11:46.790 --> 0:11:47.110
+Nkutu, Faisal
+OK.
+0:11:48.650 --> 0:11:50.240
+Nkutu, Faisal
+Yeah, sounds good. Thanks.
+0:11:50.710 --> 0:11:54.720
+Baker, Tim
+I know it's a great vision and we'll see if we can pull it off, but it's at least, uh.
+0:11:54.730 --> 0:11:55.940
+Baker, Tim
+A step forward, if we do.
+0:11:56.470 --> 0:11:58.340
+Nkutu, Faisal
+Yeah, it looks it looks quite good.
+0:11:58.460 --> 0:11:59.320
+Nkutu, Faisal
+It's quite good vision.
+0:12:0.220 --> 0:12:0.420
+Baker, Tim
+OK.
+0:12:0.430 --> 0:12:5.30
+Nkutu, Faisal
+I'll I'll include it in the in the blueprint somewhere somewhere within reach out to to that Lady.
+0:12:6.460 --> 0:12:6.620
+Baker, Tim
+Yeah.
+0:12:7.390 --> 0:12:7.530
+Nkutu, Faisal
+Yeah.
+0:12:10.920 --> 0:12:13.130
+Nkutu, Faisal
+Yeah, that's still, I don't think I have anything else.
+0:12:13.140 --> 0:12:16.880
+Nkutu, Faisal
+I think you have kind of detailed me for me what I needed.
+0:12:17.870 --> 0:12:18.860
+Baker, Tim
+OK, no problem.
+0:12:18.720 --> 0:12:19.10
+Nkutu, Faisal
+The.
+0:12:18.870 --> 0:12:20.790
+Baker, Tim
+If you need anything at all, Faisal, just reach out.
+0:12:21.280 --> 0:12:21.810
+Nkutu, Faisal
+OK.
+0:12:21.880 --> 0:12:22.490
+Nkutu, Faisal
+I will Tim.
+0:12:23.350 --> 0:12:24.320
+Baker, Tim
+OK, take care.
+0:12:22.500 --> 0:12:26.690
+Nkutu, Faisal
+Thanks, love you too. Sorry.
