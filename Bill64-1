@@ -1,0 +1,6 @@
+
+In this conversation, Faisal and Tim discuss a project related to Bill 64 and the need to integrate their work with MDM migration efforts from CIS. Tim explains the current setup where Bill 64 aims to delete policies in CIS and MDM simultaneously using messaging queues. Faisal suggests leveraging the proposal to address data integrity issues in EWMS and cap Intel, making it a part of their initiative.
+
+Tim emphasizes the importance of validating addresses through MDM before propagating them to downstream systems, aiming to centralize data quality. He mentions the potential synergy between Faisal's proposal and addressing data issues in other systems. Tim suggests Faisal may be contacted by Michelle Barbary regarding the project, and they discuss the vision of streamlining data flow and removing CIS from the middle.
+
+Overall, the conversation revolves around aligning projects, improving data quality, and considering the broader impact on related systems.
