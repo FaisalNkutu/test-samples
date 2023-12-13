@@ -1,0 +1,702 @@
+0:0:0.0 --> 0:0:0.280
+Nkutu, Faisal
+OK.
+0:0:0.-90 --> 0:0:1.60
+Shetty, Rajath
+OK. Yeah.
+0:0:4.970 --> 0:0:5.410
+Shetty, Rajath
+So.
+0:0:6.260 --> 0:0:7.580
+Shetty, Rajath
+So what are you looking for?
+0:0:7.590 --> 0:0:8.400
+Shetty, Rajath
+Uh, for as a like what?
+0:0:8.410 --> 0:0:11.580
+Shetty, Rajath
+What information do you need from me for to the two way sync?
+0:0:12.290 --> 0:0:18.350
+Nkutu, Faisal
+Yeah, I think I got a notification now from from Arunesh yesterday.
+0:0:18.830 --> 0:0:19.50
+Shetty, Rajath
+Yeah.
+0:0:26.940 --> 0:0:27.260
+Shetty, Rajath
+Hmm.
+0:0:19.630 --> 0:0:27.840
+Nkutu, Faisal
+He asked me to talk to you about the two worst thing in terms of CIS to MDM uh.
+0:0:27.850 --> 0:0:29.120
+Nkutu, Faisal
+So that's why, yeah.
+0:0:29.760 --> 0:0:31.450
+Shetty, Rajath
+OK, I can give you a background of it.
+0:0:31.460 --> 0:0:35.870
+Shetty, Rajath
+I don't know what other information you would need, but I'll I'll give you what's the current state.
+0:0:36.220 --> 0:0:40.30
+Shetty, Rajath
+Current state is CS Web applicating 2 MDM.
+0:0:40.40 --> 0:0:43.520
+Shetty, Rajath
+Everything was already set right since the beginning.
+0:0:43.810 --> 0:0:53.980
+Shetty, Rajath
+Uh, for all the data, all policies other than mutual funds and FM policy related information.
+0:1:2.400 --> 0:1:2.650
+Nkutu, Faisal
+Right.
+0:0:54.450 --> 0:1:22.680
+Shetty, Rajath
+All the other policies or client information is sent across through CS, so CS replicates everything to MDM through API and that is already set the other way around from MDM to CIS was built I think couple of years 3-4 years back for MCL right where clients sides could update phone number and preferences.
+0:1:22.690 --> 0:1:34.890
+Shetty, Rajath
+So there was no replication from MDM to CS, so they they stood up this Kafka queue and they opened it up only for two fields that is phone number and preferences and that is already there.
+0:1:35.780 --> 0:1:53.410
+Shetty, Rajath
+Now with two way sync has to work and now as part of the copilot and address update they the stored procedures from on the procedures from MDM is sending all the information but the captcha layer is like the API is not allowing it to send every information, only those two fields.
+0:1:53.420 --> 0:1:58.970
+Shetty, Rajath
+So from that perspective, they just need to open up and let all the data flow right.
+0:1:59.340 --> 0:2:0.720
+Shetty, Rajath
+But and also.
+0:2:2.240 --> 0:2:7.410
+Shetty, Rajath
+CS Can consume it because the the procedure on CS accepts all those values.
+0:2:7.820 --> 0:2:9.950
+Shetty, Rajath
+They didn't open up everything they had.
+0:2:10.20 --> 0:2:15.0
+Shetty, Rajath
+They had done a POC for address replication right?
+0:2:15.950 --> 0:2:39.680
+Shetty, Rajath
+They were doing it and they stopped at midway because they're planning to implement all the address fields, but they hadn't done a proper end to end testing so that no initiative stopped midway because they they needed more time and I don't know if they ran out of funds or what was the reason, but as of today, that is the current state.
+0:2:39.730 --> 0:2:46.300
+Shetty, Rajath
+It's just that the fields need to be opened up because MDM is already sending all the data.
+0:2:46.310 --> 0:2:56.110
+Shetty, Rajath
+It's just that cat to umm when they're publishing it, they publish all the fields on the on to Kafka & CS can pick it up.
+0:3:0.440 --> 0:3:0.730
+Nkutu, Faisal
+Can.
+0:2:56.120 --> 0:3:1.220
+Shetty, Rajath
+So that's our current state that's that's about it.
+0:3:1.410 --> 0:3:16.140
+Shetty, Rajath
+It's just more on what I'm assuming is more to do testing is is end to end testing to make sure all the data points are coming in and we make sure that we're not replicating the same information back and MDM right and creating triggers.
+0:3:16.300 --> 0:3:18.540
+Shetty, Rajath
+So that is the only change that might be there.
+0:3:18.910 --> 0:3:22.950
+Shetty, Rajath
+But other than that, it's more from a testing perspective.
+0:3:24.200 --> 0:3:24.680
+Nkutu, Faisal
+Ohh OK.
+0:3:26.940 --> 0:3:28.430
+Nkutu, Faisal
+So maybe I will bring you.
+0:3:28.840 --> 0:3:34.730
+Nkutu, Faisal
+This, as one of the issues and migration issues in the in the picture of Blueprint maybe.
+0:3:34.180 --> 0:3:36.370
+Shetty, Rajath
+Yeah, yeah, I think it is not an issue.
+0:3:36.380 --> 0:3:36.930
+Shetty, Rajath
+It's a need.
+0:3:36.940 --> 0:3:39.920
+Shetty, Rajath
+It's a it's an important aspect, actually.
+0:3:40.20 --> 0:3:55.840
+Shetty, Rajath
+If two way Sync works back and forth like it works really well and both CIS and MDM are In Sync all the time, then it's easy to unhook, say ingenium right?
+0:3:55.850 --> 0:4:2.770
+Shetty, Rajath
+For example, we can unhook the ohh data flow from ingenium to CIS and hook it to MDM.
+0:4:2.780 --> 0:4:3.740
+Shetty, Rajath
+In that case, what happens?
+0:4:4.560 --> 0:4:5.830
+Shetty, Rajath
+Data will flow to MDM.
+0:4:5.840 --> 0:4:16.420
+Shetty, Rajath
+MDM will replicate it to see as & CS still In Sync and if any other downstream systems like AW or IDM is still dependent on CS data, they get the right data as well.
+0:4:17.160 --> 0:4:17.520
+Nkutu, Faisal
+Right.
+0:4:17.140 --> 0:4:27.210
+Shetty, Rajath
+So it's an important aspect to have two way sync before we start actually thinking about migrating admin systems or any other downstream dependencies to MDM.
+0:4:28.960 --> 0:4:32.610
+Nkutu, Faisal
+OK, so this is something that we need to add or now migration.
+0:4:33.820 --> 0:4:34.270
+Shetty, Rajath
+Yeah.
+0:4:34.280 --> 0:4:35.450
+Shetty, Rajath
+Yeah, 100%.
+0:4:35.460 --> 0:4:37.60
+Shetty, Rajath
+Without that, we can't migrate anything.
+0:4:37.880 --> 0:4:38.240
+Nkutu, Faisal
+OK.
+0:4:38.210 --> 0:4:46.720
+Shetty, Rajath
+This is this is like the first phase two way sync of data between MDM and CS is the first phase for migration.
+0:4:46.800 --> 0:4:47.390
+Shetty, Rajath
+There's no doubt.
+0:4:53.920 --> 0:4:54.240
+Shetty, Rajath
+Yeah.
+0:4:48.890 --> 0:4:54.390
+Nkutu, Faisal
+I think we really we, we already have that is the third thing on the on the, on the blueprint we already have that.
+0:4:54.250 --> 0:4:55.590
+Shetty, Rajath
+If it's there, then that's good.
+0:4:57.270 --> 0:4:58.100
+Nkutu, Faisal
+Yeah, I don't.
+0:4:55.600 --> 0:4:58.600
+Shetty, Rajath
+I think I think you've already added and we have we discussed about.
+0:4:58.110 --> 0:4:58.800
+Nkutu, Faisal
+I didn't like.
+0:4:59.220 --> 0:5:2.370
+Nkutu, Faisal
+I'll just share the screen for a second with you to confirm.
+0:5:4.160 --> 0:5:5.200
+Nkutu, Faisal
+That's sort of it on there.
+0:5:13.500 --> 0:5:14.400
+Shetty, Rajath
+Yeah, yeah.
+0:5:9.190 --> 0:5:14.420
+Nkutu, Faisal
+So is the is the third one complete to replication Francis.
+0:5:14.930 --> 0:5:15.60
+Nkutu, Faisal
+Yeah.
+0:5:16.750 --> 0:5:17.340
+Nkutu, Faisal
+Yeah.
+0:5:17.410 --> 0:5:18.170
+Nkutu, Faisal
+Yeah, that's good.
+0:5:24.810 --> 0:5:25.30
+Shetty, Rajath
+Yeah.
+0:5:18.180 --> 0:5:26.290
+Nkutu, Faisal
+Really kind of maybe I just had to add add some kind of narrative to it based on what you've told me, but I think we've captured it.
+0:5:27.790 --> 0:5:31.660
+Shetty, Rajath
+You've seen the uh they returned develop my it's already developed.
+0:5:31.670 --> 0:5:32.960
+Shetty, Rajath
+OK, then you're roadmap.
+0:5:32.970 --> 0:5:41.340
+Shetty, Rajath
+If you any gang chart is written that develop MDM subscribers and produce publishers, but that is already existing though.
+0:5:42.360 --> 0:5:46.50
+Nkutu, Faisal
+The subscribers and producers are already existing.
+0:5:46.500 --> 0:5:49.570
+Shetty, Rajath
+Yeah, subscriber and probably like they're talking about CAFE over there, right?
+0:5:50.280 --> 0:5:52.380
+Nkutu, Faisal
+Well, MDM, are they all existing?
+0:5:53.560 --> 0:5:58.420
+Shetty, Rajath
+When you say subscribers and produces, what do you mean by subscribers and producers?
+0:5:59.360 --> 0:6:9.420
+Nkutu, Faisal
+Subscribers, I mean like those that are going to get data from Kafka that is sent by MDM like for your API.
+0:6:9.30 --> 0:6:13.700
+Shetty, Rajath
+It is already doing that, Faisal as of today MDM is sending all the data.
+0:6:13.750 --> 0:6:35.70
+Shetty, Rajath
+So even though, say, MCL phone number, so say someone makes change on phone number on MCL, MDM will take the entire client data and sending across to the Kafka queue gather the API itself filters it down and only sends phone number information.
+0:6:35.80 --> 0:6:35.550
+Shetty, Rajath
+That's it.
+0:6:36.220 --> 0:6:37.830
+Shetty, Rajath
+The data is already being sent.
+0:6:37.840 --> 0:6:45.930
+Shetty, Rajath
+You might want to speak with Varun and just confirm it, but I think they've already they have done their job like the procedure sends everything.
+0:6:45.990 --> 0:6:49.340
+Shetty, Rajath
+It's just that API filters it down and only sends a phone number.
+0:6:51.230 --> 0:6:54.890
+Nkutu, Faisal
+Yeah, but have you done all the API for all the integration points?
+0:6:54.990 --> 0:7:1.100
+Nkutu, Faisal
+I think that this task includes all the API for all the the all integration points.
+0:7:1.170 --> 0:7:5.480
+Nkutu, Faisal
+They need to have to be able to consume that data from from Kafka.
+0:7:8.610 --> 0:7:9.920
+Shetty, Rajath
+Why are they?
+0:7:10.170 --> 0:7:11.300
+Shetty, Rajath
+I'm sorry, I'm confused.
+0:7:11.310 --> 0:7:13.520
+Shetty, Rajath
+Why are they consuming data from Kafka?
+0:7:14.310 --> 0:7:17.970
+Shetty, Rajath
+As of today, we don't send them through Kafka, we send them through API.
+0:7:18.390 --> 0:7:24.260
+Shetty, Rajath
+We have queues system which is publisher and subscriber which is already existing from CS to MDM.
+0:7:24.270 --> 0:7:25.50
+Shetty, Rajath
+They don't use Kafka.
+0:7:27.940 --> 0:7:28.270
+Shetty, Rajath
+Yeah.
+0:7:26.910 --> 0:7:30.0
+Nkutu, Faisal
+OK, let me just let me just bring up my.
+0:7:31.660 --> 0:7:32.770
+Nkutu, Faisal
+The group just think this.
+0:7:52.710 --> 0:7:53.140
+Nkutu, Faisal
+Song.
+0:8:40.240 --> 0:8:40.790
+Nkutu, Faisal
+No.
+0:8:41.620 --> 0:8:41.880
+Nkutu, Faisal
+Yeah.
+0:8:41.890 --> 0:8:43.820
+Nkutu, Faisal
+OK, like this a little bit bigger.
+0:8:51.740 --> 0:8:54.600
+Nkutu, Faisal
+So I don't like this little bit more.
+0:9:5.720 --> 0:9:6.200
+Shetty, Rajath
+You mean?
+0:8:59.780 --> 0:9:9.980
+Nkutu, Faisal
+So all these components EWMS, PV, IB 515 FM unitrax, they're going to be consuming from Kafka directly.
+0:9:11.40 --> 0:9:11.500
+Shetty, Rajath
+OK.
+0:9:12.120 --> 0:9:12.590
+Nkutu, Faisal
+Yeah.
+0:9:13.280 --> 0:9:13.690
+Shetty, Rajath
+Alright.
+0:9:13.110 --> 0:9:18.480
+Nkutu, Faisal
+So those uh, you know, all those pieces.
+0:9:19.550 --> 0:9:22.440
+Nkutu, Faisal
+Uh over retrieving data from Kafka?
+0:9:22.450 --> 0:9:24.480
+Nkutu, Faisal
+Would have then been built for each of this.
+0:9:26.830 --> 0:9:33.940
+Shetty, Rajath
+The admin systems tapping into Kafka is not maybe there, but MDM sending data might be already there.
+0:9:34.360 --> 0:9:40.250
+Shetty, Rajath
+I thought you might need to confirm with the Varun because from what I understand.
+0:9:41.160 --> 0:9:54.630
+Shetty, Rajath
+Uh, any client information or policy summary information or like address that is being sent is being sent by MDM into through to cafka through API and then Kafka.
+0:9:54.640 --> 0:9:58.130
+Shetty, Rajath
+Right ohd, I think that is already set.
+0:9:58.190 --> 0:10:6.60
+Shetty, Rajath
+It's just that the connection of the admin systems reading the topic is is I think not build.
+0:10:6.70 --> 0:10:8.190
+Shetty, Rajath
+That's it, but I don't know.
+0:10:7.130 --> 0:10:8.450
+Nkutu, Faisal
+Yeah, I think that's what it means.
+0:10:8.940 --> 0:10:16.450
+Shetty, Rajath
+Yeah, I think you can confirm that with the Varun, but I think MDM portion, I think it's already built, but I'm not.
+0:10:17.280 --> 0:10:18.450
+Shetty, Rajath
+I can't say for sure that's.
+0:10:19.180 --> 0:10:19.570
+Nkutu, Faisal
+OK.
+0:10:22.750 --> 0:10:22.980
+Shetty, Rajath
+Umm.
+0:10:19.580 --> 0:10:25.670
+Nkutu, Faisal
+Because when I talk to Abby, Abby is Abby is only raised at this issue.
+0:10:25.680 --> 0:10:32.190
+Nkutu, Faisal
+We say that they're having issues in the this this layer on who is building 1.
+0:10:31.190 --> 0:10:32.720
+Shetty, Rajath
+Yeah, because it's that is not built.
+0:10:32.730 --> 0:10:39.600
+Shetty, Rajath
+That portion is not built, but the IBM MDM into cap car right is already there, preexisting.
+0:10:39.610 --> 0:10:42.960
+Shetty, Rajath
+You don't have to build that based on what you've written in your gang chat.
+0:10:42.970 --> 0:10:48.230
+Shetty, Rajath
+If you look at your chart, it says MDM, right MDM subscriber and publisher is already set.
+0:10:49.350 --> 0:10:51.610
+Shetty, Rajath
+Develop MDM subscriber and produce.
+0:10:51.620 --> 0:10:52.600
+Shetty, Rajath
+That's already done.
+0:10:52.670 --> 0:10:53.770
+Shetty, Rajath
+Is what I feel anyway.
+0:10:53.780 --> 0:11:9.620
+Shetty, Rajath
+You can confirm that with Varun and if it's different just let me know, but I think they send all the data that is updated related to client or policy summary on to the CAQ the connection of admin systems reading from CACA.
+0:11:9.630 --> 0:11:14.940
+Shetty, Rajath
+Yes, it's not there, but IBM MDM and CAF.
+0:11:15.220 --> 0:11:16.80
+Shetty, Rajath
+That connection is there.
+0:11:17.170 --> 0:11:17.470
+Nkutu, Faisal
+OK.
+0:11:18.710 --> 0:11:25.610
+Shetty, Rajath
+But yeah, anyway confirm that with Varun because they know better on on there and but I I think it's there already.
+0:11:26.510 --> 0:11:26.960
+Nkutu, Faisal
+OK.
+0:11:27.130 --> 0:11:27.520
+Nkutu, Faisal
+Thank you.
+0:11:27.530 --> 0:11:28.370
+Nkutu, Faisal
+I'll talk to the room.
+0:11:32.730 --> 0:11:38.380
+Shetty, Rajath
+It not and nothing wrong keeping it there because they still need to open up and that's more like an API work.
+0:11:38.390 --> 0:11:39.970
+Shetty, Rajath
+But yeah, it's it's fine.
+0:11:41.620 --> 0:11:42.130
+Nkutu, Faisal
+OK.
+0:11:42.640 --> 0:11:43.490
+Nkutu, Faisal
+Yeah, I'll.
+0:11:46.470 --> 0:11:46.710
+Shetty, Rajath
+OK.
+0:11:43.500 --> 0:11:47.370
+Nkutu, Faisal
+I'll talk to the room as well and see what he says, yeah.
+0:11:48.760 --> 0:11:52.350
+Shetty, Rajath
+Ohh complete availability is OK, so that's that's about it.
+0:11:53.360 --> 0:11:55.530
+Shetty, Rajath
+Anything else that you need to Faisal for now?
+0:11:56.410 --> 0:11:58.340
+Nkutu, Faisal
+Ohh yeah, I need you a lot.
+0:11:58.350 --> 0:12:7.470
+Nkutu, Faisal
+Help me now in looking at the that all the integration the the swimming swim lanes, there's some sequence diagrams that you have.
+0:12:11.100 --> 0:12:11.500
+Shetty, Rajath
+OK.
+0:12:14.670 --> 0:12:14.950
+Shetty, Rajath
+OK.
+0:12:8.370 --> 0:12:16.750
+Nkutu, Faisal
+I need you to spend time to whenever you're free to look at and approve or not in in the new document.
+0:12:16.760 --> 0:12:25.570
+Nkutu, Faisal
+What I've said because I've sent this document for review and the new year, so I just went in and just said we have a I need your review.
+0:12:25.580 --> 0:12:27.650
+Nkutu, Faisal
+I just put in a comment that needs a review.
+0:12:32.60 --> 0:12:32.650
+Shetty, Rajath
+Ohh OK.
+0:12:27.980 --> 0:12:33.690
+Nkutu, Faisal
+For example, you can see here set for review this one so.
+0:12:34.120 --> 0:12:36.450
+Shetty, Rajath
+Ohh yeah, that massive yeah I have to look at it.
+0:12:37.330 --> 0:12:37.880
+Nkutu, Faisal
+Yeah.
+0:12:37.890 --> 0:12:42.100
+Nkutu, Faisal
+So I have like 6 of them which needs to REVIEW.
+0:12:42.150 --> 0:12:48.60
+Nkutu, Faisal
+There is the good things that some of them are, uh, based on the pattern that was approved by.
+0:12:53.170 --> 0:12:53.370
+Shetty, Rajath
+Umm.
+0:12:56.280 --> 0:12:56.620
+Shetty, Rajath
+OK.
+0:12:49.820 --> 0:12:58.20
+Nkutu, Faisal
+By by by Arunesh, by uh, by team and Abby about the microservice apartment.
+0:12:58.490 --> 0:12:58.790
+Shetty, Rajath
+Umm.
+0:12:58.30 --> 0:13:1.970
+Nkutu, Faisal
+So some of them, I think they will be easier for you, for example this one for you need trucks.
+0:13:3.230 --> 0:13:3.470
+Shetty, Rajath
+Yeah.
+0:13:2.990 --> 0:13:5.620
+Nkutu, Faisal
+Uh, you can see it is the mic.
+0:13:9.100 --> 0:13:9.410
+Shetty, Rajath
+Umm.
+0:13:18.400 --> 0:13:18.590
+Shetty, Rajath
+You know.
+0:13:5.630 --> 0:13:20.70
+Nkutu, Faisal
+It's instructive is depositing data to Kafka and then submitting that data to MDM and then that is going to be some kind of governance, governance or creating the golden copy which is then sending that data back to.
+0:13:22.630 --> 0:13:31.260
+Nkutu, Faisal
+Uh to the to to cafka and then the microservice can be built as an alternative content path to retrieve that information.
+0:13:31.470 --> 0:13:35.950
+Nkutu, Faisal
+The Golden copy and submitted to to to Mads the the database.
+0:13:37.170 --> 0:13:37.330
+Shetty, Rajath
+OK.
+0:13:37.940 --> 0:13:41.620
+Nkutu, Faisal
+Ohh it's gonna be consumed directly to by by Unitrax.
+0:13:41.630 --> 0:13:44.170
+Nkutu, Faisal
+So this is kind of a general pattern that has been approved.
+0:13:44.830 --> 0:13:45.130
+Shetty, Rajath
+OK.
+0:13:56.750 --> 0:13:57.60
+Shetty, Rajath
+OK.
+0:13:45.680 --> 0:14:3.610
+Nkutu, Faisal
+So if you you know if you kind of are comfortable with this general pattern, you can look through the other general general patterns like this, like for others like FM is like is, is, is based on that pattern as well and a few others.
+0:14:9.390 --> 0:14:9.530
+Shetty, Rajath
+But.
+0:14:4.40 --> 0:14:14.60
+Nkutu, Faisal
+So if you in it makes it easier for you to approve those ones that follow the general pattern quickly, like it WS uh, and then the other maybe you can take your time too.
+0:14:20.410 --> 0:14:20.960
+Shetty, Rajath
+OK.
+0:14:15.210 --> 0:14:21.450
+Nkutu, Faisal
+I think you'll you'll be left with around two like this one engineer, yeah.
+0:14:21.50 --> 0:14:22.480
+Shetty, Rajath
+Alright then I'll, I'll try to.
+0:14:22.490 --> 0:14:23.200
+Shetty, Rajath
+I'll have a look.
+0:14:23.610 --> 0:14:23.910
+Nkutu, Faisal
+OK.
+0:14:24.80 --> 0:14:25.20
+Shetty, Rajath
+I don't know when I'm.
+0:14:25.30 --> 0:14:27.320
+Shetty, Rajath
+I'm stuck with the other work as well, right?
+0:14:27.300 --> 0:14:28.630
+Nkutu, Faisal
+I know, I know.
+0:14:27.330 --> 0:14:28.820
+Shetty, Rajath
+So I will I will list.
+0:14:28.680 --> 0:14:29.790
+Nkutu, Faisal
+That's why I'm not pushing.
+0:14:30.460 --> 0:14:32.10
+Nkutu, Faisal
+Actually, I don't even have the right to push.
+0:14:30.660 --> 0:14:34.500
+Shetty, Rajath
+Yeah, I have to get that ADR completed and there's another set of piece that I need to complete.
+0:14:35.240 --> 0:14:35.400
+Nkutu, Faisal
+Yeah.
+0:14:37.100 --> 0:14:37.760
+Nkutu, Faisal
+Yeah and.
+0:14:34.510 --> 0:14:39.620
+Shetty, Rajath
+So I'll get to it ohfa sometime next week.
+0:14:39.630 --> 0:14:43.680
+Shetty, Rajath
+I I hope or this week, let me see if I I'll try to.
+0:14:43.690 --> 0:14:48.20
+Shetty, Rajath
+I'll try to squeeze him because I'll sit with you and try to understand also if I don't.
+0:14:49.640 --> 0:14:50.490
+Shetty, Rajath
+Umm.
+0:14:50.530 --> 0:14:52.960
+Shetty, Rajath
+If I don't understand something, I'll I'll sit with you.
+0:14:54.140 --> 0:14:55.130
+Nkutu, Faisal
+Yeah, explained.
+0:14:55.140 --> 0:14:55.300
+Nkutu, Faisal
+Yeah.
+0:14:52.970 --> 0:14:55.520
+Shetty, Rajath
+Maybe discuss about.
+0:14:56.140 --> 0:14:58.430
+Nkutu, Faisal
+Yeah, that's.
+0:14:58.10 --> 0:14:58.800
+Shetty, Rajath
+I looked for you.
+0:14:58.810 --> 0:15:3.620
+Shetty, Rajath
+I looked at few of them but then there was one which was like massive and and I was OK.
+0:15:3.630 --> 0:15:6.460
+Shetty, Rajath
+I was like, OK, let me take my time and look at it.
+0:15:6.470 --> 0:15:7.380
+Shetty, Rajath
+When when I'm free?
+0:15:7.330 --> 0:15:7.760
+Nkutu, Faisal
+Yeah.
+0:15:7.950 --> 0:15:9.830
+Nkutu, Faisal
+Yeah, that's what I'm suggesting.
+0:15:13.870 --> 0:15:14.100
+Shetty, Rajath
+Mm-hmm.
+0:15:9.840 --> 0:15:22.40
+Nkutu, Faisal
+Maybe try with this one that look to be following a pattern that is preapproved easy and then from that once we clear off these ones then you can spend time with with don't know just a little bit massive.
+0:15:23.10 --> 0:15:25.460
+Nkutu, Faisal
+I think the one you're talking about is that one that I showed.
+0:15:27.360 --> 0:15:29.110
+Nkutu, Faisal
+I think this is massively ingenium.
+0:15:31.20 --> 0:15:32.20
+Nkutu, Faisal
+You think good?
+0:15:30.990 --> 0:15:32.340
+Shetty, Rajath
+Yeah, yeah, yeah, yeah.
+0:15:32.100 --> 0:15:34.810
+Nkutu, Faisal
+Not once this massive, so I gotta take time.
+0:15:34.790 --> 0:15:35.770
+Shetty, Rajath
+Yeah, it shows everything.
+0:15:35.780 --> 0:15:37.620
+Shetty, Rajath
+It shows all OK.
+0:15:36.920 --> 0:15:38.210
+Nkutu, Faisal
+Yeah.
+0:15:38.280 --> 0:15:38.460
+Nkutu, Faisal
+Yeah.
+0:15:40.40 --> 0:15:40.280
+Shetty, Rajath
+OK.
+0:15:39.970 --> 0:15:41.960
+Nkutu, Faisal
+Then there's you would like batch processes.
+0:15:41.970 --> 0:15:49.650
+Nkutu, Faisal
+This one I think also sent for review, but this is based on input that I got from from.
+0:15:50.210 --> 0:15:50.540
+Nkutu, Faisal
+Is it?
+0:15:50.550 --> 0:15:51.280
+Nkutu, Faisal
+What's your name?
+0:15:51.330 --> 0:15:57.60
+Nkutu, Faisal
+Jerry's this mini that you gave me for this one Sherry Sherry.
+0:15:56.470 --> 0:15:58.220
+Shetty, Rajath
+For Shetty, Shari's.
+0:15:58.230 --> 0:15:58.840
+Shetty, Rajath
+Yeah, good.
+0:16:1.30 --> 0:16:1.500
+Nkutu, Faisal
+Yeah.
+0:15:58.850 --> 0:16:2.110
+Shetty, Rajath
+He's he knows a lot about ingenium, so she has a good understanding.
+0:16:11.280 --> 0:16:11.520
+Shetty, Rajath
+Mm-hmm.
+0:16:18.360 --> 0:16:18.520
+Shetty, Rajath
+Yeah.
+0:16:1.510 --> 0:16:19.250
+Nkutu, Faisal
+So yeah, I based on what she told me and based on that I kind of simplified and made make it made because you gave me based on the on Kobo, on Kobo processes and I kind of simplified it in media little bit more generic, yeah.
+0:16:22.200 --> 0:16:22.700
+Nkutu, Faisal
+Yeah.
+0:16:23.180 --> 0:16:23.500
+Nkutu, Faisal
+Thanks.
+0:16:21.270 --> 0:16:24.550
+Shetty, Rajath
+OK, alright, Faisal, thank you.
+0:16:24.560 --> 0:16:24.990
+Shetty, Rajath
+Thanks, bye.
+0:16:24.970 --> 0:16:25.870
+Nkutu, Faisal
+Thank you very much. Yeah
