@@ -1,5 +1,5 @@
-The current data flow between CIS and MDM reveals that most data is synchronized, except for mutual funds and FM policy-related information. 
+The existing data flow between CIS and MDM shows synchronization for most data, except for mutual funds and FM policy-related information.
 
-A previous effort to replicate address fields from MDM to CIS using Kafka was initiated but was halted midway due to testing and other reasons. 
+A prior attempt to replicate address fields from MDM to CIS via Kafka was started but discontinued midway due to testing and other reasons.
 
-The CIS to MDM Two-Way Replication Effort will ensure implementing and thorough end-to-end testing for the seamlessly data flow the two systems. This will ensure the integrity of the data flow between CIS and MDM. And confirm that MDM data completely matches CIS and is interchangeable. 
+The Two-Way Replication Effort from CIS to MDM aims to implement and conduct comprehensive end-to-end testing for a seamless data flow between the two systems. This ensures the integrity of the data flow, confirming that MDM data aligns completely with CIS and is interchangeable.
