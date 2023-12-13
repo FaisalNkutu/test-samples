@@ -1,0 +1,6 @@
+
+Background Information on the current data flow between CIS and MDM reveals that the majority of data is synchronized, with the exception of mutual funds and FM policy-related information.
+
+A previous effort to replicate address fields from MDM to CIS using Kafka was initiated but was halted midway due to testing and other reasons.
+
+There is an emphasis on the necessity to fully open up the data flow from MDM to CIS to facilitate seamless two-way synchronization. This highlights the crucial importance of thorough testing, particularly end-to-end testing, to ensure the integrity of the data flow.
