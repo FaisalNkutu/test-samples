@@ -1,0 +1,828 @@
+0:0:0.0 --> 0:0:1.490
+Nkutu, Faisal
+That's uh, the three of us.
+0:0:1.500 --> 0:0:5.540
+Nkutu, Faisal
+Uh, Rajesh, myself and and Aaron Nesh.
+0:0:5.590 --> 0:0:14.990
+Nkutu, Faisal
+And we came up with the this Canada Post address validation as an alternative that can be, yeah.
+0:0:13.410 --> 0:0:17.660
+Krishnan, Prasad
+No, no, no, no, no, no, I I don't want you to give me a solution.
+0:0:17.670 --> 0:0:23.470
+Krishnan, Prasad
+I want what I asked you was in the plan that I shared the picture.
+0:0:23.480 --> 0:0:24.830
+Krishnan, Prasad
+You remember the picture I shared.
+0:0:25.390 --> 0:0:26.600
+Nkutu, Faisal
+Yeah, it was almost like this one.
+0:0:28.240 --> 0:0:32.50
+Krishnan, Prasad
+So I I want I want you to tell me what's wrong with that.
+0:0:32.300 --> 0:0:32.610
+Krishnan, Prasad
+What?
+0:0:32.620 --> 0:0:33.950
+Krishnan, Prasad
+What all things will go wrong?
+0:0:35.990 --> 0:0:36.580
+Nkutu, Faisal
+Right.
+0:0:37.850 --> 0:0:38.150
+Shetty, Rajath
+Back.
+0:0:38.950 --> 0:0:39.340
+Krishnan, Prasad
+I don't.
+0:0:36.810 --> 0:0:41.30
+Nkutu, Faisal
+So I think looking at the benefits here for this example, sorry.
+0:0:41.410 --> 0:0:42.240
+Krishnan, Prasad
+No, no, no, I don't.
+0:0:42.250 --> 0:0:45.320
+Krishnan, Prasad
+I don't want us to design a solution yet.
+0:0:45.530 --> 0:0:46.540
+Nkutu, Faisal
+Right, yes.
+0:0:47.790 --> 0:0:54.430
+Krishnan, Prasad
+What I want to know is what's wrong with that picture or what all things are wrong with that picture?
+0:0:55.580 --> 0:1:2.490
+Krishnan, Prasad
+And if we do that solution that whatever I shared before that that you just showed me where things will go wrong.
+0:1:4.540 --> 0:1:4.900
+Nkutu, Faisal
+Right.
+0:1:5.520 --> 0:1:11.920
+Krishnan, Prasad
+Because there is another team who is going ahead with that solution and I want to stop them because I think that is wrong.
+0:1:13.590 --> 0:1:13.950
+Nkutu, Faisal
+Right.
+0:1:13.500 --> 0:1:17.200
+Krishnan, Prasad
+I I'm not here to design their solution for them right now.
+0:1:18.730 --> 0:1:19.540
+Krishnan, Prasad
+You know what I mean?
+0:1:19.860 --> 0:1:20.60
+Nkutu, Faisal
+Yes.
+0:1:19.750 --> 0:1:23.600
+Krishnan, Prasad
+So I don't want you to tell me what the solution should be.
+0:1:23.870 --> 0:1:27.820
+Krishnan, Prasad
+Instead, I want you to tell me what's wrong with that other solution.
+0:1:29.760 --> 0:1:29.980
+Nkutu, Faisal
+Yeah.
+0:1:30.280 --> 0:1:31.340
+Krishnan, Prasad
+Rajath Hari back.
+0:1:31.860 --> 0:1:33.510
+Shetty, Rajath
+Yeah, I'm back present.
+0:1:35.990 --> 0:1:36.280
+Shetty, Rajath
+So the.
+0:1:43.140 --> 0:1:43.340
+Nkutu, Faisal
+Yeah.
+0:1:44.520 --> 0:1:45.120
+Nkutu, Faisal
+Yeah, we're good.
+0:1:34.380 --> 0:1:45.400
+Krishnan, Prasad
+OK, so you know why sell you and arunesh have gone ahead and then created a solution, but I'm CL and I don't.
+0:1:45.920 --> 0:1:49.560
+Krishnan, Prasad
+My request was not even that my request was even before that.
+0:1:50.530 --> 0:1:51.910
+Krishnan, Prasad
+So can you go back to the diagram?
+0:1:53.350 --> 0:1:53.550
+Nkutu, Faisal
+OK.
+0:1:57.340 --> 0:2:0.970
+Shetty, Rajath
+I can tell you a few problems based on what the old diagram is.
+0:2:0.980 --> 0:2:1.620
+Shetty, Rajath
+If you want to.
+0:2:1.370 --> 0:2:1.890
+Krishnan, Prasad
+Hold on.
+0:2:1.900 --> 0:2:3.730
+Krishnan, Prasad
+The only the old diagram, not the new one.
+0:2:3.520 --> 0:2:3.860
+Shetty, Rajath
+Yeah.
+0:2:3.870 --> 0:2:12.750
+Shetty, Rajath
+Yeah, we can open the old diagram and I can maybe walk you through what is how it all hangs together today based on the old diagram, right?
+0:2:16.360 --> 0:2:16.990
+Krishnan, Prasad
+So so.
+0:2:25.170 --> 0:2:25.410
+Shetty, Rajath
+OK.
+0:2:19.670 --> 0:2:30.740
+Krishnan, Prasad
+Present to you are not in the previous discussion, so I was invited for a meeting where I was shared that diagram and I took a screen, grabbed for it of it.
+0:2:31.860 --> 0:2:32.310
+Krishnan, Prasad
+I didn't.
+0:2:32.320 --> 0:2:32.740
+Krishnan, Prasad
+I did not.
+0:2:35.970 --> 0:2:36.290
+Shetty, Rajath
+OK.
+0:2:35.740 --> 0:2:36.700
+Nkutu, Faisal
+That I'm looking for.
+0:2:35.870 --> 0:2:37.270
+Krishnan, Prasad
+Patel, you I didn't, Faisal.
+0:2:37.280 --> 0:2:38.360
+Krishnan, Prasad
+I didn't send you anything.
+0:2:38.370 --> 0:2:40.60
+Krishnan, Prasad
+You took a screen grab. OK.
+0:2:40.70 --> 0:2:40.550
+Krishnan, Prasad
+Yeah. Here.
+0:2:40.100 --> 0:2:40.570
+Nkutu, Faisal
+No.
+0:2:40.720 --> 0:2:41.590
+Nkutu, Faisal
+You send me this one.
+0:2:41.930 --> 0:2:42.440
+Krishnan, Prasad
+Yes.
+0:2:42.930 --> 0:2:43.550
+Shetty, Rajath
+Yeah, that one.
+0:2:51.720 --> 0:2:51.930
+Shetty, Rajath
+Umm.
+0:2:42.450 --> 0:2:57.900
+Krishnan, Prasad
+OK, so So what I want Faisal and Rajath you and arunesh to tell me is what is wrong with this or what all are wrong with this now one.
+0:2:58.200 --> 0:3:2.400
+Krishnan, Prasad
+Because, OK, let me tell you my basic understanding.
+0:3:2.650 --> 0:3:2.780
+Shetty, Rajath
+Yes.
+0:3:7.900 --> 0:3:8.70
+Shetty, Rajath
+Yeah.
+0:3:2.450 --> 0:3:8.400
+Krishnan, Prasad
+OK, I see the book of record is CIS not MDM.
+0:3:8.810 --> 0:3:10.110
+Krishnan, Prasad
+That is my first problem.
+0:3:10.630 --> 0:3:13.900
+Krishnan, Prasad
+My second problem is there is no upfront validation here.
+0:3:14.410 --> 0:3:15.620
+Krishnan, Prasad
+Where is my second problem?
+0:3:15.620 --> 0:3:15.870
+Shetty, Rajath
+Correct.
+0:3:16.630 --> 0:3:25.680
+Krishnan, Prasad
+Third problem is the the invalid or UNVALIDATED addresses are flowing from MDM through Kafka.
+0:3:41.120 --> 0:3:41.380
+Shetty, Rajath
+Yeah.
+0:3:44.530 --> 0:3:44.710
+Shetty, Rajath
+Yes.
+0:3:50.800 --> 0:3:51.860
+Shetty, Rajath
+Yeah, it's is wrong.
+0:3:25.770 --> 0:3:52.820
+Krishnan, Prasad
+Into this agreement, Ms and customer Ms Systems, because they are supposed to subscribe the wrong address or we don't know whether how the probability of it being correct then they are using on base which is another problem I have because we our new platform is ambient for workflow and then this on base workflow is purely manual so they they're Slas maybe 1-2 or three weeks to to get the CIS update.
+0:3:52.830 --> 0:3:55.50
+Krishnan, Prasad
+So I have so many problems with this one.
+0:3:54.300 --> 0:3:55.290
+Shetty, Rajath
+No, that's problem.
+0:3:55.300 --> 0:3:56.890
+Shetty, Rajath
+I don't even know who did this are either.
+0:3:56.900 --> 0:3:59.280
+Shetty, Rajath
+Not even yesterday, when we entered the meeting is this.
+0:3:58.400 --> 0:3:59.490
+Krishnan, Prasad
+So I will, I will.
+0:3:59.500 --> 0:3:59.910
+Krishnan, Prasad
+I will.
+0:3:59.960 --> 0:4:1.250
+Krishnan, Prasad
+I will give you the context.
+0:4:1.300 --> 0:4:8.210
+Krishnan, Prasad
+That's exactly what why I want this discussion, and I'm unfortunately you were in there and I, that's what I said.
+0:4:11.790 --> 0:4:12.30
+Shetty, Rajath
+Umm.
+0:4:8.520 --> 0:4:14.880
+Krishnan, Prasad
+This is done by the digital hub team in collaboration with Abby, and that's my surprise.
+0:4:15.20 --> 0:4:24.470
+Krishnan, Prasad
+I thought Abby had better sense of how we do business, but so they have a specific problem that they are trying to solve.
+0:4:24.860 --> 0:4:32.990
+Krishnan, Prasad
+They are getting calls to the contact center to change the address and they want to stop it right?
+0:4:33.40 --> 0:4:39.160
+Krishnan, Prasad
+So contact center Rep takes the call updates address wherever they are updating.
+0:4:43.410 --> 0:4:43.710
+Shetty, Rajath
+Uh.
+0:4:40.30 --> 0:4:48.630
+Krishnan, Prasad
+That is their first first problem and they want all they they want to do something quick to reduce the number of calls to contact.
+0:4:48.680 --> 0:4:54.20
+Krishnan, Prasad
+I I I say there aim is good, but the way they did is wrong.
+0:4:54.150 --> 0:5:5.950
+Krishnan, Prasad
+So what they did, they created this microservice and say that ohh currently we can update MDM and then everything everybody else just follow us right?
+0:5:6.490 --> 0:5:6.850
+Shetty, Rajath
+Hmm.
+0:5:9.710 --> 0:5:10.130
+Shetty, Rajath
+Exactly.
+0:5:6.460 --> 0:5:18.990
+Krishnan, Prasad
+So they don't care what the impact on the backend questions, they're just assume that they're just assume that CIS is going to eventually correct the address and and make it make make it fall flow through every other system.
+0:5:25.680 --> 0:5:25.910
+Shetty, Rajath
+Umm.
+0:5:20.820 --> 0:5:29.420
+Krishnan, Prasad
+OK, So what I am asking this team SI know the solution.
+0:5:29.430 --> 0:5:36.900
+Krishnan, Prasad
+I know what we talked about there in that meeting that I attended wherein I told that upfront validation is the only solution.
+0:5:39.800 --> 0:5:40.0
+Shetty, Rajath
+Yeah.
+0:5:36.910 --> 0:5:50.470
+Krishnan, Prasad
+If you're going through MDM, otherwise you have to directly integrate with CIS because that is the book of record for our for IC OK that that won't work because they don't have anything connected right now.
+0:5:51.310 --> 0:5:51.490
+Shetty, Rajath
+Yes.
+0:5:53.650 --> 0:5:53.910
+Krishnan, Prasad
+OK.
+0:5:55.690 --> 0:5:55.980
+Krishnan, Prasad
+Umm.
+0:5:53.140 --> 0:6:1.620
+Shetty, Rajath
+And and Prasad, just to add it, it'll this prod this flow which they have actually designed will lead to the same problem that.
+0:6:2.160 --> 0:6:9.840
+Shetty, Rajath
+Ohm's Advisor Workspace is facing today because they send an address right which is Google format at all.
+0:6:9.850 --> 0:6:14.210
+Shetty, Rajath
+Right goes to CIS, which is again scrubbed into Canada Post here.
+0:6:14.460 --> 0:6:19.230
+Shetty, Rajath
+There is no Google formatting they send out like a free form text to mats, right?
+0:6:18.880 --> 0:6:19.690
+Krishnan, Prasad
+Hmm yeah.
+0:6:19.420 --> 0:6:23.110
+Shetty, Rajath
+And they say, OK, this is my address.
+0:6:23.120 --> 0:6:27.10
+Shetty, Rajath
+You you printed like this, so the client in this case client enters his address.
+0:6:27.260 --> 0:6:28.770
+Shetty, Rajath
+So says, he says.
+0:6:31.650 --> 0:6:31.960
+Krishnan, Prasad
+Umm.
+0:6:29.100 --> 0:6:33.390
+Shetty, Rajath
+He stays in Forest Street and he enters that it goes to Mads.
+0:6:33.400 --> 0:6:38.800
+Shetty, Rajath
+It shows him that that point you've saved as forest speak stream goes to MDM MDM Scrubs.
+0:6:39.930 --> 0:6:40.260
+Krishnan, Prasad
+Umm.
+0:6:38.810 --> 0:6:42.270
+Shetty, Rajath
+The data sends it back to match next day.
+0:6:42.280 --> 0:6:48.850
+Shetty, Rajath
+If the client again comes back, he will say ohh why is this change to Forest Creek Drive right for him he will again logs.
+0:6:46.620 --> 0:6:49.360
+Krishnan, Prasad
+But but MDM doesn't scrub right.
+0:6:49.370 --> 0:6:51.330
+Krishnan, Prasad
+It is CIS which does the scrub right.
+0:6:51.300 --> 0:6:51.750
+Shetty, Rajath
+No.
+0:6:51.760 --> 0:6:55.480
+Shetty, Rajath
+MDM also has their now uh yesterday when we had a discussion.
+0:6:55.920 --> 0:6:59.90
+Shetty, Rajath
+Faisal, can you open up that Avi that?
+0:6:58.390 --> 0:7:1.0
+Krishnan, Prasad
+I thought that I thought that they have not enabled it.
+0:7:1.430 --> 0:7:2.450
+Krishnan, Prasad
+That's what Abby told me.
+0:7:1.930 --> 0:7:4.560
+Shetty, Rajath
+Uh, they haven't enabled this.
+0:7:5.640 --> 0:7:6.330
+Krishnan, Prasad
+Starting production.
+0:7:4.570 --> 0:7:8.10
+Shetty, Rajath
+But Varun is saying that they've enabled the Savi.
+0:7:10.420 --> 0:7:10.840
+Shetty, Rajath
+Got it.
+0:7:10.270 --> 0:7:12.280
+Krishnan, Prasad
+The scrubbing and MDM is not enabled.
+0:7:12.290 --> 0:7:13.30
+Krishnan, Prasad
+Is what I understand.
+0:7:13.910 --> 0:7:14.300
+Shetty, Rajath
+OK.
+0:7:14.230 --> 0:7:14.850
+Krishnan, Prasad
+I could be wrong.
+0:7:14.310 --> 0:7:14.880
+Shetty, Rajath
+Then let me.
+0:7:15.760 --> 0:7:16.840
+Shetty, Rajath
+OK, then no, I let.
+0:7:15.780 --> 0:7:18.820
+Krishnan, Prasad
+OK, so so so So what I want you to do.
+0:7:20.220 --> 0:7:20.470
+Shetty, Rajath
+Umm.
+0:7:21.80 --> 0:7:24.350
+Krishnan, Prasad
+Let's go back to the diagram that I shared and.
+0:7:23.830 --> 0:7:24.420
+Shetty, Rajath
+OK.
+0:7:26.530 --> 0:7:27.200
+Krishnan, Prasad
+Tell me.
+0:7:27.490 --> 0:7:28.760
+Krishnan, Prasad
+Not now.
+0:7:29.290 --> 0:7:32.610
+Krishnan, Prasad
+I want it to be documented point by point.
+0:7:32.730 --> 0:7:42.10
+Krishnan, Prasad
+What are what all are the failure points and why it will fail and why it will lead to more problems than solution because I told them upfront.
+0:7:44.210 --> 0:7:47.340
+Krishnan, Prasad
+I don't mind creating API, I don't mind Kafka.
+0:7:47.650 --> 0:7:48.420
+Krishnan, Prasad
+I don't mind.
+0:7:48.690 --> 0:7:54.190
+Krishnan, Prasad
+I I I do mind workflow in between manual workflow I and but I what I really.
+0:7:56.720 --> 0:8:7.970
+Krishnan, Prasad
+What I really do mind is you know non validated address flowing into our systems and they didn't like my comment, I was the only one against it.
+0:8:8.40 --> 0:8:10.10
+Krishnan, Prasad
+So then I pulled Wallace.
+0:8:10.80 --> 0:8:12.210
+Krishnan, Prasad
+Who is my counterpart on digital side?
+0:8:12.520 --> 0:8:12.760
+Shetty, Rajath
+Mm-hmm.
+0:8:12.280 --> 0:8:16.270
+Krishnan, Prasad
+In a different meeting and I told him these are all the things that will go wrong.
+0:8:16.800 --> 0:8:21.10
+Krishnan, Prasad
+You are trying to reduce the number of calls to the contact center, but the same customer.
+0:8:21.260 --> 0:8:25.440
+Krishnan, Prasad
+Maybe they updated online, but they're going to call and complain saying that their addresses changed.
+0:8:25.450 --> 0:8:26.190
+Krishnan, Prasad
+This is not why.
+0:8:25.850 --> 0:8:26.200
+Shetty, Rajath
+Yeah.
+0:8:26.200 --> 0:8:27.170
+Krishnan, Prasad
+What are updated?
+0:8:27.540 --> 0:8:28.940
+Krishnan, Prasad
+I did something else.
+0:8:28.950 --> 0:8:30.650
+Krishnan, Prasad
+You are now showing me something else.
+0:8:30.800 --> 0:8:32.820
+Krishnan, Prasad
+I'm back to same problem.
+0:8:33.300 --> 0:8:33.420
+Shetty, Rajath
+Yes.
+0:8:33.0 --> 0:8:38.0
+Krishnan, Prasad
+I I I have tried updating because the address is wrong now the address is wrong again.
+0:8:38.840 --> 0:8:39.0
+Shetty, Rajath
+Yeah.
+0:8:38.390 --> 0:8:42.950
+Krishnan, Prasad
+OK, so I told all that so I I am.
+0:8:43.870 --> 0:8:54.840
+Krishnan, Prasad
+I'm In Sync with you, but what I want is that are the details because I'm not as connected to you as the to that low level details.
+0:8:55.350 --> 0:9:9.130
+Krishnan, Prasad
+So when you when you look at this flow, I want you to tell me or I want you all to document what all will go wrong, where it will go wrong, why it will go wrong and why this is not the right solution.
+0:9:9.950 --> 0:9:20.270
+Krishnan, Prasad
+Do not go into what is the right solution, because even if you propose the right solution, they are not going to agree with us because there are egos are hurt, right?
+0:9:20.400 --> 0:9:24.190
+Krishnan, Prasad
+So don't spend any time to figure out what is the right solution.
+0:9:25.200 --> 0:9:25.500
+Shetty, Rajath
+OK.
+0:9:24.200 --> 0:9:25.970
+Krishnan, Prasad
+Right now we will get to that.
+0:9:26.420 --> 0:9:32.150
+Krishnan, Prasad
+We we'll get to that once I present my findings, saying that these are all the things that can go wrong.
+0:9:32.160 --> 0:9:34.390
+Krishnan, Prasad
+Then they have to eventually ask them.
+0:9:34.440 --> 0:9:35.870
+Krishnan, Prasad
+Tell me what you propose.
+0:9:36.40 --> 0:9:39.50
+Krishnan, Prasad
+Then we will propose our solution. EII.
+0:9:39.60 --> 0:9:47.350
+Krishnan, Prasad
+Don't mind you having that in the back end or back pocket, but don't spend too much time on what should be the right solution because they won't listen to us.
+0:9:47.360 --> 0:9:48.970
+Krishnan, Prasad
+You know how the that works, right?
+0:9:48.490 --> 0:9:49.570
+Shetty, Rajath
+Yeah, yeah.
+0:9:48.980 --> 0:9:57.910
+Krishnan, Prasad
+Digital team, so focus your attention on what's wrong with this, because I I need that to be sent to KV.
+0:9:59.10 --> 0:10:0.40
+Krishnan, Prasad
+I'm Jeffrey sang.
+0:10:0.100 --> 0:10:1.630
+Krishnan, Prasad
+You know, I'm I won't directly send it.
+0:10:1.640 --> 0:10:2.300
+Krishnan, Prasad
+Don't worry about that.
+0:10:3.490 --> 0:10:6.690
+Krishnan, Prasad
+I should be having it ready to send it to them if required.
+0:10:8.320 --> 0:10:8.780
+Krishnan, Prasad
+OK.
+0:10:8.880 --> 0:10:15.100
+Krishnan, Prasad
+And I have also raised it with Paul Trumpet and he he the moment he saw, he said it's not right.
+0:10:16.360 --> 0:10:21.900
+Krishnan, Prasad
+No, the people who understand system, they think that it is wrong.
+0:10:24.580 --> 0:10:25.100
+Krishnan, Prasad
+Can you hear me?
+0:10:25.690 --> 0:10:26.20
+Shetty, Rajath
+Yeah.
+0:10:25.890 --> 0:10:26.620
+Nkutu, Faisal
+Yeah, we hear you.
+0:10:26.30 --> 0:10:27.890
+Shetty, Rajath
+Yeah, we can hear you, Prasad.
+0:10:28.340 --> 0:10:28.740
+Krishnan, Prasad
+Yeah. OK.
+0:10:28.400 --> 0:10:35.450
+Shetty, Rajath
+Most of most of the points that you have put forward are the ones that we need to just elaborate because those are all the problems that.
+0:10:33.380 --> 0:10:40.450
+Krishnan, Prasad
+Yes please, because I because at my level I'm I know only high level, I don't know the details enough, right?
+0:10:40.460 --> 0:10:45.350
+Krishnan, Prasad
+So so please click the points and elaborate them and and send it to all four of us.
+0:10:45.360 --> 0:10:45.910
+Krishnan, Prasad
+OK.
+0:10:46.60 --> 0:10:46.530
+Shetty, Rajath
+OK.
+0:10:46.580 --> 0:10:46.790
+Nkutu, Faisal
+OK.
+0:10:46.280 --> 0:10:47.750
+Krishnan, Prasad
+That's all I want you to both to do.
+0:10:46.600 --> 0:10:49.530
+Shetty, Rajath
+Yeah, we OK. We can.
+0:10:49.540 --> 0:10:50.310
+Krishnan, Prasad
+Don't get into.
+0:10:50.420 --> 0:10:50.770
+Krishnan, Prasad
+Yeah.
+0:10:49.540 --> 0:10:51.900
+Shetty, Rajath
+Yeah, me and Faisal can sit on that and get that done, Prasad.
+0:10:52.250 --> 0:10:52.860
+Krishnan, Prasad
+Yeah.
+0:10:52.910 --> 0:10:53.640
+Krishnan, Prasad
+Thank you very much.
+0:10:53.890 --> 0:10:54.170
+Shetty, Rajath
+OK.
+0:10:53.650 --> 0:10:56.190
+Krishnan, Prasad
+And if it can be done before tomorrow, that's great, OK.
+0:10:57.370 --> 0:10:57.610
+Nkutu, Faisal
+Good.
+0:10:56.910 --> 0:10:57.950
+Shetty, Rajath
+OK, sure.
+0:10:57.960 --> 0:10:58.310
+Shetty, Rajath
+Present.
+0:10:58.610 --> 0:10:58.910
+Shetty, Rajath
+Thank you.
+0:10:58.650 --> 0:10:58.970
+Krishnan, Prasad
+Yeah.
+0:11:1.690 --> 0:11:2.80
+Nkutu, Faisal
+Yeah.
+0:10:58.980 --> 0:11:2.800
+Krishnan, Prasad
+OK, so and myself, yeah.
+0:11:6.490 --> 0:11:6.840
+Nkutu, Faisal
+OK.
+0:11:3.270 --> 0:11:11.480
+Krishnan, Prasad
+Tomorrow, Canada life is half day OK, so you only need to work half day and your timesheet only should have half day.
+0:11:12.70 --> 0:11:12.690
+Nkutu, Faisal
+That's fine.
+0:11:12.700 --> 0:11:13.10
+Nkutu, Faisal
+Thank you.
+0:11:13.320 --> 0:11:16.470
+Krishnan, Prasad
+Please make sure it happens and can you also let Russ know?
+0:11:19.780 --> 0:11:20.650
+Krishnan, Prasad
+OK, perfect.
+0:11:17.930 --> 0:11:21.290
+Nkutu, Faisal
+Russ, look a little Russell, no, yeah.
+0:11:20.800 --> 0:11:22.70
+Krishnan, Prasad
+Thank you very much both of you.
+0:11:22.80 --> 0:11:23.710
+Krishnan, Prasad
+And if I don't talk to you?
+0:11:23.880 --> 0:11:26.290
+Krishnan, Prasad
+Happy holidays and happy New Year, OK.
+0:11:26.370 --> 0:11:26.910
+Nkutu, Faisal
+You too.
+0:11:26.920 --> 0:11:27.210
+Nkutu, Faisal
+Thank you.
+0:11:26.540 --> 0:11:27.500
+Shetty, Rajath
+Happy holidays to you.
+0:11:26.380 --> 0:11:28.410
+Krishnan, Prasad
+Really appreciate all the work that you're doing.
+0:11:28.420 --> 0:11:28.970
+Krishnan, Prasad
+Yeah.
+0:11:29.80 --> 0:11:29.400
+Krishnan, Prasad
+Thank you.
+0:11:29.260 --> 0:11:29.500
+Nkutu, Faisal
+The.
+0:11:29.240 --> 0:11:29.830
+Shetty, Rajath
+Thank you.
+0:11:30.190 --> 0:11:30.320
+Krishnan, Prasad
+Bye.
+0:11:29.880 --> 0:11:31.520
+Shetty, Rajath
+Happy, happy Holidays, Prasad, right.
+0:11:31.650 --> 0:11:33.70
+Krishnan, Prasad
+Thank you. Bye.
+0:11:32.620 --> 0:11:34.40
+Nkutu, Faisal
+Thank you, but.
+0:11:34.840 --> 0:11:37.490
+Shetty, Rajath
+But either we can stay and maybe start writing that out.
+0:11:38.490 --> 0:11:41.510
+Nkutu, Faisal
+Yeah, I'll write it out and I send you a draft.
+0:11:43.90 --> 0:11:44.460
+Shetty, Rajath
+OK, you have it in the recording.
+0:11:45.540 --> 0:11:45.700
+Nkutu, Faisal
+Yeah.
+0:11:44.470 --> 0:11:45.790
+Shetty, Rajath
+OK, more or less.
+0:11:45.800 --> 0:11:46.80
+Shetty, Rajath
+Yeah.
+0:11:46.90 --> 0:11:49.710
+Shetty, Rajath
+Then yeah, you send me in the draft and then we'll see if I can add anything onto that.
+0:11:50.230 --> 0:11:50.710
+Nkutu, Faisal
+Exactly.
+0:11:52.930 --> 0:11:53.130
+Nkutu, Faisal
+Umm.
+0:11:51.460 --> 0:11:59.720
+Shetty, Rajath
+And because present the two things OK, when you're saying the what I had mentioned that address changing overnight.
+0:11:59.970 --> 0:12:4.620
+Shetty, Rajath
+I remember Varun stating that it's based on a flag thing.
+0:12:4.630 --> 0:12:8.780
+Shetty, Rajath
+If they want to use the Avi scrub or just leave it as it is, right?
+0:12:9.330 --> 0:12:9.650
+Nkutu, Faisal
+Right.
+0:12:9.330 --> 0:12:12.100
+Shetty, Rajath
+So maybe for that situation you might have to write both.
+0:12:12.110 --> 0:12:12.940
+Shetty, Rajath
+What is gonna problem?
+0:12:12.950 --> 0:12:15.700
+Shetty, Rajath
+So one problem is if they want to scrub it.
+0:12:15.710 --> 0:12:17.850
+Shetty, Rajath
+Obviously the client.
+0:12:23.280 --> 0:12:23.610
+Nkutu, Faisal
+Right.
+0:12:17.860 --> 0:12:23.780
+Shetty, Rajath
+What address they've entered will be different, right the next day.
+0:12:24.180 --> 0:12:26.650
+Shetty, Rajath
+But where is they don't want the address to be scrub?
+0:12:26.660 --> 0:12:27.350
+Shetty, Rajath
+What happens?
+0:12:27.860 --> 0:12:32.650
+Shetty, Rajath
+The data on MDM will be different and what is that on?
+0:12:38.680 --> 0:12:38.920
+Nkutu, Faisal
+Right.
+0:12:32.660 --> 0:12:39.430
+Shetty, Rajath
+CIS will be different because CS will scrub the data, which if it's a North American data right, it does the scrapping.
+0:12:39.520 --> 0:12:47.150
+Shetty, Rajath
+So the address will again go to the different admin systems, no the.
+0:12:47.160 --> 0:12:54.160
+Shetty, Rajath
+Yeah, the data will go to different admin systems where the client decides and that they address might not match with what MDM is.
+0:12:54.170 --> 0:12:55.290
+Shetty, Rajath
+So that's the other problem.
+0:12:55.690 --> 0:12:58.750
+Shetty, Rajath
+OK, inconsistency, yes.
+0:12:55.980 --> 0:12:59.300
+Nkutu, Faisal
+They don't consistency, basically, yeah.
+0:12:58.760 --> 0:13:7.60
+Shetty, Rajath
+If if the scrub is not done because CS will do the scrubbing, the mat like not no matter what, but it'll do the scrubbing address scrubbing through the Canada Post.
+0:13:8.660 --> 0:13:9.130
+Nkutu, Faisal
+Right.
+0:13:9.560 --> 0:13:9.940
+Shetty, Rajath
+Rules.
+0:13:9.360 --> 0:13:11.930
+Nkutu, Faisal
+OK, let me write the draft within about 2 hours.
+0:13:13.270 --> 0:13:14.20
+Shetty, Rajath
+OK.
+0:13:11.940 --> 0:13:14.190
+Nkutu, Faisal
+Send it to you and then review.
+0:13:14.290 --> 0:13:14.440
+Nkutu, Faisal
+Yeah.
+0:13:14.470 --> 0:13:14.900
+Shetty, Rajath
+OK.
+0:13:15.380 --> 0:13:15.500
+Nkutu, Faisal
+Yeah.
+0:13:16.280 --> 0:13:16.660
+Nkutu, Faisal
+Thank you.
+0:13:14.980 --> 0:13:17.340
+Shetty, Rajath
+OK, Faisal, alright that alright, thank you.
+0:13:17.350 --> 0:13:17.890
+Shetty, Rajath
+Thanks Faisal.
+0:13:17.820 --> 0:13:18.410
+Nkutu, Faisal
+You too.
+0:13:18.600 --> 0:13:19.90
+Nkutu, Faisal
+You too.
+0:13:18.970 --> 0:13:19.670
+Shetty, Rajath
+Thank you. Bye.
+0:13:19.150 --> 0:13:19.760
+Nkutu, Faisal
+Bye.
+0:13:19.880 --> 0:13:20.450
+Nkutu, Faisal
+Yeah, bye.
