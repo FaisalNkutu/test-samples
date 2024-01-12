@@ -1,0 +1,1746 @@
+Transcript
+5 January 2024, 07:32pm
+
+Nkutu, Faisal   0:03
+Then when we met, you asked me to remove one base, which I did.
+
+Nkutu, Faisal started transcription
+
+Shetty, Rajath   0:09
+Yes.
+
+Nkutu, Faisal   0:11
+And they did.
+Uh, I shared with him the uh, what is he saying?
+This journey.
+
+Shetty, Rajath   0:20
+OK.
+
+Nkutu, Faisal   0:47
+Yeah.
+You know, as you wait for you.
+My shirt within this slide and they made with few suggestions?
+
+Shetty, Rajath   0:53
+OK.
+OK.
+
+Nkutu, Faisal   0:57
+He asked me to create a description of law of the flow, which I did and then add this tips from one to the last one which is 7.
+
+Shetty, Rajath   1:02
+OK.
+Yeah, that makes sense.
+
+Mahajan, Arunesh joined the meeting
+
+Shetty, Rajath   1:14
+I mean I no problem.
+
+Mahajan, Arunesh   1:14
+I was a I feel sorry guys.
+
+Nkutu, Faisal   1:17
+I have a mesh.
+
+Mahajan, Arunesh   1:18
+I'm gonna call after the another.
+My, my, my ears are not working.
+I don't think.
+
+Nkutu, Faisal   1:25
+Oh, sorry about that.
+
+Mahajan, Arunesh   1:27
+I'm just lost my sense of hearing temporarily.
+Sorry, so the the the BBQ that happened today, which was good.
+
+Shetty, Rajath   1:36
+Yep.
+This is always happening, so nothing new.
+
+Mahajan, Arunesh   1:42
+Yeah.
+So present.
+How did you enjoy the BBQ?
+
+Nkutu, Faisal   1:46
+Through what?
+
+Mahajan, Arunesh   1:47
+How did you enjoy the BBQ?
+
+Nkutu, Faisal   1:50
+How?
+How did they enjoy the BBQ?
+
+Mahajan, Arunesh   1:53
+Yes.
+
+Shetty, Rajath   1:53
+E Yeah, in the BBQ, not in the literal sense.
+
+Nkutu, Faisal   1:54
+Oh, I didn't participate.
+I wasn't invited.
+
+Shetty, Rajath   1:57
+They're not in the literal sense, present by the way.
+It's getting recorded arunesh so.
+
+Mahajan, Arunesh   2:03
+That's perfectly fine.
+That's I would call it a tasty BBQ.
+
+Shetty, Rajath   2:05
+Yeah.
+
+Nkutu, Faisal   2:07
+O ohg in the morning one.
+
+Shetty, Rajath   2:09
+Yes.
+
+Nkutu, Faisal   2:12
+The morning one was good.
+
+Mahajan, Arunesh   2:12
+Yeah.
+
+Nkutu, Faisal   2:13
+Hey.
+Yeah, yeah, yeah, it.
+
+Mahajan, Arunesh   2:14
+Yeah, I think see, The thing is we are not, we don't there there yet because of some of the things.
+But I think we've covered a lot of ground.
+
+Shetty, Rajath   2:26
+A lot.
+
+Mahajan, Arunesh   2:26
+This is a huge it's a it's a very big yeah.
+
+Shetty, Rajath   2:27
+What Faisal and you have created, and quite a lot.
+
+Mahajan, Arunesh   2:30
+It's a very big initiative, Raja.
+It's a huge initiative.
+
+Shetty, Rajath   2:33
+Yeah, not a small.
+
+Mahajan, Arunesh   2:36
+And in a few months, we have accumulated so much information that we didn't have in the last five years or maybe we added, but we haven't documented one place.
+
+Shetty, Rajath   2:41
+Yeah, I agree.
+
+Nkutu, Faisal   2:42
+Yeah.
+
+Mahajan, Arunesh   2:46
+So it's it's, it's a wonderful job done.
+OK, looking at the comments that we got from today, one of the comments was regarding the Legends, right?
+So fesal, you know when you show the current state and when you show the future state in your document, you are basically showing the flow of events, right?
+
+Nkutu, Faisal   2:58
+Yeah.
+
+Mahajan, Arunesh   3:10
+The sequence of events, the chronological order that has to be followed.
+
+Nkutu, Faisal   3:11
+Exactly, yeah.
+
+Mahajan, Arunesh   3:14
+However, you would need to like did we not have a a basic block diagram like, you know basic interface diagram for each of the apps.
+
+Nkutu, Faisal   3:29
+Well, there's this, this generic one which is simple.
+
+Mahajan, Arunesh   3:33
+No, no.
+So let's say.
+Umm, how should I say?
+Which is the first application that you have on the list that you've got.
+
+Nkutu, Faisal   3:39
+I get.
+Uh, the first one I had was.
+OK.
+Yeah, this was the generic future state admin systems.
+
+Mahajan, Arunesh   4:01
+Umm.
+
+Nkutu, Faisal   4:03
+Yeah, this is the first one.
+
+Mahajan, Arunesh   4:04
+No, not this, not this, not this application.
+The interfacing application Faisal, which we wanted to move from CIS to MDM.
+
+Nkutu, Faisal   4:13
+OK. Uh.
+
+Mahajan, Arunesh   4:15
+I mean this is OK IDM IDM umm.
+
+Nkutu, Faisal   4:19
+IDM just retrieves.
+It doesn't.
+Now it's it's it's not sophisticated at all, yes.
+
+Mahajan, Arunesh   4:23
+OK.
+OK, then let's go to the next one.
+I'll PS we're OK.
+No, I'll pass you have current state diagram.
+You have future state, right?
+
+Nkutu, Faisal   4:30
+Yeah.
+Umm yeah.
+
+Mahajan, Arunesh   4:33
+What we need our Prasad needs is he needs to do the current state.
+This is the so this is the.
+This is a flow diagram.
+This is sequence diagram.
+
+Nkutu, Faisal   4:44
+Yes.
+
+Mahajan, Arunesh   4:45
+What he needs is a diagram which shows OK RPS is talking to CIS today.
+
+Nkutu, Faisal   4:52
+OK.
+
+Mahajan, Arunesh   4:52
+No.
+You show the legend existing existing and then the next.
+If we just say to show RPS is talking to match.
+And then Matt is going to do MDM.
+
+Nkutu, Faisal   5:07
+Which is don't need in the future state.
+
+Mahajan, Arunesh   5:10
+Because they're so, you just show.
+Some before and after, right, but not in the sequence time flow.
+It has to be in a generic diagram like a normal interface diagram application interface diagram.
+You do not touch the sequence diagrams.
+Faisal OK, leave them as it is.
+You've worked hard on them and those are amazing.
+We just have to check the language at some places.
+
+Nkutu, Faisal   5:34
+Thank you.
+
+Mahajan, Arunesh   5:36
+Where did I mention where it could lead to ambiguity?
+
+Nkutu, Faisal   5:42
+OK.
+
+Mahajan, Arunesh   5:43
+You understand what I mean?
+Like RPS today talks to CIS through Mesh API stored procedures.
+This is what I see in the screen right?
+
+Nkutu, Faisal   5:50
+OK.
+
+Mahajan, Arunesh   5:53
+But when it comes to the when it comes to the application or interface diagram, you'll have RPS.
+Sorry, it's one error goes to Mesh API.
+One of them was the stored procedure, right?
+Too little if your game.
+
+Nkutu, Faisal   6:12
+Scroll down OK.
+
+Mahajan, Arunesh   6:14
+And this is just wanna see useful diagram.
+And then your office system doesn't contact you.
+Get OK, so it's using API's.
+Extracting annuities?
+There's submitting annuities and CIS.
+So there are two different processes here, right?
+Two different flows.
+
+Nkutu, Faisal   6:43
+Yeah.
+
+Mahajan, Arunesh   6:44
+Hello.
+Do you agree present?
+There are two different flows here.
+
+Nkutu, Faisal   6:54
+Yeah, they're like, actually, yeah, there's a.
+You could say, yeah, you could break them down into two different.
+Blows.
+
+Mahajan, Arunesh   7:11
+O OK.
+So this is 1 flow where you extract a notice.
+
+Shetty, Rajath   7:17
+And then they send it to the stored procedure.
+The how to how it is it's on RPS.
+They create a trigger on that table or mesh keeps reading that table to see if there's any new triggers created, picks that trigger and switches it back saying that OK, we've got the trigger and goes and extracts that data, pulls that data, reformats it, sends it to the stored procedure stored procedure, saves it, and then sends the success indicator back to mesh.
+That's the process for application.
+
+Mahajan, Arunesh   7:54
+OK, so in that case, if you have to show which is what, what is changing on this diagram, how will we show it?
+Should we just put the legend here?
+I think we should show the interface diagram.
+We can't put the legend on sequence diagram.
+
+Shetty, Rajath   8:07
+The Yeah, this one, this one.
+We this is existing also there's nothing mom new.
+
+Mahajan, Arunesh   8:14
+Umm.
+
+Shetty, Rajath   8:15
+This is this is the current state.
+If we are doing anything related to legends are showing it, we can.
+I mean we can add legends, but it makes more sense with the future state, right?
+With when it when it interacts with MDM say this is a new process flow.
+This one is existing.
+
+Mahajan, Arunesh   8:32
+So like I'm thinking of something different.
+I'll tell you what, rather than creating before after, right?
+
+Shetty, Rajath   8:38
+Umm.
+Uh-huh.
+
+Mahajan, Arunesh   8:43
+We create one diagram for each app and within that we show existing in the place and new.
+
+Shetty, Rajath   8:45
+Umm.
+Like the sting replays and new.
+OK.
+Yeah, we could do that as well.
+
+Mahajan, Arunesh   8:58
+That'll help us by 50%, right?
+
+Shetty, Rajath   9:01
+Yeah you can.
+
+Mahajan, Arunesh   9:01
+In one diagram itself, we can show current state future state.
+
+Shetty, Rajath   9:06
+That you can just color code the arrows into current state and features didn't show which direction we're going.
+
+Mahajan, Arunesh   9:08
+Yeah.
+Exactly. Exactly.
+Present you understand what you're saying?
+
+Shetty, Rajath   9:16
+All 7.
+
+Nkutu, Faisal   9:20
+Yeah, I'm going.
+
+Mahajan, Arunesh   9:20
+OK.
+
+Nkutu, Faisal   9:21
+I can give it a try and then.
+
+Mahajan, Arunesh   9:24
+Yeah.
+Give it a try.
+Give it a try.
+You have one week before before.
+It's such boring.
+
+Nkutu, Faisal   9:32
+Yeah.
+
+Mahajan, Arunesh   9:35
+I think that'll be a great idea in in one diagram, if we can represent that, then it would avoid a lot of confusion. Right?
+
+Shetty, Rajath   9:36
+Earliest.
+
+Mahajan, Arunesh   9:44
+It'll be very, very helpful in in fact, because now you say, you know, you're saying current state diagram this sequence future state sequence and all of that can be easily read through the interface diagram.
+Also, it can be referred to that.
+
+Nkutu, Faisal   10:00
+Interface diagram.
+
+Mahajan, Arunesh   10:03
+Application diagram.
+That's what we mean, basically.
+Uh.
+For like you will show the current state.
+Also you will show the future state also in that diagram right would rather than showing uh these step-by-step trailers and exchange of information with arrows, it will show how it actually works in the why the perspective of environment, which is you know you have that and you you you'll have PSS you show your colors code of arrows that goes all the way to CIS.
+
+Nkutu, Faisal   10:15
+OK.
+
+Mahajan, Arunesh   10:36
+Then you'll show a different color code when it goes to MDM because MDM is the one that's replacing CIS.
+
+Nkutu, Faisal   10:43
+Good.
+
+Shetty, Rajath   10:45
+It arunesh is the direction to the replicate everything through microservices or and reading also directly from Mads rather than MDM.
+Is that the direction that we're getting for even for MDM?
+I I replication, I know that uh, you're gonna use Kafka more or less along with microservices.
+
+Mahajan, Arunesh   11:08
+Umm.
+
+Shetty, Rajath   11:12
+But reading data, are we going with the assumption that the that batch process will be changed to near real time and then everything and anything will go against Mads rather than MDM directly?
+
+Mahajan, Arunesh   11:12
+Right.
+So so this is what we've been fighting for, Rajat, right?
+The MDM the the the match process that they follow is a day older and it should be converted to near real time.
+
+Shetty, Rajath   11:35
+Yes.
+
+Mahajan, Arunesh   11:38
+They have the arsenal, they have the facilities to do it right.
+
+Shetty, Rajath   11:41
+Yeah.
+Because I yeah, but our assumption needs to be is important because it is not acceptable from a business standpoint where, uh, someone is trying to access the data near real time and it's and we are tapping into Mads, where Mads doesn't have the data because MDM has it but has not yet replicated, right, because business in case A for copilot, which is getting we create new micro U is for, for copilot in the future if if we're getting data and retrieving data from Mads rather than MDM we definitely need it to be a near real time ohh application at that point.
+
+Mahajan, Arunesh   11:42
+It's just that we haven't done it.
+Yes, yes, absolutely.
+Umm.
+
+Shetty, Rajath   12:30
+Is that assumption that everything that we have gone?
+
+Mahajan, Arunesh   12:33
+I I think I think we should make that assumption and push for the case wherein we get near real time experience to match because that is the future.
+
+Shetty, Rajath   12:39
+OK, OK.
+
+Mahajan, Arunesh   12:41
+That's what Tim also said.
+Right, pheasant?
+
+Shetty, Rajath   12:42
+Yes, yes. OK.
+
+Nkutu, Faisal   12:44
+But.
+
+Mahajan, Arunesh   12:45
+So let's push with it like like see if if Tim or anyone, Tim won't decided we Tim was an advocate or that but if somebody has some MDM disagrees with that or something else to ask somewhere MDM.
+Sorry services team and says, Oh no, we can't do that.
+Let me talk to them that this is the future.
+Why should we?
+Why should we take a small step when we have an opportunity to take a leap?
+
+Shetty, Rajath   13:11
+OK.
+
+Mahajan, Arunesh   13:13
+Because that's what we wanna do, right?
+We just don't want to focus on the CIS and MDM switch.
+We also want to focus on what improves overall process if man's yeah.
+
+Shetty, Rajath   13:21
+Yeah, because I'm. I'm.
+You know, because I'm also telling this and asking this because for the copilot and address update rewrite I have to again do redo those diagrams and then I'm going to ensure that we are accessing match data rather than.
+
+Mahajan, Arunesh   13:33
+Mm-hmm.
+
+Shetty, Rajath   13:41
+Directly interfacing with MDM.
+
+Mahajan, Arunesh   13:46
+Umm, no, I think I think that's the right assumption.
+That that we should go with Matt, because that's the whole reason why we created the services.
+
+Shetty, Rajath   13:55
+OK.
+Yeah. OK.
+
+Mahajan, Arunesh   13:56
+The whole reason might be popping the entire database.
+
+Shetty, Rajath   13:59
+OK.
+Thanks. Yeah.
+
+Mahajan, Arunesh   14:00
+Right.
+And if somebody, if they reject it, then we say, OK, wait, what's active needs to be improved on match first before you do CIS to MDM?
+
+Shetty, Rajath   14:03
+The.
+Yeah. OK.
+
+Mahajan, Arunesh   14:12
+And always remember, if somebody questions the pattern.
+This is a pattern provided to us by enterprise architecture.
+
+Shetty, Rajath   14:20
+Yeah, yeah, yeah. OK.
+
+Mahajan, Arunesh   14:23
+So please talk to enterprise architecture.
+
+Shetty, Rajath   14:25
+Yeah.
+
+Mahajan, Arunesh   14:28
+Perfect.
+
+Shetty, Rajath   14:29
+OK.
+
+Mahajan, Arunesh   14:35
+There was this composite view and this OK, the whole all the applications OK.
+
+Shetty, Rajath   14:42
+But this is what I think.
+Uh Faisal roof with along with Tim.
+
+Nkutu, Faisal   14:46
+Yeah, the target state architecture, yes.
+
+Shetty, Rajath   14:50
+So that goes into Cafka Kafka.
+OK so here Faisal it it directly interacts with cap because OK, the reading data from CAP covers some MDM updates that up with the golden copy.
+
+Nkutu, Faisal   15:05
+Yeah.
+
+Shetty, Rajath   15:09
+And data is pushed from admin systems also to cache and then it gets replicated.
+OK.
+Alright, that's fine.
+
+Nkutu, Faisal   15:15
+Yeah.
+
+Mahajan, Arunesh   15:18
+Cool.
+
+Shetty, Rajath   15:19
+OK.
+
+Mahajan, Arunesh   15:22
+Did you find anything else present on the?
+OK, let's go with the.
+Let's go with the review comment once again, if you guys don't mind.
+
+Nkutu, Faisal   15:28
+OK. Yeah.
+So the other thing they talked about was.
+This one I've changed this one I've changed.
+
+Mahajan, Arunesh   15:41
+Umm.
+
+Nkutu, Faisal   15:43
+It was something something to do about with Bill 64.
+
+Mahajan, Arunesh   15:47
+Yeah.
+Been 64 is under compliance.
+And I think the rather than language needs to be changed, right?
+
+Nkutu, Faisal   15:52
+Yeah.
+
+Shetty, Rajath   15:58
+I think what?
+Prasad.
+Yeah, Prasad wanted to know when we saw we showed him EWMS.
+
+Mahajan, Arunesh   15:59
+Yeah.
+
+Shetty, Rajath   16:04
+He wanted to know what kind of our business context what's happening.
+So we might want to say.
+
+Mahajan, Arunesh   16:08
+No, no, I think I think Faisal, by mistake you had put it under EWMS this compliance.
+
+Shetty, Rajath   16:14
+Yeah, yeah, yeah.
+
+Nkutu, Faisal   16:14
+Yeah, because the because when I talk to Tim, he talk, I think because of the accident, he told me IWIS.
+So I thought you met EWMS.
+
+Mahajan, Arunesh   16:22
+Yes, yes, yes, yes, yeah.
+
+Nkutu, Faisal   16:26
+I made a mistake. Yeah.
+
+Shetty, Rajath   16:26
+Ohk OK.
+
+Nkutu, Faisal   16:28
+So I have now changed it.
+I've removed it from there and I'll put it on the data integration view as one of the steps of my micro modernization strategy.
+
+Mahajan, Arunesh   16:32
+OK.
+
+Shetty, Rajath   16:34
+OK.
+
+Mahajan, Arunesh   16:40
+Right.
+
+Nkutu, Faisal   16:40
+Yeah, as I'm one of the beneficiaries of the Micro Micro modernization strategy is this one.
+I put I place it there for now and and EWMS I I added a a BLOB explaining what EWMS kind of giving it some kind of what is what's doing.
+You know the quadrus.
+
+Mahajan, Arunesh   17:05
+Mm-hmm.
+
+Nkutu, Faisal   17:05
+Uh, I added that, sorry.
+
+Mahajan, Arunesh   17:06
+So the two things you're guys, I think I think there are two things there present, sorry.
+There are two things here.
+
+Nkutu, Faisal   17:11
+Yeah.
+
+Mahajan, Arunesh   17:12
+One is the compliance piece, which is, uh, building C4 which is impacting all the applications within Canada life right, which contain customer data, right?
+
+Nkutu, Faisal   17:25
+OK.
+
+Mahajan, Arunesh   17:25
+That is one with the generic, the other one that you mentioned, the IWIS P.
+Wasn't because of EWMS, isn't it?
+
+Nkutu, Faisal   17:41
+The the ID WS when when, uh.
+When I was talking to Jimmy, kind of put them together for me.
+So I didn't know the difference between which and which.
+
+Mahajan, Arunesh   17:50
+OK, good.
+
+Nkutu, Faisal   17:51
+Yeah.
+
+Mahajan, Arunesh   17:51
+Fine.
+Please please.
+
+Nkutu, Faisal   17:52
+Yeah.
+And I and I've sent.
+
+Shetty, Rajath   17:54
+The other big love on EWMS, sorry.
+
+Mahajan, Arunesh   17:54
+Umm.
+
+Nkutu, Faisal   17:55
+I'm sending a message.
+
+Shetty, Rajath   17:58
+The BLOB on EWMS looks good guys.
+
+Nkutu, Faisal   18:01
+OK.
+Thank you.
+I was almost going to send you a message to kind of review, but thank you.
+
+Shetty, Rajath   18:05
+But no, no, I did it. OK.
+
+Nkutu, Faisal   18:07
+OK, good.
+Thank you for approving it.
+So I need to do the same for all other you know, all others.
+
+Mahajan, Arunesh   18:14
+Yeah.
+
+Nkutu, Faisal   18:15
+Yeah, I'll kind of give him what I think from given given the sequence diagrams.
+What I think is the BLOB and then I'll pass it on to you to review and I'll highlight them in yellow.
+So that next time when we do a joint review, we can kind of you know.
+
+Mahajan, Arunesh   18:31
+Rajat rajat.
+
+Shetty, Rajath   18:32
+Yeah.
+
+Mahajan, Arunesh   18:33
+Uh, tell me if you don't mind, can you please show Faisal our D2 page, one second for just a second.
+
+Shetty, Rajath   18:40
+I'm trying to track the I just logged into detail.
+
+Mahajan, Arunesh   18:41
+I just wanted to see it.
+
+Shetty, Rajath   18:44
+I don't have access.
+
+Mahajan, Arunesh   18:46
+Really.
+
+Shetty, Rajath   18:46
+Yeah, I.
+So I don't know if I'm going wrong, just I I.
+That's what I was trying to when we were discussing the beginning was trying to.
+
+Mahajan, Arunesh   18:54
+OK.
+
+Shetty, Rajath   18:55
+Share that.
+So I don't know what's happened.
+Look at this how the page has become.
+
+Mahajan, Arunesh   18:59
+Building.
+No, wait, let me just.
+
+Shetty, Rajath   19:00
+Can you see my thing?
+
+Nkutu, Faisal   19:03
+Yeah, I see your screen.
+
+Shetty, Rajath   19:03
+That this is how.
+
+Mahajan, Arunesh   19:04
+Little bit, let me try.
+
+Shetty, Rajath   19:06
+It.
+
+Mahajan, Arunesh   19:07
+Let me connect two.
+
+Shetty, Rajath   19:09
+So I have tried the same idea.
+I'm not able to say anything.
+I don't know if they'll move my access or something.
+
+Mahajan, Arunesh   19:18
+Ohh mad.
+
+Shetty, Rajath   19:18
+Which?
+So I went to EWMS user mapping between uh, no, it's OK.
+Just but I don't know where.
+
+Mahajan, Arunesh   19:28
+It's very important.
+Umm.
+I'm just logging into VPN.
+You give me one second.
+I'm gonna show that.
+
+Shetty, Rajath   19:39
+OK.
+Yeah, spaces D2 program works.
+Team uh, this is the one I thought I'd anyway.
+They know I'm able to say, oh, this one is that.
+No, no.
+Actually, I do have 41 second.
+This is some old diagrams.
+
+Nkutu, Faisal   20:10
+Yeah.
+
+Mahajan, Arunesh   20:11
+They are very particular about the color schemes, OK.
+
+Nkutu, Faisal   20:14
+OK.
+
+Mahajan, Arunesh   20:15
+And just kidding, we just we just wanna make sure we just wanna make sure that we follow this one because we me rajath and are, you know, some of us have actually.
+
+Shetty, Rajath   20:18
+OK.
+
+Mahajan, Arunesh   20:29
+How should I say we've he did a lot of diagrams using the same color scheme and now we'd like to maintain that only for our reference.
+
+Nkutu, Faisal   20:36
+OK, please give.
+
+Mahajan, Arunesh   20:37
+Very easy.
+The moment you see the color, you know what you're doing, so.
+
+Shetty, Rajath   20:40
+Yeah.
+
+Nkutu, Faisal   20:41
+OK.
+Maybe.
+Maybe I'll I'll get a copy of the URL with that color scheme so that I can adopt the same.
+
+Mahajan, Arunesh   20:47
+Yeah.
+We just, we just show you once and then you can get the URL link also no problem.
+
+Nkutu, Faisal   20:53
+E yeah.
+
+Shetty, Rajath   20:58
+Why?
+Don't know why my son so small.
+Not I'm not able to find that page well, so advisor.
+
+Mahajan, Arunesh   21:05
+Uh, seeing the recently viewed or something like that?
+
+Shetty, Rajath   21:08
+Like I riser on boarding i.e.
+They're drawing some new stuff that I don't know where the old the tiles are completely missing.
+
+Mahajan, Arunesh   21:23
+Hmm.
+
+Shetty, Rajath   21:23
+December 13th, October show.
+
+Mahajan, Arunesh   21:27
+Search for the tower.
+
+Shetty, Rajath   21:31
+Yeah.
+End to end.
+See this one diagrams for end to end.
+The OK.
+
+Mahajan, Arunesh   21:37
+You know those are good.
+
+Shetty, Rajath   21:38
+This one is there.
+There's also has, so these are the colour scheme.
+See the other ones.
+The service is good.
+I think the sun has the more main ones, I and discussion.
+
+Mahajan, Arunesh   21:52
+Yeah, yeah, this one has it.
+This one has it.
+Yes, yes, so.
+Don't look at how we should say Faisal.
+
+Nkutu, Faisal   22:02
+Yeah.
+
+Mahajan, Arunesh   22:03
+You see the right side, the legend, new enhanced reuse.
+Replace in discussion vendor.
+
+Nkutu, Faisal   22:09
+Right.
+
+Mahajan, Arunesh   22:11
+Use the same 1 right?
+
+Nkutu, Faisal   22:13
+OK.
+
+Mahajan, Arunesh   22:15
+Play you can see we have placed these uh circles on different different systems, right?
+They represent what's happening with these.
+
+Nkutu, Faisal   22:22
+Alright.
+
+Mahajan, Arunesh   22:26
+This is exactly what Prasad wanted to see in your diagram to see and say hey, you know what?
+
+Nkutu, Faisal   22:26
+No.
+
+Mahajan, Arunesh   22:33
+This is the older one.
+This is the new one.
+
+Nkutu, Faisal   22:36
+Right.
+
+Mahajan, Arunesh   22:38
+So you will draw one diagram per system like.
+Basically you are drawing 4 boxes minimum right system diagram system like what application, how it interacts with CIS going forward, how it will interact with MDM using match.
+
+Nkutu, Faisal   22:46
+Right.
+
+Mahajan, Arunesh   22:55
+That's it.
+
+Nkutu, Faisal   22:57
+OK.
+
+Mahajan, Arunesh   22:57
+That itself should show him what's current and being replaced versus what's future and with MDM.
+
+Nkutu, Faisal   23:07
+OK.
+
+Mahajan, Arunesh   23:09
+I just want you to focus on this box which whether there is shown on the screen which says new enhanced reuse replace the other.
+Can we just take a snapshot, take a snapshot of this Faisal easier for reference.
+
+Shetty, Rajath   23:18
+It's it's being recorded actually.
+
+Nkutu, Faisal   23:21
+Yeah.
+No, I took a screenshot.
+That's fine.
+
+Mahajan, Arunesh   23:24
+OK.
+OK, great.
+And wherever you show the APG and microservices, you can follow the standard pattern that Rajat was sharing on the screen.
+
+Shetty, Rajath   23:34
+Sorry, I'm chat again.
+
+Mahajan, Arunesh   23:36
+No, no, it's OK.
+You can give me the link.
+OK, here you go.
+Faisal, can you see the screen, you see the integration layer.
+
+Nkutu, Faisal   23:45
+Yep.
+
+Mahajan, Arunesh   23:46
+In the center.
+So what we have tried to show is Canada like digital core, when we say Canada Live digital core, it consists of the API's, the microservices, the event streaming, right, all of that.
+That and then outside of that within the integration layer, you also have the ETL and the Mesh API.
+
+Nkutu, Faisal   24:14
+Or OK.
+
+Mahajan, Arunesh   24:14
+OK.
+Ideal is ideal is not exactly.
+Umm, how should I say with Julie's team?
+
+Shetty, Rajath   24:20
+Digital go.
+
+Mahajan, Arunesh   24:21
+Team it's it's a little outside of that.
+It's with our MDM teams.
+Zelko is in charge of the ETL.
+Really.
+That shouldn't bother you.
+You should just use the color codes as much as possible on the same lines.
+That's all.
+
+Nkutu, Faisal   24:38
+OK.
+
+Mahajan, Arunesh   24:40
+OK, you may not have access to these no diagrams, but I'll be happy to share screenshots with you and then you can refer to them.
+
+Nkutu, Faisal   24:51
+OK.
+Thank you.
+
+Shetty, Rajath   24:53
+Yeah, Faisal might not have access to the links.
+
+Mahajan, Arunesh   24:53
+No problem.
+Yeah.
+And it'll take really long to get him the access.
+So I want to do is I'll take a few screenshots.
+You know, ship it to him and then he can take a look every time, you know, it'll be good reference.
+
+Nkutu, Faisal   25:08
+Yeah.
+Thank you.
+
+Mahajan, Arunesh   25:08
+OK, so this was so this was our other point.
+What else?
+The three minutes left. Guys.
+Uh, what else was our other observation?
+
+Nkutu, Faisal   25:18
+Yeah.
+The other observation was questions regarding the the yeah.
+
+Shetty, Rajath   25:21
+Mailing and tracking.
+
+Nkutu, Faisal   25:23
+So I sent out the questions to the yeah.
+
+Mahajan, Arunesh   25:24
+Billing and tracking.
+Ohh my God.
+So.
+So.
+So here's the thing.
+Here's the thing guys.
+Faisal, I want you to take one more dig at your document.
+OK, do a self review, OK?
+Each and every place in the sequence diagram, wherever you have mentioned data submit data retrieve data.
+I want you to replace the word data with something which is more functional in context.
+
+Nkutu, Faisal   25:50
+Yeah, I I sent out an email to and is CC D you.
+I sent out an email to Adeeb E Yeah, asking for that information.
+
+Mahajan, Arunesh   25:56
+Yeah, I saw that.
+I saw that.
+
+Nkutu, Faisal   26:00
+I had already asked that information to Bob something back because I know this was going to come up and then he told me he has no he, you know, he needs a charge code.
+So but I was added to give me that information because the document that I have here, it does not have that information.
+
+Mahajan, Arunesh   26:11
+Yeah.
+Hmm.
+No, that that's perfectly fair.
+So you have asked him already, but I'm saying for other applications also we have not gone through all of these items, right?
+So just make sure in your sequence diagrams, everywhere else within the document if there is any mention of retrieve data or submit data, or the track data.
+Just replace the word data with more functional, more business relevant word which is, you know, address or customer profile.
+Anything.
+Anything that the application is doing something contextual.
+
+Nkutu, Faisal   26:53
+Yeah, we have.
+I could like here I did for annuities. I got it.
+I knew it is.
+I I used.
+I knew it is here.
+
+Mahajan, Arunesh   27:00
+Yeah. Yeah.
+Good, very good.
+
+Nkutu, Faisal   27:02
+Yeah, that one I got from Rajas and now there's contract changes.
+
+Mahajan, Arunesh   27:05
+This isn't.
+This is the only person who's helping us.
+
+Nkutu, Faisal   27:06
+But what?
+Yeah, the other way I guess have data is just because I couldn't get any further information like, yeah, I I'm using modernized.
+
+Mahajan, Arunesh   27:15
+That's fine, that's fine.
+
+Nkutu, Faisal   27:17
+Yeah, I'm using Patrick client and things like that because I have specific information for in that.
+In that mode, the otherwise if someone doesn't give me information, I'm just using data like here you can say get party get contract.
+
+Mahajan, Arunesh   27:29
+Yeah.
+Just so. So identify.
+Identify wherever you have used the word data and you do not have a good context.
+Reach out to the SME.
+Copy me, rajat.
+We will all get together and get to the data, OK, we will get you the the context now.
+
+Nkutu, Faisal   27:44
+OK.
+
+Mahajan, Arunesh   27:51
+What I was gonna say is no for each of the interfaces, the ones that you review, you will draw a diagram that will show the current state as well as the future state.
+OK, one diagram with the help of legend.
+
+Nkutu, Faisal   28:04
+Right.
+
+Mahajan, Arunesh   28:07
+You can show the current state and the future state and remember that within that diagram, when you show the arrows, the arrows should also be color coded to represent the existing current state and the new state that OK.
+
+Nkutu, Faisal   28:21
+Yep.
+Uh, so you mean this sequence diagrams that I have?
+Should I keep them or get rid of them?
+
+Mahajan, Arunesh   28:27
+Keep them.
+Keep them.
+Now you work hard on them.
+Keep them.
+This is great and I don't want you to waste your effort, right.
+
+Nkutu, Faisal   28:30
+But.
+
+Mahajan, Arunesh   28:34
+This is very good information.
+It tells the people relevant chronological order perfectly fine.
+No problem.
+Leave them on.
+
+Nkutu, Faisal   28:41
+Right.
+
+Mahajan, Arunesh   28:43
+But add those diagrams which show the current and future state in one single diagram.
+
+Nkutu, Faisal   28:49
+OK.
+
+Mahajan, Arunesh   28:50
+With the same legends.
+
+Nkutu, Faisal   28:53
+OK.
+
+Mahajan, Arunesh   28:54
+OK.
+And what we can do after that is once you've done it, we'll start adding the same thing to all the diagram.
+Make it very consistent the flow and if there is, I didn't see there could be hundreds of questions more right?
+We don't know, but whatever business comments or whatever comments you receive, so 5 minutes trying to accommodate those and send it out to Prasad and all these guys to acknowledge.
+
+Nkutu, Faisal   29:12
+But.
+
+Mahajan, Arunesh   29:21
+So when you send out an email, I want you to write #1, #2, #3.
+These are the observations done today, so please do one thing Faisal, send out an email today.
+OK.
+
+Nkutu, Faisal   29:30
+Right, yeah.
+
+Mahajan, Arunesh   29:31
+Then a team.
+Thanks for giving us the time to review this document.
+Please note these are the below observations that will be covered in the next release of the document.
+
+Nkutu, Faisal   29:43
+OK.
+
+Mahajan, Arunesh   29:45
+Yeah.
+So that everybody knows how many.
+Uh, how many were uh?
+How many observations were there today and what are we doing about those babe?
+
+Nkutu, Faisal   29:54
+Right, yeah.
+
+Mahajan, Arunesh   29:55
+And then when we send the next one, we also be sure to cover all of those in the document.
+That's all.
+
+Nkutu, Faisal   30:00
+OK.
+
+Mahajan, Arunesh   30:02
+If they expect 100.
+And we tell them they should expect 100, then that's fine.
+Right now, if you don't tell them that there is expect 100 and they expect 300 and the review again and then we'll again be in trouble.
+
+Nkutu, Faisal   30:10
+Alright.
+
+Mahajan, Arunesh   30:16
+So they should be able to review each and every item that they highlighted today.
+1st that should be the first step.
+
+Nkutu, Faisal   30:23
+Right.
+
+Mahajan, Arunesh   30:25
+OK.
+
+Nkutu, Faisal   30:26
+Yeah.
+
+Mahajan, Arunesh   30:27
+Anything else?
+And it wasn't anything else, guys.
+
+Nkutu, Faisal   30:30
+Scope was one of the things that I have to work on, greater scope of the interaction diagram.
+Uh.
+
+Mahajan, Arunesh   30:37
+Which one?
+
+Nkutu, Faisal   30:38
+The interaction diagrams I think we mentioned that we need the scope of what is being covered in.
+Explained that this is not a detail level.
+
+Mahajan, Arunesh   30:46
+Yeah.
+Yeah.
+So we so, so we set up an expectation.
+So at the top you will you have that.
+Can you go to the top once again?
+
+Nkutu, Faisal   31:01
+Yeah.
+
+Mahajan, Arunesh   31:02
+Vision statement.
+
+Nkutu, Faisal   31:06
+This one.
+
+Mahajan, Arunesh   31:20
+How many?
+Uh, OK, so 2.1 is vision statement.
+What is the next one?
+
+Nkutu, Faisal   31:28
+Yeah.
+
+Mahajan, Arunesh   31:30
+The OK next.
+
+Nkutu, Faisal   31:32
+Constraints.
+
+Mahajan, Arunesh   31:34
+Stands OK, so these, uh, OK, let me create a what do we expect?
+Page OK.
+I'll just prepare a rough patch with what to expect, and then we'll add information on the.
+In the meantime, we just work on the diagrams.
+
+Nkutu, Faisal   31:52
+OK.
+
+Mahajan, Arunesh   31:54
+I'll create that.
+What to expect?
+
+Nkutu, Faisal   31:56
+OK.
+Thank you.
+
+Mahajan, Arunesh   31:59
+No problem at all.
+Anything else?
+
+Nkutu, Faisal   32:04
+No, I think this meeting was set up for something different, but we use it for something different.
+
+Mahajan, Arunesh   32:10
+Yes, the address resolution flow.
+Oh my God.
+
+Shetty, Rajath   32:13
+Umm.
+
+Mahajan, Arunesh   32:14
+And this is let's look at that address involution flow.
+You have removed on base perfect CIS subscriber going to Kafka.
+Great MDM publish customer.
+Yes.
+See you are is correct customer, Ms uh.
+So when we say the yellow box on the top which says address update Co pilot common client.
+That is our application set, right?
+
+Nkutu, Faisal   32:45
+Yeah.
+Yeah, that's an application.
+That's just it may have to use also this auto validation API.
+
+Shetty, Rajath   32:57
+We can use that in the future as well.
+
+Mahajan, Arunesh   32:58
+OK.
+
+Shetty, Rajath   32:59
+We'll also if if they're doing a address updates right using the new application, we can use the same API, just a future announcement.
+It can auto populate as well because we're using micro US.
+
+Mahajan, Arunesh   33:19
+OK.
+So don't you rather don't you want to show the replacement of these also on the screen future?
+
+Shetty, Rajath   33:29
+Uh in the sensory arunesh I didn't get it.
+
+Mahajan, Arunesh   33:31
+The BMW.
+Remember the BABW?
+
+Shetty, Rajath   33:33
+Yeah, yeah, I I have to redraw that.
+That's why I'm asking because if if microservice Mads gets the updates first or retrieves the data from there, I have to revamp my.
+
+Mahajan, Arunesh   33:37
+Umm.
+
+Shetty, Rajath   33:46
+Diagrams to show that add the new application right if it's through micro UI.
+It'll be accessing mad data and getting the information and updating it in the same pattern like as shown through MCL, like how MCL is working more or less.
+The new application will work in the same manner, where it goes to Matt's first, then replicates to MDM and then MDM publishes the golden copy on the cache card.
+
+Mahajan, Arunesh   34:13
+Umm yeah, right.
+
+Shetty, Rajath   34:15
+Because MCL also is doing more or less the same arunesh because right now they're looking at enhancing addresses where clients can update the address directly, right?
+
+Mahajan, Arunesh   34:19
+Umm.
+
+Shetty, Rajath   34:25
+So we'll we'll have business making those changes on the new address update application, which might follow the same pattern that is already being used, right.
+
+Mahajan, Arunesh   34:25
+Right.
+
+Shetty, Rajath   34:37
+It'll have Microsoft.
+
+Mahajan, Arunesh   34:37
+Can we do one thing, Rajat?
+See, then, when everybody suggesting that how you know what we should move on our more near real time process with these API, right?
+
+Shetty, Rajath   34:50
+Umm.
+
+Mahajan, Arunesh   34:50
+But image match I'm saying I'm saying but.
+Who from Mads?
+Can confirm this?
+Or can we can at least agree with this?
+It's July.
+
+Shetty, Rajath   35:01
+Yeah, Julia, Rabbi Abbi, I don't know if he's moving out.
+Who was replacing?
+
+Mahajan, Arunesh   35:05
+Abby's going.
+
+Shetty, Rajath   35:05
+Is it under former?
+
+Mahajan, Arunesh   35:06
+Be gone.
+
+Shetty, Rajath   35:07
+No, but my my.
+
+Mahajan, Arunesh   35:08
+Abid gone.
+
+Shetty, Rajath   35:10
+Yeah, but Anupama would be coming in place of Abid, right?
+
+Mahajan, Arunesh   35:14
+Ohh really?
+
+Shetty, Rajath   35:14
+I don't know.
+Oh, no, no, no, no.
+Jesus.
+Sorry, but whoever's replacing Abby might confirm this because this I think is provided by Abby.
+
+Mahajan, Arunesh   35:21
+Umm.
+
+Shetty, Rajath   35:24
+So According to him, this must be feasible.
+It is being done though Arunesh as of today because MCL changes, phone number and preferences for clients.
+
+Mahajan, Arunesh   35:33
+Umm.
+
+Shetty, Rajath   35:36
+It is being done so if you see that customer microservice that is there in between, I think it was an inbuilt microservice which updates phone and.
+Preference information from the site into MDM and that replicates the CS.
+
+Mahajan, Arunesh   35:52
+Umm.
+
+Shetty, Rajath   35:53
+Those are the two fields that are only replicating as of today, so they're going to enhance that customer microservice with other microservices to update addresses or any other information.
+
+Mahajan, Arunesh   36:07
+Right.
+The OK.
+So let's go with it then.
+
+Shetty, Rajath   36:14
+That's what I'm thinking.
+We I'll anyway, what we have for the other one we are having in meeting with Varun first from MDM site to understand what API they have and then we're having a meeting with Julie and team to get a rough estimate for the work.
+
+Mahajan, Arunesh   36:23
+Umm.
+
+Shetty, Rajath   36:32
+So then we can ask that same question.
+If these patterns are already existing, I'll show the same diagram and no I I will create an yeah, show this similar or create a similar one and then uh should show them during the meeting.
+
+Mahajan, Arunesh   36:38
+Yeah, exactly.
+I think, yeah, I think we're good.
+Let's let's do that.
+
+Shetty, Rajath   36:54
+OK.
+
+Mahajan, Arunesh   36:55
+Other than that, on this diagram, I don't see anything wrong.
+I think it's perfectly clear.
+See you as you are.
+Where do you live?
+Yeah.
+OK. So.
+Will you be able to make that change right after you speak to her?
+
+Shetty, Rajath   37:26
+Ohh, after speaking with the No I'm I I have to anyway create it for the ideas so that one I will take it as a separate diagram not to sell.
+
+Mahajan, Arunesh   37:32
+Ohk.
+OK, no.
+
+Shetty, Rajath   37:35
+Anyway, this is near completed, right?
+
+Mahajan, Arunesh   37:36
+OK.
+
+Shetty, Rajath   37:37
+So that is for the other area that I will create, I'll and you have to change the pattern for that.
+
+Mahajan, Arunesh   37:43
+Yeah, this area young.
+OK, got it. OK.
+Wrong play.
+We will get that information.
+I was just thinking I was supposed to talk to Prasad and have him push upwards for the removal of any address updating service that I was doing.
+We only want service to the other two, yeah?
+
+Shetty, Rajath   38:08
+Yeah, that one is AW, first thing, it's a big problem if if they continue using Google and here we are adopting Canada Post, it's all messed up still, right?
+Because advisors still change addresses and client information from a, which again will surface Google addresses, which will cause the same problems.
+
+Mahajan, Arunesh   38:29
+Yeah.
+
+Shetty, Rajath   38:32
+When when I had this discussion and when I gave an overview of that diagram that I had created with Jeffrey, he was kind of on board of on board with us saying that, yeah, we should be going with Canada Post API rather than Google.
+He was, he said, that he'll see what he can do to change it.
+But I don't know if he if he needs another push or just to ask.
+Maybe.
+But he was on board with that idea.
+And thing is needed for this.
+This is this is all that we had, right fizer.
+Nothing, nothing else that we need to discuss on.
+
+Mahajan, Arunesh   39:14
+Yes.
+
+Nkutu, Faisal   39:16
+Yeah, this is all.
+
+Mahajan, Arunesh   39:18
+This is all I have to remember.
+I don't remember anything else on this.
+
+Shetty, Rajath   39:22
+Yeah.
+We have other related address problems, but it's all CIS related, not.
+
+Mahajan, Arunesh   39:23
+And.
+
+Shetty, Rajath   39:30
+Nothing to do with this week.
+
+Mahajan, Arunesh   39:30
+E even if we have.
+Yeah, graduate good, no.
+
+Shetty, Rajath   39:33
+Sorry, sorry.
+I missed the meeting with Varun.
+I will also ask if they can call these API's real time API instead of that API that they have today where they go get the three month old data right?
+You remember?
+They they used the Avi, which connects to a database which only loads every three months.
+So I will ask Varun if if they can connect to this.
+If if there is a push, or if there is an ask, they can connect to this API which gets near real time data.
+Because that was one of the questions that Tim had asked.
+Arunesh.
+
+Nkutu, Faisal   40:24
+Or do you lose enough?
+
+Shetty, Rajath   40:26
+Think so?
+
+Nkutu, Faisal   40:27
+Ohh OK.
+Hello.
+
+Shetty, Rajath   40:30
+Yeah.
+And I will.
+I will ask that person, I I hema has set up a meeting next week when we meet Varun, I will bring that up with him saying that can can we?
+Because there right now, if you see they're using that.
+Where are they using it? MDM.
+Request Avi on.
+Yeah, that's the one I think right there because thing and getting it.
+
+Nkutu, Faisal   40:57
+Right.
+
+Shetty, Rajath   40:58
+Yeah.
+So MDM service CS MDM Server repository address like OK so yeah I will.
+I'll ask them if they can.
+Umm again access that API rather than the API so that we get nearer and data so.
+
+Nkutu, Faisal   41:14
+OK.
+
+Mahajan, Arunesh   41:14
+Guys can we did you, did we OK?
+We didn't show this to Prasad today, OK?
+
+Shetty, Rajath   41:20
+No, we didn't.
+
+Mahajan, Arunesh   41:21
+This is the part this.
+
+Shetty, Rajath   41:21
+We didn't.
+
+Mahajan, Arunesh   41:22
+OK, OK.
+Because I'm gonna mark this as on a separate template for improvements that MDM has to make.
+
+Shetty, Rajath   41:24
+No.
+Yeah.
+Yeah, that's why I'm going to ask in that meeting next week with Varun Arunesh.
+
+Mahajan, Arunesh   41:37
+Yeah.
+Yeah.
+No, that you ask.
+I'm just saying that me and Tim, we are sending out a separate remember today Prasad mentioned.
+
+Shetty, Rajath   41:47
+Yeah, yeah.
+
+Mahajan, Arunesh   41:49
+To create a separate log of all the issues with CIS and MDM, and then we'll go to the enterprise architectures out from KV to his boss.
+Like.
+In the MDM, why are we using that API method with three months old data?
+This is one example that we got yesterday with the Tim by right with Tim Baker.
+
+Shetty, Rajath   42:10
+Yes. Yeah.
+
+Mahajan, Arunesh   42:12
+Yeah.
+OK.
+I think they're OK.
+Faisal, please make that change and send us and Rajat if you want to smoke into the MDM.
+
+Shetty, Rajath   42:21
+Yeah.
+
+Mahajan, Arunesh   42:23
+Guys please let us know.
+
+Shetty, Rajath   42:25
+Yes.
+Yeah, I I can ask.
+
+Mahajan, Arunesh   42:26
+Right through.
+
+Shetty, Rajath   42:27
+Faisal is in the in the meeting right present.
+Hema is going to include you as well, so yeah, we'll be there in that meeting now.
+Arunesh, we'll ask them.
+
+Mahajan, Arunesh   42:36
+OK.
+OK.
+OK. Perfect. Perfect.
+I think they're close guys, but again, small, small things.
+But so I mean, I think it's the temenus accomplishment you guys have made.
+
+Shetty, Rajath   42:47
+How far is it possible?
+
+Mahajan, Arunesh   42:47
+Nobody has created it.
+
+Nkutu, Faisal   42:47
+Alright.
+
+Mahajan, Arunesh   42:49
+Faisal Faisal has weaved the whole carpet of CIS to MDM.
+
+Shetty, Rajath   42:50
+Can you talk?
+Yeah.
+Yeah, it's, it's it's it's a continuous continuous improvement document.
+
+Nkutu, Faisal   42:54
+No.
+Up.
+
+Shetty, Rajath   42:59
+I told him in the beginning, it said there's gonna be a lot of changes all the time because it's so complicated.
+
+Mahajan, Arunesh   43:00
+Yes.
+
+Shetty, Rajath   43:04
+But this much is like real good information.
+
+Nkutu, Faisal   43:04
+Yeah.
+Yeah, no.
+
+Mahajan, Arunesh   43:07
+Yeah, this is this is like the whole encyclopedia for CS MDM.
+
+Nkutu, Faisal   43:11
+Yeah, I'm getting all the information from you, Sir.
+It's a combination of efforts.
+
+Mahajan, Arunesh   43:18
+Or it's your effort.
+We are other than other than still doing something.
+
+Shetty, Rajath   43:21
+Yeah.
+Just guiding where there, that's all.
+
+Mahajan, Arunesh   43:23
+I'm just starting my head trying to trying to understand what's happening.
+
+Nkutu, Faisal   43:24
+No, like I can't do it without you.
+You you have all the background knowledge.
+
+Mahajan, Arunesh   43:30
+Yes, that's why you have a lot of background on you, my friend.
+
+Shetty, Rajath   43:30
+Thanks.
+Some some.
+Yeah.
+
+Nkutu, Faisal   43:35
+Both of you.
+
+Mahajan, Arunesh   43:36
+OK.
+
+Shetty, Rajath   43:36
+Anyway, it is.
+
+Mahajan, Arunesh   43:36
+Then, alright, we'll reconvene.
+
+Shetty, Rajath   43:37
+It is for a good cause really.
+
+Nkutu, Faisal   43:39
+Yeah, you too.
+
+Mahajan, Arunesh   43:42
+OK guys, so we'll reconvene soon.
+
+Shetty, Rajath   43:43
+OK.
+
+Mahajan, Arunesh   43:44
+Let's let's wait for one week.
+We'll do it next week.
+This week is not possible.
+Next week I'm busy till 10.
+So whatever has to be done has to be done after 10th, but I would expect V3 to review this document once again after you made the changes present.
+
+Nkutu, Faisal   43:57
+OK.
+All good.
+
+Mahajan, Arunesh   44:05
+And then we go to Prasad and eventing. OK.
+
+Nkutu, Faisal   44:05
+I'll start on the 10.
+
+Mahajan, Arunesh   44:10
+All right.
+Thank you.
+
+Shetty, Rajath   44:11
+OK.
+
+Mahajan, Arunesh   44:12
+Thank you guys.
+
+Nkutu, Faisal   44:12
+Thank you to you too. Bye.
+
+Shetty, Rajath   44:12
+Thank you.
+Thanks bye.
+
+Mahajan, Arunesh   44:13
+Appreciate it.
+Bye, bye.
+
+Mahajan, Arunesh left the meeting
+
+Shetty, Rajath left the meeting
+
+Nkutu, Faisal stopped transcription
