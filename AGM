@@ -1,0 +1,106 @@
+So kiss is the basically the system of record for client records that come into AGM UMM and and do you need a background on AGM like oh OK so so.
+0:3:23.910 --> 0:3:28.220
+Does, Rob
+So what AGM is is it's a, it's an aggregation app.
+0:3:28.230 --> 0:3:30.50
+Does, Rob
+It's a household aggregation tool.
+0:3:32.270 --> 0:3:34.400
+Does, Rob
+And I don't know Debbie.
+0:3:34.410 --> 0:3:41.100
+Does, Rob
+Maybe you can disclaim the business side of it better, but let me try in a in a quick nutshell here, we wanna look at.
+0:3:41.110 --> 0:3:54.910
+Does, Rob
+We wanna see the full value of investments from a household so that we can offer them better fees and and and and and and perhaps rebates depending on the product.
+0:3:55.670 --> 0:3:58.750
+Does, Rob
+Umm, so E you know what?
+0:3:58.760 --> 0:4:13.640
+Does, Rob
+What it is is, is is just a tool to aggregate a contracts or accounts or policies that are held by Members within the same household, and then of course, like you know, based on the product series, they get better pricing.
+0:4:15.650 --> 0:4:23.930
+Does, Rob
+So what happens is we've got two primary sources of accounts, SAS for mutual funds and unitrax for psych funds.
+0:4:24.900 --> 0:4:26.310
+Does, Rob
+These are the primary sources.
+0:4:27.300 --> 0:4:34.350
+Does, Rob
+Unitrax is the book of record for the high net worth agreement, seg funds and SAS at the book of Record for the High Net worth mutual fund agreements.
+0:4:36.190 --> 0:4:37.140
+Does, Rob
+AGG.
+0:4:37.150 --> 0:4:40.90
+Does, Rob
+So there's another type of agreement, right?
+0:4:40.100 --> 0:4:42.780
+Does, Rob
+There's different types of agreements that are held within AGM.
+0:4:44.610 --> 0:4:53.20
+Does, Rob
+So we have a high net worth agreement and then we have a household agreements, the household agreements, those are the book of record for those is actually AGM.
+0:4:54.590 --> 0:4:58.440
+Does, Rob
+We have secondary sources of of accounts as well that feed in.
+0:4:59.310 --> 0:5:19.470
+Does, Rob
+So you know, if somebody has, you know, a seg fund in unitrax and a mutual fund that's in SAS and also has, you know, some GIF's or annuities in other systems, they're all going to get aggregated and fed into fed, into AGM, AGG into the data.
+0:5:20.340 --> 0:5:20.600
+Nkutu, Faisal
+Right.
+0:5:20.360 --> 0:5:45.860
+Does, Rob
+And the way that happens is so basically this side, uh, you know, let's if we look at the high net worth agreements coming out of SAS and Unitrax, they're fed in daily through an ETL job called Interface 95 and and and and so if there's some, if there's a new agreement created in unitrax, it'll come in tomorrow through 95 and into AGG.
+0:5:46.810 --> 0:5:58.730
+Does, Rob
+Then what happens is there's an extract that comes out of AGG on a daily basis through a job called a GO51, and it gets sent through to IDM.
+0:6:0.60 --> 0:6:10.710
+Does, Rob
+Uh IDM basically, you know, looks for new roles and and when we say a role, what that means is a an account.
+0:6:11.750 --> 0:6:12.660
+Does, Rob
+Uh can.
+0:6:12.670 --> 0:6:18.280
+Does, Rob
+We'll have a role relating to an agreement group in AGM, right?
+0:6:18.290 --> 0:6:22.420
+Does, Rob
+So the agreement group is the is the you know the the aggregation of accounts.
+0:6:23.810 --> 0:6:29.740
+Does, Rob
+The role is the relationship between the agreement group and the contracts or or accounts with within it.
+0:6:31.590 --> 0:6:38.370
+Does, Rob
+So every day the the there's a process in in IDM that runs through, looks for new roles relating to.
+0:6:40.210 --> 0:6:51.830
+Does, Rob
+To to the agreements in AGG, it sources client and contract details from KISS and and and so that's where you know that.
+0:6:51.840 --> 0:6:57.870
+Does, Rob
+That's where the the relationship to AGG data comes in here and it is kind of an indirect one as well, right?
+0:6:58.820 --> 0:7:2.420
+Does, Rob
+The Kiss data flows into AGG through or via IDM.
+0:7:3.270 --> 0:7:6.50
+Does, Rob
+Uh, you know, gets built into roles.
+0:7:6.60 --> 0:7:12.270
+Does, Rob
+Gets staged and you know coming down through this process here, you know and and and these ETL jobs here are.
+0:7:13.700 --> 0:7:18.440
+Does, Rob
+Uh, you know, they're looking for associated Records, secondary records.
+0:7:19.990 --> 0:7:26.20
+Does, Rob
+They're looking to see if, if if a role that IDM identified has already been.
+0:7:28.10 --> 0:7:29.90
+Does, Rob
+Input to AGM.
+0:7:30.200 --> 0:7:30.830
+Does, Rob
+Umm.
+0:7:31.370 --> 0:7:41.830
+Does, Rob
+And and and or whether an account is closed and should be removed from an agreement group and also we'll update the market value of accounts.
