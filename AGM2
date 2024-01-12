@@ -1,0 +1,30 @@
+AGM Overview:
+
+AGM is described as an aggregation app and a household aggregation tool.
+Its purpose is to evaluate the full value of investments within a household.
+The goal is to offer clients better fees and potential rebates based on their investment products.
+Data Sources:
+
+Two primary sources of accounts are mentioned: SAS for mutual funds and Unitrax for seg funds (possibly segregated funds).
+High net worth agreements are stored in Unitrax, while high net worth mutual fund agreements are in SAS.
+AGM serves as the book of record for household agreements.
+Agreements and Data Flow:
+
+Different types of agreements, including high net worth and household agreements, are managed within AGM.
+Data from various sources, such as seg funds in Unitrax and mutual funds in SAS, are aggregated into AGM.
+Data Integration:
+
+Daily ETL (Extract, Transform, Load) jobs, such as Interface 95, are used to bring data from SAS and Unitrax into AGM.
+A daily extract job, GO51, sends data from AGM to IDM (Identity Management?).
+IDM looks for new roles (relationships between agreement groups and accounts) and sources client and contract details from KISS.
+KISS Integration:
+
+KISS appears to be a system that stores client records.
+IDM uses KISS data to build roles related to agreements in AGM.
+Data Verification and Maintenance:
+
+IDM checks for associated records, secondary records, and updates market values of accounts.
+It ensures that roles identified by IDM are not duplicated in AGM and handles closed accounts.
+Overall Process:
+
+The overall process involves a flow of data from various sources into AGM, with IDM playing a crucial role in managing relationships and client details.
