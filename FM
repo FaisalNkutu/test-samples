@@ -1,0 +1,25 @@
+FM is a Policy Administration system (that does not update CIS) containing multiple applications like 
+**MESH API*****
+(A)Product Illustration - uses MESH/API to interact with Policy Client Information in CIS 
+(B)Retrieve Policy Details
+***Some Products don't use MESH/API
+
+<-------------NBS is under FM and is subdivided as follows to update only Jumbo policy changes------------------>
+***Batch Processing - This retrieves directly from CIS DB2 Tables and uses
+                   some stored procedures
+
+***Online Processing - These are direct calls to CIS and are categorized as follows:
+   (A) Online Data Entry Screens
+   (B)Inquiry
+
+
+IIP Contract Type Data - is based on retrieveing a Client ID from  the database (DPPOL) as well
+as Client Name - It is uses that information to go to TCONADR to get the contract address
+
+Process
+
+1. The Batch Process Read the Data to Retrieve Policy Number from Policy Database (DBPol)
+2. and goes to CIS (TCCR) - to retrieve the matching Client ID with contract type IIP
+3a. It uses this information to get data from corporate table for the name
+3b. It also goes to TCONADDR for address Id using the same Policy Number
+3c. Using the Address ID it retrieves the rest of the information from the Address Table.
