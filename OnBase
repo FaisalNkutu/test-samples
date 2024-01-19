@@ -1,0 +1,12 @@
+Context:
+
+OnBase is an image and workflow system for managing documents, storing raw documents such as scanned papers or emails in various formats (PDF, TIFF).
+Documents go through a process of scanning, triage, and workflow, eventually reaching business users for processing.
+Kiss Interaction:
+
+Kiss is involved in an autofill process where a lookup table in OnBase is used to automatically populate data.
+Key interactions involve fetching information from Kiss during the workflow setup to populate OnBase for use as a lookup.
+Document Ingestion:
+
+OnBase has multiple ingestion points, including scanning through scanners in the mailroom, XML dips for key data, and sweeps for direct document scanning.
+Users may need to index documents manually, prompting the need for autofill processes to streamline this.
