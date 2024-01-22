@@ -1,0 +1,31 @@
+1.	Detailed Scope
+
+Scope for High Level Interaction Diagrams in an Architecture Blueprint:
+
+•	Overview:
+o	The High-Level Interaction Diagrams in the Architecture Blueprint aim to provide a comprehensive representation of the system's key interactions and communication flows at a macroscopic level. These diagrams serve as a visual tool to illustrate the major components and their interactions within the architecture. By adhering to this scope, the High-Level Interaction Diagrams aim to provide a valuable tool for stakeholders to comprehend the system's architecture without getting bogged down by excessive details.
+•	Key Objectives:
+
+o	Communication Flow Representation: They aim to illustrate the primary communication pathways and interactions between major system components, highlighting the flow of information and control.
+o	System Boundary Identification: They aim to clearly define the boundaries of the system and external entities, establishing a context for the interactions captured in the diagram.
+o	Abstraction of Details: They aim to maintain a high level of abstraction, focusing on the major components and their interactions without delving into the intricacies of internal processes or specific data flows.
+o	User-System Interactions: They aim to highlight key interactions between end-users or external systems and the core components of the system, emphasizing the user-system interface.
+Inclusions:
+
+•	Major Components: They aim to identify and represent the major system components and their roles in the overall architecture.
+•	Interactions: They aim to capture the essential interactions and communication channels between components, emphasizing the sequencing and nature of the interactions.
+•	External Entities: They aim to include external systems, users, or services that interact with the system, showcasing how the architecture accommodates external inputs and outputs.
+•	Data Flow: They aim to illustrate the flow of data between components, emphasizing the types of data exchanged and the purposes of these exchanges.
+Exclusions:
+
+•	Low-Level Details: They omit low-level implementation details, algorithms, or specific technologies from the diagram to maintain a focus on the overarching architecture.
+•	Error Handling: They avoid diving into detailed error-handling processes or exception flows; instead, concentrate on the primary, successful pathways.
+•	Non-functional Details: They exclude non-functional aspects (e.g., performance metrics, security protocols) at this high level, as they are better suited for detailed specifications.
+Audience:
+
+•	Technical and Non-Technical Stakeholders: The diagrams are used by both technical and non-technical stakeholders, providing a high-level understanding of the system's architecture and interactions.
+•	Decision Makers: They should enable decision-makers to grasp the system's design philosophy, major components, and how they collaborate to achieve the system's objectives.
+Revision and Maintenance:
+
+•	Dynamic Nature: Given that the architecture and interactions may evolve over time. Periodic revisions might be necessary to ensure that the diagrams accurately reflect the current state of the system.
+•	Alignment with Detailed Specifications: They should maintain consistency with more detailed specifications and diagrams, ensuring that the high-level interactions align with the lower-level design elements.
