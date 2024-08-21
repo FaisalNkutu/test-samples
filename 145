@@ -1,0 +1,42 @@
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.SendOptions;
+import com.ibm.mqlight.api.SSLOptions;
+import com.ibm.mqlight.api.ClientException;
+
+import java.nio.charset.StandardCharsets;
+
+public class MQLiteSender {
+    public static void main(String[] args) {
+        final String amqpUrl = "amqp://your_broker_url:port";
+        final String clientId = "your_client_id";
+        final String userCredentials = "user:password";  // if authentication is required, else null
+        final SSLOptions sslOptions = null;  // Configure SSL if needed, or set to null for no SSL
+
+        final String queueName = "your_queue_name";
+        final String messageContent = "Hello, AMQP!";
+
+        try {
+            // Configure the client options
+            ClientOptions options = new ClientOptions(amqpUrl, clientId, userCredentials, sslOptions);
+
+            // Create and start the client
+            NonBlockingClient client = NonBlockingClient.create(options);
+
+            // Send the message
+            SendOptions sendOptions = new SendOptions();
+            sendOptions.setQos(SendOptions.Qos.AT_LEAST_ONCE); // Ensure message delivery
+
+            client.send(queueName, messageContent.getBytes(StandardCharsets.UTF_8), sendOptions);
+
+            System.out.println("Message sent successfully!");
+
+            // Optionally, stop the client after use
+            client.stop();
+            System.out.println("Client stopped.");
+
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
+    }
+}
