@@ -1,0 +1,57 @@
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.SendOptions;
+import com.ibm.mqlight.api.ClientException;
+import com.ibm.mqlight.api.callback.ClientListener;
+import com.ibm.mqlight.api.callback.SendCallback;
+import com.ibm.mqlight.api.impl.NonBlockingClientImpl;
+
+import java.nio.charset.StandardCharsets;
+
+public class MQLiteSender {
+    public static void main(String[] args) {
+        final String amqpUrl = "amqp://your_broker_url:port";
+        final String queueName = "your_queue_name";
+        final String messageContent = "Hello, AMQP!";
+
+        // Configure the client
+        ClientOptions options = ClientOptions.builder()
+                .setService(amqpUrl)
+                .build();
+
+        // Create and start the client
+        NonBlockingClient.create(options, new ClientListener<Void>() {
+            @Override
+            public void onStarted(final NonBlockingClient client, Void context) {
+                System.out.println("Client connected to broker.");
+
+                try {
+                    // Send the message
+                    SendOptions sendOptions = SendOptions.builder()
+                            .setQos(SendOptions.Qos.AT_LEAST_ONCE) // Ensure message delivery
+                            .build();
+
+                    client.send(queueName, messageContent.getBytes(StandardCharsets.UTF_8), sendOptions, new SendCallback<Void>() {
+                        @Override
+                        public void onSuccess(Void context) {
+                            System.out.println("Message sent successfully!");
+                        }
+
+                        @Override
+                        public void onError(ClientException exception) {
+                            System.out.println("Message failed to send: " + exception.getMessage());
+                        }
+                    });
+
+                } catch (ClientException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onStopped(NonBlockingClient client, Void context) {
+                System.out.println("Client stopped.");
+            }
+        });
+    }
+}
