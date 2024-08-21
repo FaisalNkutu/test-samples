@@ -1,0 +1,51 @@
+import com.ibm.mqlight.api.Client;
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.Callback;
+import com.ibm.mqlight.api.SendOptions;
+import com.ibm.mqlight.api.QOS;
+import com.ibm.mqlight.api.impl.ClientImpl;
+
+import java.nio.charset.StandardCharsets;
+
+public class MQLiteSender {
+    public static void main(String[] args) {
+        String amqpUrl = "amqp://your_broker_url:port";
+        String queueName = "your_queue_name";
+        String messageContent = "Hello, AMQP!";
+
+        // Configure the client
+        ClientOptions options = ClientOptions.builder()
+                .setService(amqpUrl)
+                .build();
+
+        // Create and start the client
+        Client.create(options, new Callback<Client>() {
+            @Override
+            public void onSuccess(Client client) {
+                System.out.println("Client started and connected to broker.");
+
+                // Send the message
+                SendOptions sendOptions = SendOptions.builder()
+                        .setQos(QOS.AT_LEAST_ONCE)
+                        .build();
+
+                client.send(queueName, messageContent.getBytes(StandardCharsets.UTF_8), sendOptions, new Callback<Void>() {
+                    @Override
+                    public void onSuccess(Void v) {
+                        System.out.println("Message sent successfully!");
+                    }
+
+                    @Override
+                    public void onError(Client client, Exception e) {
+                        System.out.println("Message failed to send: " + e.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(Client client, Exception e) {
+                System.out.println("Failed to start client: " + e.getMessage());
+            }
+        });
+    }
+}
