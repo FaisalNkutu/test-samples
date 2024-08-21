@@ -1,0 +1,52 @@
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.DestinationAdapter;
+import com.ibm.mqlight.api.DestinationListener;
+import com.ibm.mqlight.api.Message;
+import com.ibm.mqlight.api.SendOptions;
+import com.ibm.mqlight.api.SendOptions.Qos;
+import com.ibm.mqlight.api.ClientException;
+
+import java.nio.charset.StandardCharsets;
+
+public class MQLiteSender {
+    public static void main(String[] args) {
+        String amqpUrl = "amqp://your_broker_url:port";
+        String queueName = "your_queue_name";
+        String messageContent = "Hello, AMQP!";
+
+        // Configure the client
+        ClientOptions options = ClientOptions.builder()
+                .setService(amqpUrl)
+                .build();
+
+        NonBlockingClient.create(options, (client) -> {
+            try {
+                // Send the message
+                SendOptions sendOptions = SendOptions.builder()
+                        .setQos(Qos.AT_LEAST_ONCE) // Ensuring message delivery
+                        .build();
+
+                client.send(queueName, messageContent.getBytes(StandardCharsets.UTF_8), sendOptions, (completion) -> {
+                    if (completion.error != null) {
+                        System.out.println("Message failed to send: " + completion.error.getMessage());
+                    } else {
+                        System.out.println("Message sent successfully!");
+                    }
+                });
+            } catch (ClientException e) {
+                e.printStackTrace();
+            }
+        }, new DestinationAdapter<Void>() {
+            @Override
+            public void onStarted(NonBlockingClient client, Void context) {
+                System.out.println("Client started and connected to broker.");
+            }
+
+            @Override
+            public void onStopped(NonBlockingClient client, Void context) {
+                System.out.println("Client stopped.");
+            }
+        });
+    }
+}
