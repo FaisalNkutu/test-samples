@@ -1,0 +1,31 @@
+import java.util.ResourceBundle;
+
+public class ConfigManager {
+    // Singleton instance
+    private static ConfigManager instance;
+
+    // ResourceBundle to hold the properties
+    private ResourceBundle resourceBundle;
+
+    // Private constructor to restrict instantiation
+    private ConfigManager(String baseName) {
+        resourceBundle = ResourceBundle.getBundle(baseName);
+    }
+
+    // Public method to provide access to the Singleton instance
+    public static ConfigManager getInstance(String baseName) {
+        if (instance == null) {
+            synchronized (ConfigManager.class) {
+                if (instance == null) {
+                    instance = new ConfigManager(baseName);
+                }
+            }
+        }
+        return instance;
+    }
+
+    // Method to get a property value by key
+    public String getProperty(String key) {
+        return resourceBundle.getString(key);
+    }
+}
