@@ -8,6 +8,15 @@ sudo snap install core
 sudo snap refresh core
 sudo dpkg --configure -a
 
+curl -fsSL https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey | sudo apt-key add -
+sudo tee /etc/apt/sources.list.d/rabbitmq.list <<EOF
+deb https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ $(lsb_release -sc) main
+EOF
+
+sudo apt-get update
+sudo apt-get install -y rabbitmq-server
+
+
 sudo reboot
 
 /**
