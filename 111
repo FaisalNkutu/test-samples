@@ -1,3 +1,15 @@
+
+wget http://archive.ubuntu.com/ubuntu/pool/main/c/ca-certificates/ca-certificates_20211016ubuntu0.20.04.1_all.deb
+sudo dpkg -i ca-certificates_20211016ubuntu0.20.04.1_all.deb
+sudo update-ca-certificates
+sudo apt-get install -f
+sudo apt-get install -f
+sudo snap install core
+sudo snap refresh core
+sudo dpkg --configure -a
+
+sudo reboot
+
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
