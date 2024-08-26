@@ -1,0 +1,128 @@
+import com.rabbitmq.client.*;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ResilientAmqpConsumerJava15 {
+    private static final String QUEUE_NAME = "your_queue_name";
+    private static final String HOST = "your_broker_host";
+
+    private static final int MAX_RETRIES = 5;
+    private static final int RETRY_DELAY = 2000; // 2 seconds
+
+    private static Channel channel;
+    private static Connection connection;
+    private static ConnectionFactory factory;
+
+    // Integer to keep track of the message count (using synchronized block for thread safety)
+    private static int messageCount = 0;
+
+    public static void main(String[] args) throws Exception {
+        // Initialize the connection factory
+        factory = new ConnectionFactory();
+        factory.setHost(HOST);
+
+        // Java 1.5 does not support automatic recovery, so we'll handle reconnections manually
+
+        // Create a thread pool for handling threads
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+        // Create a connection and channel
+        createConnectionAndChannel(executorService);
+
+        // Declare a consumer
+        Consumer consumer = new DefaultConsumer(channel) {
+            // Removed @Override annotation for compatibility with Java 1.5
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                String message = new String(body, "UTF-8");
+                boolean success = false;
+                int retryCount = 0;
+
+                while (!success && retryCount < MAX_RETRIES) {
+                    try {
+                        // Check if the channel is open
+                        if (!channel.isOpen()) {
+                            // Recreate the connection and channel if closed
+                            createConnectionAndChannel(executorService);
+                        }
+
+                        // Increment the message count in a thread-safe manner
+                        int count;
+                        synchronized (ResilientAmqpConsumerJava15.class) {
+                            count = ++messageCount;
+                        }
+
+                        // Process the message
+                        System.out.println(" [x] Received message #" + count + ": '" + message + "'");
+
+                        // Simulate work
+                        doWork(message);
+
+                        // Manually acknowledge the message
+                        channel.basicAck(envelope.getDeliveryTag(), false);
+                        success = true; // Mark as successful if no exception occurred
+
+                    } catch (AlreadyClosedException ace) {
+                        System.err.println("Channel was already closed. Reconnecting...");
+                        // Recreate the connection and channel
+                        createConnectionAndChannel(executorService);
+                    } catch (Exception e) {
+                        retryCount++;
+                        System.err.println("Failed to process message. Attempt #" + retryCount);
+                        e.printStackTrace();
+
+                        if (retryCount >= MAX_RETRIES) {
+                            // Reject and requeue the message after exhausting retries
+                            channel.basicNack(envelope.getDeliveryTag(), false, true);
+                        } else {
+                            // Wait before retrying
+                            try {
+                                Thread.sleep(RETRY_DELAY);
+                            } catch (InterruptedException ie) {
+                                Thread.currentThread().interrupt();
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Start consuming messages
+        channel.basicConsume(QUEUE_NAME, false, consumer);
+    }
+
+    private static void createConnectionAndChannel(ExecutorService executorService) throws Exception {
+        if (connection == null || !connection.isOpen()) {
+            connection = factory.newConnection(executorService);
+        }
+        if (channel == null || !channel.isOpen()) {
+            channel = connection.createChannel();
+            // Set prefetch count for the channel to balance load
+            channel.basicQos(10);
+        }
+    }
+
+    private static void doWork(String message) {
+        // Simulate some processing work
+        System.out.println("Processing: " + message);
+    }
+
+    // Graceful shutdown hook
+    static {
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                try {
+                    if (channel != null && channel.isOpen()) {
+                        channel.close();
+                    }
+                    if (connection != null && connection.isOpen()) {
+                        connection.close();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }));
+    }
+}
