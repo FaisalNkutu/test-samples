@@ -1,0 +1,36 @@
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+
+public class RabbitMQSender {
+
+    private RabbitTemplate rabbitTemplate;
+
+    public RabbitMQSender(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
+
+    public void send(String message) {
+        String queueName = "myQueue";
+        rabbitTemplate.convertAndSend(queueName, message);
+        System.out.println("Sent message: " + message);
+    }
+}
+public class MyMessageListener {
+
+    public void receiveMessage(String message) {
+        System.out.println("Received message: " + message);
+    }
+}
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class SpringRabbitMQApp {
+
+    public static void main(String[] args) {
+        ApplicationContext context = new AnnotationConfigApplicationContext(RabbitMQConfig.class);
+
+        RabbitMQSender sender = context.getBean(RabbitMQSender.class);
+        sender.send("Hello from Spring without Spring Boot!");
+
+        // The listener will automatically receive the message if the container is configured
+    }
+}
