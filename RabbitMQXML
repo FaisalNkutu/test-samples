@@ -1,0 +1,43 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- RabbitMQ Connection Factory -->
+    <bean id="connectionFactory" class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
+        <constructor-arg value="localhost"/>
+        <property name="username" value="guest"/>
+        <property name="password" value="guest"/>
+    </bean>
+
+    <!-- RabbitTemplate for sending messages -->
+    <bean id="rabbitTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">
+        <constructor-arg ref="connectionFactory"/>
+    </bean>
+
+    <!-- Queue Declaration -->
+    <bean id="queue" class="org.springframework.amqp.core.Queue">
+        <constructor-arg value="myQueue"/>
+        <constructor-arg value="false"/>
+    </bean>
+
+    <!-- Listener Configuration -->
+    <bean id="listenerContainer" class="org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="queueNames">
+            <list>
+                <value>myQueue</value>
+            </list>
+        </property>
+        <property name="messageListener" ref="listenerAdapter"/>
+    </bean>
+
+    <!-- Listener Adapter -->
+    <bean id="listenerAdapter" class="org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter">
+        <constructor-arg ref="myMessageListener"/>
+        <property name="defaultListenerMethod" value="receiveMessage"/>
+    </bean>
+
+    <!-- Message Listener -->
+    <bean id="myMessageListener" class="com.example.MyMessageListener"/>
+</beans>
