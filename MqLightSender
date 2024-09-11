@@ -1,38 +1,41 @@
 import com.ibm.mqlight.api.ClientOptions;
 import com.ibm.mqlight.api.Client;
-import com.ibm.mqlight.api.ClientException;
 import com.ibm.mqlight.api.NonBlockingClient;
 import com.ibm.mqlight.api.SendOptions;
-import com.ibm.mqlight.api.callback.CompletionListener;
 import com.ibm.mqlight.api.callback.SendCompletionListener;
+import com.ibm.mqlight.api.ClientException;
 
-public class MqLightSender {
-    public static void main(String[] args) throws ClientException {
-        String service = "amqp://<your-broker-host>:<port>";
-        String topic = "your/topic";
+public class MqLightSenderQueue {
+    public static void main(String[] args) {
+        String service = "amqp://<your-broker-host>:<port>";  // AMQP service address
+        final String queueName = "your-queue";                // Queue name
 
-        ClientOptions clientOptions = ClientOptions.builder().setId("sender-client").build();
+        try {
+            ClientOptions options = ClientOptions.builder().setId("queue-sender-client").build();
+            NonBlockingClient.create(service, options, new Client.CreateCallback() {
+                public void onCreate(Client client, ClientException e) {
+                    if (e == null) {
+                        System.out.println("Client connected. Sending message to queue...");
 
-        Client client = NonBlockingClient.create(service, clientOptions, (c, e) -> {
-            if (e == null) {
-                System.out.println("Client connected. Sending message...");
+                        String message = "Hello from MQ Light (Queue)!";
+                        SendOptions sendOptions = SendOptions.builder().setQos(0).build();
 
-                String message = "Hello from MQ Light!";
+                        client.send(queueName, message, sendOptions, new SendCompletionListener() {
+                            public void onSendSuccess(Client client, Object context) {
+                                System.out.println("Message sent successfully to queue.");
+                            }
 
-                c.send(topic, message, SendOptions.builder().build(), new SendCompletionListener() {
-                    @Override
-                    public void onSendSuccess(Client client, Object context) {
-                        System.out.println("Message sent successfully.");
+                            public void onSendError(Client client, Object context, Exception exception) {
+                                System.err.println("Error sending message to queue: " + exception.getMessage());
+                            }
+                        }, null);
+                    } else {
+                        System.err.println("Client connection failed: " + e.getMessage());
                     }
-
-                    @Override
-                    public void onSendError(Client client, Object context, Exception exception) {
-                        System.err.println("Error sending message: " + exception.getMessage());
-                    }
-                }, null);
-            } else {
-                System.err.println("Client connection failed: " + e.getMessage());
-            }
-        });
+                }
+            });
+        } catch (ClientException ex) {
+            ex.printStackTrace();
+        }
     }
 }
