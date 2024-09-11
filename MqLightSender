@@ -1,0 +1,38 @@
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.Client;
+import com.ibm.mqlight.api.ClientException;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.SendOptions;
+import com.ibm.mqlight.api.callback.CompletionListener;
+import com.ibm.mqlight.api.callback.SendCompletionListener;
+
+public class MqLightSender {
+    public static void main(String[] args) throws ClientException {
+        String service = "amqp://<your-broker-host>:<port>";
+        String topic = "your/topic";
+
+        ClientOptions clientOptions = ClientOptions.builder().setId("sender-client").build();
+
+        Client client = NonBlockingClient.create(service, clientOptions, (c, e) -> {
+            if (e == null) {
+                System.out.println("Client connected. Sending message...");
+
+                String message = "Hello from MQ Light!";
+
+                c.send(topic, message, SendOptions.builder().build(), new SendCompletionListener() {
+                    @Override
+                    public void onSendSuccess(Client client, Object context) {
+                        System.out.println("Message sent successfully.");
+                    }
+
+                    @Override
+                    public void onSendError(Client client, Object context, Exception exception) {
+                        System.err.println("Error sending message: " + exception.getMessage());
+                    }
+                }, null);
+            } else {
+                System.err.println("Client connection failed: " + e.getMessage());
+            }
+        });
+    }
+}
