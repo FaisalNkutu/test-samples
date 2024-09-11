@@ -1,7 +1,6 @@
 import com.ibm.mqlight.api.ClientOptions;
 import com.ibm.mqlight.api.NonBlockingClient;
 import com.ibm.mqlight.api.SendOptions;
-import com.ibm.mqlight.api.callback.Callback;
 import com.ibm.mqlight.api.ClientException;
 
 public class MqLightSenderQueue {
@@ -10,37 +9,22 @@ public class MqLightSenderQueue {
         final String queueName = "your-queue";                // Queue name
 
         try {
+            // Define client options
             ClientOptions options = ClientOptions.builder().setId("queue-sender-client").build();
 
-            NonBlockingClient.create(service, options, new Callback<Void>() {
-                @Override
-                public void onSuccess(NonBlockingClient client, Void context) {
-                    System.out.println("Client connected. Sending message to queue...");
+            // Create a NonBlockingClient and send a message
+            NonBlockingClient client = NonBlockingClient.create(service, options);
+            
+            // Send message to the queue
+            String message = "Hello from MQ Light (Queue)!";
+            SendOptions sendOptions = SendOptions.builder().setQos(0).build();
 
-                    String message = "Hello from MQ Light (Queue)!";
-                    SendOptions sendOptions = SendOptions.builder().setQos(0).build();
+            client.send(queueName, message, sendOptions, null);  // No callback used here
+            System.out.println("Message sent to queue: " + queueName);
 
-                    client.send(queueName, message, sendOptions, new Callback<Void>() {
-                        @Override
-                        public void onSuccess(NonBlockingClient client, Void context) {
-                            System.out.println("Message sent successfully to queue.");
-                        }
-
-                        @Override
-                        public void onError(NonBlockingClient client, Exception exception, Void context) {
-                            System.err.println("Error sending message to queue: " + exception.getMessage());
-                        }
-                    }, null);
-                }
-
-                @Override
-                public void onError(NonBlockingClient client, Exception exception, Void context) {
-                    System.err.println("Client connection failed: " + exception.getMessage());
-                }
-            });
         } catch (ClientException ex) {
+            System.err.println("Client connection failed: " + ex.getMessage());
             ex.printStackTrace();
         }
     }
 }
-
