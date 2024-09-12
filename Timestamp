@@ -1,0 +1,15 @@
+
+        // Parse the timestamps
+        LocalDateTime startTime = LocalDateTime.parse("2024-09-12 10:00:00", formatter);
+        LocalDateTime endTime = LocalDateTime.parse("2024-09-12 15:30:00", formatter);
+
+        // Calculate the duration between the two timestamps
+        Duration duration = Duration.between(startTime, endTime);
+
+        // Get the difference in hours, minutes, and seconds
+        long hours = duration.toHours();
+        long minutes = duration.toMinutes() % 60;
+        long seconds = duration.getSeconds() % 60;
+
+        // Print the difference
+        System.out.println("Difference: " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds");
