@@ -1,3 +1,12 @@
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class TimeDifferenceExample {
+
+    public static void main(String[] args) {
+        // Define the date-time format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         // Parse the timestamps
         LocalDateTime startTime = LocalDateTime.parse("2024-09-12 10:00:00", formatter);
