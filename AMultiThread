@@ -1,3 +1,57 @@
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import com.ibm.mqlight.api.Client;
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.Callback;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.SendOptions;
+
+public class NonBlockingProducer {
+    private static final String SERVICE = "amqp://your-mq-server:5672";
+    private static final String TOPIC = "exampleTopic";
+
+    public static void main(String[] args) {
+        // Use a thread pool to send messages concurrently
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+
+        // Create client options
+        ClientOptions options = ClientOptions.builder()
+                .setId("ProducerClientId")   // Set a unique client ID
+                .build();
+
+        // Create a non-blocking client
+        NonBlockingClient.create(SERVICE, options, new Callback<Client>() {
+            @Override
+            public void onSuccess(Client client) {
+                System.out.println("Client connected for producing messages!");
+
+                // Submit multiple message-sending tasks to the executor
+                for (int i = 0; i < 10; i++) {
+                    final int messageNumber = i;
+                    executor.submit(() -> {
+                        // Create the message payload
+                        String message = "Message " + messageNumber;
+
+                        // Asynchronously send the message
+                        client.send(TOPIC, message, SendOptions.builder().build(), new Callback<Void>() {
+                            @Override
+                            public void onSuccess(Void v) {
+                                System.out.println("Successfully sent: " + message);
+                            }
+
+                            @Override
+                            public void onFailure(Exception exception) {
+                                System.out.println("Failed to send message: " + message + " due to: " + exception.getMessage());
+                            }
+                        });
+                    });
+                }
+
+                // Shutdown the executor once all tasks are done
+                executor.shutdown();
+            }
+
             @Override
             public void onFailure(Client client, Exception exception) {
                 System.out.println("Failed to connect: " + exception.getMessage());
@@ -7,3 +61,6 @@
             public void onDisconnected(Client client, Exception exception) {
                 System.out.println("Client disconnected.");
             }
+        });
+    }
+}
