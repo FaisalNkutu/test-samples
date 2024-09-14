@@ -1,0 +1,11 @@
+                        // Handle message in a separate thread
+                        executor.submit(() -> {
+                            try {
+                                // Process the message (message.getData() to get payload)
+                                System.out.println("Received message: " + new String(message.getData()));
+
+                                // Add any additional message processing logic here
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
