@@ -1,11 +1,9 @@
-                        // Handle message in a separate thread
-                        executor.submit(() -> {
-                            try {
-                                // Process the message (message.getData() to get payload)
-                                System.out.println("Received message: " + new String(message.getData()));
+            @Override
+            public void onFailure(Client client, Exception exception) {
+                System.out.println("Failed to connect: " + exception.getMessage());
+            }
 
-                                // Add any additional message processing logic here
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        });
+            @Override
+            public void onDisconnected(Client client, Exception exception) {
+                System.out.println("Client disconnected.");
+            }
