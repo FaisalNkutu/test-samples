@@ -1,4 +1,16 @@
+
+
+
+<dependency>
+    <groupId>com.ibm.mqlight</groupId>
+    <artifactId>mqlight</artifactId>
+    <version>1.0.20210730</version> <!-- Verify this version exists or update accordingly -->
+</dependency>
+
+
 import java.util.concurrent.ExecutorService;
+
+
 import java.util.concurrent.Executors;
 import com.ibm.mqlight.api.Client;
 import com.ibm.mqlight.api.ClientOptions;
