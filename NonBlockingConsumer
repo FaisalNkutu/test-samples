@@ -1,0 +1,35 @@
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class NonBlockingConsumer {
+    
+    private final ExecutorService executorService;
+    
+    public NonBlockingConsumer(int numberOfThreads) {
+        // Create an ExecutorService with a fixed thread pool
+        this.executorService = Executors.newFixedThreadPool(numberOfThreads);
+    }
+    
+    public void consume(Runnable task) {
+        // Submit the consumer task to the ExecutorService
+        executorService.submit(task);
+    }
+    
+    public void shutdown() {
+        // Shutdown the ExecutorService after tasks are done
+        executorService.shutdown();
+    }
+
+    public static void main(String[] args) {
+        NonBlockingConsumer consumer = new NonBlockingConsumer(4);
+
+        // Example of consuming tasks
+        for (int i = 0; i < 10; i++) {
+            consumer.consume(() -> {
+                System.out.println("Consuming message: " + Thread.currentThread().getName());
+            });
+        }
+
+        consumer.shutdown();
+    }
+}
