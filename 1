@@ -1,128 +1,29 @@
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import com.ibm.mqlight.api.*; // Importing MQ Light API
-import com.ibm.mqlight.api.ClientOptions; // Importing ClientOptions for setting credentials
+import java.util.concurrent.*;
 
-// Class to represent client options like host, topic/queue, and authentication credentials
-class ClientOptions {
-    private String host;
-    private String topic;
-    private String userId;
-    private String password;
+public class ExecutorServiceExample {
+    public static void main(String[] args) throws InterruptedException {
+        int corePoolSize = Runtime.getRuntime().availableProcessors();
+        ExecutorService executorService = new ThreadPoolExecutor(
+            corePoolSize, 
+            corePoolSize * 2, 
+            60L, TimeUnit.SECONDS, 
+            new ArrayBlockingQueue<>(100), 
+            new ThreadPoolExecutor.CallerRunsPolicy()
+        );
 
-    public ClientOptions(String host, String topic, String userId, String password) {
-        this.host = host;
-        this.topic = topic;
-        this.userId = userId;
-        this.password = password;
-    }
-
-    public String getHost() {
-        return host;
-    }
-
-    public String getTopic() {
-        return topic;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-}
-
-// Non-blocking consumer class that connects to the MQ Light server and listens to a topic/queue
-public class NonBlockingConsumer {
-
-    private final ExecutorService executorService;
-    private final ClientOptions clientOptions;
-    private NonBlockingClient client;  // IBM MQ Light client
-
-    public NonBlockingConsumer(ClientOptions clientOptions, int numberOfThreads) {
-        this.executorService = Executors.newFixedThreadPool(numberOfThreads);
-        this.clientOptions = clientOptions;
-    }
-
-    public void startConsumer() {
-        // Configure the client options to include credentials
-        com.ibm.mqlight.api.ClientOptions options = com.ibm.mqlight.api.ClientOptions.builder()
-                .setCredentials(clientOptions.getUserId(), clientOptions.getPassword())
-                .build();
-
-        // Connect to MQ Light server using the host and credentials from client options
-        String host = clientOptions.getHost();
-        client = NonBlockingClient.create(host, options, new ClientListener<Void>() {
-            @Override
-            public void onStarted(NonBlockingClient client, Void context) {
-                System.out.println("Connected to MQ Light server at host: " + host);
-                consumeMessages(client);
-            }
-
-            @Override
-            public void onError(NonBlockingClient client, Void context, Exception exception) {
-                System.err.println("Error connecting to MQ Light: " + exception.getMessage());
-            }
-
-            @Override
-            public void onStopped(NonBlockingClient client, Void context, Exception exception) {
-                System.out.println("MQ Light client stopped.");
-            }
-        }, null);
-    }
-
-    private void consumeMessages(NonBlockingClient client) {
-        // Subscribing to the specified topic/queue
-        String topic = clientOptions.getTopic();
-        client.subscribe(topic, null, new DestinationAdapter<Void>() {
-            @Override
-            public void onMessage(NonBlockingClient client, Void context, Delivery delivery) {
-                executorService.submit(() -> {
-                    byte[] messageData = delivery.getData();
-                    String message = new String(messageData);
-                    System.out.println("Received message from topic '" + topic + "': " + message);
-
-                    // Simulate message processing
-                    processMessage(message);
-                });
-            }
-        }, null);
-    }
-
-    private void processMessage(String message) {
-        // Simulating some work with the message
-        System.out.println("Processing message: " + message);
-        try {
-            Thread.sleep(1000); // Simulate a time-consuming task
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        for (int i = 0; i < 1000; i++) {
+            executorService.submit(() -> {
+                try {
+                    // Simulate task processing
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println("Task completed by " + Thread.currentThread().getName());
+            });
         }
-    }
 
-    public void shutdown() {
-        try {
-            // Gracefully shutdown MQ Light client and executor service
-            if (client != null) {
-                client.stop(null, null);
-            }
-        } finally {
-            executorService.shutdown();
-        }
-    }
-
-    public static void main(String[] args) {
-        // Define client options for host, topic/queue, and authentication credentials
-        ClientOptions clientOptions = new ClientOptions("amqp://localhost", "test-topic", "your-username", "your-password");
-
-        // Create the consumer with 4 threads
-        NonBlockingConsumer consumer = new NonBlockingConsumer(clientOptions, 4);
-
-        // Start consuming messages
-        consumer.startConsumer();
-
-        // Add shutdown hook to clean up resources on termination
-        Runtime.getRuntime().addShutdownHook(new Thread(consumer::shutdown));
+        executorService.shutdown();
+        executorService.awaitTermination(1, TimeUnit.HOURS);
     }
 }
