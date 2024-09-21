@@ -1,216 +1,215 @@
+```json
 [
-	{
-		"program": "WEBBI104",
-		"system": "sunrise",
-		"correlationID": "TBD",
-		"parameters": [
-			{
-				"name": "TABNAM",
-				"direction": "INPUT",
-				"source": "EDI_DC40",
-				"location": "body",
-				"value": ""
-			},
-			{
-				"name": "DIRECT",
-				"direction": "INPUT",
-				"location": "2",
-				"value": ""
-			},
-			{
-				"name": "ErrorCode",
-				"source": "COD_ERREUR",
-				"direction": "OUTPUT",
-				"location": ""
-			},	
-			{
-				"name": "IDOCTYPE",
-				"source": "ORDERS05",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "SNDPRT",
-				"source": "LS",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "MESTYP",
-				"source": "ORDERS",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-
-			{
-				"name": "SNDPOR",
-				"source": "SAPBTP",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "SNDPRN",
-				"source": "PHARMACLIK",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "RCVPOR",
-				"source": "SAPRD2",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "RCVPRT",
-				"source": "LS",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "RCVPRN",
-				"source": "SAPCLNTRD2",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "CREDAT",
-				"source": "currentDate()",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "CRETIM",
-				"source": "currentDate()",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "BELNR",
-				"source": "NO_PO",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "DATUM",
-				"source": "DATE_LIVR",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "QUALF",
-				"source": "007",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "QUALF",
-				"source": "NO_CMD_WEB",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "ORGID",
-				"source": "TBD",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "QUALF",
-				"source": "006",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "ORGID",
-				"source": "007",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "QUALF",
-				"source": "007",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "ORGID",
-				"source": "10",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "QUALF",
-				"source": "012",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "ORGID",
-				"source": "ZOR",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "QUALF",
-				"source": "019",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "ORGID",
-				"source": "ZPHA",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "IDDAT",
-				"source": "002",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "DATUM",
-				"source": "DATE_LIV_PREVUE",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "E1EDP01/POSEX",
-				"source": "DATE_LIV_PREVUE",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "E1EDP01/MENGE",
-				"source": "QTE_CMD",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "E1EDP01/E1EDP19",
-				"source": "unmapped",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "E1EDP01/E1EDP19/QUALF",
-				"source": "002",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "E1EDP01/E1EDP19/IDTNR",
-				"source": "NO_PRODUIT",
-				"direction": "OUTPUT",
-				"value": ""
-			},
-			{
-				"name": "E1EDP01/E1EDP19/QUALF",
-				"source": "001",
-				"direction": "OUTPUT",
-				"value": ""
-			}
-		
-		]
-	}
+  {
+    "program": "WEBBI104",
+    "system": "sunrise",
+    "correlationID": "TBD",
+    "parameters": [
+      {
+        "name": "TABNAM",
+        "direction": "INPUT",
+        "source": "EDI_DC40",
+        "location": "body",
+        "value": ""
+      },
+      {
+        "name": "DIRECT",
+        "direction": "INPUT",
+        "location": "2",
+        "value": ""
+      },
+      {
+        "name": "ErrorCode",
+        "source": "COD_ERREUR",
+        "direction": "OUTPUT",
+        "location": ""
+      },
+      {
+        "name": "IDOCTYPE",
+        "source": "ORDERS05",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "SNDPRT",
+        "source": "LS",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "MESTYP",
+        "source": "ORDERS",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "SNDPOR",
+        "source": "SAPBTP",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "SNDPRN",
+        "source": "PHARMACLIK",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "RCVPOR",
+        "source": "SAPRD2",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "RCVPRT",
+        "source": "LS",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "RCVPRN",
+        "source": "SAPCLNTRD2",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "CREDAT",
+        "source": "currentDate()",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "CRETIM",
+        "source": "currentDate()",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "BELNR",
+        "source": "NO_PO",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "DATUM",
+        "source": "DATE_LIVR",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "QUALF",
+        "source": "007",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "QUALF",
+        "source": "NO_CMD_WEB",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "ORGID",
+        "source": "TBD",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "QUALF",
+        "source": "006",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "ORGID",
+        "source": "007",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "QUALF",
+        "source": "007",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "ORGID",
+        "source": "10",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "QUALF",
+        "source": "012",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "ORGID",
+        "source": "ZOR",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "QUALF",
+        "source": "019",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "ORGID",
+        "source": "ZPHA",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "IDDAT",
+        "source": "002",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "DATUM",
+        "source": "DATE_LIV_PREVUE",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "E1EDP01/POSEX",
+        "source": "DATE_LIV_PREVUE",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "E1EDP01/MENGE",
+        "source": "QTE_CMD",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "E1EDP01/E1EDP19",
+        "source": "unmapped",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "E1EDP01/E1EDP19/QUALF",
+        "source": "002",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "E1EDP01/E1EDP19/IDTNR",
+        "source": "NO_PRODUIT",
+        "direction": "OUTPUT",
+        "value": ""
+      },
+      {
+        "name": "E1EDP01/E1EDP19/QUALF",
+        "source": "001",
+        "direction": "OUTPUT",
+        "value": ""
+      }
+    ]
+  }
 ]
