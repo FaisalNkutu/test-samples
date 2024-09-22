@@ -1,0 +1,184 @@
+import com.google.gson.Gson;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+class SalesOrderTest {
+
+    private SalesOrder salesOrder;
+    private Gson gson;
+
+    @BeforeEach
+    public void setUp() {
+        // Initialize Gson object
+        gson = new Gson();
+
+        // Initialize SalesOrder and populate it with sample data
+        salesOrder = new SalesOrder();
+        salesOrder.setSoldToParty("100000070");
+        salesOrder.setUserName("John Doe");
+        salesOrder.setSalesOrganization("1000");
+        salesOrder.setSalesOrderType("ZOR");
+        salesOrder.setPurchaseOrder("TestOrder123");
+        salesOrder.setPurchaseOrderDate("20240906");
+        salesOrder.setRequestedDeliveryDate("20240910");
+        salesOrder.setPharmaClikOrderNumber("PC123456");
+
+        // Create sample Items and add them to SalesOrder
+        Item item1 = new Item();
+        item1.setItemNumber("10");
+        item1.setMaterial("1000001");
+        item1.setOrderedQty("5");
+        item1.setOrderedUOM("EA");
+        item1.setUnitPrice("100.00");
+        item1.setReservedQty("0");
+        item1.setBackOrderedQty("0");
+        item1.setMaterialStatus("Available");
+        item1.setLineModifiable("true");
+
+        Item item2 = new Item();
+        item2.setItemNumber("20");
+        item2.setMaterial("1000002");
+        item2.setOrderedQty("2");
+        item2.setOrderedUOM("EA");
+        item2.setUnitPrice("50.00");
+        item2.setReservedQty("0");
+        item2.setBackOrderedQty("0");
+        item2.setMaterialStatus("OutOfStock");
+        item2.setLineModifiable("false");
+
+        List<Item> itemList = new ArrayList<>();
+        itemList.add(item1);
+        itemList.add(item2);
+
+        salesOrder.setItem(itemList);
+    }
+
+    @Test
+    public void testSalesOrderSerialization() {
+        // Serialize the SalesOrder object to JSON
+        String jsonSalesOrder = gson.toJson(salesOrder);
+
+        // Assert that the JSON is not null
+        assertNotNull(jsonSalesOrder);
+
+        // Expected JSON string
+        String expectedJson = "{"
+                + "\"SoldToParty\":\"100000070\","
+                + "\"UserName\":\"John Doe\","
+                + "\"SalesOrganization\":\"1000\","
+                + "\"SalesOrderType\":\"ZOR\","
+                + "\"PurchaseOrder\":\"TestOrder123\","
+                + "\"PurchaseOrderDate\":\"20240906\","
+                + "\"RequestedDeliveryDate\":\"20240910\","
+                + "\"PharmaClikOrderNumber\":\"PC123456\","
+                + "\"Item\":["
+                + "{"
+                + "\"ItemNumber\":\"10\","
+                + "\"Material\":\"1000001\","
+                + "\"OrderedQty\":\"5\","
+                + "\"OrderedUOM\":\"EA\","
+                + "\"UnitPrice\":\"100.00\","
+                + "\"ReservedQty\":\"0\","
+                + "\"BackOrderedQty\":\"0\","
+                + "\"MaterialStatus\":\"Available\","
+                + "\"LineModifiable\":\"true\""
+                + "},"
+                + "{"
+                + "\"ItemNumber\":\"20\","
+                + "\"Material\":\"1000002\","
+                + "\"OrderedQty\":\"2\","
+                + "\"OrderedUOM\":\"EA\","
+                + "\"UnitPrice\":\"50.00\","
+                + "\"ReservedQty\":\"0\","
+                + "\"BackOrderedQty\":\"0\","
+                + "\"MaterialStatus\":\"OutOfStock\","
+                + "\"LineModifiable\":\"false\""
+                + "}"
+                + "]"
+                + "}";
+
+        // Assert that the serialized JSON matches the expected structure
+        assertEquals(expectedJson, jsonSalesOrder);
+    }
+
+    @Test
+    public void testSalesOrderDeserialization() {
+        // Create a JSON string similar to the expected one
+        String jsonSalesOrder = "{"
+                + "\"SoldToParty\":\"100000070\","
+                + "\"UserName\":\"John Doe\","
+                + "\"SalesOrganization\":\"1000\","
+                + "\"SalesOrderType\":\"ZOR\","
+                + "\"PurchaseOrder\":\"TestOrder123\","
+                + "\"PurchaseOrderDate\":\"20240906\","
+                + "\"RequestedDeliveryDate\":\"20240910\","
+                + "\"PharmaClikOrderNumber\":\"PC123456\","
+                + "\"Item\":["
+                + "{"
+                + "\"ItemNumber\":\"10\","
+                + "\"Material\":\"1000001\","
+                + "\"OrderedQty\":\"5\","
+                + "\"OrderedUOM\":\"EA\","
+                + "\"UnitPrice\":\"100.00\","
+                + "\"ReservedQty\":\"0\","
+                + "\"BackOrderedQty\":\"0\","
+                + "\"MaterialStatus\":\"Available\","
+                + "\"LineModifiable\":\"true\""
+                + "},"
+                + "{"
+                + "\"ItemNumber\":\"20\","
+                + "\"Material\":\"1000002\","
+                + "\"OrderedQty\":\"2\","
+                + "\"OrderedUOM\":\"EA\","
+                + "\"UnitPrice\":\"50.00\","
+                + "\"ReservedQty\":\"0\","
+                + "\"BackOrderedQty\":\"0\","
+                + "\"MaterialStatus\":\"OutOfStock\","
+                + "\"LineModifiable\":\"false\""
+                + "}"
+                + "]"
+                + "}";
+
+        // Deserialize the JSON string into a SalesOrder object
+        SalesOrder deserializedOrder = gson.fromJson(jsonSalesOrder, SalesOrder.class);
+
+        // Assert that deserialized values are correct
+        assertEquals("100000070", deserializedOrder.getSoldToParty());
+        assertEquals("John Doe", deserializedOrder.getUserName());
+        assertEquals("1000", deserializedOrder.getSalesOrganization());
+        assertEquals("ZOR", deserializedOrder.getSalesOrderType());
+        assertEquals("TestOrder123", deserializedOrder.getPurchaseOrder());
+        assertEquals("20240906", deserializedOrder.getPurchaseOrderDate());
+        assertEquals("20240910", deserializedOrder.getRequestedDeliveryDate());
+        assertEquals("PC123456", deserializedOrder.getPharmaClikOrderNumber());
+
+        // Verify the items
+        List<Item> items = deserializedOrder.getItem();
+        assertEquals(2, items.size());
+
+        // Check the first item
+        Item item1 = items.get(0);
+        assertEquals("10", item1.getItemNumber());
+        assertEquals("1000001", item1.getMaterial());
+        assertEquals("5", item1.getOrderedQty());
+        assertEquals("EA", item1.getOrderedUOM());
+        assertEquals("100.00", item1.getUnitPrice());
+        assertEquals("Available", item1.getMaterialStatus());
+        assertEquals("true", item1.getLineModifiable());
+
+        // Check the second item
+        Item item2 = items.get(1);
+        assertEquals("20", item2.getItemNumber());
+        assertEquals("1000002", item2.getMaterial());
+        assertEquals("2", item2.getOrderedQty());
+        assertEquals("EA", item2.getOrderedUOM());
+        assertEquals("50.00", item2.getUnitPrice());
+        assertEquals("OutOfStock", item2.getMaterialStatus());
+        assertEquals("false", item2.getLineModifiable());
+    }
+}
