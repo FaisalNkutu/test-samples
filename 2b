@@ -1,0 +1,84 @@
+public class Item {
+    private String ItemNumber;
+    private String Material;
+    private String OrderedQty;
+    private String OrderedUOM;
+    private String UnitPrice;
+    private String ReservedQty;
+    private String BackOrderedQty;
+    private String MaterialStatus;
+    private String LineModifiable;
+
+    // Getters and Setters
+    public String getItemNumber() {
+        return ItemNumber;
+    }
+
+    public void setItemNumber(String itemNumber) {
+        ItemNumber = itemNumber;
+    }
+
+    public String getMaterial() {
+        return Material;
+    }
+
+    public void setMaterial(String material) {
+        Material = material;
+    }
+
+    public String getOrderedQty() {
+        return OrderedQty;
+    }
+
+    public void setOrderedQty(String orderedQty) {
+        OrderedQty = orderedQty;
+    }
+
+    public String getOrderedUOM() {
+        return OrderedUOM;
+    }
+
+    public void setOrderedUOM(String orderedUOM) {
+        OrderedUOM = orderedUOM;
+    }
+
+    public String getUnitPrice() {
+        return UnitPrice;
+    }
+
+    public void setUnitPrice(String unitPrice) {
+        UnitPrice = unitPrice;
+    }
+
+    public String getReservedQty() {
+        return ReservedQty;
+    }
+
+    public void setReservedQty(String reservedQty) {
+        ReservedQty = reservedQty;
+    }
+
+    public String getBackOrderedQty() {
+        return BackOrderedQty;
+    }
+
+    public void setBackOrderedQty(String backOrderedQty) {
+        BackOrderedQty = backOrderedQty;
+    }
+
+    public String getMaterialStatus() {
+        return MaterialStatus;
+    }
+
+    public void setMaterialStatus(String materialStatus) {
+        MaterialStatus = materialStatus;
+    }
+
+    public String getLineModifiable() {
+        return LineModifiable;
+    }
+
+    public void setLineModifiable(String lineModifiable) {
+        LineModifiable = lineModifiable;
+    }
+}
