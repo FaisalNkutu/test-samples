@@ -1,0 +1,35 @@
+import com.google.gson.Gson;
+
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        // JSON data as a string
+        String jsonData = "{ \"SoldToParty\": \"100000070\", \"UserName\": \"UserName\", \"SalesOrganization\": \"1000\", \"SalesOrderType\": \"ZOR\", \"PurchaseOrder\": \"Test\", \"PurchaseOrderDate\": \"20240906\", \"RequestedDeliveryDate\": \"20240910\", \"PharmaClikOrderNumber\": \"TBD\", \"Item\": [{ \"ItemNumber\": \"10\", \"Material\": \"1000001\", \"OrderedQty\": \"5\", \"OrderedUOM\": \"EA\", \"UnitPrice\": \"\", \"ReservedQty\": \"\", \"BackOrderedQty\": \"\", \"MaterialStatus\" : \"\", \"LineModifiable\" : \"\" }] }";
+
+        // Create a Gson instance
+        Gson gson = new Gson();
+        
+        // Deserialize the JSON string into SalesOrder object
+        SalesOrder salesOrder = gson.fromJson(jsonData, SalesOrder.class);
+
+        // Accessing the data from SalesOrder
+        System.out.println("Sold To Party: " + salesOrder.getSoldToParty());
+        System.out.println("User Name: " + salesOrder.getUserName());
+        System.out.println("Sales Organization: " + salesOrder.getSalesOrganization());
+        System.out.println("Sales Order Type: " + salesOrder.getSalesOrderType());
+        System.out.println("Purchase Order: " + salesOrder.getPurchaseOrder());
+        System.out.println("Purchase Order Date: " + salesOrder.getPurchaseOrderDate());
+        System.out.println("Requested Delivery Date: " + salesOrder.getRequestedDeliveryDate());
+        System.out.println("PharmaClik Order Number: " + salesOrder.getPharmaClikOrderNumber());
+
+        // Accessing the items
+        List<Item> items = salesOrder.getItem();
+        for (Item item : items) {
+            System.out.println("Item Number: " + item.getItemNumber());
+            System.out.println("Material: " + item.getMaterial());
+            System.out.println("Ordered Quantity: " + item.getOrderedQty());
+            System.out.println("Ordered UOM: " + item.getOrderedUOM());
+        }
+    }
+}
