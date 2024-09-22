@@ -1,0 +1,86 @@
+import java.util.List;
+
+public class SalesOrder {
+    private String SoldToParty;
+    private String UserName;
+    private String SalesOrganization;
+    private String SalesOrderType;
+    private String PurchaseOrder;
+    private String PurchaseOrderDate;
+    private String RequestedDeliveryDate;
+    private String PharmaClikOrderNumber;
+    private List<Item> Item;
+
+    // Getters and Setters
+    public String getSoldToParty() {
+        return SoldToParty;
+    }
+
+    public void setSoldToParty(String soldToParty) {
+        SoldToParty = soldToParty;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public String getSalesOrganization() {
+        return SalesOrganization;
+    }
+
+    public void setSalesOrganization(String salesOrganization) {
+        SalesOrganization = salesOrganization;
+    }
+
+    public String getSalesOrderType() {
+        return SalesOrderType;
+    }
+
+    public void setSalesOrderType(String salesOrderType) {
+        SalesOrderType = salesOrderType;
+    }
+
+    public String getPurchaseOrder() {
+        return PurchaseOrder;
+    }
+
+    public void setPurchaseOrder(String purchaseOrder) {
+        PurchaseOrder = purchaseOrder;
+    }
+
+    public String getPurchaseOrderDate() {
+        return PurchaseOrderDate;
+    }
+
+    public void setPurchaseOrderDate(String purchaseOrderDate) {
+        PurchaseOrderDate = purchaseOrderDate;
+    }
+
+    public String getRequestedDeliveryDate() {
+        return RequestedDeliveryDate;
+    }
+
+    public void setRequestedDeliveryDate(String requestedDeliveryDate) {
+        RequestedDeliveryDate = requestedDeliveryDate;
+    }
+
+    public String getPharmaClikOrderNumber() {
+        return PharmaClikOrderNumber;
+    }
+
+    public void setPharmaClikOrderNumber(String pharmaClikOrderNumber) {
+        PharmaClikOrderNumber = pharmaClikOrderNumber;
+    }
+
+    public List<Item> getItem() {
+        return Item;
+    }
+
+    public void setItem(List<Item> item) {
+        Item = item;
+    }
+}
