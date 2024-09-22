@@ -1,0 +1,58 @@
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Type;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MainTest {
+
+    // Sample JSON string to be used in tests
+    private final String jsonData = "{ \"SoldToParty\": \"100000070\", \"UserName\": \"UserName\", \"SalesOrganization\": \"1000\", \"SalesOrderType\": \"ZOR\", \"PurchaseOrder\": \"Test\", \"PurchaseOrderDate\": \"20240906\", \"RequestedDeliveryDate\": \"20240910\", \"PharmaClikOrderNumber\": \"TBD\", \"Item\": [{ \"ItemNumber\": \"10\", \"Material\": \"1000001\", \"OrderedQty\": \"5\", \"OrderedUOM\": \"EA\", \"UnitPrice\": \"\", \"ReservedQty\": \"\", \"BackOrderedQty\": \"\", \"MaterialStatus\" : \"\", \"LineModifiable\" : \"\" }] }";
+
+    // Test for SalesOrder deserialization
+    @Test
+    public void testSalesOrderDeserialization() {
+        Gson gson = new Gson();
+
+        // Deserialize JSON to SalesOrder object
+        SalesOrder salesOrder = gson.fromJson(jsonData, SalesOrder.class);
+
+        // Assertions to verify that data has been deserialized correctly
+        assertNotNull(salesOrder);
+        assertEquals("100000070", salesOrder.getSoldToParty());
+        assertEquals("UserName", salesOrder.getUserName());
+        assertEquals("1000", salesOrder.getSalesOrganization());
+        assertEquals("ZOR", salesOrder.getSalesOrderType());
+        assertEquals("Test", salesOrder.getPurchaseOrder());
+        assertEquals("20240906", salesOrder.getPurchaseOrderDate());
+        assertEquals("20240910", salesOrder.getRequestedDeliveryDate());
+        assertEquals("TBD", salesOrder.getPharmaClikOrderNumber());
+    }
+
+    // Test for Item list deserialization using TypeToken
+    @Test
+    public void testItemListDeserialization() {
+        Gson gson = new Gson();
+
+        // Deserialize JSON to SalesOrder object
+        SalesOrder salesOrder = gson.fromJson(jsonData, SalesOrder.class);
+
+        // Using TypeToken to deserialize the list of items
+        Type itemListType = new TypeToken<List<Item>>() {}.getType();
+        List<Item> items = gson.fromJson(gson.toJson(salesOrder.getItem()), itemListType);
+
+        // Assertions to verify that items list has been deserialized correctly
+        assertNotNull(items);
+        assertEquals(1, items.size()); // Verify there is 1 item in the list
+
+        // Validate the content of the first (and only) item
+        Item item = items.get(0);
+        assertEquals("10", item.getItemNumber());
+        assertEquals("1000001", item.getMaterial());
+        assertEquals("5", item.getOrderedQty());
+        assertEquals("EA", item.getOrderedUOM());
+    }
+}
