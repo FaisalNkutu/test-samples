@@ -1,0 +1,57 @@
+import com.google.gson.Gson;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create Item objects and use setters
+        Item item1 = new Item();
+        item1.setItemNumber("10");
+        item1.setMaterial("1000001");
+        item1.setOrderedQty("5");
+        item1.setOrderedUOM("EA");
+        item1.setUnitPrice("100.00");
+        item1.setReservedQty("0");
+        item1.setBackOrderedQty("0");
+        item1.setMaterialStatus("Available");
+        item1.setLineModifiable("true");
+
+        Item item2 = new Item();
+        item2.setItemNumber("20");
+        item2.setMaterial("1000002");
+        item2.setOrderedQty("2");
+        item2.setOrderedUOM("EA");
+        item2.setUnitPrice("50.00");
+        item2.setReservedQty("0");
+        item2.setBackOrderedQty("0");
+        item2.setMaterialStatus("OutOfStock");
+        item2.setLineModifiable("false");
+
+        // Create a list of items
+        List<Item> itemList = new ArrayList<>();
+        itemList.add(item1);
+        itemList.add(item2);
+
+        // Create a SalesOrder object and use setters
+        SalesOrder salesOrder = new SalesOrder();
+        salesOrder.setSoldToParty("100000070");
+        salesOrder.setUserName("John Doe");
+        salesOrder.setSalesOrganization("1000");
+        salesOrder.setSalesOrderType("ZOR");
+        salesOrder.setPurchaseOrder("TestOrder123");
+        salesOrder.setPurchaseOrderDate("20240906");
+        salesOrder.setRequestedDeliveryDate("20240910");
+        salesOrder.setPharmaClikOrderNumber("PC123456");
+        salesOrder.setItem(itemList);
+
+        // Create Gson object
+        Gson gson = new Gson();
+
+        // Serialize SalesOrder object to JSON
+        String jsonSalesOrder = gson.toJson(salesOrder);
+
+        // Print the JSON string
+        System.out.println("Serialized SalesOrder JSON:");
+        System.out.println(jsonSalesOrder);
+    }
+}
