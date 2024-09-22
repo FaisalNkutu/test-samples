@@ -1,0 +1,3 @@
+  // Using TypeToken to deserialize the List of Item objects
+        Type itemListType = new TypeToken<List<Item>>() {}.getType();
+        List<Item> items = gson.fromJson(gson.toJson(salesOrder.getItem()), itemListType);
