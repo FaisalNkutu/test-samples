@@ -1,50 +1,151 @@
-import org.json.JSONArray;
-import org.json.JSONObject;
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>5.3.24</version>
+</dependency>
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+<dependency>
+    <groupId>com.ibm.mqlight</groupId>
+    <artifactId>com.ibm.mqlight.api</artifactId>
+    <version>1.0.2016062300</version>
+</dependency>
 
-public class JsonFromResourceExample {
+-------------------------------------
+<!-- applicationContext.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Declare MQ Light Client -->
+    <bean id="mqLightClient" class="com.ibm.mqlight.api.NonBlockingClient" factory-method="create">
+        <constructor-arg value="amqp://localhost:5672" />
+        <constructor-arg>
+            <bean class="com.ibm.mqlight.api.ClientOptions" factory-method="builder">
+                <property name="id" value="myClient"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg>
+            <bean class="com.example.MqLightClientListener"/>
+        </constructor-arg>
+    </bean>
+
+    <!-- Listener Bean -->
+    <bean id="mqLightListener" class="com.example.MqLightListener">
+        <constructor-arg ref="mqLightClient"/>
+    </bean>
+
+</beans>
+-----------------------------------------------------
+<!-- applicationContext.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Declare MQ Light Client -->
+    <bean id="mqLightClient" class="com.ibm.mqlight.api.NonBlockingClient" factory-method="create">
+        <constructor-arg value="amqp://localhost:5672" />
+        <constructor-arg>
+            <bean class="com.ibm.mqlight.api.ClientOptions" factory-method="builder">
+                <property name="id" value="myClient"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg>
+            <bean class="com.example.MqLightClientListener"/>
+        </constructor-arg>
+    </bean>
+
+    <!-- Listener Bean -->
+    <bean id="mqLightListener" class="com.example.MqLightListener">
+        <constructor-arg ref="mqLightClient"/>
+    </bean>
+
+</beans>
+-------------------------------------------------------------
+<!-- applicationContext.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Declare MQ Light Client -->
+    <bean id="mqLightClient" class="com.ibm.mqlight.api.NonBlockingClient" factory-method="create">
+        <constructor-arg value="amqp://localhost:5672" />
+        <constructor-arg>
+            <bean class="com.ibm.mqlight.api.ClientOptions" factory-method="builder">
+                <property name="id" value="myClient"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg>
+            <bean class="com.example.MqLightClientListener"/>
+        </constructor-arg>
+    </bean>
+
+    <!-- Listener Bean -->
+    <bean id="mqLightListener" class="com.example.MqLightListener">
+        <constructor-arg ref="mqLightClient"/>
+    </bean>
+
+</beans>
+------------------------------------------------------------------------
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.callback.ClientListener;
+import com.ibm.mqlight.api.callback.Delivery;
+import com.ibm.mqlight.api.callback.MessageListener;
+import org.springframework.stereotype.Component;
+
+public class MqLightClientListener implements ClientListener {
+
+    @Override
+    public void onStarted(NonBlockingClient client) {
+        System.out.println("MQ Light Client started!");
+    }
+
+    @Override
+    public void onStopped(NonBlockingClient client, Throwable throwable) {
+        if (throwable != null) {
+            throwable.printStackTrace();
+        }
+        System.out.println("MQ Light Client stopped.");
+    }
+}
+---------------------------------------------------------
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.callback.Delivery;
+import com.ibm.mqlight.api.callback.MessageListener;
+import org.springframework.stereotype.Component;
+
+public class MqLightListener {
+
+    private final NonBlockingClient client;
+
+    public MqLightListener(NonBlockingClient client) {
+        this.client = client;
+        subscribeToTopic();
+    }
+
+    public void subscribeToTopic() {
+        client.subscribe("myTopic", new MessageListener() {
+            @Override
+            public void onMessage(NonBlockingClient client, Object context, Delivery delivery) {
+                String message = new String(delivery.getData());
+                System.out.println("Received message: " + message);
+            }
+        });
+    }
+}
+-----------------------------------------------------
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MqLightApp {
 
     public static void main(String[] args) {
-        // Load the JSON file from the resources folder
-        ClassLoader classLoader = JsonFromResourceExample.class.getClassLoader();
-        try (InputStream inputStream = classLoader.getResourceAsStream("data.json")) {
-            
-            if (inputStream == null) {
-                System.out.println("File not found in resources");
-                return;
-            }
-            
-            // Convert InputStream to String
-            StringBuilder contentBuilder = new StringBuilder();
-            try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    contentBuilder.append(line);
-                }
-            }
+        // Load the Spring context from the XML configuration
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-            // Convert string content to JSON Object
-            String jsonData = contentBuilder.toString();
-            JSONObject jsonObject = new JSONObject(jsonData);
-
-            // You can now work with the JSON object
-            System.out.println(jsonObject.toString(4)); // Pretty-print the JSON
-
-            // Accessing fields (example: parameters array)
-            JSONArray parameters = jsonObject.getJSONArray("parameters");
-            for (int i = 0; i < parameters.length(); i++) {
-                JSONObject param = parameters.getJSONObject(i);
-                System.out.println("Name: " + param.getString("name"));
-                System.out.println("Direction: " + param.getString("direction"));
-                // Access other fields if needed
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // MQ Light client and listener will be started automatically
+        System.out.println("MQ Light application is running...");
     }
 }
