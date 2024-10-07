@@ -1,0 +1,81 @@
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.callback.Callback;
+import com.ibm.mqlight.api.callback.Delivery;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
+
+public class MQListenerServlet extends HttpServlet {
+
+    private NonBlockingClient client;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        startMQListener();
+    }
+
+    private void startMQListener() {
+        CountDownLatch latch = new CountDownLatch(1);
+
+        // Customize with your MQ Light service details
+        ClientOptions options = ClientOptions.builder()
+            .setService("amqp://your-mq-service-url")
+            .build();
+
+        NonBlockingClient.create("your-client-id", options, (client, err) -> {
+            if (err == null) {
+                client.subscribe("your-topic", (delivery) -> {
+                    handleDelivery(delivery);
+                }, null);
+                latch.countDown();
+            } else {
+                System.err.println("Failed to connect to MQ Light: " + err.getMessage());
+            }
+        });
+
+        try {
+            latch.await();  // Wait for the listener to be ready
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    private void handleDelivery(Delivery delivery) {
+        // Handle the message received from MQ Light
+        String message = new String(delivery.getData());
+        System.out.println("Received message: " + message);
+        // Implement any additional processing logic here
+    }
+
+    @Override
+    public void destroy() {
+        if (client != null) {
+            client.stop(null);
+        }
+        super.destroy();
+    }
+}
+web.xml
+<servlet>
+    <servlet-name>MQListenerServlet</servlet-name>
+    <servlet-class>com.example.MQListenerServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>MQListenerServlet</servlet-name>
+    <url-pattern>/mqlistener</url-pattern>
+</servlet-mapping>
+
+pom.xml
+<dependency>
+    <groupId>com.ibm.mqlight</groupId>
+    <artifactId>mqlight</artifactId>
+    <version>1.0.2016062300</version>  <!-- Or the version you are using -->
+</dependency>
+
+
