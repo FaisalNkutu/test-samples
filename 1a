@@ -2,15 +2,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.Message;
 import com.ibm.mqlight.api.StringDelivery;
 
-public class ConnectionPoolExample {
+public class ConnectionPoolExampleForReceiving {
 
     private final ExecutorService executorService;
     private final LinkedBlockingQueue<NonBlockingClient> connectionPool;
     private final int poolSize = 10; // Size of the connection pool
 
-    public ConnectionPoolExample() {
+    public ConnectionPoolExampleForReceiving() {
         executorService = Executors.newFixedThreadPool(poolSize);
         connectionPool = new LinkedBlockingQueue<>(poolSize);
         createConnectionPool();
@@ -22,6 +23,7 @@ public class ConnectionPoolExample {
                 if (throwable == null) {
                     connectionPool.offer(client);
                     System.out.println("Connection added to pool.");
+                    subscribeToTopic(client); // Subscribe to a topic after adding to the pool
                 } else {
                     throwable.printStackTrace();
                 }
@@ -29,101 +31,29 @@ public class ConnectionPoolExample {
         }
     }
 
-    public void start() {
-        // Subscribe to a topic and use pooled connections
-        for (int i = 0; i < poolSize; i++) {
-            NonBlockingClient client = connectionPool.poll(); // Borrow a connection
-            if (client != null) {
-                client.subscribe("topic/test", (delivery) -> {
-                    executorService.submit(() -> {
-                        if (delivery instanceof StringDelivery) {
-                            String message = ((StringDelivery) delivery).getData();
-                            System.out.println("Received message: " + message);
-                        }
-                    });
-                });
+    private void subscribeToTopic(NonBlockingClient client) {
+        client.subscribe("topic/test", (message) -> {
+            executorService.submit(() -> {
+                System.out.println("Received message: " + message.getPayload(String.class));
+            });
+        }, (result, throwable) -> {
+            if (throwable != null) {
+                throwable.printStackTrace();
             }
-        }
-
-        // Shut down the executor service and connection pool when done
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            executorService.shutdown();
-            connectionPool.forEach(NonBlockingClient::close); // Close all connections
-            System.out.println("Executor service and connections shut down.");
-        }));
-    }
-
-    public static void main(String[] args) {
-        ConnectionPoolExample example = new ConnectionPoolExample();
-        example.start();
-    }
-}
----------------------------------------------Sending-------------------------------
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import com.ibm.mqlight.api.NonBlockingClient;
-import com.ibm.mqlight.api.StringDelivery;
-
-public class ConnectionPoolExampleForSending {
-
-    private final ExecutorService executorService;
-    private final LinkedBlockingQueue<NonBlockingClient> connectionPool;
-    private final int poolSize = 10; // Size of the connection pool
-
-    public ConnectionPoolExampleForSending() {
-        executorService = Executors.newFixedThreadPool(poolSize);
-        connectionPool = new LinkedBlockingQueue<>(poolSize);
-        createConnectionPool();
-    }
-
-    private void createConnectionPool() {
-        for (int i = 0; i < poolSize; i++) {
-            NonBlockingClient.create("amqp://localhost:5672", (client, throwable) -> {
-                if (throwable == null) {
-                    connectionPool.offer(client);
-                    System.out.println("Connection added to pool.");
-                } else {
-                    throwable.printStackTrace();
-                }
-            });
-        }
-    }
-
-    public void start() {
-        // Use pooled connections to send messages
-        for (int i = 0; i < poolSize; i++) {
-            NonBlockingClient client = connectionPool.poll(); // Borrow a connection
-            if (client != null) {
-                sendMessage(client, "Hello from Connection Pool #" + i);
-            }
-        }
-
-        // Shut down the executor service and connection pool when done
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            executorService.shutdown();
-            connectionPool.forEach(NonBlockingClient::close); // Close all connections
-            System.out.println("Executor service and connections shut down.");
-        }));
-    }
-
-    private void sendMessage(NonBlockingClient client, String message) {
-        executorService.submit(() -> {
-            client.send("topic/test", message, (result, throwable) -> {
-                if (throwable == null) {
-                    System.out.println("Message sent: " + message);
-                } else {
-                    throwable.printStackTrace();
-                }
-            });
         });
     }
 
+    public void start() {
+        // Keep the application running to receive messages
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            executorService.shutdown();
+            connectionPool.forEach(NonBlockingClient::close); // Close all connections
+            System.out.println("Executor service and connections shut down.");
+        }));
+    }
+
     public static void main(String[] args) {
-        ConnectionPoolExampleForSending example = new ConnectionPoolExampleForSending();
+        ConnectionPoolExampleForReceiving example = new ConnectionPoolExampleForReceiving();
         example.start();
     }
 }
-
-
-------------------------------Sending------------
