@@ -1,8 +1,6 @@
 import com.ibm.mqlight.api.ClientOptions;
 import com.ibm.mqlight.api.NonBlockingClient;
-import com.ibm.mqlight.api.State;
 import com.ibm.mqlight.api.callback.Delivery;
-import com.ibm.mqlight.api.callback.ClientListener;
 import com.ibm.mqlight.api.callback.DestinationAdapter;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,19 +18,17 @@ public class PooledReceiver {
         // Create a connection pool for reuse
         this.clientPool = new ArrayList<NonBlockingClient>(poolSize);
 
+        // Initialize client pool without ClientListener and State
         for (int i = 0; i < poolSize; i++) {
-            NonBlockingClient.create("amqp://localhost", new ClientOptions(), new ClientListener() {
-                public void onStarted(NonBlockingClient client, Object context) {
+            NonBlockingClient.create("amqp://localhost", new ClientOptions(), new NonBlockingClient.Adapter<Void>() {
+                @Override
+                public void onStarted(NonBlockingClient client, Void context) {
                     System.out.println("Created connection for receiving");
                     synchronized (clientPool) {
                         clientPool.add(client);
                     }
                 }
-
-                public void onStateChanged(NonBlockingClient client, State state, Object context) {
-                    // You can handle state changes here if necessary
-                }
-            }, null, null);
+            }, null);
         }
     }
 
