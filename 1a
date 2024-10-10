@@ -16,7 +16,7 @@ public class PooledReceiver {
         // Create a thread pool with 10 threads
         this.executorService = Executors.newFixedThreadPool(poolSize);
         // Create a connection pool for reuse
-        this.clientPool = new ArrayList<NonBlockingClient>(poolSize);
+        this.clientPool = new ArrayList<>(poolSize);
 
         // Initialize client pool without ClientListener and State
         for (int i = 0; i < poolSize; i++) {
@@ -38,13 +38,28 @@ public class PooledReceiver {
                 // Reusing connections from the pool in threads
                 executorService.execute(new Runnable() {
                     public void run() {
-                        client.receive("myTopic", new DestinationAdapter() {
-                            public void onMessage(NonBlockingClient client, String topic, Delivery delivery) {
-                                System.out.println("Received message: " + new String(delivery.getData()));
-                            }
-                        });
+                        // Polling for messages in a loop
+                        pollMessages(client);
                     }
                 });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void pollMessages(NonBlockingClient client) {
+        try {
+            while (true) {
+                // Manually poll or check for messages from a destination
+                client.subscribe("myTopic", new DestinationAdapter() {
+                    public void onMessage(NonBlockingClient client, String topic, Delivery delivery) {
+                        System.out.println("Received message: " + new String(delivery.getData()));
+                    }
+                });
+                
+                // Add a delay to avoid continuous rapid polling
+                Thread.sleep(1000);
             }
         } catch (Exception e) {
             e.printStackTrace();
