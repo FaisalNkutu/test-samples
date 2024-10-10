@@ -1,79 +1,173 @@
 import com.ibm.mqlight.api.ClientOptions;
 import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.NonBlockingClientAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class PooledSender {
-    private final ExecutorService executorService;
-    private final List<NonBlockingClient> clientPool;
-    private final int poolSize = 10;
+public class AMQPPooledSender {
 
-    public PooledSender() {
-        // Create a thread pool with 10 threads
-        this.executorService = Executors.newFixedThreadPool(poolSize);
-        // Create a connection pool for reuse
-        this.clientPool = new ArrayList<>(poolSize);
+	private final ExecutorService executorService;
+	private final List<NonBlockingClient> clientPool;
+	private  int poolSize = 10;
 
-        // Initialize client pool without ClientListener and State
-        for (int i = 0; i < poolSize; i++) {
-            NonBlockingClient.create("amqp://localhost", new ClientOptions(), new NonBlockingClient.Adapter<Void>() {
-                @Override
-                public void onStarted(NonBlockingClient client, Void context) {
-                    System.out.println("Created connection for sending");
-                    synchronized (clientPool) {
-                        clientPool.add(client);
-                    }
-                }
-            }, null);
-        }
-    }
+	public AMQPPooledSender() {
+		// If thread pool size is not provided use default
+		if (poolSize != 0) {
+			poolSize = Runtime.getRuntime().availableProcessors();
+		}
+		// Create a thread pool with 10 threads
+		this.executorService = Executors.newFixedThreadPool(poolSize);
+		// Create a connection pool for reuse
+		this.clientPool = new ArrayList<>(poolSize);
+		ClientOptions clientOpts = ClientOptions.builder().setCredentials("userName", "password").build();
+		{
+			// Initialize client pool without ClientListener and State
+			for (int i = 0; i < poolSize; i++) {
+				NonBlockingClient.create("amqp://localhost", clientOpts, new NonBlockingClientAdapter<Void>() {
 
-    public void start() {
-        try {
-            for (final NonBlockingClient client : clientPool) {
-                // Reusing connections from the pool in threads
-                executorService.execute(new Runnable() {
-                    public void run() {
-                        // Polling to send messages in a loop
-                        sendMessages(client);
-                    }
-                });
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+					@Override
+					public void onStarted(NonBlockingClient client, Void context) {
+						System.out.println("Created connection for sending");
+						synchronized (clientPool) {
+							clientPool.add(client);
+						}
+					}
+				}, null);
+			}
+		}
+	}
 
-    private void sendMessages(NonBlockingClient client) {
-        try {
-            while (true) {
-                // Manually send messages in a loop
-                for (int i = 0; i < 10; i++) {
-                    final String message = "Message " + i;
-                    client.send("myTopic", message.getBytes(), new NonBlockingClient.Adapter<Void>() {
-                        @Override
-                        public void onSent(NonBlockingClient client, Void context, Exception exception) {
-                            if (exception == null) {
-                                System.out.println("Sent message: " + message);
-                            } else {
-                                System.out.println("Failed to send message: " + message);
-                            }
-                        }
-                    });
-                }
-                
-                // Add a delay to avoid continuous rapid sending
-                Thread.sleep(1000);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	public void start() {
+		try {
+			for (final NonBlockingClient client : clientPool) {
+				// Reusing connections from the pool in threads
+				executorService.execute(new Runnable() {
 
-    public static void main(String[] args) {
-        PooledSender sender = new PooledSender();
-        sender.start();
-    }
+					public void run() {
+						// Polling to send messages in a loop
+						sendMessages(client);
+					}
+				});
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void sendMessages(NonBlockingClient client) {
+		try {
+			while (true) {
+				// Manually send messages in a loop
+				for (int i = 0; i < 10; i++) {
+					final String message = "Message " + i;
+					client.send("myTopic", message.getBytes(), null);
+				}
+
+				// Add a delay to avoid continuous rapid sending
+				Thread.sleep(1000);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		AMQPPooledSender sender = new AMQPPooledSender();
+		sender.start();
+	}
+}
+
+
+package ca.medis.web.util.amqp;
+
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.NonBlockingClientAdapter;
+import com.ibm.mqlight.api.StringDelivery;
+import com.ibm.mqlight.api.Delivery;
+import com.ibm.mqlight.api.DestinationAdapter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class AMQPConnectionPooledReceiver {
+
+	private final ExecutorService executorService;
+	private final List<NonBlockingClient> clientPool;
+	private int poolSize = 10;
+
+	public AMQPConnectionPooledReceiver() {
+		// If thread pool size is not provided use default
+		if (poolSize != 0) {
+			poolSize = Runtime.getRuntime().availableProcessors();
+		}
+		// Create a thread pool with 10 threads
+		this.executorService = Executors.newFixedThreadPool(poolSize);
+		// Create a connection pool for reuse
+		this.clientPool = new ArrayList<>(poolSize);
+		ClientOptions clientOpts = ClientOptions.builder().setCredentials("userName", "password").build();
+		// Initialize client pool without ClientListener and State
+		for (int i = 0; i < poolSize; i++) {
+			NonBlockingClient.create("amqp://localhost", clientOpts, new NonBlockingClientAdapter<Void>() {
+
+				@Override
+				public void onStarted(NonBlockingClient client, Void context) {
+					System.out.println("Created connection for receiving");
+					synchronized (clientPool) {
+						clientPool.add(client);
+					}
+				}
+			}, null);
+		}
+	}
+
+	public void start() {
+		try {
+			for (final NonBlockingClient client : clientPool) {
+				// Reusing connections from the pool in threads
+				executorService.execute(new Runnable() {
+
+					public void run() {
+						// Polling for messages in a loop
+						pollMessages(client);
+					}
+				});
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void pollMessages(NonBlockingClient client) {
+		try {
+			while (true) {
+				// Manually poll or check for messages from a destination
+				client.subscribe("topic", new DestinationAdapter<Void>() {
+
+					public void onMessage(NonBlockingClient client, Void context, Delivery delivery) {
+
+						if (delivery.getType() == Delivery.Type.STRING)
+							System.out.println("Consumed from Topic: " + ((StringDelivery) delivery).getData());
+						// processOneMessage( ((StringDelivery) delivery).getData(), objectMapper,
+						// rpgResponsePayloadParser, configStore,rpgConfiguration);
+					}
+				}, null, null);
+				// }
+
+				// Add a delay to avoid continuous rapid polling
+				Thread.sleep(1000);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		AMQPConnectionPooledReceiver receiver = new AMQPConnectionPooledReceiver();
+		receiver.start();
+	}
 }
