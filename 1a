@@ -1,66 +1,62 @@
 import com.ibm.mqlight.api.ClientOptions;
 import com.ibm.mqlight.api.NonBlockingClient;
-import com.ibm.mqlight.api.Client;
-import com.ibm.mqlight.api.Delivery;
-import com.ibm.mqlight.api.Message;
-import com.ibm.mqlight.api.ReceiveOptions;
-import com.ibm.mqlight.api.ReceiveStatus;
-
+import com.ibm.mqlight.api.State;
+import com.ibm.mqlight.api.callback.Delivery;
+import com.ibm.mqlight.api.callback.ClientListener;
+import com.ibm.mqlight.api.callback.DestinationAdapter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
 
-public class MQReceiverWithPooling {
-    private ExecutorService executorService = Executors.newFixedThreadPool(10);  // 10 Threads
-    private static final int POOL_SIZE = 5;
-    private LinkedBlockingQueue<NonBlockingClient> connectionPool = new LinkedBlockingQueue<>(POOL_SIZE);
+public class PooledReceiver {
+    private final ExecutorService executorService;
+    private final List<NonBlockingClient> clientPool;
+    private final int poolSize = 10;
 
-    public void start() {
-        // Initialize pool with 5 connections
-        for (int i = 0; i < POOL_SIZE; i++) {
-            ClientOptions clientOptions = ClientOptions.builder().build();
-            NonBlockingClient.create("amqp://localhost", clientOptions, (client, throwable) -> {
-                if (throwable == null) {
-                    connectionPool.add(client);
-                } else {
-                    System.err.println("Error creating client: " + throwable.getMessage());
+    public PooledReceiver() {
+        // Create a thread pool with 10 threads
+        this.executorService = Executors.newFixedThreadPool(poolSize);
+        // Create a connection pool for reuse
+        this.clientPool = new ArrayList<NonBlockingClient>(poolSize);
+
+        for (int i = 0; i < poolSize; i++) {
+            NonBlockingClient.create("amqp://localhost", new ClientOptions(), new ClientListener() {
+                public void onStarted(NonBlockingClient client, Object context) {
+                    System.out.println("Created connection for receiving");
+                    synchronized (clientPool) {
+                        clientPool.add(client);
+                    }
                 }
-            });
-        }
 
-        // Non-blocking message receiving
-        for (int i = 0; i < 10; i++) {
-            executorService.submit(() -> {
-                try {
-                    NonBlockingClient client = connectionPool.take();  // Borrow connection
-                    ReceiveOptions receiveOptions = ReceiveOptions.builder().autoConfirm(true).build();
-
-                    client.subscribe("queue-name", receiveOptions, (Client recvClient, Delivery delivery) -> {
-                        Message message = delivery.getMessage();
-                        System.out.println("Received message: " + new String(message.getData()));
-                    }, (Client recvClient, ReceiveStatus status) -> {
-                        if (status.getError() != null) {
-                            System.out.println("Error receiving message: " + status.getError().getMessage());
-                        } else {
-                            System.out.println("Subscription successful.");
-                        }
-                    });
-
-                    connectionPool.put(client);  // Return connection to the pool
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    System.err.println("Thread interrupted: " + e.getMessage());
+                public void onStateChanged(NonBlockingClient client, State state, Object context) {
+                    // You can handle state changes here if necessary
                 }
-            });
+            }, null, null);
         }
     }
 
-    public void stop() {
-        executorService.shutdown();
+    public void start() {
+        try {
+            for (final NonBlockingClient client : clientPool) {
+                // Reusing connections from the pool in threads
+                executorService.execute(new Runnable() {
+                    public void run() {
+                        client.receive("myTopic", new DestinationAdapter() {
+                            public void onMessage(NonBlockingClient client, String topic, Delivery delivery) {
+                                System.out.println("Received message: " + new String(delivery.getData()));
+                            }
+                        });
+                    }
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
-        MQReceiverWithPooling receiver = new MQReceiverWithPooling();
+        PooledReceiver receiver = new PooledReceiver();
         receiver.start();
     }
 }
