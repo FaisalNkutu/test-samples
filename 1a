@@ -1,18 +1,16 @@
 import com.ibm.mqlight.api.ClientOptions;
 import com.ibm.mqlight.api.NonBlockingClient;
-import com.ibm.mqlight.api.callback.Delivery;
-import com.ibm.mqlight.api.callback.DestinationAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class PooledReceiver {
+public class PooledSender {
     private final ExecutorService executorService;
     private final List<NonBlockingClient> clientPool;
     private final int poolSize = 10;
 
-    public PooledReceiver() {
+    public PooledSender() {
         // Create a thread pool with 10 threads
         this.executorService = Executors.newFixedThreadPool(poolSize);
         // Create a connection pool for reuse
@@ -23,7 +21,7 @@ public class PooledReceiver {
             NonBlockingClient.create("amqp://localhost", new ClientOptions(), new NonBlockingClient.Adapter<Void>() {
                 @Override
                 public void onStarted(NonBlockingClient client, Void context) {
-                    System.out.println("Created connection for receiving");
+                    System.out.println("Created connection for sending");
                     synchronized (clientPool) {
                         clientPool.add(client);
                     }
@@ -38,8 +36,8 @@ public class PooledReceiver {
                 // Reusing connections from the pool in threads
                 executorService.execute(new Runnable() {
                     public void run() {
-                        // Polling for messages in a loop
-                        pollMessages(client);
+                        // Polling to send messages in a loop
+                        sendMessages(client);
                     }
                 });
             }
@@ -48,17 +46,25 @@ public class PooledReceiver {
         }
     }
 
-    private void pollMessages(NonBlockingClient client) {
+    private void sendMessages(NonBlockingClient client) {
         try {
             while (true) {
-                // Manually poll or check for messages from a destination
-                client.subscribe("myTopic", new DestinationAdapter() {
-                    public void onMessage(NonBlockingClient client, String topic, Delivery delivery) {
-                        System.out.println("Received message: " + new String(delivery.getData()));
-                    }
-                });
+                // Manually send messages in a loop
+                for (int i = 0; i < 10; i++) {
+                    final String message = "Message " + i;
+                    client.send("myTopic", message.getBytes(), new NonBlockingClient.Adapter<Void>() {
+                        @Override
+                        public void onSent(NonBlockingClient client, Void context, Exception exception) {
+                            if (exception == null) {
+                                System.out.println("Sent message: " + message);
+                            } else {
+                                System.out.println("Failed to send message: " + message);
+                            }
+                        }
+                    });
+                }
                 
-                // Add a delay to avoid continuous rapid polling
+                // Add a delay to avoid continuous rapid sending
                 Thread.sleep(1000);
             }
         } catch (Exception e) {
@@ -67,7 +73,7 @@ public class PooledReceiver {
     }
 
     public static void main(String[] args) {
-        PooledReceiver receiver = new PooledReceiver();
-        receiver.start();
+        PooledSender sender = new PooledSender();
+        sender.start();
     }
 }
