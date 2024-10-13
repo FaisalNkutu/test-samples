@@ -1,0 +1,50 @@
+package ca.medis.web.util.amqp;
+
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+
+public class AMQPCallExecutorDemo {
+
+    private static AMQPConfiguration amqpConfiguration = null;
+    private static Logger logger = Logger.getLogger(AMQPCallExecutorDemo.class.getName());
+
+    public static void main(String[] args) {
+        Set<String> tradingPartnerCodes = new HashSet<>();
+        String tpCode = "MSD";
+        tradingPartnerCodes.add(tpCode);
+
+        try {
+            amqpConfiguration = amqpConfiguration.getInstance(tradingPartnerCodes);
+        } catch (IOException e) {
+            logger.error("Failed to load configuration: " + e);
+        }
+
+        String host = amqpConfiguration.getForTrading(tpCode, "Host");
+        String userName = amqpConfiguration.getForTrading(tpCode, "Username");
+        String password = amqpConfiguration.getForTrading(tpCode, "Password");
+        String topic = amqpConfiguration.getForTrading(tpCode, "OutTopicName");
+
+        // Create Producer
+        Producer producer = new Producer(host, userName, password, topic);
+
+        // Create Consumer
+        Consumer consumer = new Consumer(host, userName, password, topic);
+
+        // Send messages
+        producer.sendMessages(10);
+
+        // Add some delay to allow consumer to receive messages
+        try {
+            Thread.sleep(5000); // Adjust delay as needed
+        } catch (InterruptedException e) {
+            logger.error("Error while waiting for consumer: " + e);
+        }
+
+        // Close connections
+        producer.close();
+        consumer.close();
+    }
+}
