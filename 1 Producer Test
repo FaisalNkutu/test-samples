@@ -1,0 +1,53 @@
+package ca.medis.web.util.amqp;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.ibm.mqlight.api.NonBlockingClient;
+
+import static org.mockito.Mockito.*;
+
+// Unit test for the Producer class using JUnit 4
+@RunWith(SpringJUnit4ClassRunner.class)
+public class ProducerTest {
+
+    @Mock
+    private NonBlockingClient mockClient;
+
+    @InjectMocks
+    private Producer producer;
+
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    public void testSendMessages() {
+        // Arrange
+        doNothing().when(mockClient).send(anyString(), anyString(), isNull());
+
+        // Act
+        producer.sendMessages(5);
+
+        // Assert
+        verify(mockClient, times(5)).send(anyString(), anyString(), isNull());
+    }
+
+    @Test
+    public void testClose() {
+        // Arrange
+        doNothing().when(mockClient).stop(any(), any());
+
+        // Act
+        producer.close();
+
+        // Assert
+        verify(mockClient).stop(any(), any());
+    }
+}
