@@ -1,0 +1,41 @@
+package ca.medis.web.util.amqp;
+
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.NonBlockingClientAdapter;
+import org.apache.log4j.Logger;
+
+public class Producer {
+
+    private static Logger logger = Logger.getLogger(Producer.class.getName());
+
+    private NonBlockingClient client;
+    private String topic;
+
+    public Producer(String host, String userName, String password, String topic) {
+        ClientOptions clientOpts = ClientOptions.builder()
+                .setCredentials(userName, password)
+                .build();
+
+        this.topic = topic;
+        client = NonBlockingClient.create(host, clientOpts, new NonBlockingClientAdapter<Void>() {
+            public void onStarted(NonBlockingClient client, Void context) {
+                logger.info("Producer connected to host: " + host);
+            }
+        }, null);
+    }
+
+    public void sendMessages(int numberOfMessages) {
+        for (int i = 0; i < numberOfMessages; i++) {
+            String message = "Message " + i + " for demo purposes";
+            client.send(topic, message, null);
+            logger.info("Sent message: " + message);
+        }
+    }
+
+    public void close() {
+        client.stop(null, (client, context) -> {
+            logger.info("Producer connection closed.");
+        });
+    }
+}
