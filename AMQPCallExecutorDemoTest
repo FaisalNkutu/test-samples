@@ -1,0 +1,72 @@
+package ca.medis.web.util.amqp;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
+
+// Use JUnit 4 Runner for Spring
+@RunWith(SpringJUnit4ClassRunner.class)
+public class AMQPCallExecutorDemoTest {
+
+    @Mock
+    private AMQPConfiguration amqpConfiguration;
+
+    @Mock
+    private Producer producer;
+
+    @Mock
+    private Consumer consumer;
+
+    @InjectMocks
+    private AMQPCallExecutorDemo amqpCallExecutorDemo;
+
+    private String host = "localhost";
+    private String userName = "user";
+    private String password = "pass";
+    private String topic = "testTopic";
+    private String tpCode = "MSD";
+
+    @Before
+    public void setup() throws IOException {
+        // Initialize mocks
+        MockitoAnnotations.initMocks(this);
+
+        // Mock the AMQPConfiguration behavior
+        when(amqpConfiguration.getInstance(anySet())).thenReturn(amqpConfiguration);
+        when(amqpConfiguration.getForTrading(tpCode, "Host")).thenReturn(host);
+        when(amqpConfiguration.getForTrading(tpCode, "Username")).thenReturn(userName);
+        when(amqpConfiguration.getForTrading(tpCode, "Password")).thenReturn(password);
+        when(amqpConfiguration.getForTrading(tpCode, "OutTopicName")).thenReturn(topic);
+    }
+
+    @Test
+    public void testAMQPCallExecutorDemo() throws InterruptedException {
+        // Test the main workflow of sending and consuming messages
+
+        // Verify that the producer sends 10 messages
+        doNothing().when(producer).sendMessages(10);
+
+        // Simulate a delay
+        Thread.sleep(500);
+
+        // Verify the producer and consumer close methods
+        doNothing().when(producer).close();
+        doNothing().when(consumer).close();
+
+        // Close producer and consumer
+        producer.close();
+        consumer.close();
+
+        // Verify interactions
+        verify(producer).sendMessages(10);
+        verify(producer).close();
+        verify(consumer).close();
+    }
+}
