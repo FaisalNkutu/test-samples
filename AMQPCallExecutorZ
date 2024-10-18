@@ -1,0 +1,89 @@
+package ca.medis.web.util.mq;
+
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+
+import org.apache.log4j.Logger;
+import ca.medis.web.util.amqp.AMQPCallWebbiConfig;
+import ca.medis.web.util.amqp.AMQPUtil;
+import ca.medis.web.util.amqp.RpgCallToAMQPRequestMapper;
+import ca.medis.web.util.as400.RpgOutput;
+import ca.medis.web.util.as400.RpgProgram;
+import ca.medis.web.util.rpg.RpgCallContext;
+import ca.medis.web.util.rpg.RpgCallException;
+import ca.medis.web.util.rpg.RpgCallExecutor;
+import ca.medis.web.util.rpg.RpgCallRuntimeException;
+import ca.medis.web.util.amqp.AMQPCallWebbiConfigStore;
+import ca.medis.web.util.amqp.AMQPProducer;
+
+
+/**
+ * This class is used to execute
+ * the asynchronous AMQP message. 
+ * 
+ * @author fnkutu
+ */
+
+public class AMQPCallExecutor implements RpgCallExecutor {
+	private final AMQPUtil amqpUtil;
+	private final AMQPCallWebbiConfigStore configStore;
+	private final RpgCallToAMQPRequestMapper requestMapper;
+	private final RPGConfiguration rpgConfiguration;
+	static Logger logger = Logger.getLogger(AMQPCallExecutor.class.getName());
+
+	
+	public AMQPCallExecutor(AMQPUtil amqpUtil, AMQPCallWebbiConfigStore configStore, RpgCallToAMQPRequestMapper requestMapper, RPGConfiguration rpgConfiguration) {
+		this.amqpUtil = amqpUtil;
+		this.configStore = configStore;
+		this.requestMapper = requestMapper;
+		this.rpgConfiguration = rpgConfiguration;
+	}
+
+	@Override
+	public RpgOutput executeRpg(RpgCallContext context) throws RpgCallException {
+
+		RpgProgram rpgProgram = context.getProgram();
+		Function<String, Object> input = getAndValidateInput(context);
+		BiConsumer<Map<?, ?>, Map<?, ?>> outputProcessor = getAndValidateOutputProcessor(context);
+		AMQPCallWebbiConfig config = configStore.getConfigByProgramName(rpgProgram.getName());
+		String amqpRequest = requestMapper.map(config, rpgProgram, input, context);
+		try {
+			String amqpMessage = amqpUtil.createJsonInputMessage(amqpRequest);
+	
+            AMQPProducer amqpSender = new AMQPProducer(context,"InTopicName","MSD"); 
+            Thread.sleep(180); // Avoid connecting too rapidly originally 300 
+            amqpSender.publishToAMQP(amqpMessage);			
+		} catch (Exception e) {
+			throw new RpgCallException(e);
+		}
+
+		return null; 
+	}
+	private Function<String, Object> getAndValidateInput(RpgCallContext context) {
+		Object contextInput = context.getAttribute(RpgCallContext.INPUT, Object.class);
+
+		if (contextInput == null) {
+			throw new RpgCallRuntimeException(new IllegalArgumentException("Null RpgCallContext input"));
+		} else if (!(contextInput instanceof Function)) {
+			throw new RpgCallRuntimeException(new IllegalArgumentException(
+					String.format("RpgCallContext input of type %s instead of Function", contextInput.getClass())));
+		}
+
+		return (Function<String, Object>) contextInput;
+	}
+
+	private BiConsumer<Map<?, ?>, Map<?, ?>> getAndValidateOutputProcessor(RpgCallContext context) {
+		Object contextOutputProcessor = context.getAttribute(RpgCallContext.OUTPUT_PROCESSOR, Object.class);
+
+		if (contextOutputProcessor == null) {
+			throw new RpgCallRuntimeException(new IllegalArgumentException("Null RpgCallContext output processor"));
+		} else if (!(contextOutputProcessor instanceof BiConsumer)) {
+			throw new RpgCallRuntimeException(new IllegalArgumentException(
+					String.format("RpgCallContext output processor of type %s instead of BiProcessor",
+							contextOutputProcessor.getClass())));
+		}
+
+		return (BiConsumer<Map<?, ?>, Map<?, ?>>) contextOutputProcessor;
+	}	
+}
