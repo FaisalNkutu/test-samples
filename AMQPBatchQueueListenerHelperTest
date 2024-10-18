@@ -1,0 +1,69 @@
+import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ca.medis.web.util.amqp.AMQPBatchQueueListenerHelper;
+import ca.medis.web.util.mq.RPGConfiguration;
+import ca.medis.web.util.mq.AMQPCallExecutor;
+import ca.medis.web.util.rpg.RpgResponsePayloadParser;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+public class AMQPBatchQueueListenerHelperTest {
+
+    @Mock
+    private AMQPUtil amqpUtil;
+
+    @Mock
+    private AMQPCallWebbiConfigStore configStore;
+
+    @Mock
+    private RpgCallToAMQPRequestMapper requestMapper;
+
+    @Mock
+    private RPGConfiguration rpgConfiguration;
+
+    @Mock
+    private RpgResponsePayloadParser rpgResponsePayloadParser;
+
+    @InjectMocks
+    private AMQPBatchQueueListenerHelper amqpBatchQueueListenerHelper;
+
+    private String tpCode = "testTpCode";
+    private String poolSize = "10";
+    private String webbiValue = "testWebbiValue";
+
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.openMocks(this);
+        amqpBatchQueueListenerHelper = new AMQPBatchQueueListenerHelper(tpCode, poolSize, webbiValue, amqpUtil, configStore, requestMapper, rpgConfiguration, rpgResponsePayloadParser);
+    }
+
+    @Test
+    public void testStartConsuming() throws Exception {
+        AMQPConsumer amqpConsumerMock = mock(AMQPConsumer.class);
+        when(amqpConsumerMock.consumeFromAMQP()).thenReturn(true);
+
+        // Invoke the method to be tested
+        amqpBatchQueueListenerHelper.startConsuming(webbiValue, tpCode, poolSize);
+
+        // Verify behavior
+        verify(amqpConsumerMock, times(1)).consumeFromAMQP();
+    }
+
+    @Test
+    public void testConstructorInitialization() {
+        assertNotNull(amqpBatchQueueListenerHelper);
+        assertEquals(tpCode, amqpBatchQueueListenerHelper.getTpCode());
+        assertEquals(poolSize, amqpBatchQueueListenerHelper.getPoolSize());
+        assertEquals(webbiValue, amqpBatchQueueListenerHelper.getWebbiValue());
+    }
+}
