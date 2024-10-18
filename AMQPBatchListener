@@ -1,0 +1,57 @@
+package ca.medis.web.util.amqp;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ca.medis.web.util.mq.AMQPCallExecutor;
+import ca.medis.web.util.mq.RPGConfiguration;
+import ca.medis.web.util.rpg.RpgResponsePayloadParser;
+
+/**
+ * This class is used to receive the response from
+ * AMQP Topic. 
+ * 
+ * @author fnkutu
+ */
+public class AMQPBatchQueueListenerHelper {
+	private static ObjectMapper objectMapper = new ObjectMapper();
+
+	
+	private  String webbiValue = null;
+	private String tpCode = null;
+	private String poolSize = null;
+	private final AMQPUtil amqpUtil;
+	private final AMQPCallWebbiConfigStore configStore;
+	private final RpgCallToAMQPRequestMapper requestMapper;
+	private final RPGConfiguration rpgConfiguration;
+	private final RpgResponsePayloadParser rpgResponsePayloadParser;
+	static Logger logger = Logger.getLogger(AMQPCallExecutor.class.getName());
+
+	public AMQPBatchQueueListenerHelper(String tpCode,  String poolSize, String webbiValue, AMQPUtil amqpUtil, AMQPCallWebbiConfigStore configStore, RpgCallToAMQPRequestMapper requestMapper, RPGConfiguration rpgConfiguration, RpgResponsePayloadParser rpgResponsePayloadParser) {
+		this.amqpUtil = amqpUtil;
+		this.configStore = configStore;
+		this.requestMapper = requestMapper;
+		this.rpgConfiguration = rpgConfiguration;
+		this.tpCode = tpCode;
+		this.webbiValue = webbiValue;
+		this.poolSize = poolSize;
+		this.rpgResponsePayloadParser = rpgResponsePayloadParser;
+		logger.info("Preparing to Consuming Messages using AMQPBatchQueueListenerHelper");
+		startConsuming(webbiValue,tpCode,poolSize);
+	}
+
+	public void startConsuming(String webbiValue,String tpCode,String poolSize) {
+
+        AMQPConsumer amqpConsumer = new AMQPConsumer(tpCode,objectMapper, configStore, rpgConfiguration,rpgResponsePayloadParser,"InTopicName"); 
+        try {
+			Thread.sleep(180);
+		} catch (InterruptedException e) {
+			logger.error("Preparing to Consuming Messages using AMQPBatchQueueListenerHelper");
+		} // Avoid connecting too rapidly originally 300 
+        amqpConsumer.consumeFromAMQP();
+	}
+
+}
