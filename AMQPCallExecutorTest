@@ -1,0 +1,118 @@
+import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import ca.medis.web.util.amqp.AMQPCallWebbiConfig;
+import ca.medis.web.util.amqp.AMQPCallWebbiConfigStore;
+import ca.medis.web.util.amqp.AMQPUtil;
+import ca.medis.web.util.amqp.RpgCallToAMQPRequestMapper;
+import ca.medis.web.util.as400.RpgOutput;
+import ca.medis.web.util.as400.RpgProgram;
+import ca.medis.web.util.mq.AMQPCallExecutor;
+import ca.medis.web.util.rpg.RpgCallContext;
+import ca.medis.web.util.rpg.RpgCallException;
+import ca.medis.web.util.rpg.RpgCallRuntimeException;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+public class AMQPCallExecutorTest {
+
+    @Mock
+    private AMQPUtil amqpUtil;
+
+    @Mock
+    private AMQPCallWebbiConfigStore configStore;
+
+    @Mock
+    private RpgCallToAMQPRequestMapper requestMapper;
+
+    @Mock
+    private RPGConfiguration rpgConfiguration;
+
+    @InjectMocks
+    private AMQPCallExecutor amqpCallExecutor;
+
+    @Mock
+    private RpgCallContext mockContext;
+
+    @Mock
+    private RpgProgram mockRpgProgram;
+
+    @Mock
+    private AMQPCallWebbiConfig mockConfig;
+
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+        when(mockContext.getProgram()).thenReturn(mockRpgProgram);
+        when(mockRpgProgram.getName()).thenReturn("testProgram");
+        when(configStore.getConfigByProgramName("testProgram")).thenReturn(mockConfig);
+    }
+
+    @Test
+    public void testExecuteRpg_Success() throws Exception {
+        // Arrange
+        Function<String, Object> mockInput = mock(Function.class);
+        BiConsumer<Map<?, ?>, Map<?, ?>> mockOutputProcessor = mock(BiConsumer.class);
+        
+        when(mockContext.getAttribute(RpgCallContext.INPUT, Object.class)).thenReturn(mockInput);
+        when(mockContext.getAttribute(RpgCallContext.OUTPUT_PROCESSOR, Object.class)).thenReturn(mockOutputProcessor);
+        
+        String mockRequest = "mockRequest";
+        String mockMessage = "mockMessage";
+        
+        when(requestMapper.map(any(), any(), any(), any())).thenReturn(mockRequest);
+        when(amqpUtil.createJsonInputMessage(mockRequest)).thenReturn(mockMessage);
+        
+        AMQPProducer mockProducer = mock(AMQPProducer.class);
+        doNothing().when(mockProducer).publishToAMQP(anyString());
+
+        // Act
+        RpgOutput result = amqpCallExecutor.executeRpg(mockContext);
+
+        // Assert
+        verify(amqpUtil).createJsonInputMessage(mockRequest);
+        verify(mockProducer, times(1)).publishToAMQP(mockMessage);
+        assertNull(result);  // Expected null based on the original implementation
+    }
+
+    @Test(expected = RpgCallException.class)
+    public void testExecuteRpg_Failure() throws Exception {
+        // Arrange
+        Function<String, Object> mockInput = mock(Function.class);
+        BiConsumer<Map<?, ?>, Map<?, ?>> mockOutputProcessor = mock(BiConsumer.class);
+        
+        when(mockContext.getAttribute(RpgCallContext.INPUT, Object.class)).thenReturn(mockInput);
+        when(mockContext.getAttribute(RpgCallContext.OUTPUT_PROCESSOR, Object.class)).thenReturn(mockOutputProcessor);
+
+        when(requestMapper.map(any(), any(), any(), any())).thenReturn("mockRequest");
+        when(amqpUtil.createJsonInputMessage(anyString())).thenThrow(new RuntimeException("AMQP Error"));
+
+        // Act & Assert
+        amqpCallExecutor.executeRpg(mockContext);
+    }
+
+    @Test(expected = RpgCallRuntimeException.class)
+    public void testGetAndValidateInput_NullInput() {
+        // Arrange
+        when(mockContext.getAttribute(RpgCallContext.INPUT, Object.class)).thenReturn(null);
+
+        // Act & Assert
+        amqpCallExecutor.executeRpg(mockContext);
+    }
+
+    @Test(expected = RpgCallRuntimeException.class)
+    public void testGetAndValidateOutputProcessor_NullProcessor() {
+        // Arrange
+        when(mockContext.getAttribute(RpgCallContext.OUTPUT_PROCESSOR, Object.class)).thenReturn(null);
+
+        // Act & Assert
+        amqpCallExecutor.executeRpg(mockContext);
+    }
+}
