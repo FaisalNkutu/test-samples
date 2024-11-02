@@ -1,0 +1,12 @@
+		parameters.stream()
+				.filter(rpgCallParameterConfig -> rpgCallParameterConfig.getDirection().isInput()
+						&& ParameterLocation.BODY == rpgCallParameterConfig.getLocation())
+				.forEach(rpgCallParameterConfig -> {
+					RpgParamConfig rpgParamConfig = RpgParamConfigMatcher.findRpgParamConfig(rpgCallParameterConfig,
+							rpgProgram);
+					System.out.println("rpgParamConfig=====>" + rpgParamConfig);
+					System.out.println("rpgCallParameterConfig===getName()==>" + rpgCallParameterConfig.getName());
+					System.out.println("rpgCallParameterConfig===getSource()==>" + rpgCallParameterConfig.getSource());
+					paramMapperFactory.create(rpgParamConfig, rpgCallParameterConfig).map(rpgParamConfig,
+							rpgCallParameterConfig, input, body);
+				});
