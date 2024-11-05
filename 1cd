@@ -1,0 +1,105 @@
+package ca.medis.web.util.rpg.mapper;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import ca.medis.web.util.as400.RpgParamConfig;
+import ca.medis.web.util.rpg.RpgCallParameterConfig;
+import ca.medis.web.util.rpg.RpgCallRuntimeException;
+
+public class ListRpgCallParamMapper implements RpgCallParamMapper {
+	private final RpgCallParameterValueConverter converter;
+
+	public ListRpgCallParamMapper(RpgCallParameterValueConverter converter) {
+		this.converter = converter;
+	}
+
+	@Override
+	public void map(RpgParamConfig rpgParamConfig, RpgCallParameterConfig rpgCallParameterConfig,
+			Function<String, Object> input, Map<String, Object> payload) {
+		if (!rpgCallParameterConfig.getName().contains(RpgCallParameterConfig.PATH_SEPARATOR)) {
+			throw new RpgCallRuntimeException(new IllegalArgumentException(String
+					.format("RpgCallParameterConfig %s has no path separator", rpgCallParameterConfig.getName())));
+		}
+
+		int size = ((BigDecimal) input.apply(ARRAY_SIZE)).intValue();
+		List<Map<String, Object>> list = createOrGetListHierarchy(rpgCallParameterConfig, payload, size);
+
+		for (int i = 0; i < size; i++) {
+			Map<String, Object> item = list.get(i);
+			Object value = rpgCallParameterConfig.getValue() != null ? rpgCallParameterConfig.getValue()
+					: ((List<Object>) input.apply(rpgParamConfig.getParamKey())).get(i);
+			item.put(extractParameterName(rpgCallParameterConfig),
+					converter.convert(rpgParamConfig, rpgCallParameterConfig, value));
+		}
+
+	}
+
+	private String extractParameterName(RpgCallParameterConfig rpgCallParameterConfig) {
+		return Stream.of(rpgCallParameterConfig.getName().split(RpgCallParameterConfig.PATH_SEPARATOR)).reduce("",
+				(parent, child) -> child);
+	}
+
+	/**
+	 * Given a list type parameter whose path is root/level1/level2/parameterName.
+	 * Then create each level (segment of path) in the hierarchy, i.e.: root,
+	 * level1, level2. With non-immediate parents (root and level1) being
+	 * Map<String, Object> and level2 (the immediate parent) being List<Map<String,
+	 * Object>>. And populate the immediate parent (of type List<Map<String,
+	 * Object>>) with (size) number of empty Map<String, Object>. And then return
+	 * the immediate parent (of type List<Map<String, Object>>)
+	 * 
+	 * @param rpgCallParameterConfig
+	 * @param payload
+	 * @param size
+	 * @return
+	 */
+	private List<Map<String, Object>> createOrGetListHierarchy(RpgCallParameterConfig rpgCallParameterConfig,
+			Map<String, Object> payload, int size) {
+		List<String> path = Arrays
+				.asList(rpgCallParameterConfig.getName().split(RpgCallParameterConfig.PATH_SEPARATOR));
+		Map<String, Object> parent = payload;
+		List<Map<String, Object>> list = null;
+
+		// The path segments leading to, but not including, the property
+		// Example: for a path like root/level1/level2/CustomerName, segments would be
+		// [root, level1, level2]
+		List<String> segments = path.subList(0, path.size() - 1);
+
+		for (int i = 0; i < segments.size(); i++) {
+			String segment = segments.get(i);
+			if (i == segments.size() - 1) {
+				list = (List<Map<String, Object>>) parent.get(segment);
+
+				if (list == null) {
+					final List<Map<String, Object>> newList = new ArrayList<Map<String, Object>>();
+
+					IntStream.range(0, size).boxed().forEach(index -> newList.add(new HashMap<String, Object>()));
+
+					parent.put(segment, newList);
+					list = newList;
+				}
+			} else {
+				Map<String, Object> child = (Map<String, Object>) parent.get(segment);
+
+				if (child == null) {
+					child = new HashMap<>();
+					parent.put(segment, child);
+				}
+
+				parent = child;
+			}
+
+		}
+
+		return list;
+	}
+
+}
