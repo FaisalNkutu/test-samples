@@ -1,0 +1,224 @@
+package ca.medis.web.util.amqp;
+
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.Delivery;
+import com.ibm.mqlight.api.DestinationAdapter;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.NonBlockingClientAdapter;
+import com.ibm.mqlight.api.StringDelivery;
+
+import ca.medis.web.util.rpg.RpgCallContext;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
+import org.apache.log4j.Logger;
+
+/**
+ * Create a connection pool factory service
+ * 
+ * @author: fnkutu
+ */
+public abstract class AMQPConnectionPoolFactory {
+
+    protected static ExecutorService executorService = null;
+
+    protected final List<NonBlockingClient> clientPool;
+    protected int poolSize = 2;
+    static Logger logger = Logger.getLogger(AMQPConnectionPoolFactory.class.getName());
+    protected String host = null;
+    protected String userName = null;
+    protected String password = null;
+    protected String topic = null;
+    private String topicToConnectTo = null;
+    NonBlockingClient client = null;
+
+    private static Map<String, NonBlockingClient> connectionPool = new HashMap<>();
+    private static final Object poolLock = new Object();
+
+    AMQPConfiguration amqpConfiguration = null;
+
+    private String tpCode;
+
+    public AMQPConnectionPoolFactory(RpgCallContext context, String topicToConnectTo, String tpCode) {
+        if (poolSize == 0) {
+            poolSize = Runtime.getRuntime().availableProcessors();
+        }
+        this.executorService = Executors.newFixedThreadPool(poolSize);
+        this.clientPool = new ArrayList<>(poolSize);
+        this.topicToConnectTo = topicToConnectTo;
+        this.tpCode = tpCode;
+    }
+
+    private void getConfigurationParams() {
+        Set<String> tradingPartnerCodes = new HashSet<>();
+        try {
+            tradingPartnerCodes.add("MSD");
+            tradingPartnerCodes.add("CPDN");
+            amqpConfiguration = amqpConfiguration.getInstance(tradingPartnerCodes);
+
+            // Throw exception if critical configuration is missing
+            this.topic = amqpConfiguration.getForTrading(tpCode, topicToConnectTo);
+            this.host = amqpConfiguration.getForTrading(tpCode, "Host");
+            this.userName = amqpConfiguration.getForTrading(tpCode, "Username");
+            this.password = amqpConfiguration.getForTrading(tpCode, "Password");
+
+            if (topic == null || host == null || userName == null || password == null) {
+                throw new ConfigurationException("Critical AMQP configuration is missing.");
+            }
+
+        } catch (ConfigurationException e) {
+            logger.error("Critical configuration missing: " + e.getMessage());
+            throw e; // Re-throw to ensure the caller handles the error
+        } catch (Exception e) {
+            logger.error("Failed to load configuration settings: " + e.getMessage());
+        }
+    }
+
+    static NonBlockingClient getClientFromPool(String host, ClientOptions clientOpts) {
+        synchronized (poolLock) {
+            if (connectionPool.containsKey(host)) {
+                return connectionPool.get(host);
+            } else {
+                NonBlockingClient client = NonBlockingClient.create(host, clientOpts, new NonBlockingClientAdapter<Void>() {
+
+                    public void onStarted(NonBlockingClient client, Void context) {
+                        logger.info("Connection started for host: " + host);
+                    }
+                }, null);
+                connectionPool.put(host, client);
+                return client;
+            }
+        }
+    }
+
+    public void consumeFromAMQP() {
+        getConfigurationParams();
+        if (userName.trim() != null && password.trim() != null && clientPool.size() == 0) {
+            ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName.trim(), password.trim()).build();
+            this.client = getClientFromPool(host, clientOpts);
+            if (client != null) {
+                subscribeToTopic(client, topic);
+            }
+        }
+    }
+
+    void subscribeToTopic(NonBlockingClient client, String topic) {
+        try {
+            Thread.sleep(500);
+            executorService.execute(() -> getConnectionService(client, null));
+        } catch (InterruptedException e) {
+            logger.error("Failed to subscribe To Topic: " + topic + " " + e.getMessage());
+        }
+    }
+
+    public void publishToAMQP(String amqpMessage) {
+        getConfigurationParams();
+        if (userName.trim() != null && password.trim() != null && clientPool.size() == 0) {
+            ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName.trim(), password.trim()).build();
+            int retryCount = 3;
+            while (retryCount > 0) {
+                try {
+                    this.client = getClientFromPool(host, clientOpts);
+                    if (client != null) {
+                        sendToAMQP(amqpMessage);
+                        return; // Exit if successful
+                    }
+                } catch (Exception e) {
+                    logger.error("Failed to publish to AMQP. Retries left: " + (retryCount - 1));
+                }
+                retryCount--;
+                try {
+                    Thread.sleep(1000); // Wait before retrying
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt(); // Restore interrupted status
+                }
+            }
+            logger.error("Failed to publish to AMQP after retries.");
+        }
+    }
+
+    public void sendToAMQP(String amqpMessage) {
+        int maxRetries = 3;
+        int retryCount = 0;
+        boolean submittedSuccessfully = false;
+
+        while (retryCount < maxRetries && !submittedSuccessfully) {
+            try {
+                // Attempt to submit the task to the executor service
+                Future<?> future = executorService.submit(() -> getConnectionService(client, amqpMessage));
+
+                // Wait briefly to see if the task starts successfully
+                future.get(500, TimeUnit.MILLISECONDS);
+                submittedSuccessfully = true; // Task submitted and started
+
+                logger.info("Task submitted successfully to executor for AMQP message.");
+
+            } catch (TimeoutException e) {
+                // Task submission was successful, but execution didn’t complete in time
+                submittedSuccessfully = true; // Mark as successful to avoid retries
+                logger.warn("AMQP send task submitted but didn’t complete immediately: " + e.getMessage());
+
+            } catch (RejectedExecutionException e) {
+                // The executor is unable to accept the task, potentially due to being shut down
+                retryCount++;
+                logger.error("Failed to submit task to executor (retry " + retryCount + " of " + maxRetries + "): " + e.getMessage());
+
+                try {
+                    // Wait before retrying
+                    Thread.sleep(500); 
+                } catch (InterruptedException interruptedException) {
+                    Thread.currentThread().interrupt(); // Preserve interrupt status
+                    logger.error("Retry interrupted while trying to submit to executor: " + interruptedException.getMessage());
+                    break;
+                }
+            } catch (Exception e) {
+                // Handle any other unexpected exceptions
+                logger.error("Unexpected error while sending to AMQP: " + e.getMessage());
+                break;
+            }
+        }
+
+        if (!submittedSuccessfully) {
+            logger.error("Failed to send AMQP message after " + maxRetries + " retries.");
+        }
+    }
+
+    protected abstract void getConnectionService(NonBlockingClient client, String amqpMessage);
+
+    public void stop() {
+        executorService.shutdown();
+        cleanIdleClients(); // Clean up idle clients
+        for (NonBlockingClient client : clientPool) {
+            logger.info("Stopping connection service..... ");
+            client.stop(null, null);
+        }
+    }
+
+    private void cleanIdleClients() {
+        synchronized (poolLock) {
+            connectionPool.entrySet().removeIf(entry -> {
+                NonBlockingClient client = entry.getValue();
+                return client.getState() == NonBlockingClient.State.STOPPED || client.getState() == NonBlockingClient.State.ERROR;
+            });
+            logger.info("Cleaned up idle clients from connection pool.");
+        }
+    }
+}
+
+// ConfigurationException class
+public class ConfigurationException extends RuntimeException {
+    public ConfigurationException(String message) {
+        super(message);
+    }
+}
