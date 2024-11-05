@@ -1,0 +1,145 @@
+
+package ca.medis.web.util.amqp;
+
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.Delivery;
+import com.ibm.mqlight.api.DestinationAdapter;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.NonBlockingClientAdapter;
+import com.ibm.mqlight.api.StringDelivery;
+
+import ca.medis.web.util.rpg.RpgCallContext;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import org.apache.log4j.Logger;
+
+/**
+ * Create a connection pool factory service
+ * 
+ * @author: fnkutu
+ */
+public abstract class AMQPConnectionPoolFactory {
+
+	protected static ExecutorService executorService = null;
+
+	protected final List<NonBlockingClient> clientPool;
+	protected int poolSize = 2;
+	static Logger logger = Logger.getLogger(AMQPConnectionPoolFactory.class.getName());
+	protected String host = null;
+	protected String userName = null;
+	protected String password = null;
+	protected String topic = null;
+	private String topicToConnectTo = null;
+	NonBlockingClient client = null;
+
+	private static Map<String, NonBlockingClient> connectionPool = new HashMap<>();
+	private static final Object poolLock = new Object();
+
+	AMQPConfiguration amqpConfiguration = null;
+
+	private String tpCode;
+
+	public AMQPConnectionPoolFactory(RpgCallContext context, String topicToConnectTo, String tpCode) {
+		if (poolSize == 0) {
+			poolSize = Runtime.getRuntime().availableProcessors();
+		}
+		this.executorService = Executors.newFixedThreadPool(poolSize);
+		this.clientPool = new ArrayList<>(poolSize);
+		this.topicToConnectTo = topicToConnectTo;
+		this.tpCode = tpCode;
+		// getConfigurationParams(context,tpCode);
+	}
+
+	private void getConfigurationParams() {
+		Set<String> tradingPartnerCodes = new HashSet<>();
+		try {
+			// load amqp configuration based on provided trading partner
+			tradingPartnerCodes.add("MSD");
+			tradingPartnerCodes.add("CPDN");
+			amqpConfiguration = amqpConfiguration.getInstance(tradingPartnerCodes);
+			this.topic = amqpConfiguration.getForTrading(tpCode, topicToConnectTo);
+			this.host = amqpConfiguration.getForTrading(tpCode, "Host");
+			this.userName = amqpConfiguration.getForTrading(tpCode, "Username");
+			this.password = amqpConfiguration.getForTrading(tpCode, "Password");
+		} catch (Exception e) {
+			logger.error("Failed to load configuration settings: " + e.getMessage());
+		}
+	}
+
+	static NonBlockingClient getClientFromPool(String host, ClientOptions clientOpts) {
+		synchronized (poolLock) {
+			if (connectionPool.containsKey(host)) {
+				return connectionPool.get(host);
+			} else {
+				NonBlockingClient client = NonBlockingClient.create(host, clientOpts, new NonBlockingClientAdapter<Void>() {
+
+					public void onStarted(NonBlockingClient client, Void context) {
+						logger.info("Connection started for host: " + host);
+					}
+				}, null);
+				connectionPool.put(host, client);
+				return client;
+			}
+		}
+	}
+
+	public void consumeFromAMQP() {
+		getConfigurationParams();
+		if (userName.trim() != null && password.trim() != null && clientPool.size() == 0) {
+			ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName.trim(), password.trim()).build();
+			this.client = getClientFromPool(host, clientOpts);
+			if (client != null) {
+				subscribeToTopic(client, topic);
+			}
+		}
+	}
+	void subscribeToTopic(NonBlockingClient client, String topic) {
+		try {
+			Thread.sleep(500);
+			executorService.execute(() -> getConnectionService(client, null));
+		} catch (InterruptedException e) {
+			logger.error("Failed to subscribe To Topic: " + topic + " " + e.getMessage());
+		}
+	}
+
+	public void publishToAMQP(String amqpMessage) {
+		getConfigurationParams();
+		if (userName.trim() != null && password.trim() != null && clientPool.size() == 0) {
+			ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName.trim(), password.trim()).build();
+			this.client = getClientFromPool(host, clientOpts);
+			if (client != null) {
+
+				sendToAMQP(amqpMessage);
+			}
+		}
+	}
+
+	public void sendToAMQP(String amqpMessage) {
+		try {
+			logger.info("send method invoking connection service:---------------");
+			Thread.sleep(500); //Avoid sending immediately after connection
+			executorService.execute(() -> getConnectionService(client, amqpMessage));
+		} catch (Exception e) {
+			logger.error("Failed to invoke connection service: " + e.getMessage());
+		}
+	}
+
+	protected abstract void getConnectionService(NonBlockingClient client, String amqpMessage);
+
+	public void stop() {
+		
+		  executorService.shutdown(); 
+		  for (NonBlockingClient client : clientPool) {
+			  logger.info("Stopping connection service..... "); client.stop(null, null); 
+		  }
+		 
+	}
+}
