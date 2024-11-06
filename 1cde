@@ -1,0 +1,17 @@
+
+    static NonBlockingClient getClientFromPool(String host, ClientOptions clientOpts) {
+        synchronized (poolLock) {
+            if (connectionPool.containsKey(host)) {
+                return connectionPool.get(host);
+            } else {
+                NonBlockingClient client = NonBlockingClient.create(host, clientOpts, new NonBlockingClientAdapter<Void>() {
+
+                    public void onStarted(NonBlockingClient client, Void context) {
+                        logger.info("Connection started for host: " + host);
+                    }
+                }, null);
+                connectionPool.put(host, client);
+                return client;
+            }
+        }
+    }
