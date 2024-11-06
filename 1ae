@@ -1,0 +1,10 @@
+    private void cleanIdleClients() {
+        synchronized (poolLock) {
+            connectionPool.entrySet().removeIf(entry -> {
+                NonBlockingClient client = entry.getValue();
+                return (Boolean) null;
+                //return client.getState() == NonBlockingClient.State.STOPPED || client.getState() == NonBlockingClient.State.ERROR;
+            });
+            logger.info("Cleaned up idle clients from connection pool.");
+        }
+    }
