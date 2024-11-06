@@ -1,10 +1,13 @@
-    private void cleanIdleClients() {
-        synchronized (poolLock) {
-            connectionPool.entrySet().removeIf(entry -> {
-                NonBlockingClient client = entry.getValue();
-                return (Boolean) null;
-                //return client.getState() == NonBlockingClient.State.STOPPED || client.getState() == NonBlockingClient.State.ERROR;
-            });
-            logger.info("Cleaned up idle clients from connection pool.");
-        }
+private static final long IDLE_THRESHOLD = 5 * 60 * 1000; // 5 minutes
+
+private void cleanIdleClients() {
+    long currentTime = System.currentTimeMillis();
+    synchronized (poolLock) {
+        connectionPool.entrySet().removeIf(entry -> {
+            NonBlockingClient client = entry.getValue();
+            long lastUsed = client.getLastUsedTime(); // Hypothetical method
+            return (currentTime - lastUsed) > IDLE_THRESHOLD;
+        });
+        logger.info("Cleaned up idle clients from connection pool.");
     }
+}
