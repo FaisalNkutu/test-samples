@@ -1,0 +1,109 @@
+package ca.medis.web.util.amqp;
+
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.NonBlockingClient;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {AMQPConnectionPoolTest.TestConfig.class})
+public class AMQPConnectionPoolTest {
+
+    private AMQPConnectionPool connectionPool;
+
+    @Mock
+    private NonBlockingClient mockClient;
+
+    @Mock
+    private ClientOptions mockClientOptions;
+
+    private AutoCloseable closeable;
+
+    @Before
+    public void setUp() {
+        closeable = MockitoAnnotations.openMocks(this);
+        connectionPool = new TestAMQPConnectionPool();
+        connectionPool.clientPool.add(mockClient);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        closeable.close();
+        connectionPool.stopBatchListeners();
+    }
+
+    @Test
+    public void testCreatePool() {
+        AMQPConnectionPool.createPool("TestTopic", "localhost", mockClientOptions);
+        NonBlockingClient clientFromPool = AMQPConnectionPool.getClientFromPool("TestTopic", "localhost", mockClientOptions);
+
+        assertNotNull("Client should be created and returned from pool", clientFromPool);
+    }
+
+    @Test
+    public void testPublishToAMQP() {
+        String testMessage = "Test Message";
+
+        connectionPool.publishToAMQP(testMessage);
+
+        verify(mockClient, atLeastOnce()).send(eq(testMessage), any(), any(), any());
+    }
+
+    @Test
+    public void testConsumeFromAMQP() {
+        doNothing().when(mockClient).subscribe(anyString(), any(), any());
+
+        connectionPool.consumeFromAMQP();
+
+        verify(mockClient, times(1)).subscribe(anyString(), any(), any());
+    }
+
+    @Test
+    public void testStopBatchListeners() {
+        doNothing().when(mockClient).stop(any(), any());
+
+        connectionPool.stopBatchListeners();
+
+        verify(mockClient, times(1)).stop(any(), any());
+    }
+
+    @Test
+    public void testCleanIdleClients() throws InterruptedException {
+        // Set up the last used time to be older than the IDLE_TIMEOUT
+        AMQPConnectionPool.clientLastUsedMap.put(mockClient, System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(6));
+
+        connectionPool.cleanIdleClients();
+
+        verify(mockClient, times(1)).stop(any(), any());
+    }
+
+    // Define a concrete subclass of AMQPConnectionPool for testing purposes
+    static class TestAMQPConnectionPool extends AMQPConnectionPool {
+        public TestAMQPConnectionPool() {
+            super(null, "TestTopic", "TestTP");
+        }
+
+        @Override
+        protected void getConnectionService(NonBlockingClient client, String amqpMessage) {
+            // Simulated implementation for testing
+        }
+    }
+
+    // Configuration class for Spring context, if needed
+    @ContextConfiguration
+    static class TestConfig {
+        // Add any additional beans or configuration for testing context
+    }
+}
