@@ -31,7 +31,7 @@ import org.apache.log4j.Logger;
  */
 public abstract class AMQPConnectionPool {
 
-    protected static final ExecutorService executorService = Executors.newScheduledThreadPool(2);
+    protected static ExecutorService executorService = null;
     protected final List<NonBlockingClient> clientPool;
     protected int poolSize = 2;
     static Logger logger = Logger.getLogger(AMQPConnectionPool.class.getName());
@@ -42,8 +42,11 @@ public abstract class AMQPConnectionPool {
     private String topicToConnectTo = null;
     NonBlockingClient client = null;
 
-    private static final Map<String, NonBlockingClient> connectionPool = new HashMap<>();
+    private static Map<String, NonBlockingClient> connectionPool = new HashMap<>();
     private static final Object poolLock = new Object();
+
+    private static final Map<NonBlockingClient, Long> clientLastUsedMap = new HashMap<>();
+    private static final long IDLE_TIMEOUT = TimeUnit.MINUTES.toMillis(5); // 5 minutes idle timeout
 
     AMQPConfiguration amqpConfiguration = null;
     private String tpCode;
@@ -52,6 +55,7 @@ public abstract class AMQPConnectionPool {
         if (poolSize == 0) {
             poolSize = Runtime.getRuntime().availableProcessors();
         }
+        this.executorService = Executors.newFixedThreadPool(poolSize);
         this.clientPool = new ArrayList<>(poolSize);
         this.topicToConnectTo = topicToConnectTo;
         this.tpCode = tpCode;
@@ -70,7 +74,6 @@ public abstract class AMQPConnectionPool {
             this.password = amqpConfiguration.getForTrading(tpCode, "Password");
 
             if (topic == null || host == null || userName == null || password == null) {
-                logger.warn("Attempting retry for missing critical configuration parameters.");
                 throw new AMQPConfigurationException("Critical AMQP configuration is missing.");
             }
 
@@ -83,13 +86,13 @@ public abstract class AMQPConnectionPool {
     }
 
     static NonBlockingClient getClientFromPool(String topic, String host, ClientOptions clientOpts) {
+        NonBlockingClient client = null;
         synchronized (poolLock) {
-            return connectionPool.computeIfAbsent(topic, k -> NonBlockingClient.create(host, clientOpts, new NonBlockingClientAdapter<Void>() {
-                public void onStarted(NonBlockingClient client, Void context) {
-                    logger.info("Connection started for host: " + host);
-                }
-            }, null));
+            if (connectionPool.containsKey(topic)) {
+                client = connectionPool.get(topic);
+            }
         }
+        return client;
     }
 
     private static void createPool(String topic, String host, ClientOptions clientOpts) {
@@ -104,15 +107,19 @@ public abstract class AMQPConnectionPool {
         }
     }
 
-    static void freeClientFromPool(String topic) {
+    static void freeClientFromPool(final String topic) {
         synchronized (poolLock) {
-            NonBlockingClient client = connectionPool.remove(topic);
+            final NonBlockingClient client = connectionPool.remove(topic);
             if (client != null) {
-                client.stop((result, context) -> {
-                    if (result.succeeded()) {
+                client.stop(new NonBlockingClientAdapter<Void>() {
+                    @Override
+                    public void onStopped(NonBlockingClient client, Void context) {
                         logger.info("Connection closed for topic: " + topic);
-                    } else {
-                        logger.warn("Failed to close connection for topic: " + topic);
+                    }
+
+                    @Override
+                    public void onError(NonBlockingClient client, Void context, Exception exception) {
+                        logger.warn("Failed to close connection for topic: " + topic, exception);
                     }
                 }, null);
             }
@@ -121,14 +128,18 @@ public abstract class AMQPConnectionPool {
 
     static void clearConnectionPool() {
         synchronized (poolLock) {
-            for (String topic : connectionPool.keySet()) {
-                NonBlockingClient client = connectionPool.get(topic);
+            for (final String topic : connectionPool.keySet()) {
+                final NonBlockingClient client = connectionPool.get(topic);
                 if (client != null) {
-                    client.stop((result, context) -> {
-                        if (result.succeeded()) {
+                    client.stop(new NonBlockingClientAdapter<Void>() {
+                        @Override
+                        public void onStopped(NonBlockingClient client, Void context) {
                             logger.info("Connection closed for topic: " + topic);
-                        } else {
-                            logger.warn("Failed to close connection for topic: " + topic);
+                        }
+
+                        @Override
+                        public void onError(NonBlockingClient client, Void context, Exception exception) {
+                            logger.warn("Failed to close connection for topic: " + topic, exception);
                         }
                     }, null);
                 }
@@ -139,7 +150,7 @@ public abstract class AMQPConnectionPool {
 
     public void consumeFromAMQP() {
         getConfigurationParams();
-        if (userName != null && password != null && clientPool.isEmpty()) {
+        if (userName.trim() != null && password.trim() != null && clientPool.size() == 0) {
             ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName.trim(), password.trim()).build();
             createPool(topic, host, clientOpts);
             this.client = getClientFromPool(topic, host, clientOpts);
@@ -154,18 +165,17 @@ public abstract class AMQPConnectionPool {
             Thread.sleep(500);
             executorService.execute(() -> getConnectionService(client, null));
         } catch (InterruptedException e) {
-            logger.error("Failed to subscribe to Topic: " + topic + " " + e.getMessage());
-            Thread.currentThread().interrupt();
+            logger.error("Failed to subscribe To Topic: " + topic + " " + e.getMessage());
         }
     }
 
     public void publishToAMQP(String amqpMessage) {
         getConfigurationParams();
-        if (userName != null && password != null && clientPool.isEmpty()) {
+        if (userName.trim() != null && password.trim() != null && clientPool.size() == 0) {
             ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName.trim(), password.trim()).build();
             int retryCount = 3;
             while (retryCount > 0) {
-                try { 
+                try {
                     createPool(topic, host, clientOpts);
                     this.client = getClientFromPool(topic, host, clientOpts);
                     if (client != null) {
@@ -180,7 +190,6 @@ public abstract class AMQPConnectionPool {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
-                    break;
                 }
             }
             logger.error("Failed to publish to AMQP after retries.");
@@ -197,10 +206,11 @@ public abstract class AMQPConnectionPool {
                 Future<?> future = executorService.submit(() -> getConnectionService(client, amqpMessage));
                 future.get(900, TimeUnit.MILLISECONDS);
                 submittedSuccessfully = true;
+
                 logger.info("Task submitted successfully to executor for AMQP message.");
             } catch (TimeoutException e) {
-                logger.warn("AMQP send task submitted but didn’t complete immediately: " + e.getMessage());
                 submittedSuccessfully = true;
+                logger.warn("AMQP send task submitted but didn’t complete immediately: " + e.getMessage());
             } catch (RejectedExecutionException e) {
                 retryCount++;
                 logger.error("Failed to submit task to executor (retry " + retryCount + " of " + maxRetries + "): " + e.getMessage());
@@ -226,27 +236,44 @@ public abstract class AMQPConnectionPool {
 
     public void stopBatchListeners() {
         executorService.shutdown();
-        try {
-            if (!executorService.awaitTermination(30, TimeUnit.SECONDS)) {
-                executorService.shutdownNow();
-                if (!executorService.awaitTermination(30, TimeUnit.SECONDS)) {
-                    logger.error("Executor service did not terminate");
-                }
-            }
-        } catch (InterruptedException e) {
-            executorService.shutdownNow();
-            Thread.currentThread().interrupt();
-        }
         cleanIdleClients();
+        for (NonBlockingClient client : clientPool) {
+            logger.info("Stopping connection service..... ");
+            client.stop(new NonBlockingClientAdapter<Void>() {
+                @Override
+                public void onStopped(NonBlockingClient client, Void context) {
+                    logger.info("Connection stopped.");
+                }
+
+                @Override
+                public void onError(NonBlockingClient client, Void context, Exception exception) {
+                    logger.error("Failed to stop connection.", exception);
+                }
+            }, null);
+        }
     }
 
     private void cleanIdleClients() {
+        long currentTime = System.currentTimeMillis();
         synchronized (poolLock) {
-            connectionPool.entrySet().removeIf(entry -> {
-                NonBlockingClient client = entry.getValue();
-                return client == null || client.getState() == NonBlockingClient.State.STOPPED || client.getState() == NonBlockingClient.State.ERROR;
-            });
-            logger.info("Cleaned up idle clients from connection pool.");
+            for (NonBlockingClient client : new ArrayList<>(clientLastUsedMap.keySet())) {
+                Long lastUsedTime = clientLastUsedMap.get(client);
+                if (lastUsedTime != null && (currentTime - lastUsedTime) > IDLE_TIMEOUT) {
+                    client.stop(new NonBlockingClientAdapter<Void>() {
+                        @Override
+                        public void onStopped(NonBlockingClient client, Void context) {
+                            logger.info("Idle connection stopped.");
+                        }
+
+                        @Override
+                        public void onError(NonBlockingClient client, Void context, Exception exception) {
+                            logger.error("Failed to stop idle connection.", exception);
+                        }
+                    }, null);
+                    clientLastUsedMap.remove(client);
+                }
+            }
         }
     }
 }
+
