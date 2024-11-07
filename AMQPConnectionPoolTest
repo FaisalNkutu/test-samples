@@ -6,11 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +19,7 @@ import static org.mockito.Mockito.*;
 @ContextConfiguration(classes = {AMQPConnectionPoolTest.TestConfig.class})
 public class AMQPConnectionPoolTest {
 
+    @InjectMocks
     private AMQPConnectionPool connectionPool;
 
     @Mock
@@ -29,19 +28,14 @@ public class AMQPConnectionPoolTest {
     @Mock
     private ClientOptions mockClientOptions;
 
-    private AutoCloseable closeable;
-
     @Before
     public void setUp() {
-        closeable = MockitoAnnotations.openMocks(this);
-        connectionPool = new TestAMQPConnectionPool();
-        connectionPool.clientPool.add(mockClient);
+        // Set up mock behaviors or test-specific initializations
     }
 
     @After
     public void tearDown() throws Exception {
-        closeable.close();
-        connectionPool.stopBatchListeners();
+        connectionPool.stopBatchListeners();  // Ensure cleanup of any resources
     }
 
     @Test
@@ -81,7 +75,7 @@ public class AMQPConnectionPoolTest {
 
     @Test
     public void testCleanIdleClients() throws InterruptedException {
-        // Set up the last used time to be older than the IDLE_TIMEOUT
+        // Simulate idle client (last used time older than idle timeout)
         AMQPConnectionPool.clientLastUsedMap.put(mockClient, System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(6));
 
         connectionPool.cleanIdleClients();
