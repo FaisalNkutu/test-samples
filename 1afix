@@ -1,0 +1,81 @@
+
+com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of `java.util.LinkedHashMap` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('{
+  "Item" : [ {
+    "ItemNumber" : "1",
+    "Material" : "605477",
+    "RequestedQuantity" : "TestQty"
+  }, {
+    "ItemNumber" : "2",
+    "Material" : "6143",
+    "RequestedQuantity" : "TestQty"
+  } ],
+  "UserName" : "TestName",
+  "SalesOrg" : "Test1",
+  "PurchaseOrderDate" : "19691231",
+  "PurchaseOrder" : "",
+  "SoldToParty" : "1495",
+  "PharmaClikOrderNumber" : "237340",
+  "SalesOrderType" : "TestSale"
+}')
+ at [Source: (String)""{\n  \"Item\" : [ {\n    \"ItemNumber\" : \"1\",\n    \"Material\" : \"605477\",\n    \"RequestedQuantity\" : \"TestQty\"\n  }, {\n    \"ItemNumber\" : \"2\",\n    \"Material\" : \"6143\",\n    \"RequestedQuantity\" : \"TestQty\"\n  } ],\n  \"UserName\" : \"TestName\",\n  \"SalesOrg\" : \"Test1\",\n  \"PurchaseOrderDate\" : \"19691231\",\n  \"PurchaseOrder\" : \"\",\n  \"SoldToParty\" : \"1495\",\n  \"PharmaClikOrderNumber\" : \"237340\",\n  \"SalesOrderType\" : \"TestSale\"\n}""; line: 1, column: 1]
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:63)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1342)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleMissingInstantiator(DeserializationContext.java:1031)
+	at com.fasterxml.jackson.databind.deser.ValueInstantiator._createFromStringFallbacks(ValueInstantiator.java:371)
+	at com.fasterxml.jackson.databind.deser.std.StdValueInstantiator.createFromString(StdValueInstantiator.java:323)
+	at com.fasterxml.jackson.databind.deser.std.MapDeserializer.deserialize(MapDeserializer.java:357)
+	at com.fasterxml.jackson.databind.deser.std.MapDeserializer.deserialize(MapDeserializer.java:29)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4001)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3011)
+	at ca.medis.web.util.amqp.AMQPBatchQueueThread.readJson(AMQPBatchQueueThread.java:141)
+	at ca.medis.web.util.amqp.AMQPBatchQueueThread.processAMQPMessage(AMQPBatchQueueThread.java:109)
+	at ca.medis.web.util.amqp.AMQPBatchQueueThread.processOneMessage(AMQPBatchQueueThread.java:84)
+	at ca.medis.web.util.amqp.AMQPConsumer$1.onMessage(AMQPConsumer.java:61)
+	at ca.medis.web.util.amqp.AMQPConsumer$1.onMessage(AMQPConsumer.java:1)
+	at com.ibm.mqlight.api.impl.DestinationListenerWrapper$2.run(DestinationListenerWrapper.java:232)
+	at com.ibm.mqlight.api.impl.callback.ThreadPoolCallbackService$WorkList.run(ThreadPoolCallbackService.java:74)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of `java.util.LinkedHashMap` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('{
+  "Item" : [ {
+    "ItemNumber" : "1",
+    "Material" : "605477",
+    "RequestedQuantity" : "TestQty"
+  }, {
+    "ItemNumber" : "2",
+    "Material" : "6143",
+    "RequestedQuantity" : "TestQty"
+  } ],
+  "UserName" : "TestName",
+  "SalesOrg" : "Test1",
+  "PurchaseOrderDate" : "19691231",
+  "PurchaseOrder" : "",
+  "SoldToParty" : "1495",
+  "PharmaClikOrderNumber" : "237340",
+  "SalesOrderType" : "TestSale"
+}')
+ at [Source: (String)""{\n  \"Item\" : [ {\n    \"ItemNumber\" : \"1\",\n    \"Material\" : \"605477\",\n    \"RequestedQuantity\" : \"TestQty\"\n  }, {\n    \"ItemNumber\" : \"2\",\n    \"Material\" : \"6143\",\n    \"RequestedQuantity\" : \"TestQty\"\n  } ],\n  \"UserName\" : \"TestName\",\n  \"SalesOrg\" : \"Test1\",\n  \"PurchaseOrderDate\" : \"19691231\",\n  \"PurchaseOrder\" : \"\",\n  \"SoldToParty\" : \"1495\",\n  \"PharmaClikOrderNumber\" : \"237340\",\n  \"SalesOrderType\" : \"TestSale\"\n}""; line: 1, column: 1]
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:63)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1342)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleMissingInstantiator(DeserializationContext.java:1031)
+	at com.fasterxml.jackson.databind.deser.ValueInstantiator._createFromStringFallbacks(ValueInstantiator.java:371)
+	at com.fasterxml.jackson.databind.deser.std.StdValueInstantiator.createFromString(StdValueInstantiator.java:323)
+	at com.fasterxml.jackson.databind.deser.std.MapDeserializer.deserialize(MapDeserializer.java:357)
+	at com.fasterxml.jackson.databind.deser.std.MapDeserializer.deserialize(MapDeserializer.java:29)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4001)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3011)
+	at ca.medis.web.util.amqp.AMQPBatchQueueThread.readJson(AMQPBatchQueueThread.java:141)
+	at ca.medis.web.util.amqp.AMQPBatchQueueThread.processAMQPMessage(AMQPBatchQueueThread.java:109)
+	at ca.medis.web.util.amqp.AMQPBatchQueueThread.processOneMessage(AMQPBatchQueueThread.java:84)
+	at ca.medis.web.util.amqp.AMQPConsumer$1.onMessage(AMQPConsumer.java:61)
+	at ca.medis.web.util.amqp.AMQPConsumer$1.onMessage(AMQPConsumer.java:1)
+	at com.ibm.mqlight.api.impl.DestinationListenerWrapper$2.run(DestinationListenerWrapper.java:232)
+	at com.ibm.mqlight.api.impl.callback.ThreadPoolCallbackService$WorkList.run(ThreadPoolCallbackService.java:74)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
