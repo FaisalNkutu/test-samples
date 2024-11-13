@@ -1,0 +1,66 @@
+package ca.medis.web.util.amqp;
+
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.NonBlockingClient;
+import org.apache.log4j.Logger;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public abstract class AMQPConnectionService {
+
+    protected static ExecutorService executorService;
+    private static final Logger logger = Logger.getLogger(AMQPConnectionService.class.getName());
+    private final int poolSize;
+
+    protected String topic;
+    protected String host;
+    protected String userName;
+    protected String password;
+
+    public AMQPConnectionService(int poolSize) {
+        this.poolSize = poolSize;
+        executorService = Executors.newFixedThreadPool(poolSize);
+    }
+
+    protected void configure(String topic, String host, String userName, String password) {
+        this.topic = topic;
+        this.host = host;
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public void consumeFromAMQP() {
+        ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName, password).build();
+        for (int i = 0; i < poolSize; i++) {
+            NonBlockingClient client = AMQPConnectionPoolManager.getClient(i, host, clientOpts);
+            if (client != null) {
+                subscribeToTopic(client, topic);
+            }
+        }
+    }
+
+    public void publishToAMQP(String amqpMessage) {
+        ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName, password).build();
+        for (int i = 0; i < poolSize; i++) {
+            NonBlockingClient client = AMQPConnectionPoolManager.getClient(i, host, clientOpts);
+            if (client != null) {
+                sendToAMQP(amqpMessage, client);
+            }
+        }
+    }
+
+    private void sendToAMQP(String amqpMessage, NonBlockingClient client) {
+        executorService.execute(() -> getConnectionService(client, amqpMessage));
+    }
+
+    protected abstract void getConnectionService(NonBlockingClient client, String amqpMessage);
+
+    protected void subscribeToTopic(NonBlockingClient client, String topic) {
+        executorService.execute(() -> getConnectionService(client, null));
+    }
+
+    public void stopAllListeners() {
+        executorService.shutdown();
+        AMQPConnectionPoolManager.clearConnectionPool();
+    }
+}
