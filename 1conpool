@@ -1,0 +1,294 @@
+package ca.medis.web.util.amqp;
+
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.CompletionListener;
+import com.ibm.mqlight.api.Delivery;
+import com.ibm.mqlight.api.DestinationAdapter;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.NonBlockingClientAdapter;
+import com.ibm.mqlight.api.StringDelivery;
+
+import ca.medis.web.util.rpg.RpgCallContext;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
+import org.apache.log4j.Logger;
+
+/**
+ * Create a connection pool factory service
+ * 
+ * @author: fnkutu
+ */
+public abstract class AMQPConnectionPool {
+
+    protected static ExecutorService executorService = null;
+    protected final List<NonBlockingClient> clientPool;
+    protected int poolSize = 2;
+    static Logger logger = Logger.getLogger(AMQPConnectionPool.class.getName());
+    protected String host = null;
+    protected String userName = null;
+    protected String password = null;
+    protected String topic = null;
+    private String topicToConnectTo = null;
+    NonBlockingClient client = null;
+
+    private static Map<String, NonBlockingClient> connectionPool = new HashMap<>();
+    private static final Object poolLock = new Object();
+
+    static final Map<NonBlockingClient, Long> clientLastUsedMap = new HashMap<>();
+    private static final long IDLE_TIMEOUT = TimeUnit.MINUTES.toMillis(240); // 240 minutes idle timeout
+
+    AMQPConfiguration amqpConfiguration = null;
+    private String tpCode;
+
+    public AMQPConnectionPool(RpgCallContext context, String topicToConnectTo, String tpCode) {
+        if (poolSize == 0) {
+            poolSize = Runtime.getRuntime().availableProcessors();
+        }
+        this.executorService = Executors.newFixedThreadPool(poolSize);
+        this.clientPool = new ArrayList<>(poolSize);
+        this.topicToConnectTo = topicToConnectTo;
+        this.tpCode = tpCode;
+    }
+
+    private void getConfigurationParams() {
+        Set<String> tradingPartnerCodes = new HashSet<>();
+        try {
+            tradingPartnerCodes.add("MSD");
+            tradingPartnerCodes.add("CPDN");
+            amqpConfiguration = amqpConfiguration.getInstance(tradingPartnerCodes);
+
+            this.topic = amqpConfiguration.getForTrading(tpCode, topicToConnectTo);
+            this.host = amqpConfiguration.getForTrading(tpCode, "Host");
+            this.userName = amqpConfiguration.getForTrading(tpCode, "Username");
+            this.password = amqpConfiguration.getForTrading(tpCode, "Password");
+
+            if (topic == null || host == null || userName == null || password == null) {
+                throw new AMQPConfigurationException("Critical AMQP configuration is missing.");
+            }
+
+        } catch (AMQPConfigurationException e) {
+            logger.error("Critical configuration missing: " + e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            logger.error("Failed to load configuration settings: " + e.getMessage());
+        }
+    }
+
+    static NonBlockingClient getClientFromPool(String topic, String host, ClientOptions clientOpts) {
+        NonBlockingClient client = null;
+        synchronized (poolLock) {
+            if (connectionPool.containsKey(topic)) {
+                client = connectionPool.get(topic);
+            }
+        }
+        return client;
+    }
+
+    static void createPool(String topic, String host, ClientOptions clientOpts) {
+    	
+        NonBlockingClient client = NonBlockingClient.create(host, clientOpts, new NonBlockingClientAdapter<Void>() {
+
+            public void onStarted(NonBlockingClient client, Void context) {
+                logger.info("Connection started for host: " + host);
+            }
+			public void onError(NonBlockingClient client, Void context, Exception exception) {
+				 logger.error("Failed to start connection for host: " + host, exception);
+				
+			}
+			
+        }, null);
+        logger.info("Creating pool for trading partner: " + topic);
+        if (connectionPool.get(topic) == null) {
+            connectionPool.put(topic, client);
+        }
+    }
+
+    static void freeClientFromPool(final String topic) {
+        synchronized (poolLock) {
+            final NonBlockingClient client = connectionPool.remove(topic);
+            if (client != null) {
+                client.stop(new CompletionListener<Void>() {
+                	
+					@Override
+					public void onError(NonBlockingClient arg0, Void context, Exception exception) {
+						logger.warn("Failed to close connection for topic: " + topic, exception);
+						
+					}
+
+					@Override
+					public void onSuccess(NonBlockingClient arg0, Void context) {
+						 logger.info("Connection closed for topic: " + topic);
+						
+					}
+                }, null);
+            }
+        }
+    }
+
+    static void clearConnectionPool() {
+        synchronized (poolLock) {
+            for (final String topic : connectionPool.keySet()) {
+                final NonBlockingClient client = connectionPool.get(topic);
+                if (client != null) {
+                    client.stop(new CompletionListener<Void>() {
+
+						@Override
+						public void onError(NonBlockingClient arg0, Void arg1, Exception exception) {
+							logger.warn("Failed to close connection for topic: " + topic, exception);
+							
+						}
+
+						@Override
+						public void onSuccess(NonBlockingClient arg0, Void context) {
+							logger.info("Connection closed for topic: " + topic);
+							
+						}
+                    }, null);
+                }
+            }
+            connectionPool.clear();
+        }
+    }
+
+    public void consumeFromAMQP() {
+        getConfigurationParams();
+        if (userName.trim() != null && password.trim() != null && clientPool.size() == 0) {
+            ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName.trim(), password.trim()).build();
+            createPool(topic, host, clientOpts);
+            this.client = getClientFromPool(topic, host, clientOpts);
+            if (client != null) {
+                subscribeToTopic(client, topic);
+            }
+        }
+    }
+
+    void subscribeToTopic(NonBlockingClient client, String topic) {
+        try {
+            Thread.sleep(500);
+            executorService.execute(() -> getConnectionService(client, null));
+        } catch (InterruptedException e) {
+            logger.error("Failed to subscribe To Topic: " + topic + " " + e.getMessage());
+        }
+    }
+
+    public void publishToAMQP(String amqpMessage) {
+        getConfigurationParams();
+        if (userName.trim() != null && password.trim() != null && clientPool.size() == 0) {
+            ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName.trim(), password.trim()).build();
+            int retryCount = 3;
+            while (retryCount > 0) {
+                try {
+                    createPool(topic, host, clientOpts);
+                    this.client = getClientFromPool(topic, host, clientOpts);
+                    if (client != null) {
+                        sendToAMQP(amqpMessage);
+                        return;
+                    }
+                } catch (Exception e) {
+                    logger.error("Failed to publish to AMQP. Retries left: " + (retryCount - 1));
+                }
+                retryCount--;
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+            logger.error("Failed to publish to AMQP after retries.");
+        }
+    }
+
+    public void sendToAMQP(String amqpMessage) {
+        int maxRetries = 3;
+        int retryCount = 0;
+        boolean submittedSuccessfully = false;
+
+        while (retryCount < maxRetries && !submittedSuccessfully) {
+            try {
+                Future<?> future = executorService.submit(() -> getConnectionService(client, amqpMessage));
+                future.get(900, TimeUnit.MILLISECONDS);
+                submittedSuccessfully = true;
+
+                logger.info("Task submitted successfully to executor for AMQP message.");
+            } catch (TimeoutException e) {
+                submittedSuccessfully = true;
+                logger.warn("AMQP send task submitted but didn’t complete immediately: " + e.getMessage());
+            } catch (RejectedExecutionException e) {
+                retryCount++;
+                logger.error("Failed to submit task to executor (retry " + retryCount + " of " + maxRetries + "): " + e.getMessage());
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException interruptedException) {
+                    Thread.currentThread().interrupt();
+                    logger.error("Retry interrupted while trying to submit to executor: " + interruptedException.getMessage());
+                    break;
+                }
+            } catch (Exception e) {
+                logger.error("Unexpected error while sending to AMQP: " + e.getMessage());
+                break;
+            }
+        }
+
+        if (!submittedSuccessfully) {
+            logger.error("Failed to send AMQP message after " + maxRetries + " retries.");
+        }
+    }
+
+    protected abstract void getConnectionService(NonBlockingClient client, String amqpMessage);
+
+    public void stopBatchListeners() {
+        executorService.shutdown();
+        cleanIdleClients();
+        for (NonBlockingClient client : clientPool) {
+            logger.info("Stopping connection service..... ");
+            client.stop(new CompletionListener<Void>() {
+
+				@Override
+				public void onError(NonBlockingClient arg0, Void arg1, Exception exception) {
+					logger.error("Failed to stop connection.", exception);
+					
+				}
+				@Override
+				public void onSuccess(NonBlockingClient arg0, Void arg1) {
+					logger.info("Connection stopped.");
+					
+				}
+            }, null);
+        }
+    }
+
+    void cleanIdleClients() {
+        long currentTime = System.currentTimeMillis();
+        synchronized (poolLock) {
+            for (NonBlockingClient client : new ArrayList<>(clientLastUsedMap.keySet())) {
+                Long lastUsedTime = clientLastUsedMap.get(client);
+                if (lastUsedTime != null && (currentTime - lastUsedTime) > IDLE_TIMEOUT) {
+                    client.stop(new CompletionListener<Void>() {
+						@Override
+						public void onError(NonBlockingClient client, Void arg1, Exception exception) {
+							logger.error("Failed to stop idle connection.", exception);
+							
+						}
+						@Override
+						public void onSuccess(NonBlockingClient client, Void arg1) {
+							 logger.info("Idle connection stopped.");
+						}
+                    }, null);
+                    clientLastUsedMap.remove(client);
+                }
+            }
+        }
+    }
+}
