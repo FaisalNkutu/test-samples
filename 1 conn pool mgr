@@ -1,0 +1,64 @@
+package ca.medis.web.util.amqp;
+
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.CompletionListener;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.NonBlockingClientAdapter;
+import org.apache.log4j.Logger;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+public class AMQPConnectionPoolManager {
+
+    private static final Map<Integer, NonBlockingClient> connectionPool = new HashMap<>();
+    private static final Object poolLock = new Object();
+    private static final long IDLE_TIMEOUT = TimeUnit.MINUTES.toMillis(240);
+    private static final Logger logger = Logger.getLogger(AMQPConnectionPoolManager.class.getName());
+
+    public static NonBlockingClient getClient(int index, String host, ClientOptions clientOpts) {
+        synchronized (poolLock) {
+            return connectionPool.computeIfAbsent(index, i -> createClient(host, clientOpts));
+        }
+    }
+
+    private static NonBlockingClient createClient(String host, ClientOptions clientOpts) {
+        NonBlockingClient client = NonBlockingClient.create(host, clientOpts, new NonBlockingClientAdapter<Void>() {
+            public void onStarted(NonBlockingClient client, Void context) {
+                logger.info("Connection started for host: " + host);
+            }
+
+            public void onError(NonBlockingClient client, Void context, Exception exception) {
+                logger.error("Failed to start connection for host: " + host, exception);
+            }
+        }, null);
+        return client;
+    }
+
+    public static void freeClient(int index) {
+        synchronized (poolLock) {
+            NonBlockingClient client = connectionPool.remove(index);
+            if (client != null) {
+                client.stop(new CompletionListener<Void>() {
+                    public void onError(NonBlockingClient client, Void context, Exception exception) {
+                        logger.warn("Failed to close connection for index: " + index, exception);
+                    }
+
+                    public void onSuccess(NonBlockingClient client, Void context) {
+                        logger.info("Connection closed for index: " + index);
+                    }
+                }, null);
+            }
+        }
+    }
+
+    public static void clearConnectionPool() {
+        synchronized (poolLock) {
+            for (int index : connectionPool.keySet()) {
+                freeClient(index);
+            }
+            connectionPool.clear();
+        }
+    }
+}
