@@ -1,0 +1,52 @@
+import com.ibm.mqlight.api.Client;
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.Delivery;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.ReceiveOptions;
+import com.ibm.mqlight.api.StringDelivery;
+
+public class ReadAmqpHeaders {
+    public static void main(String[] args) {
+        // Define connection options
+        ClientOptions options = ClientOptions.builder()
+                .setId("MyClientId")
+                .build();
+
+        // Create a Non-Blocking client
+        NonBlockingClient client = NonBlockingClient.create("amqp://localhost:5672", options, (c, e) -> {
+            if (e == null) {
+                System.out.println("Connected to AMQP broker");
+
+                // Subscribe to the topic
+                c.subscribe("myTopic", ReceiveOptions.builder().setAutoConfirm(false).build(),
+                        (delivery) -> {
+                            // Check the type of the delivery
+                            if (delivery instanceof StringDelivery) {
+                                StringDelivery stringDelivery = (StringDelivery) delivery;
+
+                                // Access headers
+                                System.out.println("Message Headers:");
+                                stringDelivery.getProperties().forEach((key, value) -> {
+                                    System.out.println(key + ": " + value);
+                                });
+
+                                // Access body
+                                System.out.println("Message Body: " + stringDelivery.getData());
+                            }
+                        });
+            } else {
+                System.err.println("Failed to connect: " + e.getMessage());
+            }
+        });
+
+        // Keep the client alive for a while
+        try {
+            Thread.sleep(30000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Close the client
+        client.stop();
+    }
+}
