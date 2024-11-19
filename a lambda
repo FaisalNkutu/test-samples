@@ -1,0 +1,3 @@
+if(entry.getKey() !=null && entry.getKey().equalsIgnoreCase("Format")||entry.getKey().equalsIgnoreCase(MQConstants.STRING_PROPERTY_JMS_IBM_FORMAT)) {
+			    	webbiValue = (String) entry.getValue();
+			    }
