@@ -1,0 +1,52 @@
+import com.ibm.mqlight.api.Client;
+import com.ibm.mqlight.api.Delivery;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.SendOptions;
+import com.ibm.mqlight.api.callback.CompletionListener;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MQHeaderToJsonExample {
+    public static void main(String[] args) {
+        // JSON payload
+        String jsonPayload = "{ \"name\": \"John Doe\", \"age\": 30 }";
+
+        // Connection details
+        String service = "amqp://localhost:5672"; // Replace with your MQ Light service URL
+        String topic = "exampleTopic";
+
+        // Create MQ Light client
+        NonBlockingClient.create(service, client -> {
+            System.out.println("Connected to MQ Light");
+
+            // Set custom headers
+            Map<String, Object> headers = new HashMap<>();
+            headers.put("CustomHeader1", "CustomValue1");
+            headers.put("CustomHeader2", 12345);
+
+            // Send options with headers
+            SendOptions options = SendOptions.builder()
+                    .setProperties(headers)
+                    .build();
+
+            // Send the message
+            client.send(topic, jsonPayload, options, new CompletionListener<Void>() {
+                @Override
+                public void onSuccess(Client c, Void context) {
+                    System.out.println("Message sent with headers: " + headers);
+                    c.stop(null, null); // Stop the client after sending
+                }
+
+                @Override
+                public void onError(Client c, Void context, Exception exception) {
+                    System.err.println("Failed to send message: " + exception.getMessage());
+                }
+            });
+        }, (client, throwable) -> {
+            if (throwable != null) {
+                System.err.println("Failed to connect to MQ Light: " + throwable.getMessage());
+            }
+        });
+    }
+}
