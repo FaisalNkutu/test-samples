@@ -1,13 +1,13 @@
-import com.ibm.mqlight.api.Client;
+import com.ibm.mqlight.api.ClientOptions;
 import com.ibm.mqlight.api.Delivery;
 import com.ibm.mqlight.api.NonBlockingClient;
-import com.ibm.mqlight.api.SendOptions;
 import com.ibm.mqlight.api.callback.CompletionListener;
+import com.ibm.mqlight.api.impl.MessageImpl;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MQHeaderToJsonExample {
+public class MQHeaderToJsonAlternative {
     public static void main(String[] args) {
         // JSON payload
         String jsonPayload = "{ \"name\": \"John Doe\", \"age\": 30 }";
@@ -16,26 +16,31 @@ public class MQHeaderToJsonExample {
         String service = "amqp://localhost:5672"; // Replace with your MQ Light service URL
         String topic = "exampleTopic";
 
-        // Create MQ Light client
-        NonBlockingClient.create(service, client -> {
+        // Client options (if authentication or other settings are required)
+        ClientOptions options = ClientOptions.builder()
+                .setId("example-client")
+                .build();
+
+        // Connect to MQ Light
+        NonBlockingClient.create(service, options, client -> {
             System.out.println("Connected to MQ Light");
 
-            // Set custom headers
+            // Create custom headers (annotations)
             Map<String, Object> headers = new HashMap<>();
-            headers.put("CustomHeader1", "CustomValue1");
+            headers.put("CustomHeader1", "Value1");
             headers.put("CustomHeader2", 12345);
 
-            // Send options with headers
-            SendOptions options = SendOptions.builder()
-                    .setProperties(headers)
-                    .build();
+            // Wrap the JSON payload with headers
+            MessageImpl message = new MessageImpl();
+            message.setData(jsonPayload);
+            message.setAnnotations(headers);
 
             // Send the message
-            client.send(topic, jsonPayload, options, new CompletionListener<Void>() {
+            client.send(topic, message.getData(), message.getAnnotations(), new CompletionListener<Void>() {
                 @Override
                 public void onSuccess(Client c, Void context) {
-                    System.out.println("Message sent with headers: " + headers);
-                    c.stop(null, null); // Stop the client after sending
+                    System.out.println("Message sent successfully with headers: " + headers);
+                    c.stop(null, null); // Stop the client
                 }
 
                 @Override
