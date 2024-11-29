@@ -1,0 +1,5 @@
+		String cjrcboStr = (String) rpgOutput.get("CJRCBO");
+		//BigDecimal cjrcbo = new BigDecimal(rpgOutput.get("CJRCBO"));
+        BigDecimal cjrcbo = new BigDecimal(cjrcboStr);
+		Assert.assertEquals("Approved", rpgOutput.get("CIABOR"));
+		Assert.assertEquals("5", (cjrcbo));
