@@ -1,5 +1,10 @@
-		String cjrcboStr = (String) rpgOutput.get("CJRCBO");
-		//BigDecimal cjrcbo = new BigDecimal(rpgOutput.get("CJRCBO"));
-        BigDecimal cjrcbo = new BigDecimal(cjrcboStr);
-		Assert.assertEquals("Approved", rpgOutput.get("CIABOR"));
-		Assert.assertEquals("5", (cjrcbo));
+
+String cjrcboStr = (String) rpgOutput.get("CJRCBO");
+// Convert cjrcboStr to BigDecimal
+BigDecimal cjrcbo = new BigDecimal(cjrcboStr);
+
+// Validate the values in the assertions
+Assert.assertEquals("Approved", rpgOutput.get("CIABOR"));
+
+// The second argument to Assert.assertEquals must be a BigDecimal
+Assert.assertEquals(new BigDecimal("5"), cjrcbo);
