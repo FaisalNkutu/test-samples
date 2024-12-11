@@ -1,0 +1,16 @@
+{
+  "LicenseNumber": "16",
+  "SoldTo": [
+	  {
+		"SoldToPartyName": "123456",
+		"SoldToParty": "1378542"
+	  },
+	  {
+		"SoldToPartyName": "1234895",
+		"SoldToParty": "3215855"
+	  },
+	  {
+		"SoldToPartyName": "9665874",
+		"SoldToParty": "8541232"
+	  }
+  ]
