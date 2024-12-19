@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<!-- ************************* Main templates ************************** -->
+	
+	<definition name="messageBox.body" template="/WEB-INF/view/include/messageBox.jsp" />
+
+	<definition name="pharmaclik.modal" template="/WEB-INF/view/layout/modal.jsp">
+		<put-attribute name="messageBox" value="messageBox.body" />
+	</definition>	
+	
+	<definition name="pharmaclik.popup" template="/WEB-INF/view/layout/popup.jsp">
+		<put-attribute name="attrTitleKey" value=""/> <!-- Override this value to give a title to the popup -->
+		<put-attribute name="messageBox" value="messageBox.body" />
+	</definition>
+	
+	<definition name="pharmaclik.print" template="/WEB-INF/view/layout/printable.jsp">
+		<put-attribute name="messageBox" value="messageBox.body" />
+		<put-attribute name="printLogo" value="true"/>
+	</definition>
+	
+	<definition name="pharmaclik.default" template="/WEB-INF/view/layout/simpleLayout.jsp">
+		<put-attribute name="header" value="pharmaclik.default.header" />
+		<put-attribute name="side-menu" value="/WEB-INF/view/layout/slideSideMenu.jsp" cascade="true" />		
+		<put-attribute name="genericErrorBox" value="messageBox.body" cascade="true"/>
+		<put-attribute name="footer" value="/WEB-INF/view/layout/footer.jsp" />	
+		<put-attribute name="attrTilePageID" value="" cascade="true"/>	<!--  Define the pageId used in the change account functionality. Override this value with a proper pageID if change account is allowed in this tile -->
+		<put-attribute name="fixMenu" value="false" cascade="false"/>	<!--  Define if the menu will always visible -->
+		<put-attribute name="sideBarMenu" value="/WEB-INF/view/layout/sideBarMenu.jsp" cascade="true"/>
+	</definition>	
+
+	<definition name="pharmaclik.default.header" template="/WEB-INF/view/layout/header.jsp">
+		<put-attribute name="top_menu" value="/WEB-INF/view/layout/topMenu.jsp" cascade="true"/>
+		<put-attribute name="breadCrumbs" value="/WEB-INF/view/layout/breadCrumbs.jsp" cascade="true"/>
+		<put-attribute name="account" value="/WEB-INF/view/layout/accountList.jsp" cascade="true"/>		
+		<put-attribute name="menu" value="pharmaclik.default.menu" cascade="true"/>
+		<put-attribute name="sideMenu" value="/WEB-INF/view/layout/sideMenu.jsp" cascade="true"/>
+	</definition>
+	
+	<definition name="pharmaclik.default.menu" template="/WEB-INF/view/layout/menu.jsp">
+		<put-attribute name="order" value="pharmaclik.default.header.order" cascade="true" />
+	</definition>
+	
+	<definition name="pharmaclik.default.header.order" template="/WEB-INF/view/layout/orderInfo.jsp" />
+
+	<definition name="homepage" extends="pharmaclik.default">
+		<put-attribute name="body" value="homepage.body" />
+		<put-attribute name="fixMenu" value="true" cascade="false"/>	<!-- Override the default value -->
+	</definition>
+	<definition name="homepage.body" template="/WEB-INF/view/layout/homeLayout.jsp">
+		<put-attribute name="news" value="/WEB-INF/view/home/news.jsp" />
+		<put-attribute name="messages" value="/WEB-INF/view/home/messages.jsp" />
+		<put-attribute name="pre-book" value="/WEB-INF/view/home/pre-book.jsp" />
+		<put-attribute name="allocation" value="/WEB-INF/view/home/allocation.jsp" />
+		<put-attribute name="slides" value="/WEB-INF/view/home/newItemsSlides.jsp" />
+		<put-attribute name="invoiceSignature" value="/WEB-INF/view/home/invoiceSignature.jsp" />
+		<put-attribute name="ordersReadyToSign" value="/WEB-INF/view/home/ordersReadyToSign.jsp" />
+		<put-attribute name="product-notify" value="/WEB-INF/view/home/productNotify.jsp" />
+		<put-attribute name="clearance" value="/WEB-INF/view/home/clearance.jsp" />
+		<put-attribute name="emailRegistration" value="/WEB-INF/view/home/emailRegistration.jsp" />
+		<put-attribute name="mfaRegistration" value="/WEB-INF/view/home/mfaRegistration.jsp" />
+		
+		<!-- TODO: CS, SSC REMOVE this if not used any more 		
+		<put-attribute name="quickLink" value="/WEB-INF/view/home/quickLink.jsp" />
+		<put-attribute name="orderStatus" value="/WEB-INF/view/home/orderStatus.jsp" />
+		 -->
+	</definition>
+
+	<!-- ************************************   generic pages ************************************ -->
+	
+	<definition name="systemMaintenance" template="/WEB-INF/view/systemMaintenance.jsp">
+		<!-- 
+		Depending in the context,  systemMaintenance.jsp will dyplay systemMaintenancePopUp or systemMaintenanceFull tile
+		-->		
+	</definition>
+	<definition name="systemMaintenancePopUp" extends="pharmaclik.popup">	    
+	    <put-attribute name="attrTitleKey" value=""/> 		
+		<put-attribute name="body" value="" />
+	</definition>	
+	<definition name="systemMaintenanceFull" extends="pharmaclik.default">
+	    <put-attribute name="attrTilePageID" value="SIT_StmMntnce" cascade="true"/>	
+		<put-attribute name="body" value="/WEB-INF/view/systemMaintenanceFull.jsp" />
+	</definition>
+	
+	<definition name="genericerrorPopUp" extends="pharmaclik.popup">		
+	    <!-- 
+	    	This is the replacement for "genericerrorPopUp.jsp" defined in GUIConstant.JSP_PATH_GENERIC_ERROR_POP_UP. 
+	    	It produces an empty page. usually used to display only errors in a popup window.
+	    -->
+	    <put-attribute name="attrTitleKey" value=""/> <!-- Override this value to give a title to the pop up -->		
+		<put-attribute name="body" value="" />
+	</definition>
+	
+	<definition name="static.info" template="/WEB-INF/view/layout/InformationStatic.jsp"/>
+
+	
+	<!-- *********************** Account operations ************************ -->
+	
+	<definition name="accountChanged" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/user/accountChanged.jsp" />
+	</definition>
+	<definition name="preferences" extends="pharmaclik.default">
+		<put-attribute name="body" value="preferences.body" />
+	</definition>
+	<definition name="preferences.body" template="/WEB-INF/view/user/preferences.jsp">
+		<put-attribute name="userInfo" value="/WEB-INF/view/user/userInfo.jsp" />
+		<put-attribute name="defaultAccount" value="/WEB-INF/view/user/accountPref.jsp" />
+		<put-attribute name="secretQuestion" value="/WEB-INF/view/user/secretQuestions.jsp" />
+		<put-attribute name="orderingOptions" value="/WEB-INF/view/user/orderingOptions.jsp" />
+		<put-attribute name="searchResultsOptions" value="/WEB-INF/view/user/searchResultsOptions.jsp" />
+	</definition>
+	<definition name="resetMFA" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/user/resetMFA.jsp" />
+	</definition>
+	<definition name="emailMFA" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/user/emailMFA.jsp" />
+	</definition>
+	<definition name="changePsw" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/user/changePassword.jsp" />
+	</definition>
+	<definition name="authCode" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/user/authCode.jsp" />
+	</definition>
+	
+
+	<!-- ********************* Catalog tiles ******************************* -->
+	
+	<definition name="catalog" extends="pharmaclik.default">
+		<put-attribute name="body" value="catalog.body" />
+	</definition>	    
+	<definition name="catalog.body" template="/WEB-INF/view/catalog/catalog.jsp">
+		<put-attribute name="paginator" value="/WEB-INF/view/include/pagination.jsp" />
+		<put-attribute name="filters" value="filters.main" />
+		<put-attribute name="productsList" value="productsList.body" />
+		<put-attribute name="permanentOverrideList" value="permanentOverrideList.body" />
+		<put-attribute name="productsGrid" value="/WEB-INF/view/catalog/searchResultThumbnail.jsp" />
+	</definition>	
+	<definition name="productsList.body" template="/WEB-INF/view/catalog/searchResultList.jsp">
+	    <put-attribute name="catalog.icons.item" value="/WEB-INF/view/include/itemIcons.jsp" />
+    	<put-attribute name="catalog.details.item" value="itemDetails.body" />
+    	<put-attribute name="catalog.details.productPresentInPrebooks" value="/WEB-INF/view/include/prebooking/productPresentInPrebooks.jsp" />
+    </definition>
+    <definition name="permanentOverrideList.body" template="/WEB-INF/view/catalog/permanentOverrideItemsList.jsp">
+    	<put-attribute name="catalog.details.item" value="itemDetails.body" />
+    </definition>
+    <definition name="itemDetails.body" template="/WEB-INF/view/include/itemDetails.jsp">
+    	<put-attribute name="catalog.icons.item" value="/WEB-INF/view/include/itemIcons.jsp" cascade="true"/>
+    </definition>
+    
+    <definition name="prodPageDetail" extends="pharmaclik.default">
+		<put-attribute name="body" value="prodPageDetail.body" />
+	</definition>
+	<definition name="prodPageDetail.body" template="/WEB-INF/view/catalog/prodPage.jsp">
+		<put-attribute name="prodHeader" value="prodHeader.body" />
+		<put-attribute name="prodTabs" value="prodPageDetailTabs.body" />
+		<put-attribute name="prodSuggestions" value="/WEB-INF/view/include/catalog/prodPageSuggestions.jsp" />
+	</definition>
+	<definition name="prodHeader.body" template="/WEB-INF/view/include/catalog/prodPageHeader.jsp">
+		<put-attribute name="catalog.icons.item" value="/WEB-INF/view/include/itemIcons.jsp" />
+	</definition>
+	<definition name="prodPageDetailTabs.body" template="/WEB-INF/view/include/catalog/prodPageTabs.jsp">
+		<put-attribute name="prodHeader" value="/WEB-INF/view/include/catalog/prodPageHeader.jsp" />
+		<put-attribute name="prodPricing" value="/WEB-INF/view/include/catalog/prodPageInfosPricing.jsp" />
+		<put-attribute name="prodInfo"	value="/WEB-INF/view/include/catalog/prodPageInfos.jsp" />
+		<put-attribute name="prodClass"	value="/WEB-INF/view/include/catalog/prodPageInfosClassification.jsp" />
+		<put-attribute name="prodInfoMore"	value="/WEB-INF/view/include/catalog/prodPageInfosAdditional.jsp" />
+		<put-attribute name="prodImages" value="/WEB-INF/view/include/catalog/prodPageInfosImages.jsp" />
+	</definition>
+	
+	<definition name="prodPageHealthCanada"	template="/WEB-INF/view/include/catalog/prodPageHealthCanada.jsp"/>
+
+	<definition name="catalog.prodMessage" extends="pharmaclik.popup">
+		<put-attribute name="body" value="/WEB-INF/view/catalog/prodMessage.jsp" />
+	</definition>
+
+	<definition name="catalogExport" extends="pharmaclik.default">
+		<put-attribute name="attrTilePageID" value="CAT_OffLnLst" cascade="true"/>
+		<put-attribute name="body" value="/WEB-INF/view/catalog/catOfflineList.jsp" />		
+	</definition>
+	
+	<definition name="itemsUnderAllocation" extends="pharmaclik.default">
+		<put-attribute name="body" value="itemsUnderAllocation.body" />
+	</definition>
+	<!-- Allocation tile is not used. Used productsList.body -->
+	<definition name="itemsUnderAllocation.body" template="/WEB-INF/view/catalog/itemsUnderAllocation.jsp">
+		<put-attribute name="catalog.details.item" value="itemDetails.body" />
+		<put-attribute name="paginator" value="/WEB-INF/view/include/pagination.jsp" />
+	</definition>
+	<!-- *************************** Ordering tiles *************************** -->
+
+	<definition name="orderManagement" extends="pharmaclik.default">
+		<put-attribute name="attrTilePageID" value="nORD_OrdrMgt" cascade="true"/>
+		<put-attribute name="body" value="orderManagement.body" />
+	</definition>
+
+	<definition name="filters.main" template="/WEB-INF/view/include/filters.jsp">
+	    <put-attribute name="filters.customs" value="filters.custom.warnings" />
+	</definition>
+
+	<definition name="filters.custom.warnings" template="/WEB-INF/view/include/filters_custom_warnings.jsp">
+	</definition>
+
+	<definition name="order.header.body" template="/WEB-INF/view/include/ordering/orderHeader.jsp">
+		<put-attribute name="account.change" value="/WEB-INF/view/layout/accountChange.jsp" cascade="true"/>		
+	</definition>
+
+
+	<definition name="orderManagement.body" template="/WEB-INF/view/ordering/orderManagement.jsp">
+	    <put-attribute name="filters" value="filters.main" />
+		<put-attribute name="orderList"	value="orderList.body" />
+	</definition>
+	<definition name="orderDetail" extends="pharmaclik.default">
+	    <put-attribute name="order" value="/WEB-INF/view/layout/orderInfoReadOnly.jsp" cascade="true" />
+		<put-attribute name="body" value="orderDetails.body" />
+	</definition>
+	<definition name="orderDetails.body" template="/WEB-INF/view/ordering/orderView.jsp">
+		<put-attribute name="order.toolbar" value="/WEB-INF/view/include/ordering/orderToolbar.jsp" cascade="true"/>
+		<put-attribute name="order.details"	value="order.details.body" cascade="true"/>		
+	</definition>
+		
+	<definition name="order.details.body" template="/WEB-INF/view/include/ordering/orderDetails.jsp">
+	    <put-attribute name="filters" value="filters.main" />
+	    <put-attribute name="order.header" value="order.header.body" cascade="true"/>	
+	    <put-attribute name="order.details.line" value="order.details.line.body" cascade="true"/>
+		<put-attribute name="enableOverrideCode"	value="true" cascade="true"/> <!-- allow to display the override code list if necessary -->
+		<put-attribute name="enableQty"				value="true" cascade="true"/>
+		<put-attribute name="enableModality"		value="true" cascade="true"/>
+	</definition>
+	<!-- definition name="order.details.line.body" template="/WEB-INF/view/include/ordering/oneOrderDetailsLine.jsp">
+	    <put-attribute name="order.productPresentInPrebooks" value="/WEB-INF//view/include/prebooking/productPresentInPrebooks.jsp" />
+	    <put-attribute name="order.details.item" value="/WEB-INF/view/include/itemDetails.jsp" />
+	</definition -->
+	<definition name="order.details.line.body" template="/WEB-INF/view/include/ordering/oneOrderCheckOutLine.jsp">
+	    <put-attribute name="order.productPresentInPrebooks" value="/WEB-INF//view/include/prebooking/productPresentInPrebooks.jsp" />
+	    <put-attribute name="order.details.item.info" value="itemDetails.body.patientInformation"  cascade="true" />
+	    <put-attribute name="order.details.item" value="itemDetails.body"  cascade="true" />
+	    <put-attribute name="orderDetailsItemCollapse" value="true"  cascade="true" />
+	</definition>
+	<!-- ******* CHECKOUT PROCESS ******** -->
+	<definition name="orderCheckout" extends="pharmaclik.default">
+		<put-attribute name="order" value="/WEB-INF/view/layout/orderInfoReadOnly.jsp" cascade="true" />
+		<put-attribute name="body" value="orderCheckout.body" />
+	</definition>
+	<definition name="orderCheckout.body" template="/WEB-INF/view/ordering/orderView.jsp">
+		<put-attribute name="order.toolbar" value="/WEB-INF/view/include/ordering/orderCheckoutToolbar.jsp" cascade="true"/>
+		<!-- MIKE put-attribute name="order.header" value="/WEB-INF/view/include/ordering/orderHeader.jsp" cascade="true" /-->
+		<put-attribute name="order.details"	value="orderCheckout.body.details" cascade="true"/>		
+	</definition>	
+	<definition name="orderCheckout.body.details" template="/WEB-INF/view/include/ordering/orderCheckOutView.jsp">
+		<put-attribute name="order.checkout.line" value="order.checkout.line.body"  cascade="true" />
+		<put-attribute name="filters" value="filters.main" />
+		<put-attribute name="enableOverrideCode"	value="false" cascade="true"/> <!-- allow to display the override code list if necessary -->
+		<put-attribute name="enableQty"				value="false" cascade="true"/>
+		<put-attribute name="enableModality"		value="false" cascade="true"/>
+	</definition>
+	<definition name="orderCheckout.market.place" template="/WEB-INF/view/include/ordering/orderCheckOutMarketplace.jsp">
+		<put-attribute name="order.checkout.line" value="order.checkout.marketplace.line.body"  cascade="true" />
+		<put-attribute name="filters" value="filters.main" />
+		<put-attribute name="enableOverrideCode"	value="false" cascade="true"/> <!-- allow to display the override code list if necessary -->
+		<put-attribute name="enableQty"				value="false" cascade="true"/>
+		<put-attribute name="enableModality"		value="false" cascade="true"/>
+	</definition>
+	<definition name="orderCheckout.validation" extends="orderCheckout">
+		<put-attribute name="order.header" value="order.header.body" cascade="true" />
+		<put-attribute name="order.details"	value="orderCheckout.body.details" cascade="true"/>		
+		<put-attribute name="enableOverrideCode"	value="true" cascade="true" />
+	</definition>
+	<definition name="orderCheckout.patientInformation" extends="orderCheckout">
+		<put-attribute name="order.header" value="order.header.body" cascade="true" />
+		<put-attribute name="enableOverrideCode"	value="true" cascade="true" />
+		<put-attribute name="order.details"	value="orderCheckout.body.details.patientInformation" cascade="true"/>
+		<put-attribute name="order.details.item" value="itemDetails.body.patientInformation"  cascade="true" />
+		<put-attribute name="orderDetailsItemCollapse" value="false"  cascade="true" />
+	</definition>
+	<definition name="orderCheckout.body.details.patientInformation" template="/WEB-INF/view/include/ordering/orderCheckOutViewPatientInformation.jsp">
+		<put-attribute name="order.checkout.line" value="order.checkout.line.body"  cascade="true" />
+		<put-attribute name="filters" value="none" />
+		<put-attribute name="enableOverrideCode"	value="false" cascade="true"/> <!-- allow to display the override code list if necessary -->
+		<put-attribute name="enableQty"				value="false" cascade="true"/>
+		<put-attribute name="enableModality"		value="false" cascade="true"/>
+	</definition>
+	<definition name="itemDetails.body.patientInformation" template="/WEB-INF/view/include/ordering/ItemDetailsPatientInformation.jsp">
+    	<put-attribute name="catalog.icons.item" value="/WEB-INF/view/include/itemIcons.jsp" cascade="true"/>
+    </definition>
+	<definition name="orderCheckout.marketplace" extends="orderCheckout">
+		<put-attribute name="order.header" value="order.header.body" cascade="true" />
+		<put-attribute name="order.details"	value="orderCheckout.market.place" cascade="true"/>		
+		<put-attribute name="enableOverrideCode"	value="true" cascade="true" />
+	</definition>
+	<definition name="orderCheckout.warnings"  extends="orderCheckout">
+		<put-attribute name="order.header" value="order.header.body" cascade="true" />
+		<put-attribute name="enableOverrideCode"	value="true" cascade="true" />
+	</definition>
+	<definition name="narcoticSubstitution"  extends="orderCheckout">
+		<put-attribute name="order.header" value="order.header.body" cascade="true" />
+		<put-attribute name="enableOverrideCode"	value="true" cascade="true" />
+	</definition>
+	<definition name="orderCheckout.items.error132"  extends="orderCheckout">
+		<put-attribute name="order.header" value="order.header.body" cascade="true" />
+		<put-attribute name="enableOverrideCode"	value="true" cascade="true" />
+	</definition>
+	<definition name="orderCheckout.split.menu" extends="pharmaclik.modal">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/splitMenu.jsp" />		
+	</definition>
+	<definition name="order.checkout.line.body" template="/WEB-INF/view/include/ordering/oneOrderCheckOutLine.jsp">
+	    <put-attribute name="order.productPresentInPrebooks" value="/WEB-INF/view/include/prebooking/productPresentInPrebooks.jsp" />
+	    <put-attribute name="order.details.item.info" value="itemDetails.body.patientInformation"  cascade="true" />
+	    <put-attribute name="order.details.item" value="itemDetails.body"  cascade="true" />
+	    <put-attribute name="orderDetailsItemCollapse" value="true"  cascade="true" />
+	</definition>
+	<definition name="order.checkout.marketplace.line.body" template="/WEB-INF/view/include/ordering/oneOrderMarketplaceLine.jsp">
+	    <put-attribute name="order.productPresentInPrebooks" value="" />
+	    <put-attribute name="order.details.item" value="itemDetails.body"  cascade="true" />
+	</definition>
+	<!-- ******* Order Sign Narcotic and PKI ******** -->
+	<definition name="orderSignNarcotic" extends="orderCheckout">
+		<put-attribute name="order.toolbar" value="/WEB-INF/view/pki/orderSignatureToolbar.jsp" cascade="true"/>
+		<put-attribute name="order.header" value="" cascade="true" />		
+		<put-attribute name="order.details" value="/WEB-INF/view/pki/pki_signature.jsp" cascade="true" />
+	</definition>
+	<definition name="choosePharmacist" extends="orderCheckout">
+		<put-attribute name="order.header" value="" cascade="true" />
+		<put-attribute name="order.details" value="/WEB-INF/view/pki/choosePharmacist.jsp" cascade="true" />
+	</definition>
+	<definition name="indexPage" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/pki/index.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="" cascade="true"/>
+	</definition>
+		<definition name="pkiChangePsw" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/pki/pki_chgpass.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="" cascade="true"/>
+	</definition>
+	<definition name="pkiInitCert" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/pki/pki_initcert.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="" cascade="true"/>
+	</definition>
+	<!-- ******* Order template ******** -->
+	<definition name="orderTemplateManagement" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/template/templateManagement.jsp" />
+		<put-attribute name="attrTilePageID" value="ORD_TmpltMgt" cascade="true"/>		
+	</definition>
+	<definition name="orderTemplateDetails" extends="pharmaclik.default">
+		<put-attribute name="body" value="template.body" />		
+		<put-attribute name="attrTilePageID" value="ORD_TmpltMgt" cascade="true"/>	
+		<put-attribute name="editMode" value="false" cascade="true"/>	
+	</definition>
+	<definition name="orderTemplateDetailsEdit" extends="orderTemplateDetails">		
+		<put-attribute name="attrTilePageID" value="" cascade="true"/>		
+		<put-attribute name="editMode" value="true" cascade="true"/>
+	</definition>	
+	<definition name="template.body" template="/WEB-INF/view/ordering/template/templateDetails.jsp">		
+		<put-attribute name="templateToolbar" value="/WEB-INF/view/include/ordering/template/templateToolbar.jsp" />
+		<put-attribute name="templateHeader" value="/WEB-INF/view/include/ordering/template/templateHeader.jsp" />
+		<put-attribute name="templateLineItemList" value="template.lineItemsList" />
+	</definition>	
+	<definition name="template.lineItemsList" template="/WEB-INF/view/include/ordering/template/templateLineItemList.jsp">		
+		<put-attribute name="order.details.item" value="itemDetails.body" />				
+	</definition>
+	<!-- ******* Order Create Patient ID Orders ******** -->
+	<definition name="orderPatientId" extends="pharmaclik.modal">
+		<put-attribute name="body"
+			value="/WEB-INF/view/ordering/orderCreatePatientIdOrder.jsp" />
+		<put-attribute name="attrTilePageID" value="tl_create_pt_id_ord"
+			cascade="true" />
+	</definition>
+       <!-- definition name="orderPatientId" template="/WEB-INF/view/ordering/orderCreatePatientIdOrder.jsp" / -->
+	
+	
+	
+	<!-- 
+	<definition name="orderCheckout.warnings"  extends="orderCheckout">
+		<put-attribute name="order.details" value="orderCheckout.warnings.body" cascade="true"/>
+	</definition>
+	<definition name="orderCheckout.warnings.body" template="/WEB-INF/view/include/ordering/orderCheckoutConfirmation.jsp">	
+		<put-attribute name="order.warnings.list" value="orderCheckout.warnings.details" />
+	</definition>
+	<definition name="orderCheckout.warnings.details" template="/WEB-INF/view/include/ordering/viewOrderItemList.jsp">	
+		<put-attribute name="order.details.item" value="/WEB-INF/view/include/itemDetails.jsp" />
+	</definition>	
+	-->
+	<definition name="orderCheckout.wait"  extends="orderCheckout">
+		<put-attribute name="order.toolbar" value="/WEB-INF/view/include/ordering/orderWaitToolbar.jsp" cascade="true"/>
+		<put-attribute name="order.header" value="" cascade="true"/>
+		<put-attribute name="order.details" value="/WEB-INF/view/include/ordering/orderWaitConfirm.jsp" cascade="true"/>
+	</definition>	
+	
+	<!-- *************************      Modal     ************************** -->
+	
+	<definition name="orderSelector" extends="pharmaclik.modal">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/orderSelector.jsp" />
+	</definition>
+	<definition name="singleOrderItemLineForm" extends="pharmaclik.modal">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/orderLineItemDetail.jsp" />
+	</definition>
+	<definition name="orderSummary" extends="pharmaclik.modal">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/orderSummary.jsp" />
+	</definition>
+	<definition name="orderList.body" template="/WEB-INF/view/include/ordering/orderList.jsp">
+	</definition>
+	<definition name="help" extends="pharmaclik.modal">
+		<put-attribute name="body" value="/WEB-INF/view/communication/help.jsp" />
+	</definition>
+	<definition name="notifications" extends="pharmaclik.modal"> 
+		<put-attribute name="body" value="/WEB-INF/view/communication/notifications.jsp" />
+	</definition>
+	<definition name="legalNotes" extends="pharmaclik.modal">
+		<put-attribute name="body" value="/WEB-INF/view/communication/legalNotes.jsp" />
+	</definition>
+	<definition name="order.quickAdd" extends="pharmaclik.modal">
+		<put-attribute name="body" value="/WEB-INF/view/include/ordering/quickAdd.jsp" />
+	</definition>
+	<definition name="order.quickAdd.error" extends="pharmaclik.modal">
+		<put-attribute name="body" value="/WEB-INF/view/include/ordering/refreshOrderDetails.jsp" />
+	</definition>
+	<!-- ***************************  Order Upload  ************************ -->
+
+	<definition name="orderUpload" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/upload/orderUpload.jsp" />
+	</definition>		
+	<definition name="uploadOrderFile" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/upload/uploadOrderFile.jsp" />
+	</definition>
+	<definition name="orderUploadAfter" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/upload/orderUploadAfter.jsp" />
+	</definition>
+	<definition name="orderUploadCorrections" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/upload/orderUploadCorrections.jsp" />
+	</definition>
+	
+	
+	<!-- ************************  Prebook   ******************************* -->
+	
+	<definition name="prebookingOrderList" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/prebooking/prebookingOrderList.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="ORD_PrBkOrdrLst" cascade="true"/>
+	</definition>
+	<definition name="prebookingPromotionList" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/prebooking/prebookingPromotionList.jsp" />
+		<put-attribute name="attrTilePageID" value="ORD_PrBkPrmLst" cascade="true"/>
+	</definition>
+	<definition name="prebookingOrder" extends="pharmaclik.default">
+		<put-attribute name="body" value="prebookingOrder.body" />
+		<put-attribute name="attrTilePageID" value="ORD_VwPrbkDtls" cascade="true"/>
+	</definition>
+	<definition name="prebookingPrint" extends="pharmaclik.print">
+		<put-attribute name="body" value="prebookingPrint.body" />				                     
+	</definition>
+		<definition name="prebookingPrint.body" template="/WEB-INF/view/prebooking/printPrebookingOrder.jsp">
+		<put-attribute name="upperLeftToolForPrint"  value="/WEB-INF/view/include/prebooking/upperLeftToolForPrint.jsp"  />
+		<put-attribute name="printProductList" 	  value="/WEB-INF/view/include/prebooking/printProductList.jsp"  />			                     
+	</definition>
+	<definition name="prebookingOrder.body" template="/WEB-INF/view/prebooking/prebookingOrder.jsp">
+		<put-attribute name="productList" value="productList.body" />
+		<put-attribute name="productListReadOnly" value="productListReadOnly.body" />
+		<put-attribute name="attrTilePageID" value="ORD_VwPrbkDtls" cascade="true"/>
+	</definition>
+	<definition name="productList.body" template="/WEB-INF/view/include/prebooking/productList.jsp">
+		<put-attribute name="order.details.item" value="itemDetails.body" />
+	</definition>
+	<definition name="productListReadOnly.body" template="/WEB-INF/view/include/prebooking/productListReadOnly.jsp">
+		<put-attribute name="order.details.item" value="itemDetails.body" />
+	</definition>
+
+	<!-- ********************* Back Order Management **********************  -->
+	
+	<definition name="backOrder" extends="pharmaclik.default">
+		<put-attribute name="body" value="backOrder.body" />
+		
+	</definition>	
+	<definition name="backOrder.body" template="/WEB-INF/view/ordering/bo/backOrder.jsp">
+		<put-attribute name="backOrderList" value="backOrderList.body" />
+	</definition>
+	<definition name="backOrderList.body" template="/WEB-INF/view/include/ordering/bo/boList.jsp">
+		<put-attribute name="order.details.item" value="itemDetails.body" />
+	</definition>
+	
+	<definition name="backOrder.send.confirm" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/bo/boSendMesConf.jsp" />
+	</definition>			
+	<definition name="backOrder.product.detail" extends="pharmaclik.popup">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/bo/boProductDetails.jsp" />
+	</definition>
+	<definition name="backOrder.print" extends="pharmaclik.print">
+		<put-attribute name="body" value="/WEB-INF/view/ordering/bo/boPrint.jsp" />				                     
+	</definition>
+	
+	<!-- ********************** Retail Management *************************  -->
+	
+	<definition name="retail" extends="pharmaclik.default">
+		<put-attribute name="body" value="retail.body" />
+		<put-attribute name="attrTilePageID" value="MGT_RetlPrcCtgrLst" cascade="true"/>
+	</definition>	
+	<definition name="retail.body" template="/WEB-INF/view/retailprice/retailPriceManagement.jsp">
+		<put-attribute name="menuSearch" value="/WEB-INF/view/include/retailprice/productFamilySelector.jsp" cascade="true" />
+		<put-attribute name="retailList" value="/WEB-INF/view/include/retailprice/retailPriceList.jsp" cascade="true"/>
+	</definition>
+	<definition name="retail.error" extends="pharmaclik.default">
+	<put-attribute name="attrTilePageID" value="MGT_RetlPrcCtgrLst" cascade="true"/>
+		<put-attribute name="body" value="" cascade="true"/>
+	</definition>
+	<definition name="retail.cat.update" extends="retail">
+		<put-attribute name="attrTilePageID" value="MGT_RetlPrcCtgrUpdt" cascade="true"/>
+		<put-attribute name="menuSearch" value="" cascade="true" />
+		<put-attribute name="retailList" value="/WEB-INF/view/include/retailprice/retailPriceCatUpdate.jsp" cascade="true"/>
+	</definition>
+	<definition name="retail.exceptions" extends="retail">
+		<put-attribute name="attrTilePageID" value="MGT_RetlPrcExcptnLst" cascade="true"/>
+		<put-attribute name="menuSearch" value="/WEB-INF/view/include/retailprice/exceptionsSortSelector.jsp" cascade="true" />
+		<put-attribute name="retailList" value="retail.exceptions.body" cascade="true"/>
+	</definition>
+	<definition name="retail.ex.update" extends="retail">
+		<put-attribute name="attrTilePageID" value="MGT_RetlPrcExcptnUpd" cascade="true"/>
+		<put-attribute name="menuSearch" value="" cascade="true" />
+		<put-attribute name="retailList" value="retail.ex.update.body" cascade="true"/>
+	</definition>
+	<definition name="retail.ex.update.body" template="/WEB-INF/view/include/retailprice/retailPriceExUpdate.jsp">
+		<put-attribute name="order.details.item" value="itemDetails.body" />
+	</definition>
+	<definition name="retail.exceptions.body" template="/WEB-INF/view/include/retailprice/retailPriceExceptionsList.jsp">
+		<put-attribute name="order.details.item" value="itemDetails.body" />
+	</definition>
+	
+	<!-- *************************    Returns   **************************** -->
+		
+	<definition name="returnManagement" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/returns/returnsManagement.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="RET_RetrnMgt" cascade="true"/>
+	</definition>	
+	<definition name="return" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/returns/returnsReturn.jsp" />		                     
+		<!--  put-attribute name="attrTilePageID" value="RET_HdrForWbOnlyRt" cascade="true"/ --> <!-- this is defined in ReturnsServlet -->
+	</definition>
+	<definition name="returnGeneralPolicy" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/returns/returnsGeneralPolicy.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="RET_GnrPlcy" cascade="true"/>
+	</definition>
+	<definition name="returnsDetailedPolicy" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/returns/returnsDetailedPolicy.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="RET_DtldPlcy" cascade="true"/>
+	</definition>
+	<definition name="returnsExcludedProducts" extends="pharmaclik.popup">	
+		<put-attribute name="attrTitleKey" value="tl_ret_excludeProd"/>
+		<put-attribute name="body" value="/WEB-INF/view/returns/returnsExcludedProducts.jsp" />		                     		
+	</definition>
+	<definition name="returnsRecallList" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/returns/returnsRecallList.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="" cascade="true"/> <!-- this is defined in ReturnsServlet can be RET_RcllLst or RET_WthdrwlLst -->
+	</definition>
+	<definition name="recallNotificationList" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/returns/recallNotificationList.jsp" />		                     
+	</definition>
+    
+    <definition name="recallNotificationDetailList" extends="pharmaclik.default">
+		<put-attribute name="body" value="recallNotificationDetailList.body" />
+	</definition>	    
+	<definition name="recallNotificationDetailList.body" template="/WEB-INF/view/returns/recallNotificationDetailList.jsp">
+		<put-attribute name="recall.notification.details.item" value="itemDetails.body" />
+		<put-attribute name="prodInfoMore"	value="/WEB-INF/view/include/catalog/prodPageInfosAdditional.jsp" />
+	</definition>		
+	    
+	<definition name="returnsRecallDetails" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/returns/returnsRecallDetails.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="" cascade="true"/><!-- this is defined in ReturnsServlet can be RET_RcllLst or RET_WthdrwlLst -->
+	</definition>
+	<definition name="returnsAccessDenied" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/returns/returnsAccessDenied.jsp" />	
+		<put-attribute name="genericErrorBox" value=""/> <!-- weird thing, this page doesn't have this section, the body is just a simple "access denied" message -->	                     
+		<put-attribute name="attrTilePageID" value="RET_AccssDnd" cascade="true"/>		
+	</definition>
+	<definition name="returnsRecallDetailsPrint" extends="pharmaclik.print">
+		<put-attribute name="body" value="/WEB-INF/view/returns/returnsRecallDetailsPrint.jsp" />				                     
+	</definition>
+	<definition name="returnConfirmation" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/returns/returnConfirmation.jsp" />
+		<put-attribute name="attrTilePageID" value="RET_RetrnCnfrmtn" cascade="true"/>				                     
+	</definition>
+	<definition name="returnsRfcFormOnError" extends="pharmaclik.popup">		
+	    <put-attribute name="attrTitleKey" value="tl_ret_rfc_form_err"/>
+	    <put-attribute name="body" value="" /> <!-- weird thing, this page doesn't have body, it only displays messages in the generic message box  -->
+	</definition>
+
+
+	<!-- ************************   Finance   *******************************-->
+	<definition name="financeIndex" extends="pharmaclik.default">
+		<put-attribute name="body" value=""/> <!-- no body for this page  -->		                     
+		<put-attribute name="attrTilePageID" value="FIN_Indx" cascade="true"/>
+	</definition>	
+	<definition name="finaceMissingNarcoticSign" extends="pharmaclik.default">
+		<put-attribute name="order.toolbar" value="" cascade="true"/>
+		<put-attribute name="body" value="/WEB-INF/view/finance/missingNarcSigs.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_MssngNarcSgn" cascade="true"/>
+	</definition>	
+	<definition name="reAuthenticate" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/reAuthenticate.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="" cascade="true"/>
+	</definition>
+	<definition name="marketplaceOnDemandList" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/marketplaceOndemandlist.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_OnDmndMkt" cascade="true"/>
+		<put-attribute name="financeOnDemandResults" value="/WEB-INF/view/include/finance/marketplaceOnDemandResults.jsp" cascade="true"/>
+	</definition>	
+	<definition name="financeOnDemandList" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/ondemandlist.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_OnDmnd" cascade="true"/>
+		<put-attribute name="financeOnDemandResults" value="/WEB-INF/view/include/finance/onDemandResults.jsp" cascade="true"/>
+	</definition>	
+
+	<definition name="receiving.line.body" template="/WEB-INF/view/include/receiving/oneReceivingLine.jsp">
+		<put-attribute name="receiving.details.item" value="itemDetails.body" />
+		<put-attribute name="receivedItemLine" value="receiving.item.line.body" />
+	    <put-attribute name="receivingItemCollapse" value="true"  cascade="true" />
+	</definition>
+	<definition name="receiving.item.line.body" template="/WEB-INF/view/include/receiving/receivedItemLine.jsp">
+	    <put-attribute name="receivingItemCollapse" value="true"  cascade="true" />
+	</definition>
+	<definition name="receivingResults.body" template="/WEB-INF/view/include/receiving/receivingResults.jsp">
+	    <put-attribute name="filters" value="filters.main" />
+	    <put-attribute name="oneReceivingLine" value="receiving.line.body" />
+	</definition>	
+	<definition name="receiving" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/home/receiving.jsp" />	
+		<put-attribute name="attrTilePageID" value="RCV_PckSlip" cascade="true"/>
+		<put-attribute name="receivingResults" value="receivingResults.body" cascade="true"/>	
+	</definition>
+		<definition name="receiving.print" extends="pharmaclik.print">
+		<put-attribute name="printLogo" value="false"/>	
+		<put-attribute name="body" value="/WEB-INF/view/home/receivingPrint.jsp" />
+		<put-attribute name="receivingPrintResults" value="/WEB-INF/view/include/receiving/printReceivingPerBlock.jsp" cascade="true"/>			                     	
+	</definition>	
+	<definition name="financeOnDemandStatementList" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/ondemandstatementlist.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_OnDmndStmt" cascade="true"/>		
+	</definition>	
+	<definition name="financeTransferinvoicelist" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/transferinvoicelist.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_InvDwnld" cascade="true"/>		
+	</definition>	
+	<definition name="financeMessageAlphaFlagNotSet" extends="pharmaclik.default">
+		<!-- blank page used for error messages only. WARNING: a special PAGE_ID is defined -->	
+		<put-attribute name="body" value="" />			                     
+		<put-attribute name="attrTilePageID" value="FIN_MsgAlpgFlgNtSt" cascade="true"/>		
+	</definition>
+	<definition name="financeFortune1000" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/fortune1000.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_F1000" cascade="true"/>		
+	</definition>
+	<definition name="financeFortune1000download" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/fortune1000download.jsp" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_F1000Dwld" cascade="true"/>		
+	</definition>
+	
+	<definition name="financeReport" extends="pharmaclik.default">
+		<put-attribute name="body" value="financeReport.body" />
+	</definition>	
+	<definition name="financeReport.body" template ="/WEB-INF/view/finance/reportLayout.jsp">		
+		<put-attribute name="availableReports" value="/WEB-INF/view/finance/report.jsp" cascade="true"/>
+		<put-attribute name="reportParameters" value="" cascade="true"/> <!-- override this -->		                     
+	</definition>	
+	<definition name="financeReportProduct" extends="financeReport">
+		<put-attribute name="reportParameters" value="/WEB-INF/view/finance/reportProduct.jsp" cascade="true" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_PrdctFrm" cascade="true"/>		
+	</definition>
+	<definition name="financeReportProductDisplay" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/displayReportProduct.jsp" />
+		<put-attribute name="attrTilePageID" value="FIN_PrdctRPt" cascade="true"/>		
+	</definition>
+	
+	<definition name="statisticsProductDisplay" extends="pharmaclik.modal">
+		<put-attribute name="body" value="/WEB-INF/view/finance/displayReportProductMonth.jsp" />				
+	</definition>
+	
+	<definition name="financeReportSupplier" extends="financeReport">
+		<put-attribute name="reportParameters" value="/WEB-INF/view/finance/reportSupplier.jsp" cascade="true" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_SpplrFrm" cascade="true"/>		
+	</definition>
+	<definition name="financeReportSupplierDisplay" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/displayReportSupplier.jsp" />
+		<put-attribute name="attrTilePageID" value="FIN_SpplrRpt" cascade="true"/>		
+	</definition>
+	<definition name="financeReportNWDAtop" extends="financeReport">
+		<put-attribute name="reportParameters" value="/WEB-INF/view/finance/reportNWDAtop.jsp" cascade="true" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_NWDATopFrm" cascade="true"/>		
+	</definition>
+	<definition name="financeReportNWDAtopDisplay" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/displayReportNWDAtop.jsp" />
+		<put-attribute name="attrTilePageID" value="FIN_NWDATopRPt" cascade="true"/>		
+	</definition>
+	<definition name="financeReportNWDA" extends="financeReport">
+		<put-attribute name="reportParameters" value="/WEB-INF/view/finance/reportNWDA.jsp" cascade="true" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_NWDACmprtvFrm" cascade="true"/>		
+	</definition>
+	<definition name="financeReportNWDADisplay" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/displayReportNWDA.jsp" />
+		<put-attribute name="attrTilePageID" value="FIN_NWDACmprtvRpt" cascade="true"/>		
+	</definition>
+	<definition name="financeReportGST" extends="financeReport">
+		<put-attribute name="reportParameters" value="/WEB-INF/view/finance/reportGST.jsp" cascade="true" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_SlsTxFrm" cascade="true"/>		
+	</definition>
+	<definition name="financeReportGSTDisplay" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/displayReportGST.jsp" />
+		<put-attribute name="attrTilePageID" value="FIN_SlsTxRpt" cascade="true"/>		
+	</definition>
+	<definition name="financeReportRAMQ" extends="financeReport">
+		<put-attribute name="reportParameters" value="/WEB-INF/view/finance/reportRAMQ.jsp" cascade="true" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_RAMQFrm" cascade="true"/>		
+	</definition>
+	<definition name="financeReportRAMQDisplay" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/displayReportRAMQ.jsp" />
+		<put-attribute name="attrTilePageID" value="FIN_RAMQRpt" cascade="true"/>		
+	</definition>	                  
+	<definition name="financeReportGeneric" extends="financeReport">
+		<put-attribute name="reportParameters" value="/WEB-INF/view/finance/reportGeneric.jsp" cascade="true" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_GnrcPrdctFrm" cascade="true"/>		
+	</definition>
+	<definition name="financeReportGenericDisplay" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/displayReportGeneric.jsp" />
+		<put-attribute name="attrTilePageID" value="FIN_GnrcPrdctRpt" cascade="true"/>		
+	</definition>
+	<definition name="financeReportControlledSubstances" extends="financeReport">
+		<put-attribute name="reportParameters" value="/WEB-INF/view/finance/reportControlledSubstances.jsp" cascade="true" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_NarcContrFrm" cascade="true"/>		
+	</definition>
+	<definition name="financeReportControlledSubstancesDisplay" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/displayReportControlledSubstances.jsp" />
+		<put-attribute name="attrTilePageID" value="FIN_NarcContrRpt" cascade="true"/>		
+	</definition>
+	<definition name="financeReportClassTherap" extends="financeReport">
+		<put-attribute name="reportParameters" value="/WEB-INF/view/finance/reportClassTherap.jsp" cascade="true" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_ThrpdcClssFrm" cascade="true"/>		
+	</definition>
+	<definition name="financeReportClassTherapDisplay" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/displayReportClassTherap.jsp" />
+		<put-attribute name="attrTilePageID" value="FIN_ThrpdcClssRpt" cascade="true"/>		
+	</definition>
+	<definition name="financeReportVolumeRebate" extends="financeReport">
+		<put-attribute name="reportParameters" value="/WEB-INF/view/finance/reportVolumeRebate.jsp" cascade="true" />		                     
+		<put-attribute name="attrTilePageID" value="FIN_VrebFrm" cascade="true"/>		
+	</definition>
+	<definition name="financeReportVolumeRebateDisplay" extends="pharmaclik.default">
+		<put-attribute name="body" value="/WEB-INF/view/finance/displayReportVolumeRebate.jsp" />
+		<put-attribute name="attrTilePageID" value="FIN_VrebRPt" cascade="true"/>		
+	</definition>
+
+	<!-- ************************   Communication   *********************** -->
+	<definition name="communication" extends="pharmaclik.default">
+		<put-attribute name="attrTilePageID" value="COM_Inbx" cascade="true"/>
+		<put-attribute name="body" value="communication.body" />		                     		
+	</definition>
+	<definition name="communication.body" template="/WEB-INF/view/communication/communicationLayout.jsp">
+		<put-attribute name="commMenu" 	  value="inbox.menu" cascade="true" />
+		<put-attribute name="commContent" value="/WEB-INF/view/include/communication/messageList.jsp" cascade="true"/>
+	</definition>
+	<definition name="inbox.menu" template="/WEB-INF/view/communication/inbox_menu.jsp">
+		<put-attribute name="filters" value="filters.main" cascade="true" />
+	</definition>
+	<definition name="inbox.message" extends="communication">
+		<put-attribute name="attrTilePageID" value="COM_MssgDtl" cascade="true"/>
+		<put-attribute name="commContent" 	 value="/WEB-INF/view/include/communication/messageDetails.jsp" cascade="true"/>
+	</definition>
+	<definition name="inbox.compose" extends="communication">		
+		<put-attribute name="commContent" value="/WEB-INF/view/include/communication/composeMsg.jsp" cascade="true"/>
+	</definition>
+	<definition name="inbox.compose.new" extends="inbox.compose">		
+		<put-attribute name="attrTilePageID" value="COM_CmpsMsg" cascade="true"/>
+	</definition>
+	<definition name="inbox.compose.reply" extends="inbox.compose">		
+		<put-attribute name="attrTilePageID" value="COM_RplyMssg" cascade="true"/>
+	</definition>
+	<definition name="outbox" extends="communication">	
+		<put-attribute name="attrTilePageID" value="" cascade="true"/>	
+		<put-attribute name="commContent" 	 value="/WEB-INF/view/communication/messagesSent.jsp" cascade="true"/>
+	</definition>
+	<definition name="outbox.message" extends="outbox">		
+		<put-attribute name="commContent" value="/WEB-INF/view/include/communication/msgSent.jsp" cascade="true"/>
+	</definition>
+	<definition name="contacts" extends="communication">	
+		<put-attribute name="attrTilePageID" value="COM_Cntct" cascade="true"/>	
+		<put-attribute name="commContent" 	 value="/WEB-INF/view/communication/contacts.jsp" cascade="true"/>
+	</definition>	
+	
+	<definition name="chat.preform.window" template="/WEB-INF/view/communication/chat.jsp">
+		<put-attribute name="commContact" 	 value="/WEB-INF/view/communication/contacts.jsp" cascade="true"/>		
+	</definition>
+		
+	<!-- ************************   User Management   *********************** -->
+	<definition name="user.management" extends="pharmaclik.default">
+		<put-attribute name="attrTilePageID" value="MGT_DsplUsrs" cascade="true"/>
+		<put-attribute name="body" 			 value="user.mgnt.body" />
+	</definition>
+	<definition name="user.mgnt.body" template="/WEB-INF/view/user/management/userMgnt.jsp">
+		<put-attribute name="user.list" value="/WEB-INF/view/include/user/userList.jsp" cascade="true" />		
+	</definition>
+	<definition name="user.details" extends="pharmaclik.default">
+		<put-attribute name="attrTilePageID" value="MGT_VwUsrDtl" cascade="true"/>
+		<put-attribute name="body" 			 value="user.details.body" />
+	</definition>
+	<definition name="user.details.body" template="/WEB-INF/view/user/advancedUserDetails.jsp">
+		<put-attribute name="summary" 		   value="/WEB-INF/view/include/user/userSummary.jsp" cascade="true" />
+		<put-attribute name="detailedViewTabs" value="detailedViewTabs.body" cascade="true"/>		
+	</definition>
+	<definition name="detailedViewTabs.body" template="/WEB-INF/view/include/user/userDetailedInfos.jsp">		
+		<put-attribute name="access" value="/WEB-INF/view/include/user/detailTabs/infosAllowedSections.jsp" />
+		<put-attribute name="pki"	 value="/WEB-INF/view/include/user/detailTabs/infosPKIStatus.jsp" />
+		<put-attribute name="vendor" value="/WEB-INF/view/include/user/detailTabs/infosVendors.jsp" />
+		<put-attribute name="banner" value="/WEB-INF/view/include/user/detailTabs/infosBanners.jsp" />		
+	</definition>
+	<definition name="preference.tab" template="/WEB-INF/view/include/user/detailTabs/infosPrefRO.jsp" />	
+	<definition name="account.list.tab" template="/WEB-INF/view/include/user/detailTabs/userDetailAccountList.jsp" />
+	<definition name="account.details.tab" template="/WEB-INF/view/include/user/detailTabs/infosAcc.jsp">
+		<put-attribute name="address" value="/WEB-INF/view/include/account/tabs/accountAddress.jsp" />
+		<put-attribute name="boInfo"  value="/WEB-INF/view/include/account/tabs/accountBO.jsp" />
+		<put-attribute name="cutoff"  value="/WEB-INF/view/include/account/tabs/accountCutOff.jsp" />
+		<put-attribute name="preferences"  value="/WEB-INF/view/include/account/tabs/accountPrefs.jsp" />
+		<put-attribute name="labels"  value="/WEB-INF/view/include/account/tabs/accountLabels.jsp" />
+		<put-attribute name="fortune1000"  value="/WEB-INF/view/include/account/tabs/fortune1000.jsp" />
+	</definition>
+	<definition name="fortune1000.glAccount" template="/WEB-INF/view/include/account/glAccountNum.jsp" />
+	<definition name="user.create.step1" extends="pharmaclik.default">
+		<put-attribute name="attrTilePageID" value="MGT_DsplUsrs" cascade="true"/>
+		<put-attribute name="body" 			 value="/WEB-INF/view/user/management/userSiteManagementStep1.jsp" />
+	</definition>
+	<definition name="user.modify.step2" extends="pharmaclik.default">
+		<put-attribute name="attrTilePageID" value="MGT_DsplUsrs" cascade="true"/>
+		<put-attribute name="body" 			 value="/WEB-INF/view/user/management/userTypeManagementStep2.jsp" />
+	</definition>
+	<definition name="user.modify.step3" extends="pharmaclik.default">
+		<put-attribute name="attrTilePageID" value="MGT_DsplUsrs" cascade="true"/>
+		<put-attribute name="body" 			 value="/WEB-INF/view/user/management/userTypeManagementStep3.jsp" />
+	</definition>
+	<definition name="searchAccount" extends="pharmaclik.default">
+	    <put-attribute name="body" value="searchAccount.body" />
+	</definition>
+	
+	<definition name="searchAccount.body" template="/WEB-INF/view/user/searchAccount.jsp">
+	    <put-attribute name="emailRegistration" value="/WEB-INF/view/home/emailRegistration.jsp" />
+	    <put-attribute name="mfaRegistration" value="/WEB-INF/view/home/mfaRegistration.jsp" />
+	</definition>
+
+	<!-- Account(s) Info(s)  -->
+	<definition name="account.info" extends="pharmaclik.default">
+		<put-attribute name="attrTilePageID" value="MGT_AccInfo" cascade="true"/>
+		<put-attribute name="body" 			 value="account.info.body" />
+	</definition>
+	<definition name="account.info.body" extends="user.details.body">		
+		<put-attribute name="summary" 		   value="/WEB-INF/view/include/user/userViewSummary.jsp" cascade="true" />
+		<put-attribute name="detailedViewTabs" value="account.info.tabs.body" cascade="true" />
+	</definition>	
+	<definition name="account.info.tabs.body" template="/WEB-INF/view/include/user/personalInfos.jsp">
+		<put-attribute name="account" value="/WEB-INF/view/include/user/detailTabs/infosAccountList.jsp"/>
+		<put-attribute name="vendor" value="/WEB-INF/view/include/user/detailTabs/infosVendors.jsp" />
+		<put-attribute name="banner" value="/WEB-INF/view/include/user/detailTabs/infosBanners.jsp" />
+	</definition>
+	<definition name="account.info.list.tab" template="/WEB-INF/view/include/user/detailTabs/infosAccountList.jsp" />
+
+	<!-- **************************    Services   ************************* -->
+	<!-- Pharmacist Views  -->
+	<definition name="service" extends="pharmaclik.default">
+		<put-attribute name="attrTilePageID" value="PAT_ProviderHome" cascade="true"/>
+		<put-attribute name="body" value="service.body" />		                     		
+	</definition> <!-- Home -->
+	<definition name="service.body" template="/WEB-INF/view/services/servicesLayout.jsp">
+		<put-attribute name="serviceMenu" value="/WEB-INF/view/services/patientCareProvider/patientProviderMenu.jsp" cascade="true" />
+		<put-attribute name="serviceContent" value="/WEB-INF/view/services/patientCareProvider/patientProviderHome.jsp" cascade="true"/>
+	</definition>
+	<definition name="programs" extends="service">
+		<put-attribute name="serviceContent" value="programs.documents" cascade="true"/>
+	</definition> <!-- Programs/Services -->
+	<definition name="programs.documents" template="/WEB-INF/view/services/patientCareProvider/patientProviderProgramInformation.jsp">
+		<put-attribute name="documents" value="/WEB-INF/view/services/include/showDocuments.jsp"/>
+	</definition>	
+	<definition name="clinical.template" extends="service">
+		<put-attribute name="serviceContent" value="/WEB-INF/view/services/patientCareProvider/displayClinicalDocumentTemplate.jsp" cascade="true"/>
+	</definition> <!-- Clinical Document Template-->		
+	<definition name="patient.details" extends="service">
+		<put-attribute name="serviceContent" value="patient.info.edit" cascade="true"/>
+	</definition><!-- Add or Modify Patient Information -->	
+	<definition name="patient.info.edit" template="/WEB-INF/view/services/patientCareProvider/patientDetails.jsp">
+		<put-attribute name="address" value="/WEB-INF/view/services/include/patientCareProvider/address.jsp" />
+		<put-attribute name="programs.enrollment" value="/WEB-INF/view/services/include/patientCareProvider/programsEnrollment.jsp" />
+	</definition>
+	<definition name="patient.search" extends="service">
+		<put-attribute name="serviceContent" value="patient.search.body" cascade="true"/>
+	</definition> <!-- Patient Search -->
+	<definition name="patient.search.body" template="/WEB-INF/view/services/patientCareProvider/patientProviderSearchPatient.jsp">
+		<put-attribute name="search.bar" value="/WEB-INF/view/services/include/patientCareProvider/searchPatientsForProviderType.jsp" />
+		<put-attribute name="search.result" value="/WEB-INF/view/services/include/patientCareProvider/patientList.jsp" />
+	</definition>
+	<definition name="patient.data" extends="service">
+		<put-attribute name="serviceContent" value="patient.data.body" cascade="true"/>
+	</definition> <!-- Entry/History -->
+	<definition name="patient.data.body" template="/WEB-INF/view/services/patientCareProvider/patientProviderViewData.jsp">
+		<put-attribute name="patient.info" value="/WEB-INF/view/services/include/patientCareProvider/patientInfo.jsp" />
+		<put-attribute name="change.program" value="/WEB-INF/view/services/include/common/changeProgram.jsp"/>
+		<put-attribute name="patient.review" value="patient.review.tabs" cascade="true"/>
+	</definition>
+	<definition name="patient.review.tabs" template="/WEB-INF/view/services/include/patientCareProvider/patientProviderReviewTab.jsp">
+		<put-attribute name="default.tab" value="/WEB-INF/view/services/include/patientCareProvider/entryTabs/questionaire.jsp" />
+	</definition>
+	<definition name="graph.tab" template="/WEB-INF/view/services/include/patientCareProvider/entryTabs/graph.jsp">
+		<put-attribute name="graph.form" value="/WEB-INF/view/services/include/patientCareProvider/entryTabs/graph/graphForm.jsp" />
+	</definition>
+	<definition name="docs.tab" template="/WEB-INF/view/services/include/showDocuments.jsp"/>	
+	<definition name="drugs.tab" template="/WEB-INF/view/services/include/patientCareProvider/entryTabs/drugHistory.jsp">
+		<put-attribute name="messagesError" value="messageBox.body" cascade="true"/>
+	</definition>
+	
+	<definition name="graph.print" extends="pharmaclik.print">
+		<put-attribute name="body" value="/WEB-INF/view/services/include/common/printGraph.jsp" />	
+		<put-attribute name="printLogo" value="false"/>			                     
+	</definition>
+	<definition name="program.info" template="/WEB-INF/view/services/include/common/changeProgram.jsp"/>	
+	<!-- Patient Views -->
+	<definition name="patient.default" extends="pharmaclik.default">
+		<put-attribute name="header" value="/WEB-INF/view/services/patientCare/header.jsp" />
+		<put-attribute name="side-menu" value="" cascade="true" />				
+	</definition>
+	<definition name="patientside.data" extends="patient.default">
+		<put-attribute name="body" value="patientside.data.body" cascade="true"/>		
+	</definition>
+	<definition name="patientside.data.body" extends="patient.data.body">
+		<put-attribute name="patient.info" value="" />	
+		<put-attribute name="patient.review" value="patientside.review.tabs" cascade="true"/>	
+	</definition>
+	<definition name="patientside.review.tabs" template="/WEB-INF/view/services/include/patientCare/patientReviewTabs.jsp">
+		<put-attribute name="default.tab" value="/WEB-INF/view/services/include/patientCareProvider/entryTabs/questionaire.jsp" />
+	</definition>
+	<!-- Message MBA -->
+	<definition name="messageMBA" template="/WEB-INF/view/include/messageMBA.jsp"></definition>
+</tiles-definitions>
