@@ -1,0 +1,95 @@
+@Test
+public void givenWEBBI120Configuration_whenExecuteRESTCall_thenGetRpgOutput() throws Throwable {
+    // Given
+    String webbiName = WEBBI_PROGRAM_PREFIX + MQConstants.WEBBI_INTERFACE_NUMBER_120_;
+    RpgProgram rpgProgram = rpgConfiguration.getForTrading(TRADING_PARTNER_CODE, webbiName);
+
+    Assert.assertNotNull(rpgProgram);
+
+    RpgUtil rpgUtil = new RpgUtil();
+
+    rpgUtil.setInput("ARRAY_SIZE", BigDecimal.ONE);
+    rpgUtil.setInput("TRACKING", "12");
+
+    BiConsumer<Map, Map> outputProcessor = (BiConsumer<Map, Map>) (outputValues, arraySize) -> {
+        outputValues.put("OUTPUT_PROCESSED", "YESSS EDI");
+    };
+
+    RpgCallContext context = new RpgCallContext(TRADING_PARTNER_CODE, rpgProgram)
+            .setAttribute(RpgCallContext.RPG_UTIL, rpgUtil)
+            .setAttribute(RpgCallContext.INPUT, (Function<String, Object>) rpgUtil::getInput)
+            .setAttribute(RpgCallContext.OUTPUT_PROCESSOR, outputProcessor);
+
+    String responseBody;
+
+    responseBody = readFile("WEBBI120RestResponse.json");
+
+    ResponseEntity<String> responseEntity = new ResponseEntity<>(responseBody,
+            headers(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE), HttpStatus.OK);
+    AtomicReference<Map> requestBody = new AtomicReference<>();
+    AtomicReference<MultiValueMap<String, String>> requestHeaders = new AtomicReference<>();
+
+    Mockito.when(restTemplate.exchange(
+            Mockito.eq(ApplicationConfiguration.get("sunrise_endpoint_base_url")
+                    + "/modify/clientbackorder"),
+            Mockito.eq(HttpMethod.POST), Mockito.any(HttpEntity.class),
+            Mockito.any(ParameterizedTypeReference.class), Mockito.anyMap())).thenAnswer(invocation -> {
+                requestBody.set(((HttpEntity<Map>) invocation.getArgument(2)).getBody());
+                requestHeaders.set(((HttpEntity<Map>) invocation.getArgument(2)).getHeaders());
+                return responseEntity;
+            });
+
+    // Execute
+    RpgOutput rpgOutput = restCallExecutor.executeRpg(context);
+
+    // Verify
+    Assert.assertNotNull(rpgOutput);
+
+    // Verify request body
+    Assert.assertNotNull(requestBody.get());
+    Map requestBodyMap = requestBody.get();
+
+    Assert.assertEquals(1, requestBodyMap.size());
+    Assert.assertEquals("12", requestBodyMap.get("SAPOrderNumber"));
+
+    Assert.assertNotNull(requestHeaders.get());
+    MultiValueMap<String, String> requestHeadersMultiMap = requestHeaders.get();
+
+    // Verify request headers
+    Assert.assertEquals(3, requestHeadersMultiMap.size());
+    Assert.assertEquals("application/json", requestHeadersMultiMap.getFirst(HttpHeaders.CONTENT_TYPE));
+    Assert.assertEquals("application/json", requestHeadersMultiMap.getFirst(HttpHeaders.ACCEPT));
+    Assert.assertEquals(AUTH_TOKEN, requestHeadersMultiMap.getFirst(SunriseAuthenticator.AUTHORIZATION_HEADER));
+
+    // Verify RpgOutput
+    Assert.assertEquals(BigDecimal.ONE, rpgOutput.get(RpgResponsePayloadParser.ARRAY_SIZE));
+    Assert.assertEquals("YESSS EDI", rpgOutput.get("OUTPUT_PROCESSED"));
+
+    // Verify specific list values
+    Assert.assertEquals("12", rpgOutput.get("TRACKING"));
+
+    List<BigDecimal> division = Arrays.asList((BigDecimal) rpgOutput.get("CD_DIVISION"));
+    Assert.assertNotNull(division);
+    Assert.assertEquals(1, division.size());
+    Assert.assertEquals(new BigDecimal("13"), division.get(0));
+
+    List<BigDecimal> boQuantity = Arrays.asList((BigDecimal) rpgOutput.get("QTE_BO"));
+    Assert.assertNotNull(boQuantity);
+    Assert.assertEquals(1, boQuantity.size());
+    Assert.assertEquals(new BigDecimal("34"), boQuantity.get(0));
+
+    List<BigDecimal> mqe = Arrays.asList((BigDecimal) rpgOutput.get("MQE"));
+    Assert.assertNotNull(mqe);
+    Assert.assertEquals(1, mqe.size());
+    Assert.assertEquals(new BigDecimal("55"), mqe.get(0));
+
+    List<BigDecimal> productNo = Arrays.asList((BigDecimal) rpgOutput.get("NO_PRODUIT"));
+    Assert.assertNotNull(productNo);
+    Assert.assertEquals(1, productNo.size());
+    Assert.assertEquals(new BigDecimal("33"), productNo.get(0));
+
+    List<BigDecimal> productError = Arrays.asList((BigDecimal) rpgOutput.get("CD_ERREUR"));
+    Assert.assertNotNull(productError);
+    Assert.assertEquals(1, productError.size());
+    Assert.assertEquals(new BigDecimal("353"), productError.get(0));
+}
