@@ -1,0 +1,5 @@
+	private static List<String> parseCSVConfig(String key) {
+		return Optional.ofNullable(ApplicationConfiguration.get(key)).map(s -> s.split(",")).map(Arrays::asList)
+				.orElseGet(Collections::emptyList).stream().map(String::trim).map(String::toUpperCase)
+				.collect(Collectors.toList());
+	}
