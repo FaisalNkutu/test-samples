@@ -1,0 +1,24 @@
+private static List<String> parseCSVConfig(String key) {
+    // Retrieve the configuration value
+    String value = ApplicationConfiguration.get(key);
+
+    // Check if the value is null
+    if (value == null) {
+        return Collections.emptyList(); // Return an empty list if null
+    }
+
+    // Split the value into an array using a comma as the delimiter
+    String[] parts = value.split(",");
+
+    // Create a list to hold the processed elements
+    List<String> result = new ArrayList<>();
+
+    // Process each part
+    for (String part : parts) {
+        if (part != null) { // Avoid null values (if any)
+            result.add(part.trim().toUpperCase()); // Trim and convert to uppercase
+        }
+    }
+
+    return result; // Return the final list
+}
