@@ -1,20 +1,12 @@
-If `OpenMocks` is not working in your environment, you can use an alternative approach for setting up Mockito. One such approach is to use the `MockitoJUnitRunner` or `MockitoExtension` (depending on whether you are using JUnit 4 or JUnit 5).
-
-### 1. Using `MockitoJUnitRunner` (JUnit 4)
-This approach avoids `OpenMocks` entirely. Instead, it uses the `@RunWith(MockitoJUnitRunner.class)` annotation to initialize mocks.
-
-**Updated Code:**
-```java
 package ca.medis.web.util.amqp;
 
 import static org.mockito.Mockito.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.MockitoAnnotations;
 
 import com.ibm.mqlight.api.CompletionListener;
 import com.ibm.mqlight.api.Delivery;
@@ -28,7 +20,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-@RunWith(MockitoJUnitRunner.class)
 public class AMQPConsumerTest {
 
     @InjectMocks
@@ -44,9 +35,6 @@ public class AMQPConsumerTest {
     private Delivery mockDelivery;
 
     @Mock
-    private StringDelivery mockStringDelivery;
-
-    @Mock
     private AMQPBatchQueue mockAmqpBatchQueue;
 
     private static final String MOCK_TOPIC = "test/topic";
@@ -55,7 +43,9 @@ public class AMQPConsumerTest {
 
     @Before
     public void setUp() {
-        // Mock initialization not needed with MockitoJUnitRunner
+        // Initialize mocks manually
+        MockitoAnnotations.initMocks(this);
+
         amqpConsumer = new AMQPConsumer(mockConnectionBean);
         amqpConsumer.amqpBatchQueue = mockAmqpBatchQueue;
 
@@ -102,122 +92,3 @@ public class AMQPConsumerTest {
         verify(mockAmqpBatchQueue, times(1)).processAMQPMessage(MOCK_DATA, MOCK_RPG_PROGRAM);
     }
 }
-```
-
----
-
-### 2. Using `MockitoExtension` (JUnit 5)
-If you're using JUnit 5, the preferred way is to use the `MockitoExtension`:
-
-**Dependencies:**
-Ensure you have the Mockito JUnit 5 dependency in your `pom.xml`:
-```xml
-<dependency>
-    <groupId>org.mockito</groupId>
-    <artifactId>mockito-junit-jupiter</artifactId>
-    <version>4.11.0</version> <!-- Update to the latest version -->
-    <scope>test</scope>
-</dependency>
-```
-
-**Updated Code:**
-```java
-package ca.medis.web.util.amqp;
-
-import static org.mockito.Mockito.*;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import com.ibm.mqlight.api.CompletionListener;
-import com.ibm.mqlight.api.Delivery;
-import com.ibm.mqlight.api.Delivery.Type;
-import com.ibm.mqlight.api.NonBlockingClient;
-import com.ibm.mqlight.api.StringDelivery;
-
-import ca.medis.web.util.amqp.bean.AMQPInfoBean;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-@ExtendWith(MockitoExtension.class)
-public class AMQPConsumerTest {
-
-    @InjectMocks
-    private AMQPConsumer amqpConsumer;
-
-    @Mock
-    private AMQPInfoBean mockConnectionBean;
-
-    @Mock
-    private NonBlockingClient mockClient;
-
-    @Mock
-    private Delivery mockDelivery;
-
-    @Mock
-    private StringDelivery mockStringDelivery;
-
-    @Mock
-    private AMQPBatchQueue mockAmqpBatchQueue;
-
-    private static final String MOCK_TOPIC = "test/topic";
-    private static final String MOCK_DATA = "Test Message";
-    private static final String MOCK_RPG_PROGRAM = "WEBBI120";
-
-    @BeforeEach
-    void setUp() {
-        amqpConsumer = new AMQPConsumer(mockConnectionBean);
-        amqpConsumer.amqpBatchQueue = mockAmqpBatchQueue;
-
-        // Mock the behavior of the delivery
-        when(mockDelivery.getType()).thenReturn(Type.STRING);
-        when(mockDelivery.getTopic()).thenReturn(MOCK_TOPIC);
-        when(((StringDelivery) mockDelivery).getData()).thenReturn(MOCK_DATA);
-    }
-
-    @Test
-    void testReadMessageFromQueue_success() throws Exception {
-        // Mock the client's subscribe behavior
-        doAnswer(invocation -> {
-            DestinationAdapter<Void> destinationAdapter = invocation.getArgument(1);
-            destinationAdapter.onMessage(mockClient, null, mockDelivery);
-            return null;
-        }).when(mockClient).subscribe(eq(MOCK_TOPIC), any(DestinationAdapter.class), any(CompletionListener.class), eq(null));
-
-        // Call the method under test
-        amqpConsumer.readMessageFromQueue(mockConnectionBean);
-
-        // Verify that the message was processed
-        verify(mockAmqpBatchQueue, times(1)).processAMQPMessage(MOCK_DATA, null);
-    }
-
-    @Test
-    void testReadMessageFromQueue_withRpgProgram() throws Exception {
-        // Mock the delivery to include RPG program properties
-        Map<String, Object> properties = new HashMap<>();
-        properties.put("rpgProgram", MOCK_RPG_PROGRAM);
-        when(mockDelivery.getProperties()).thenReturn(Collections.unmodifiableMap(properties));
-
-        // Mock the client's subscribe behavior
-        doAnswer(invocation -> {
-            DestinationAdapter<Void> destinationAdapter = invocation.getArgument(1);
-            destinationAdapter.onMessage(mockClient, null, mockDelivery);
-            return null;
-        }).when(mockClient).subscribe(eq(MOCK_TOPIC), any(DestinationAdapter.class), any(CompletionListener.class), eq(null));
-
-        // Call the method under test
-        amqpConsumer.readMessageFromQueue(mockConnectionBean);
-
-        // Verify that the message was processed with the RPG program
-        verify(mockAmqpBatchQueue, times(1)).processAMQPMessage(MOCK_DATA, MOCK_RPG_PROGRAM);
-    }
-}
-```
-
-Both approaches avoid `OpenMocks` while ensuring the tests function correctly. Choose the one that aligns with your JUnit version.
