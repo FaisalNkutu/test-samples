@@ -1,0 +1,91 @@
+package ca.medis.web.util.amqp;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ibm.mqlight.api.CompletionListener;
+import com.ibm.mqlight.api.Delivery;
+import com.ibm.mqlight.api.DestinationAdapter;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.StringDelivery;
+
+import ca.medis.web.util.amqp.bean.AMQPInfoBean;
+import ca.medis.web.util.rpg.RpgCallContext;
+import ca.medis.web.util.rpg.RpgResponsePayloadParser;
+/**
+ * This class is used to receive the response from
+ * AMQP Topic. 
+ * 
+ * @author fnkutu
+ */
+
+public class AMQPConsumer extends AMQPConnection/*Pool*/ {
+	
+	public AMQPConsumer(AMQPInfoBean connectionBean) {
+		super(connectionBean);
+		this.amqpBatchQueue = AMQPBatchQueue.getInstance(this.tpCode);
+	
+	}
+	static RpgCallContext context = null;
+	protected static ObjectMapper objectMapper  = null;
+	private AMQPBatchQueue amqpBatchQueue ;
+
+	
+	private static Logger logger = Logger.getLogger(AMQPConsumer.class.getName());
+    private String webbiValue = null;
+
+
+
+    protected void readMessageFromQueue(AMQPInfoBean connectionBean) throws AMQPUtilException {
+
+    	int attempts = 1;
+		NonBlockingClient client;
+		try {
+			client = getSubscriberClient();
+				client.subscribe(this.topic, new DestinationAdapter<Void>() {
+					public void onMessage(NonBlockingClient client, Void context, Delivery delivery) {
+						if (delivery.getType() == Delivery.Type.STRING) {
+							String dataRecived = ((StringDelivery)delivery).getData();
+							if(!delivery.getProperties().isEmpty() && delivery.getProperties().containsKey("rpgProgram")) {
+								webbiValue = (String)delivery.getProperties().get("rpgProgram");
+							}
+							logger.info("Subscriber client for Topic  "+delivery.getTopic() + " " +dataRecived);}
+						amqpBatchQueue.processAMQPMessage( ((StringDelivery) delivery).getData(),webbiValue );
+					}
+				}, new CompletionListener<Void>() {
+
+					@Override
+					public void onSuccess(NonBlockingClient client, Void context) {
+						// TODO Auto-generated method stub
+						logger.info("AMQPReceiveStandAloneThreadPoolCallBack.readMessageFromQueue().new CompletionListener() {...}.onSuccess()");
+						
+					}
+
+					@Override
+					public void onError(NonBlockingClient client, Void context, Exception exception) {
+						// TODO Auto-generated method stub
+						logger.info("AMQPReceiveStandAloneThreadPoolCallBack.SetUpForReceive().new CompletionListener() {...}.onError()");
+						
+						
+					}
+				}, null);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.error("Error in starting up Subscriber for the AMQP Topic " + this.topic, e);
+			throw new AMQPUtilException("Error in starting up Subscriber for the AMQP Topic " + this.topic);
+		}
+
+    }
+
+
+	/**
+	 * This method is overridden by Consumer to read messages from  the AMQP Queue/Topic
+	 * @param connectionBean can be  used as a POJO to pass parameters to the ThreadPoolCallBackService threads
+	 * @throws AMQPUtilException 
+	 */
+	@Override
+	public void process(AMQPInfoBean connectionBean) throws AMQPUtilException {
+		// TODO Auto-generated method stub
+		readMessageFromQueue(null);
+	}
