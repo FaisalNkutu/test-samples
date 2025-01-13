@@ -1,6 +1,5 @@
 		amqpEnabledRpgPrograms = parseCSVConfig(CONFIG_KEY_AMQP_ENABLED_RPG_PROGRAMS);
-		restEnabledPrograms = parseCSVConfig(CONFIG_KEY_REST_ENABLED_PROGRAMS);
-		if(!amqpEnabledRpgPrograms.contains(CONFIG_KEY_AMQP_ENABLED_RPG_PROGRAMS) && !restEnabledRpgPrograms.contains(CONFIG_KEY_REST_ENABLED_PROGRAMS)) {		
+		if(!amqpEnabledRpgPrograms.contains("WEBBI120") && CONFIG_KEY_REST_ENABLED_PROGRAMS.equalsIgnoreCase("True")) {		
 			if (DatabaseConstant.TRADING_PARTNER_CPDN.equals(medisAccount.getTradingPartnerCode())){
 				request.setAttribute(PARAM_ACTION, "sendMessage");
 				actionHandlerForSendMessage(request, response);
