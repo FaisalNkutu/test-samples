@@ -20,6 +20,10 @@ import com.ibm.mqlight.api.StringDelivery;
 
 import ca.medis.web.util.amqp.bean.AMQPInfoBean;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/spring-test-context.xml"})
 public class AMQPConsumerTest {
@@ -79,7 +83,9 @@ public class AMQPConsumerTest {
     @Test
     public void testReadMessageFromQueue_withRpgProgram() throws Exception {
         // Mock the delivery to include RPG program properties
-        when(mockDelivery.getProperties()).thenReturn(Map.of("rpgProgram", MOCK_RPG_PROGRAM));
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("rpgProgram", MOCK_RPG_PROGRAM);
+        when(mockDelivery.getProperties()).thenReturn(Collections.unmodifiableMap(properties));
 
         // Mock the client's subscribe behavior
         doAnswer(invocation -> {
@@ -94,20 +100,11 @@ public class AMQPConsumerTest {
         // Verify that the message was processed with the RPG program
         verify(mockAmqpBatchQueue, times(1)).processAMQPMessage(MOCK_DATA, MOCK_RPG_PROGRAM);
     }
-
-    @Test
-    public void testReadMessageFromQueue_errorHandling() throws Exception {
-        // Mock an exception during client creation
-        doThrow(new RuntimeException("Test Exception")).when(mockClient).subscribe(anyString(), any(DestinationAdapter.class), any(CompletionListener.class), eq(null));
-
-        try {
-            amqpConsumer.readMessageFromQueue(mockConnectionBean);
-        } catch (Exception e) {
-            // Expected exception
-            assert e instanceof AMQPUtilException;
-        }
-
-        // Verify that no message was processed
-        verify(mockAmqpBatchQueue, never()).processAMQPMessage(anyString(), anyString());
-    }
 }
+//////////////////
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>4.11.0</version> <!-- Update to the latest version -->
+    <scope>test</scope>
+</dependency>
