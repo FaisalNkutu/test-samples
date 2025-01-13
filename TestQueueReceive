@@ -1,0 +1,113 @@
+package ca.medis.web.util.amqp;
+
+import static org.mockito.Mockito.*;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ibm.mqlight.api.CompletionListener;
+import com.ibm.mqlight.api.Delivery;
+import com.ibm.mqlight.api.Delivery.Type;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.StringDelivery;
+
+import ca.medis.web.util.amqp.bean.AMQPInfoBean;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:/spring-test-context.xml"})
+public class AMQPConsumerTest {
+
+    @InjectMocks
+    private AMQPConsumer amqpConsumer;
+
+    @Mock
+    private AMQPInfoBean mockConnectionBean;
+
+    @Mock
+    private NonBlockingClient mockClient;
+
+    @Mock
+    private Delivery mockDelivery;
+
+    @Mock
+    private StringDelivery mockStringDelivery;
+
+    @Mock
+    private AMQPBatchQueue mockAmqpBatchQueue;
+
+    private static final String MOCK_TOPIC = "test/topic";
+    private static final String MOCK_DATA = "Test Message";
+    private static final String MOCK_RPG_PROGRAM = "WEBBI120";
+
+    @Before
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+
+        // Set up the AMQPConsumer instance
+        amqpConsumer = new AMQPConsumer(mockConnectionBean);
+        amqpConsumer.amqpBatchQueue = mockAmqpBatchQueue;
+
+        // Mock the behavior of the delivery
+        when(mockDelivery.getType()).thenReturn(Type.STRING);
+        when(mockDelivery.getTopic()).thenReturn(MOCK_TOPIC);
+        when(((StringDelivery) mockDelivery).getData()).thenReturn(MOCK_DATA);
+    }
+
+    @Test
+    public void testReadMessageFromQueue_success() throws Exception {
+        // Mock the client's subscribe behavior
+        doAnswer(invocation -> {
+            DestinationAdapter<Void> destinationAdapter = invocation.getArgument(1);
+            destinationAdapter.onMessage(mockClient, null, mockDelivery);
+            return null;
+        }).when(mockClient).subscribe(eq(MOCK_TOPIC), any(DestinationAdapter.class), any(CompletionListener.class), eq(null));
+
+        // Call the method under test
+        amqpConsumer.readMessageFromQueue(mockConnectionBean);
+
+        // Verify that the message was processed
+        verify(mockAmqpBatchQueue, times(1)).processAMQPMessage(MOCK_DATA, null);
+    }
+
+    @Test
+    public void testReadMessageFromQueue_withRpgProgram() throws Exception {
+        // Mock the delivery to include RPG program properties
+        when(mockDelivery.getProperties()).thenReturn(Map.of("rpgProgram", MOCK_RPG_PROGRAM));
+
+        // Mock the client's subscribe behavior
+        doAnswer(invocation -> {
+            DestinationAdapter<Void> destinationAdapter = invocation.getArgument(1);
+            destinationAdapter.onMessage(mockClient, null, mockDelivery);
+            return null;
+        }).when(mockClient).subscribe(eq(MOCK_TOPIC), any(DestinationAdapter.class), any(CompletionListener.class), eq(null));
+
+        // Call the method under test
+        amqpConsumer.readMessageFromQueue(mockConnectionBean);
+
+        // Verify that the message was processed with the RPG program
+        verify(mockAmqpBatchQueue, times(1)).processAMQPMessage(MOCK_DATA, MOCK_RPG_PROGRAM);
+    }
+
+    @Test
+    public void testReadMessageFromQueue_errorHandling() throws Exception {
+        // Mock an exception during client creation
+        doThrow(new RuntimeException("Test Exception")).when(mockClient).subscribe(anyString(), any(DestinationAdapter.class), any(CompletionListener.class), eq(null));
+
+        try {
+            amqpConsumer.readMessageFromQueue(mockConnectionBean);
+        } catch (Exception e) {
+            // Expected exception
+            assert e instanceof AMQPUtilException;
+        }
+
+        // Verify that no message was processed
+        verify(mockAmqpBatchQueue, never()).processAMQPMessage(anyString(), anyString());
+    }
+}
