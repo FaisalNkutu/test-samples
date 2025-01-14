@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -18,168 +19,111 @@ import com.ibm.mqlight.api.QOS;
 import com.ibm.mqlight.api.SendOptions;
 import com.ibm.mqlight.api.impl.callback.ThreadPoolCallbackService;
 
-import ca.medis.web.util.as400.AS400UtilException;
-
 public class AMQPWebbi120SendTest {
 
-	static String host = "amqp://172.16.52.10";
-	static String userName = "appuser";
-	static String password = "iiyZmnFluuA-KQ66Yz8q";
-	// static String outTopic = "amqp/mdp.batch.out.topic";
-	static String outTopic = "amqp/BATCH.PP.QUEUE";
-	static String inTopic = "amqp/mdp.batch.in.topic";
-	static String amqpRequestString = "SAMPLE.............. ";
-	static int poolSize = 3;
-	static ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName, password).build();
+    static String host = "amqp://172.16.52.10";
+    static String userName = "appuser";
+    static String password = "iiyZmnFluuA-KQ66Yz8q";
+    static String outTopic = "amqp/BATCH.PP.QUEUE";
+    static int poolSize = 3;
+    static ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName, password).build();
 
-	static ThreadPoolCallbackService publishCallbackService = new ThreadPoolCallbackService(poolSize) {
+    static ThreadPoolCallbackService publishCallbackService = new ThreadPoolCallbackService(poolSize) {
+        @Override
+        public void run(Runnable runnable, Object orderingCtx, Promise<Void> promise) {
+            System.out.println("CustomThreadPoolService.run called by thread: " + Thread.currentThread().getId());
+            if (orderingCtx != null) {
+                send(orderingCtx);
+            }
+        }
+    };
 
-		@Override
-		public void run(Runnable runnable, Object orderingCtx, Promise<Void> promise) {
-			
-			System.out.println("AMQPSendStandAloneThreadPoolCallBack.CustomThreadPoolService.run( --> called by -> " + Thread.currentThread().getId());
-			send(orderingCtx);
-			// super.run(runnable, orderingCtx, promise);
-		}
-	};
+    static ExecutorService clientThreadPool = Executors.newFixedThreadPool(10);
+    static NonBlockingClient client;
 
-	static ExecutorService clientThreadPool = Executors.newFixedThreadPool(10);
-	static NonBlockingClient client;
+    @Before
+    public void setup() throws IOException {
+        Map<String, String> argsMap = new HashMap<>();
+        argsMap.put("request", getMessage());
+        publishCallbackService.run(null, argsMap, null);
+    }
 
-	static HashMap<Integer, Object> orderingCtx = new HashMap<Integer, Object>();
-	static Object recievedOrderingCtx;
-	@Before
-	public void setup() throws IOException, AS400UtilException {
-		// sendByThreadPool();
-		HashMap<String, String> argsMap;
-		argsMap = new HashMap<String, String>();
-		argsMap.put("request", getMessage());
-		publishCallbackService.run(null, argsMap, null);	
-	}
+    public void sendByThreadPool() {
+        for (int i = 0; i < 10; i++) {
+            Map<String, String> argsMap = new HashMap<>();
+            argsMap.put("request", getMessage());
+            publishCallbackService.run(null, argsMap, null);
+            System.out.println("Loop counter: " + i);
+        }
+    }
 
-	public void sendByThreadPool() {
+    private static NonBlockingClient getClient() {
+        if (client == null) {
+            client = NonBlockingClient.create(host, clientOpts, new NonBlockingClientAdapter<Void>() {
+                @Override
+                public void onStarted(NonBlockingClient client, Void context) {
+                    System.out.println("Connection started for host: " + host + ", Thread Id: " + Thread.currentThread().getId());
+                }
 
-		Promise<Void> promise = null;
-		HashMap<String, String> argsMap;
-		for (int i = 0; i < 10; i++) {
-			argsMap = new HashMap<String, String>();
-			argsMap.put("request", getMessage());
-			publishCallbackService.run(null, argsMap, null);
+                @Override
+                public void onStopped(NonBlockingClient client, Void context, ClientException clientException) {
+                    if (clientException != null) {
+                        System.err.println("Exception in onStopped: " + clientException.getMessage());
+                    }
+                }
+            }, null);
+        }
+        return client;
+    }
 
-			System.out.println("Loop counter " + i);
-		}
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		for (int i = 0; i < 10; i++) {
+    public static void send(Object argsMap) {
+        if (argsMap instanceof Map) {
+            @SuppressWarnings("unchecked")
+            Map<String, String> map = (Map<String, String>) argsMap;
+            String request = map.get("request");
+            if (request != null) {
+                System.out.println("Sending message: " + request + ", Thread Id: " + Thread.currentThread().getId());
+                client = getClient();
+                SendOptions sendOptions = SendOptions.builder().setQos(QOS.AT_LEAST_ONCE).build();
+                client.send(outTopic, request, null, sendOptions, new CompletionListener<byte[]>() {
+                    @Override
+                    public void onSuccess(NonBlockingClient client, byte[] context) {
+                        System.out.println("Message sent successfully.");
+                    }
 
-			System.out.println("2nd Loop ==== " + i);
-			argsMap = new HashMap<String, String>();
-			argsMap.put("request", getMessage());
+                    @Override
+                    public void onError(NonBlockingClient client, byte[] context, Exception exception) {
+                        System.err.println("Error sending message: " + exception.getMessage());
+                    }
+                }, null);
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            } else {
+                System.err.println("Request is null.");
+            }
+        } else {
+            System.err.println("Invalid argument type.");
+        }
+    }
 
-			publishCallbackService.run(null, argsMap, null);
-		}
-		/*
-		 * try { Thread.sleep(10000); } catch (InterruptedException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); }
-		 */
+    private static String getMessage() {
+        try {
+            return readFile("WEBBI120AMQPResponse.json") + Math.random();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Default Message";
+        }
+    }
 
-	}
-
-	private static NonBlockingClient getClient() {
-
-		if (client == null) {
-
-			client = NonBlockingClient.create(host, clientOpts, new NonBlockingClientAdapter<Void>() {
-
-				@Override
-				public void onStarted(NonBlockingClient client, Void context) {
-					System.out.println("Connection started for host in the SEND method: " + host + ", Thread Id = " + Thread.currentThread().getId());
-				}
-
-				@Override
-				public void onStopped(NonBlockingClient client, Void context, ClientException clientException) {
-					if (clientException != null) {
-						System.out.println("Unhandled exception in NonBlockingClientAdapter.onStopped() method :" + clientException.getMessage());
-					}
-				}
-
-				@Override
-				public void onRestarted(NonBlockingClient client, Void context) {
-					System.out.println("Connection RESTARTED for host in the SEND method: " + host + ", Thread Id = " + Thread.currentThread().getId());
-				}
-
-				@Override
-				public void onRetrying(NonBlockingClient client, Void context, ClientException clientException) {
-					if (clientException != null) {
-						System.out.println("Unhandled exception in NonBlockingClientAdapter.onRetrying() method :" + clientException.getMessage());
-					}
-				}
-
-				@Override
-				public void onDrain(NonBlockingClient client, Void context) {
-					System.out.println("AMQPSendStandAloneThreadPoolCallBack.send().new NonBlockingClientAdapter() {...}.onDrain()");
-				}
-
-			}, null);
-		}
-
-		return client;
-	}
-
-	public String getMessage() {
-    
-
-    	try {
-			amqpRequestString = readFile("WEBBI120AMQPResponse.json");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String request = amqpRequestString + Math.random();
-		return request;
-	}
-    @Test
-	public   void send(Object argsMap) {
-		if (argsMap != null && argsMap instanceof HashMap && ((HashMap) argsMap).get("request") != null) {
-			String request = (String) ((HashMap) argsMap).get("request");
-
-			System.out.println("AMQPSendReceiveStandAloneThreadPoolCallBack.send() : Thread Id = " + Thread.currentThread().getId() + ", sending : " + request);
-			client = getClient();
-			SendOptions sOpts = SendOptions.builder().setQos(QOS.AT_LEAST_ONCE).build();
-			client.send(outTopic, request, null, sOpts, new CompletionListener<byte[]>() {
-
-				@Override
-				public void onSuccess(NonBlockingClient client, byte[] context) {
-					System.out.println("AMQPSendStandAloneThreadPoolCallBack.send().new CompletionListener() {...}.onSuccess()");
-					// client.stop(null, null);
-				}
-
-				@Override
-				public void onError(NonBlockingClient client, byte[] context, Exception exception) {
-					System.err.println("Problem with send request: " + exception.getMessage());
-					// client.stop(null, null);
-				}
-			}, null);
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			System.err.println("Request sent is null ");
-		}
-	}
-
-	private String readFile(String path)
-		throws IOException {
-		try (InputStream fileStream = getClass().getClassLoader().getResourceAsStream(path)) {
-			return IOUtils.toString(fileStream);
-		}
-	}
-
+    private static String readFile(String path) throws IOException {
+        try (InputStream fileStream = AMQPWebbi120SendTest.class.getClassLoader().getResourceAsStream(path)) {
+            if (fileStream == null) {
+                throw new IOException("File not found: " + path);
+            }
+            return IOUtils.toString(fileStream, "UTF-8");
+        }
+    }
 }
