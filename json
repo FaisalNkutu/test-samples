@@ -10,19 +10,20 @@
       }
    ]
 }
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertTrue;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)  // Use SpringRunner for Spring-based tests in JUnit 4
 public class JsonMapTest {
 
     @Test
@@ -45,9 +46,9 @@ public class JsonMapTest {
         BigDecimal actualMQE = new BigDecimal(firstItem.get("MQE").toString());
 
         // Assert: Verify the extracted values using compareTo for BigDecimal comparison
-        assertTrue(actualBOQuantity.compareTo(expectedBOQuantity) == 0, 
-            "The BOQuantity value does not match! Expected: " + expectedBOQuantity + " but got: " + actualBOQuantity);
-        assertTrue(actualMQE.compareTo(expectedMQE) == 0, 
-            "The MQE value does not match! Expected: " + expectedMQE + " but got: " + actualMQE);
+        assertTrue("The BOQuantity value does not match! Expected: " + expectedBOQuantity + " but got: " + actualBOQuantity, 
+            actualBOQuantity.compareTo(expectedBOQuantity) == 0);
+        assertTrue("The MQE value does not match! Expected: " + expectedMQE + " but got: " + actualMQE, 
+            actualMQE.compareTo(expectedMQE) == 0);
     }
 }
