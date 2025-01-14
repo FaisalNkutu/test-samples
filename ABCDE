@@ -1,61 +1,65 @@
-		// Arrange: Initialize ObjectMapper and read JSON
-		ObjectMapper objectMapper = new ObjectMapper();
-		String responseBody;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 
-		responseBody = readFile("WEBBI120AMQPResponse.json");
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
-		// Read JSON as a Map
-		Map<String, Object> jsonMap = objectMapper.readValue(responseBody, Map.class);
-		// Act: Navigate the Map to extract values
-        // Act: Extract and validate SAPOrderNumber
-        String sapOrderNumber = jsonMap.get("SAPOrderNumber").toString();
-        assertEquals("The SAPOrderNumber does not match the expected value!", "12", sapOrderNumber);
-        
-		List<Map<String, Object>> items = (List<Map<String, Object>>) jsonMap.get("Item");
-		Map<String, Object> firstItem = items.get(0);
-		BigDecimal expectedBOQuantity = new BigDecimal("34");
-		BigDecimal expectedMQE = new BigDecimal("55");
+import static org.junit.Assert.*;
 
-		BigDecimal actualBOQuantity = new BigDecimal(firstItem.get("BOQuantity").toString());
-		BigDecimal actualMQE = new BigDecimal(firstItem.get("MQE").toString());
-        String actualProductNumber = firstItem.get("ProductNumber").toString();
-        String actualProductErrorCode = firstItem.get("ProductErrorCode").toString();
+@RunWith(SpringRunner.class)
+public class JsonTest {
 
-		// Assert: Verify the extracted values using compareTo for BigDecimal comparison
-		assertTrue(
-			"The BOQuantity value does not match! Expected: " + expectedBOQuantity + " but got: " + actualBOQuantity,
-			actualBOQuantity.compareTo(expectedBOQuantity) == 0);
-		assertTrue(
-			"The MQE value does not match! Expected: " + expectedMQE + " but got: " + actualMQE,
-			actualMQE.compareTo(expectedMQE) == 0);	
-		
-		// Test  Data from queue
-		Map<String, Object> dataRecievedJsonMap = objectMapper.readValue(dataRecieved, Map.class);
-		// Act: Navigate the Map to extract values
-		
-        // Act: Extract and validate SAPOrderNumber
-        String dataRecievedSapOrderNumber = jsonMap.get("SAPOrderNumber").toString();
-        assertEquals("The SAPOrderNumber does not match the expected value!", "12", dataRecievedSapOrderNumber);
-        
-		List<Map<String, Object>> dataRecievedItems = (List<Map<String, Object>>) dataRecievedJsonMap.get("Item");
-		Map<String, Object> dataRecievedFirstItem = items.get(0);
-		BigDecimal dataRecievedExpectedBOQuantity = new BigDecimal("34");
-		BigDecimal dataRecievedEexpectedMQE = new BigDecimal("55");
-        String dataExpectedProductNumber = "33";
-        String dataExpectedProductErrorCode = "353";
+    @Test
+    public void testDataRecievedFields() throws Exception {
+        // Arrange: Initialize ObjectMapper
+        ObjectMapper objectMapper = new ObjectMapper();
 
-		BigDecimal dataRecievedActualBOQuantity = new BigDecimal(dataRecievedFirstItem.get("BOQuantity").toString());
-		BigDecimal dataRecievedActualMQE = new BigDecimal(dataRecievedFirstItem.get("MQE").toString());
-        String dataActualProductNumber = firstItem.get("ProductNumber").toString();
-        String dataActualProductErrorCode = firstItem.get("ProductErrorCode").toString();
-	
+        // Mock dataRecieved JSON string
+        String dataRecieved = "{\n" +
+                "   \"SAPOrderNumber\":\"12\",\n" +
+                "   \"Item\":[\n" +
+                "      {\n" +
+                "         \"Division\":\"13\",\n" +
+                "         \"BOQuantity\":\"34\",\n" +
+                "         \"MQE\":\"55\",\n" +
+                "         \"ProductNumber\":\"33\",\n" +
+                "         \"ProductErrorCode\":\"353\"\n" +
+                "      }\n" +
+                "   ]\n" +
+                "}";
 
-		// Verify request body
-		assertNotNull(dataRecieved);
+        // Assert: Verify dataRecieved is not null
+        assertNotNull("dataRecieved is null!", dataRecieved);
 
-		assertEquals(dataRecievedExpectedBOQuantity, dataRecievedActualBOQuantity);
-		assertEquals(dataRecievedEexpectedMQE, dataRecievedActualMQE);
-		
-        // Assert: Verify Product fields
-        assertEquals("ProductNumber does not match!", dataExpectedProductNumber, dataActualProductNumber);
-        assertEquals("ProductErrorCode does not match!", dataExpectedProductErrorCode, dataActualProductErrorCode);
+        // Act: Parse dataRecieved into a Map
+        Map<String, Object> dataRecievedJsonMap = objectMapper.readValue(dataRecieved, Map.class);
+
+        // Extract and validate SAPOrderNumber
+        String dataRecievedSapOrderNumber = dataRecievedJsonMap.get("SAPOrderNumber").toString();
+        assertEquals("SAPOrderNumber in dataRecieved does not match!", "12", dataRecievedSapOrderNumber);
+
+        // Extract and validate Item fields
+        List<Map<String, Object>> dataRecievedItems = (List<Map<String, Object>>) dataRecievedJsonMap.get("Item");
+        Map<String, Object> dataRecievedFirstItem = dataRecievedItems.get(0);
+
+        BigDecimal expectedBOQuantity = new BigDecimal("34");
+        BigDecimal expectedMQE = new BigDecimal("55");
+        String expectedProductNumber = "33";
+        String expectedProductErrorCode = "353";
+
+        BigDecimal actualBOQuantity = new BigDecimal(dataRecievedFirstItem.get("BOQuantity").toString());
+        BigDecimal actualMQE = new BigDecimal(dataRecievedFirstItem.get("MQE").toString());
+        String actualProductNumber = dataRecievedFirstItem.get("ProductNumber").toString();
+        String actualProductErrorCode = dataRecievedFirstItem.get("ProductErrorCode").toString();
+
+        // Verify extracted values
+        assertEquals("BOQuantity in dataRecieved does not match!", expectedBOQuantity, actualBOQuantity);
+        assertEquals("MQE in dataRecieved does not match!", expectedMQE, actualMQE);
+        assertEquals("ProductNumber in dataRecieved does not match!", expectedProductNumber, actualProductNumber);
+        assertEquals("ProductErrorCode in dataRecieved does not match!", expectedProductErrorCode, actualProductErrorCode);
+    }
+}
+
