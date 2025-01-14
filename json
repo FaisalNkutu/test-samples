@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class JsonMapTest {
@@ -44,8 +44,10 @@ public class JsonMapTest {
         BigDecimal actualBOQuantity = new BigDecimal(firstItem.get("BOQuantity").toString());
         BigDecimal actualMQE = new BigDecimal(firstItem.get("MQE").toString());
 
-        // Assert: Verify the extracted values
-        assertEquals(expectedBOQuantity, actualBOQuantity, "The BOQuantity value does not match!");
-        assertEquals(expectedMQE, actualMQE, "The MQE value does not match!");
+        // Assert: Verify the extracted values using compareTo for BigDecimal comparison
+        assertTrue(actualBOQuantity.compareTo(expectedBOQuantity) == 0, 
+            "The BOQuantity value does not match! Expected: " + expectedBOQuantity + " but got: " + actualBOQuantity);
+        assertTrue(actualMQE.compareTo(expectedMQE) == 0, 
+            "The MQE value does not match! Expected: " + expectedMQE + " but got: " + actualMQE);
     }
 }
