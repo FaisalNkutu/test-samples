@@ -1,0 +1,238 @@
+package ca.medis.web.util.amqp;
+
+import static ca.medis.web.util.rpg.mapper.Webbi112RpgResponsePostProcessor.IND_CMD_FERME;
+import static ca.medis.web.util.rpg.mapper.Webbi112RpgResponsePostProcessor.NO_CMD_WEB;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.LEVEL_1_COUNT;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.LEVEL_2_COUNT;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_ARCHIVE;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_CLIENT_NO;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_DATE_FACTURE;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_DC_FACTURATION;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_INVOICE_DATE;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_INVOICE_DC;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_INVOICE_NO;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_NO_FACTURE;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_SEPARATOR;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_TRACKING;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_TRANSACTION;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessor.OUTPUT_FIELD_TYPE;
+import static ca.medis.web.util.rpg.mapper.Webbi501RpgResponsePostProcessorTest.*;
+import static java.math.BigDecimal.ZERO;
+import static java.util.Arrays.asList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.apache.commons.io.IOUtils;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.ImmutableMap;
+import com.ibm.mqlight.api.ClientOptions;
+import com.ibm.mqlight.api.CompletionListener;
+import com.ibm.mqlight.api.Delivery;
+import com.ibm.mqlight.api.DestinationAdapter;
+import com.ibm.mqlight.api.NonBlockingClient;
+import com.ibm.mqlight.api.NonBlockingClientAdapter;
+import com.ibm.mqlight.api.Promise;
+import com.ibm.mqlight.api.StringDelivery;
+import com.ibm.mqlight.api.impl.callback.ThreadPoolCallbackService;
+
+import ca.medis.web.config.ApplicationConfiguration;
+import ca.medis.web.constant.DatabaseConstant;
+import ca.medis.web.constant.MQConstants;
+import ca.medis.web.domain.authentication.TradingPartnerProfile;
+import ca.medis.web.util.as400.AS400UtilException;
+import ca.medis.web.util.as400.RpgOutput;
+import ca.medis.web.util.as400.RpgParamConfig;
+import ca.medis.web.util.as400.RpgProgram;
+import ca.medis.web.util.as400.RpgUtil;
+import ca.medis.web.util.mq.MQConfiguration;
+import ca.medis.web.util.mq.RPGConfiguration;
+import ca.medis.web.util.mq.TestingRpgConfiguration;
+import ca.medis.web.util.rpg.RpgCallContext;
+import ca.medis.web.util.rpg.RpgResponsePayloadParser;
+import ca.medis.web.util.rpg.mapper.RpgParamConfigMatcher;
+import ca.medis.web.util.webbi.WebbiCallExecutor;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({
+	"classpath:pharmaclik-core-context.xml"
+})
+public class AMQPWebbi120RceiverTest {
+
+	static String host = "amqp://172.16.52.10";
+	static String userName = "appuser";
+	static String password = "iiyZmnFluuA-KQ66Yz8q";
+	static String outTopic = "amqp/BATCH.PP.QUEUE";
+	static String inTopic = "amqp/mdp.batch.in.topic";
+
+	static int poolSize = 5;
+	static ClientOptions clientOpts = ClientOptions.builder().setCredentials(userName, password).build();
+	//static ThreadPoolCallbackService publishCallbackService = new ThreadPoolCallbackService(poolSize);
+	static ThreadPoolCallbackService consumeCallbackService = new ThreadPoolCallbackService(poolSize) {
+	    @Override
+	    public void run(Runnable runnable, Object orderingCtx, Promise<Void> promise) {
+	    	// TODO Auto-generated method stub
+	    	System.out.println("AMQPReceiveStandAloneThreadPoolCallBack.CustomThreadPoolService.run( --> called by -> " + Thread.currentThread().getId() );
+	    	SetUpForReceive();
+	    	//super.run(runnable, orderingCtx, promise);
+	    }
+
+	};
+	static HashMap<Integer,Object> orderingCtx = new HashMap<Integer,Object>();
+	static Object recievedOrderingCtx ;
+	static String dataRecieved = null;
+	@Before
+	public void setup() throws IOException, AS400UtilException {
+		for(int i=0; i<5; i++) {
+			orderingCtx.put(i,new Object());
+		}
+		setUpForRecieveByThreadPool();	
+	}
+
+	public static void SetUpForReceive() {
+		System.out.println("AMQPReceiveStandAloneThreadPoolCallBack.SetUpForReceive(): Thread Id = " + Thread.currentThread().getId());
+	    NonBlockingClient client = NonBlockingClient.create(host, clientOpts, new NonBlockingClientAdapter<Void>() {
+            public void onStarted(NonBlockingClient client, Void context) {
+                System.out.println("Connection started for host in the RECEIVE method: " + host + ", Thread Id = " + Thread.currentThread().getId());
+            }
+
+            public void onError(NonBlockingClient client, Void context, Exception exception) {
+            	exception.printStackTrace();
+            	System.err.println("Failed to start connection for host in the RECEIVE method: " + host);
+                
+            }
+        }, null);
+	    
+	   
+
+		client.subscribe(outTopic, new DestinationAdapter<Void>() {
+			public void onMessage(NonBlockingClient client, Void context, Delivery delivery) {
+				if (delivery.getType() == Delivery.Type.STRING)
+				{
+					dataRecieved = ((StringDelivery)delivery).getData();
+					System.out.println("I recieved this data from the Queue , Thread Id = " + Thread.currentThread().getId() + ", data received is " +  dataRecieved + ", properties = " + delivery.getProperties());}
+
+			}
+			
+		}, new CompletionListener<Void>() {
+
+			@Override
+			public void onSuccess(NonBlockingClient client, Void context) {
+				
+				System.out.println("AMQPReceiveStandAloneThreadPoolCallBack.SetUpForReceive().new CompletionListener() {...}.onSuccess()");
+				//client.stop(null, null);
+				
+			}
+
+			@Override
+			public void onError(NonBlockingClient client, Void context, Exception exception) {
+
+				System.err.println("AMQPReceiveStandAloneThreadPoolCallBack.SetUpForReceive().new CompletionListener() {...}.onError()");
+				client.stop(null, null);
+				
+			}
+		}, null);
+
+	}
+	public static void setUpForRecieveByThreadPool() {
+		
+		// for(int i=0; i<poolSize ; i++) {
+			 consumeCallbackService.run(null,new Object(),null);
+		// }
+  
+	
+	}
+
+
+    @Test
+    public void testWEBBI120RecievedFieldsFromAMQP() throws Exception {
+        // Arrange: Initialize ObjectMapper
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // Mock dataRecieved JSON string
+        String dataRecieved = "{\n" +
+                "   \"SAPOrderNumber\":\"12\",\n" +
+                "   \"Item\":[\n" +
+                "      {\n" +
+                "         \"Division\":\"13\",\n" +
+                "         \"BOQuantity\":\"34\",\n" +
+                "         \"MQE\":\"55\",\n" +
+                "         \"ProductNumber\":\"33\",\n" +
+                "         \"ProductErrorCode\":\"353\"\n" +
+                "      }\n" +
+                "   ]\n" +
+                "}";
+
+        if(dataRecieved!=null) {
+	        // Assert: Verify dataRecieved is not null
+	        assertNotNull("Webbi120 data decieved is null!", dataRecieved);
+	
+	        // Act: Parse data Recieved from AMQP into a Map
+	        Map<String, Object> dataRecievedJsonMap = objectMapper.readValue(dataRecieved, Map.class);
+	
+	        // Extract and validate SAPOrderNumber
+	        String sapOrderNumber = dataRecievedJsonMap.get("SAPOrderNumber").toString();
+	        assertEquals("SAPOrderNumber in Webbi120 data decieved does not match!", "12", sapOrderNumber);
+	
+	        // Extract and validate Item fields
+	        List<Map<String, Object>> items = (List<Map<String, Object>>) dataRecievedJsonMap.get("Item");
+	        Map<String, Object> item = items.get(0);
+	
+	        BigDecimal expectedBOQuantity = new BigDecimal("34");
+	        BigDecimal expectedMQE = new BigDecimal("55");
+	        String expectedProductNumber = "33";
+	        String expectedProductErrorCode = "353";
+	
+	        BigDecimal actualBOQuantity = new BigDecimal(item.get("BOQuantity").toString());
+	        BigDecimal actualMQE = new BigDecimal(item.get("MQE").toString());
+	        String actualProductNumber = item.get("ProductNumber").toString();
+	        String actualProductErrorCode = item.get("ProductErrorCode").toString();
+	
+	        // Verify extracted values
+	        assertEquals("BOQuantity in Webbi120 data decieved from AMQP does not match!", expectedBOQuantity, actualBOQuantity);
+	        assertEquals("MQE in Webbi120 data decieved from AMQP does not match!", expectedMQE, actualMQE);
+	        assertEquals("ProductNumber in Webbi120 data decieved from AMQP does not match!", expectedProductNumber, actualProductNumber);
+	        assertEquals("ProductErrorCode in Webbi120 data decieved from AMQP does not match!", expectedProductErrorCode, actualProductErrorCode);
+	        
+        }
+    }
+
+}
