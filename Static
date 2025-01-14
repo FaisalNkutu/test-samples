@@ -6,8 +6,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Before;
-import org.junit.Test;
 
 import com.ibm.mqlight.api.ClientException;
 import com.ibm.mqlight.api.ClientOptions;
@@ -41,14 +39,12 @@ public class AMQPWebbi120SendTest {
     static ExecutorService clientThreadPool = Executors.newFixedThreadPool(10);
     static NonBlockingClient client;
 
-    @Before
-    public void setup() throws IOException {
-        Map<String, String> argsMap = new HashMap<>();
-        argsMap.put("request", getMessage());
-        publishCallbackService.run(null, argsMap, null);
+    public static void main(String[] args) {
+        System.out.println("Starting AMQP message sender...");
+        sendByThreadPool();
     }
 
-    public void sendByThreadPool() {
+    public static void sendByThreadPool() {
         for (int i = 0; i < 10; i++) {
             Map<String, String> argsMap = new HashMap<>();
             argsMap.put("request", getMessage());
