@@ -21,13 +21,14 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SpringRunner.class)  // Use SpringRunner for Spring-based tests in JUnit 4
-public class JsonMapTest {
+@RunWith(SpringRunner.class)
+public class JsonTest {
 
     @Test
-    public void testBigDecimalValuesInNestedJsonUsingReadValue() throws Exception {
+    public void testSAPOrderNumberAndProductFields() throws Exception {
         // Arrange: Initialize ObjectMapper and read JSON
         ObjectMapper objectMapper = new ObjectMapper();
         File jsonFile = new File("src/test/resources/data.json"); // Adjust path if needed
@@ -35,20 +36,30 @@ public class JsonMapTest {
         // Read JSON as a Map
         Map<String, Object> jsonMap = objectMapper.readValue(jsonFile, Map.class);
 
-        // Act: Navigate the Map to extract values
+        // Act: Extract and validate SAPOrderNumber
+        String sapOrderNumber = jsonMap.get("SAPOrderNumber").toString();
+        assertEquals("The SAPOrderNumber does not match the expected value!", "12", sapOrderNumber);
+
+        // Extract and validate Product fields from Items array
         List<Map<String, Object>> items = (List<Map<String, Object>>) jsonMap.get("Item");
         Map<String, Object> firstItem = items.get(0);
 
         BigDecimal expectedBOQuantity = new BigDecimal("34");
         BigDecimal expectedMQE = new BigDecimal("55");
+        String expectedProductNumber = "33";
+        String expectedProductErrorCode = "353";
 
         BigDecimal actualBOQuantity = new BigDecimal(firstItem.get("BOQuantity").toString());
         BigDecimal actualMQE = new BigDecimal(firstItem.get("MQE").toString());
+        String actualProductNumber = firstItem.get("ProductNumber").toString();
+        String actualProductErrorCode = firstItem.get("ProductErrorCode").toString();
 
-        // Assert: Verify the extracted values using compareTo for BigDecimal comparison
-        assertTrue("The BOQuantity value does not match! Expected: " + expectedBOQuantity + " but got: " + actualBOQuantity, 
-            actualBOQuantity.compareTo(expectedBOQuantity) == 0);
-        assertTrue("The MQE value does not match! Expected: " + expectedMQE + " but got: " + actualMQE, 
-            actualMQE.compareTo(expectedMQE) == 0);
+        // Assert: Verify BOQuantity and MQE
+        assertTrue("The BOQuantity value does not match!", actualBOQuantity.compareTo(expectedBOQuantity) == 0);
+        assertTrue("The MQE value does not match!", actualMQE.compareTo(expectedMQE) == 0);
+
+        // Assert: Verify Product fields
+        assertEquals("ProductNumber does not match!", expectedProductNumber, actualProductNumber);
+        assertEquals("ProductErrorCode does not match!", expectedProductErrorCode, actualProductErrorCode);
     }
 }
