@@ -1,17 +1,11 @@
-	    List<String> amqpEnabledRpgPrograms = parseCSVConfig(CONFIG_KEY_AMQP_ENABLED_RPG_PROGRAMS);
+List<String> amqpEnabledRpgPrograms = parseCSVConfig(CONFIG_KEY_AMQP_ENABLED_RPG_PROGRAMS);
+boolean isWebbi120Disabled = amqpEnabledRpgPrograms != null && !amqpEnabledRpgPrograms.contains("WEBBI120");
+boolean isRestEnabled = Boolean.parseBoolean(CONFIG_KEY_REST_ENABLED_PROGRAMS); // Robust boolean parsing
 
-	    // Check if "WEBBI120" is not enabled and REST programs are enabled
-	    boolean isWebbi120Disabled = !amqpEnabledRpgPrograms.contains("WEBBI120");
-	    boolean isRestEnabled = "True".equalsIgnoreCase(CONFIG_KEY_REST_ENABLED_PROGRAMS);
-
-	    if (isWebbi120Disabled && isRestEnabled) {
-	    	amqpEnabledRpgPrograms = parseCSVConfig(CONFIG_KEY_AMQP_ENABLED_RPG_PROGRAMS);
-	    	if(!amqpEnabledRpgPrograms.contains("WEBBI120") && CONFIG_KEY_REST_ENABLED_PROGRAMS.equalsIgnoreCase("True")) {		
-	    		if (DatabaseConstant.TRADING_PARTNER_CPDN.equals(medisAccount.getTradingPartnerCode())){
-	    			request.setAttribute(PARAM_ACTION, "sendMessage");
-	    			actionHandlerForSendMessage(request, response);
-	    			//save not allowed for MDP.Block the action if scripted or programmer.
-	    			return;
-	    		}
-	    	}
-	    }
+if (isWebbi120Disabled && isRestEnabled) {
+    if (DatabaseConstant.TRADING_PARTNER_CPDN.equals(medisAccount.getTradingPartnerCode())) {
+        request.setAttribute(PARAM_ACTION, "sendMessage");
+        actionHandlerForSendMessage(request, response);
+        return;
+    }
+}
