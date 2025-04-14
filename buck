@@ -8,7 +8,7 @@ PERLEGALNAME	1	7	TR	SetString	givenname1
 PERLEGALNAME	1	8	TR	SetString	givenname2
 PERLEGALNAME	1	9	TR	SetString	lastname
 PERBIRTHDATE	1	10	TR	SetDate	dob
-PERDEMOG	1	11	TR	SetString	gender
-MEMHEAD	1	12	TR	SetString	ctznCountry
+PERGENDER	1	11	TR	SetString	gender
+PERCITIZENSH	1	12	TR	SetString	ctznCountry
 MEMHEAD	1	4	TR	SetString	adminsyskeytype
 MEMHEAD	1	5	TR	SetString	adminsyskeyid
