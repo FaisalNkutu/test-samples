@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************** {COPYRIGHT-TOP} ***
+* Licensed Materials - Property of IBM
+* Restricted Materials of IBM
+*
+* 5725-E59
+*
+* (C) Copyright IBM Corp. 2013  All Rights Reserved.
+*
+* US Government Users Restricted Rights - Use, duplication, or
+* disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+********************************************************** {COPYRIGHT-END} -->
+<engine-metadata version="1.7.0">
+  <strtypes>
+    <strtype strtype="ANON" strtypedesc="ANON-desc" />
+    <strtype strtype="EQUI" strtypedesc="EQUI-desc" />
+    <strtype strtype="FREQ" strtypedesc="FREQ-desc" />
+    <strtype strtype="WORD" strtypedesc="WORD-desc" />
+    <strtype strtype="EDIT" strtypedesc="EDIT-desc" />
+    <strtype strtype="NBKT" strtypedesc="NBKT-desc" />
+    <strtype strtype="SBKT" strtypedesc="SBKT-desc" />
+    <strtype strtype="CMAP" strtypedesc="CMAP-desc" />
+    <strtype strtype="CONFIG" strtypedesc="CONFIG-desc" />
+    <strtype strtype="SET" strtypedesc="SET-desc" />
+  </strtypes>
+  <wgttypes>
+    <wgttype wgttype="1DIM" wgttypedesc="1DIM-desc" />
+    <wgttype wgttype="2DIM" wgttypedesc="2DIM-desc" />
+    <wgttype wgttype="3DIM" wgttypedesc="3DIM-desc" />
+    <wgttype wgttype="4DIM" wgttypedesc="4DIM-desc" />
+    <wgttype wgttype="NVAL" wgttypedesc="NVAL-desc" />
+    <wgttype wgttype="SVAL" wgttypedesc="SVAL-desc" />
+  </wgttypes>
+  <cmpfuncs>
+    <cmpfunc cmpfunccode="ATTR2S" cmpfuncdesc="Used to compare pairs of string attributes." nroles="2" wgtfunccode="ATTR2" minargs="0" maxargs="0" wgtsfx1="BOTH" wgttype1="SVAL" wgtsfx2="LEFT" wgttype2="SVAL" wgtsfx3="RIGHT" wgttype3="SVAL" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="ATTRFB" cmpfuncdesc="Front and back comparison to compare strings of unequal lengths, 1 role, 1 dimension." nroles="1" wgtfunccode="1DIM" minargs="0" maxargs="0" wgtsfx1="1DIM" wgttype1="1DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="AXP" cmpfuncdesc="Used to compare address and phone number, 2 roles, 1 dimension." nroles="2" wgtfunccode="AXP" minargs="0" maxargs="1" wgtsfx1="XACT" wgttype1="SVAL" wgtsfx2="1DIM" wgttype2="1DIM" wgtsfx3="2DIM" wgttype3="2DIM" wgtsfx4="PARM" wgttype4="SVAL" wgtsfx5="1DIMZIP" wgttype5="1DIM" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="BXNM" cmpfuncdesc="Value based provider name comparison, 1 role, 1 dimension.  Uses exact match and nicknames when comparing tokens." nroles="1" wgtfunccode="PXNM" minargs="0" maxargs="1" wgtsfx1="XACT" wgttype1="SVAL" wgtsfx2="META" wgttype2="SVAL" wgtsfx3="INIT" wgttype3="SVAL" wgtsfx4="PSFX" wgttype4="SVAL" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="CDATE" cmpfuncdesc="Distance based date range comparison, 1 role, 1 dimensions." nroles="1" wgtfunccode="2DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="2DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="CHINESE" cmpfuncdesc="Chinese name comparison" nroles="1" wgtfunccode="QXNM" minargs="0" maxargs="1" wgtsfx1="XACT" wgttype1="SVAL" wgtsfx2="PARM" wgttype2="SVAL" wgtsfx3="" wgttype3="" wgtsfx4="PSFX" wgttype4="SVAL" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="CXNM" cmpfuncdesc="Value based company name comparison, 1 role, 1 dimension.  Final weight is based on total similarity." nroles="1" wgtfunccode="CXNM" minargs="0" maxargs="1" wgtsfx1="XACT" wgttype1="SVAL" wgtsfx2="PARM" wgttype2="SVAL" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="CXNM_CS" cmpfuncdesc="Value based, context sensitive company name/address comparison, 2 role, 1 dimension.  Final weight is based on total similarity." nroles="2" wgtfunccode="CXNM" minargs="0" maxargs="1" wgtsfx1="XACT" wgttype1="SVAL" wgtsfx2="PARM" wgttype2="SVAL" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DATE" cmpfuncdesc="Value based date comparison, 1 role, 1 dimension.  Used to compare dates. If the result is an exact match, weight is by birth year, else weight is by edit distance." nroles="1" wgtfunccode="DATE" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="YEAR" wgttype2="NVAL" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DATE2" cmpfuncdesc="Date Compare Handles incomplete dates" nroles="1" wgtfunccode="DATE2" minargs="0" maxargs="2" wgtsfx1="YEAR" wgttype1="NVAL" wgtsfx2="MONTH" wgttype2="NVAL" wgtsfx3="DAY" wgttype3="NVAL" wgtsfx4="MONTHDAY" wgttype4="NVAL" wgtsfx5="AGE" wgttype5="1DIM" wgtsfx6="ACIRCA" wgttype6="1DIM" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DOBA" cmpfuncdesc="Value based date/age comparison, 1 role, 1 dimension.  Used to compare dates and/or birth years. If both values are dates, logic is identical to DATE. Otherwise, comparison is difference in birth years." nroles="1" wgtfunccode="DATE" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="YEAR" wgttype2="NVAL" wgtsfx3="DIFF" wgttype3="1DIM" wgtsfx4="XACT" wgttype4="NVAL" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D1A" cmpfuncdesc="Distance based simple string comparison, 1 role, 1 dimension." nroles="1" wgtfunccode="1DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D1A_SRC" cmpfuncdesc="Distance based simple string comparison, 1 role, 1 dimension with src check." nroles="1" wgtfunccode="1DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="SVAL" wgttype2="SVAL" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D1B" cmpfuncdesc="Distance based standard string comparison, 1 role, 1 dimension." nroles="1" wgtfunccode="1DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D1B_SRC" cmpfuncdesc="Distance based standard string comparison, 1 role, 1 dimension with src check." nroles="1" wgtfunccode="1DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="SVAL" wgttype2="SVAL" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D1C" cmpfuncdesc="Distance based recursive string comparison, 1 role, 1 dimension." nroles="1" wgtfunccode="1DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D1C_SRC" cmpfuncdesc="Distance based recursive string comparison, 1 role, 1 dimension with src check." nroles="1" wgtfunccode="1DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="SVAL" wgttype2="SVAL" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D2A" cmpfuncdesc="Distance based simple string comparison, 1 role, 2 dimensions." nroles="1" wgtfunccode="2DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="2DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D2B" cmpfuncdesc="Distance based standard string comparison, 1 role, 2 dimensions." nroles="1" wgtfunccode="2DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="2DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D2C" cmpfuncdesc="Distance based recursive string comparison, 1 role, 2 dimensions." nroles="1" wgtfunccode="2DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="2DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D3A" cmpfuncdesc="Distance based simple string comparison, 1 role, 3 dimensions." nroles="1" wgtfunccode="3DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="3DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D3B" cmpfuncdesc="Distance based standard string comparison, 1 role, 3 dimensions." nroles="1" wgtfunccode="3DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="3DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D3C" cmpfuncdesc="Distance based recursive string comparison, 1 role, 3 dimensions." nroles="1" wgtfunccode="3DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="3DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D4A" cmpfuncdesc="Distance based simple string comparison, 1 role, 4 dimensions." nroles="1" wgtfunccode="4DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="4DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D4B" cmpfuncdesc="Distance based standard string comparison, 1 role, 4 dimensions." nroles="1" wgtfunccode="4DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="4DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR1D4C" cmpfuncdesc="Distance based recursive string comparison, 1 role, 4 dimensions." nroles="1" wgtfunccode="4DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="4DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR2D1A" cmpfuncdesc="Distance based simple string comparison, 2 roles, 1 dimension." nroles="2" wgtfunccode="2DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="2DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR2D1B" cmpfuncdesc="Distance based standard string comparison, 2 roles, 1 dimension." nroles="2" wgtfunccode="2DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="2DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR2D1C" cmpfuncdesc="Distance based recursive string comparison, 2 roles, 1 dimension." nroles="2" wgtfunccode="2DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="2DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR3D1A" cmpfuncdesc="Distance based simple string comparison, 3 roles, 1 dimension." nroles="3" wgtfunccode="3DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="3DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR3D1B" cmpfuncdesc="Distance based standard string comparison, 3 roles, 1 dimension." nroles="3" wgtfunccode="3DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="3DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR3D1C" cmpfuncdesc="Distance based recursive string comparison, 3 roles, 1 dimension." nroles="3" wgtfunccode="3DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="3DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR4D1A" cmpfuncdesc="Distance based simple string comparison, 4 roles, 1 dimension." nroles="4" wgtfunccode="4DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="4DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR4D1B" cmpfuncdesc="Distance based standard string comparison, 4 roles, 1 dimension." nroles="4" wgtfunccode="4DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="4DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="DR4D1C" cmpfuncdesc="Distance based recursive string comparison, 4 roles, 1 dimension." nroles="4" wgtfunccode="4DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="4DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="EQVD" cmpfuncdesc="Valued based simple string comparison, 1 role, 1 dimension.  Used to compare to strings. Result is match or non-match. Exact match values are looked up by value." nroles="1" wgtfunccode="ATTRS" minargs="0" maxargs="0" wgtsfx1="XACT" wgttype1="SVAL" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="EQVN" cmpfuncdesc="Value based numeric comparison, 1 role, 1 dimension.  Used to compare to integers. Result is match or non-match. Exact match values are looked up by value." nroles="1" wgtfunccode="ATTRN" minargs="0" maxargs="0" wgtsfx1="XACT" wgttype1="NVAL" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="FPF" cmpfuncdesc="False positive Filter. Uses name, sex and birth date edit distance." nroles="0" wgtfunccode="" minargs="0" maxargs="0" wgtsfx1="1DIM" wgttype1="1DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="FPF2" cmpfuncdesc="Configurable (using a 4-dim table) false positive filter, uses name, sex, ssn, birth date edit distance and age difference." nroles="1" wgtfunccode="" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="4DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="GEO" cmpfuncdesc="Geocode (lat/long) comparison. 1 role, 1 dimension." nroles="1" wgtfunccode="1DIM" minargs="0" maxargs="1" wgtsfx1="1DIM" wgttype1="1DIM" wgtsfx2="" wgttype2="" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="HXW" cmpfuncdesc="Used to compare height and weight." nroles="2" wgtfunccode="HXW" minargs="0" maxargs="0" wgtsfx1="BOTH" wgttype1="SVAL" wgtsfx2="LEFT" wgttype2="NVAL" wgtsfx3="RIGHT" wgttype3="NVAL" wgtsfx4="2DIM" wgttype4="2DIM" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="PXNM" cmpfuncdesc="Value based person name comparison, 1 role, 1 dimension.  Uses exact match and nicknames when comparing tokens." nroles="1" wgtfunccode="PXNM" minargs="0" maxargs="1" wgtsfx1="XACT" wgttype1="SVAL" wgtsfx2="META" wgttype2="SVAL" wgtsfx3="INIT" wgttype3="SVAL" wgtsfx4="PSFX" wgttype4="SVAL" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="QXNM" cmpfuncdesc="Value based person name comparison, 1 role, 1 dimension.  Uses exact match, nicknames and edit distance when comparing tokens. PARM = max value for total match weight." nroles="1" wgtfunccode="QXNM" minargs="0" maxargs="2" wgtsfx1="XACT" wgttype1="SVAL" wgtsfx2="PARM" wgttype2="SVAL" wgtsfx3="" wgttype3="" wgtsfx4="PSFX" wgttype4="SVAL" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="SRCDR1D1A" cmpfuncdesc="Distance based simple string comparison, 1 role, 1 dimension with src check." nroles="1" wgtfunccode="1DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="SVAL" wgttype2="SVAL" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="SRCDR1D1B" cmpfuncdesc="Distance based standard string comparison, 1 role, 1 dimension with src check." nroles="1" wgtfunccode="1DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="SVAL" wgttype2="SVAL" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="SRCDR1D1C" cmpfuncdesc="Distance based recursive string comparison, 1 role, 1 dimension with src check." nroles="1" wgtfunccode="1DIM" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="SVAL" wgttype2="SVAL" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="USZIP" cmpfuncdesc="Value based United States zip code comparison, 1 role, 1 dimension.  Used to compare zip codes. Results are match, match on first three digits, or non-match." nroles="1" wgtfunccode="USZIP" minargs="0" maxargs="0" wgtsfx1="ZIP5" wgttype1="NVAL" wgtsfx2="ZIP3" wgttype2="NVAL" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="VR1D1C_DATE" cmpfuncdesc="Value based date comparison, 1 role, 1 dimension.  Used to compare dates. If the result is an exact match, weight is by birth year, else weight is by edit distance. Uses StrDistC (most accurate)." nroles="1" wgtfunccode="DATE" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="YEAR" wgttype2="NVAL" wgtsfx3="" wgttype3="" wgtsfx4="" wgttype4="" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+    <cmpfunc cmpfunccode="VR1D1C_DOBA" cmpfuncdesc="Value based date/age comparison, 1 role, 1 dimension.  Used to compare dates and/or birth years. If both values are dates, logic is identical to DATE. Otherwise, comparison is difference in birth years. Uses StrDistA (most accurate)." nroles="1" wgtfunccode="DATE" minargs="0" maxargs="0" wgtsfx1="DIST" wgttype1="1DIM" wgtsfx2="YEAR" wgttype2="NVAL" wgtsfx3="DIFF" wgttype3="1DIM" wgtsfx4="XACT" wgttype4="NVAL" wgtsfx5="" wgttype5="" wgtsfx6="" wgttype6="" wgtsfx7="" wgttype7="" wgtsfx8="" wgttype8="" />
+  </cmpfuncs>
+  <bktfuncs>
+    <bktfunc bktfunccode="ADDR2" bktfuncdesc="Use when std function is ADDR2. Generates a list address tokens." minargs="0" maxargs="0" />
+    <bktfunc bktfunccode="ATTR" bktfuncdesc="Use this when except in the cases described below. Generates a single value." minargs="0" maxargs="0" />
+    <bktfunc bktfunccode="BXNM" bktfuncdesc="Use when std function is BXNM. Generates a list of business name tokens." minargs="0" maxargs="0" />
+    <bktfunc bktfunccode="CDATE" bktfuncdesc="Use when std function is CDATE and bkt gen type is CDATE. Generates a list of date tokens." minargs="0" maxargs="0" />
+    <bktfunc bktfunccode="CXNM" bktfuncdesc="Use when std function is CXNM. Generates a list of business name tokens." minargs="0" maxargs="0" />
+    <bktfunc bktfunccode="DATE" bktfuncdesc="Use when std function is DATE1, DATE2 or GRDATE and bkt gen type is one of the following: ASIS,DTY4SMD,DTY4MM,DTMMDD. If you want to apply one of the other bkt gen types to a date, you must use the bkt function ATTR. Generates a single date value." minargs="0" maxargs="0" />
+    <bktfunc bktfunccode="PXNM" bktfuncdesc="Use when std function is PXNM or QXNM.  Generates a list of personal name tokens." minargs="0" maxargs="0" />
+  </bktfuncs>
+  <genfuncs>
+    <genfunc genfunccode="ASIS" genfuncdesc="As Is" />
+    <genfunc genfunccode="CDATE" genfuncdesc="Circa Dates" />
+    <genfunc genfunccode="CHINESE" genfuncdesc="Chinese chars and pinyin" />
+    <genfunc genfunccode="DTMMDD" genfuncdesc="MMDD" />
+    <genfunc genfunccode="DTY4MM" genfuncdesc="YYYYMM" />
+    <genfunc genfunccode="DTY4SMD" genfuncdesc="YYYYMMDD" />
+    <genfunc genfunccode="EQMETA" genfuncdesc="Equivalence &amp; Phonetic" />
+    <genfunc genfunccode="EQUI" genfuncdesc="Equivalence" />
+    <genfunc genfunccode="GEO" genfuncdesc="Geospatial" />
+    <genfunc genfunccode="META" genfuncdesc="Phonetic" />
+    <genfunc genfunccode="NGRAM" genfuncdesc="n-gram Sequences" />
+    <genfunc genfunccode="NRANGE" genfuncdesc="Numeric Range" />
+    <genfunc genfunccode="SORTED" genfuncdesc="Sorted" />
+    <genfunc genfunccode="SRANGE" genfuncdesc="String Range" />
+    <genfunc genfunccode="GNRMETA" genfuncdesc="GNR &amp; Phonetic" />
+  </genfuncs>
+  <stdfuncs>
+    <stdfunc stdfunccode="ABSCODE" stdfuncdesc="Formats abstract codes using the equi tables SA&lt;N&gt;_ABS." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="AGE" stdfuncdesc="Formats an age into a birth year by removing non integers and treating values less than 8 or greater that 100 as anonymous." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="ATTR" stdfuncdesc="Formats alphanumeric data." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="ATTRA" stdfuncdesc="Formats alpha data." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="ATTRN" stdfuncdesc="Formats numeric data." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="AUSTPH" stdfuncdesc="Formats an Australian phone number to a 8 digit local number." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="AUSTPOST" stdfuncdesc="Formats an Australian postal code to 4 digits." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="BXNM" stdfuncdesc="Formats a list of strings using tokens and substitution to create the data." minargs="0" maxargs="0" minflds="1" maxflds="6" stdType1="STRING" stdType2="STRING" />
+    <stdfunc stdfunccode="CDATE" stdfuncdesc="Circa Dates Standardization, handles incomplete dates, stores Date parts and the resolution paramater separately" minargs="0" maxargs="2" minflds="1" maxflds="2" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="CHINESE" stdfuncdesc="Formats chinese characters" minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="CJKCXNM" stdfuncdesc="Formats a list of strings applying rules for company names. Uses rules for Chinese/Japanese/Korean tokenization." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="CJKSTD" stdfuncdesc="Standardization for Chinese/Japanese/Korean company names" minargs="1" maxargs="2" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="CNADDR" stdfuncdesc="Formats an address string dividing it into the address subcomponents for Canada." minargs="0" maxargs="0" minflds="1" maxflds="4" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="CNADDR2" stdfuncdesc="Formats an address string dividing it into the address subcomponents for Canada with region and postal code." minargs="0" maxargs="0" minflds="1" maxflds="7" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="CNZIP" stdfuncdesc="Format a Canadian zip code." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="CXNM" stdfuncdesc="Formats a list of strings applying rules for company names." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="DATE1" stdfuncdesc="Formats alphanumeric date data" minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="DATE2" stdfuncdesc="Date Standardization, handles incomplete dates" minargs="0" maxargs="2" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="EMAIL" stdfuncdesc="Formats an email address." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="EYECOLOR" stdfuncdesc="Formats eye color as an alphanumeric data (Identical to ATTR)" minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="GEO" stdfuncdesc="Formats lat/long values." minargs="0" maxargs="1" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="GRDATE" stdfuncdesc="Formats a date.  Treats dates earlier than 1890 as an anonymous values." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="HAIRCOLOR" stdfuncdesc="Formats hair color as an alphanumeric data (Identical to ATTR)" minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="HEIGHT" stdfuncdesc="Formats height into inches. Input must be in the format FII where F is feet and II are inches. Values less than 36 or greater than 90 are treated as anonymous." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="IDENT1" stdfuncdesc="Formats alphanumeric identifier data without issuer." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="IDENT1A" stdfuncdesc="Formats alpha identifier data without issuer." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="IDENT1N" stdfuncdesc="Formats numeric identifier data without issuer." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="IDENT2" stdfuncdesc="Formats alphanumeric identifier data with issuer." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="IDENT2A" stdfuncdesc="Formats alpha identifier data with issuer." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="IDENT2N" stdfuncdesc="Formats numeric identifier data with issuer." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="INTADDR2" stdfuncdesc="Formats an address string dividing it into the address subcomponents for International with region and postal code." minargs="0" maxargs="0" minflds="1" maxflds="7" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="INTADDR2R" stdfuncdesc="Formats an address string dividing it into the address subcomponents for International with region and rule-based postal code." minargs="0" maxargs="0" minflds="1" maxflds="7" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="INTPHONE1" stdfuncdesc="Formats a phone number to a 10 digit International number.  Analyzes country calling codes for more accuracy." minargs="0" maxargs="0" minflds="3" maxflds="3" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="INTZIP" stdfuncdesc="Format an international zip code." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="MULTIDIM" stdfuncdesc="Formats multiple attribute values." minargs="0" maxargs="0" minflds="2" maxflds="4" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="NAADDR2" stdfuncdesc="Formats an address string dividing it into the address subcomponents for North America with region and postal code." minargs="0" maxargs="0" minflds="1" maxflds="7" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="NAZIP" stdfuncdesc="Format a US/CAN zip code." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="PASSTHRU" stdfuncdesc="Performs pass thru operation and preserves case on alphanumeric data." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="PHONE1" stdfuncdesc="Formats a phone number to a 7 digit United States number." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="PHONE2" stdfuncdesc="Formats a phone number to a 7 digit United States number allowing for numbers without area codes." minargs="0" maxargs="0" minflds="1" maxflds="3" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="PHONEEND" stdfuncdesc="Generic Phone Standization. Takes digits from the end." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="PXNM" stdfuncdesc="Formats a list of strings applying rules for person names including prefixes, suffixes and their degrees." minargs="0" maxargs="0" minflds="1" maxflds="6" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="RACE" stdfuncdesc="Formats race as an alphanumeric data (Identical to ATTR)" minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="RXNM" stdfuncdesc="Formats person names similar to PXNM with additional sub-tokenization processing provided by user defined rules." minargs="0" maxargs="0" minflds="1" maxflds="7" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="RZIP" stdfuncdesc="Generic postal code rule based standardization function" minargs="1" maxargs="8" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="UCSFREQADDR" stdfuncdesc="Formats an Address with Forgn UTF Characters." minargs="0" maxargs="1" minflds="4" maxflds="7" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="UCSFREQXNM" stdfuncdesc="Formats a Company Name with Forgn UTF Chars." minargs="0" maxargs="1" minflds="1" maxflds="4" stdType1="STRING" stdType2="STRING" />
+    <stdfunc stdfunccode="UKADDR2" stdfuncdesc="Formats an address string dividing it into the address subcomponents for UK with region and postal code." minargs="0" maxargs="0" minflds="1" maxflds="7" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="UKZIP" stdfuncdesc="Format a United Kingdom zip code." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="USADDR" stdfuncdesc="Formats an address string dividing it into the address subcomponents for United States." minargs="0" maxargs="0" minflds="1" maxflds="4" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="USADDR2" stdfuncdesc="Formats an address string dividing it into the address subcomponents for United States with region and postal code." minargs="0" maxargs="0" minflds="1" maxflds="7" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="USZIP" stdfuncdesc="Formats a United States zip code." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+    <stdfunc stdfunccode="WEIGHT" stdfuncdesc="Formats weight by removing non integers and treats values less than 60 and greater that 500 as anonymous." minargs="0" maxargs="0" minflds="1" maxflds="1" stdType1="STRING" stdType2="" />
+  </stdfuncs>
+  <extfuncs>
+    <extfunc extfunccode="ARABICPHONE" extfuncdesc="Improved Arabic Names" />
+    <extfunc extfunccode="ARABPHONE" extfuncdesc="Arabic Names" />
+    <extfunc extfunccode="METAPHONE" extfuncdesc="Metaphone" />
+    <extfunc extfunccode="NORMPHONE" extfuncdesc="Initiate" />
+    <extfunc extfunccode="PREFIXMAP" extfuncdesc="First 3 Characters" />
+  </extfuncs>
+  <appops>
+    <appop opcode="jmxAdmin" apprecno="5" />
+    <appop opcode="jmxExecute" apprecno="5" />
+    <appop opcode="jmxMonitor" apprecno="5" />
+    <appop opcode="auditorDuplicationSummaryStatistics" apprecno="8" />
+    <appop opcode="auditorEventActivity" apprecno="8" />
+    <appop opcode="auditorEventDetail" apprecno="8" />
+    <appop opcode="auditorEventSummary" apprecno="8" />
+    <appop opcode="auditorLinkageManagementOverview" apprecno="8" />
+    <appop opcode="auditorNotesDetail" apprecno="8" />
+    <appop opcode="auditorPendingResolutionDetail" apprecno="8" />
+    <appop opcode="auditorRecordResolutionDetail" apprecno="8" />
+    <appop opcode="auditorTaskCreationDetail" apprecno="8" />
+    <appop opcode="auditorTaskManagementDetail" apprecno="8" />
+    <appop opcode="auditorTaskManagementOverview" apprecno="8" />
+    <appop opcode="hubmgrInitiateAdditions" apprecno="8" />
+    <appop opcode="hubmgrUserActivitySummary" apprecno="8" />
+    <appop opcode="operationalAssignedTaskCountByOwner" apprecno="8" />
+    <appop opcode="operationalOutstandingTaskCountBySource" apprecno="8" />
+    <appop opcode="operationalTaskCountByTagType" apprecno="8" />
+    <appop opcode="inspectorAdmin" apprecno="10" />
+    <appop opcode="crAdmin" apprecno="11" />
+    <appop opcode="createEntity" apprecno="11" />
+    <appop opcode="relAdmin" apprecno="11" />
+  </appops>
+  <cvwfuncs>
+    <cvwfunc cvwfunccode="MCA" cvwfuncname="Most Current Attribute" />
+    <cvwfunc cvwfunccode="SOURCEPRIOR" cvwfuncname="Source Priority" />
+    <cvwfunc cvwfunccode="UNIQUE" cvwfuncname="Unique Attributes" />
+  </cvwfuncs>
+  <segments>
+    <segment segname="mpi_syskey" segcode="SYSKEY" segrecno="1" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_sysprop" segcode="SYSPROP" segrecno="2" segverno="0" objcode="dic" hasattr="false" engineonly="true" />
+    <segment segname="mpi_apphead" segcode="APPHEAD" segrecno="3" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_appprop" segcode="APPPROP" segrecno="4" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_appdata" segcode="APPDATA" segrecno="5" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_seqgen" segcode="SEQGEN" segrecno="6" segverno="0" objcode="dic" hasattr="false" engineonly="true" />
+    <segment segname="mpi_action" segcode="ACTION" segrecno="86" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_actioncfg" segcode="ACTIONCFG" segrecno="87" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_strtype" segcode="STRTYPE" segrecno="69" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_wgttype" segcode="WGTTYPE" segrecno="70" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_stdtype" segcode="STDTYPE" segrecno="71" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_strhead" segcode="STRHEAD" segrecno="7" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_strxstr" segcode="STRXSTR" segrecno="8" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_stranon" segcode="STRANON" segrecno="9" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_strequi" segcode="STREQUI" segrecno="10" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_strfreq" segcode="STRFREQ" segrecno="11" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_strword" segcode="STRWORD" segrecno="12" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_stredit" segcode="STREDIT" segrecno="13" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_strnbkt" segcode="STRNBKT" segrecno="14" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_strsbkt" segcode="STRSBKT" segrecno="15" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_strcmap" segcode="STRCMAP" segrecno="67" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_strconfig" segcode="STRCONFIG" segrecno="402" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_strset" segcode="STRSET" segrecno="403" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_wgthead" segcode="WGTHEAD" segrecno="16" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_wgtxwgt" segcode="WGTXWGT" segrecno="17" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_wgt1dim" segcode="WGT1DIM" segrecno="18" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_wgt2dim" segcode="WGT2DIM" segrecno="19" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_wgt3dim" segcode="WGT3DIM" segrecno="20" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_wgt4dim" segcode="WGT4DIM" segrecno="21" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_wgtnval" segcode="WGTNVAL" segrecno="22" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_wgtsval" segcode="WGTSVAL" segrecno="23" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_edthead" segcode="EDTHEAD" segrecno="24" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_edtelem" segcode="EDTELEM" segrecno="25" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_libhead" segcode="LIBHEAD" segrecno="26" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_stdfunc" segcode="STDFUNC" segrecno="27" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_bktfunc" segcode="BKTFUNC" segrecno="29" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_bktxgen" segcode="BKTXGEN" segrecno="68" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_wgtfunc" segcode="WGTFUNC" segrecno="28" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_cmpfunc" segcode="CMPFUNC" segrecno="30" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_genfunc" segcode="GENFUNC" segrecno="72" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_extfunc" segcode="EXTFUNC" segrecno="80" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_dvdhead" segcode="DVDHEAD" segrecno="32" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_dvdxstd" segcode="DVDXSTD" segrecno="33" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_dvdxcmp" segcode="DVDXCMP" segrecno="34" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_dvdxqry" segcode="DVDXQRY" segrecno="35" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_dvdxbkt" segcode="DVDXBKT" segrecno="36" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_dvdybkt" segcode="DVDYBKT" segrecno="37" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_cmphead" segcode="CMPHEAD" segrecno="38" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_cmpspec" segcode="CMPSPEC" segrecno="39" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_evttype" segcode="EVTTYPE" segrecno="42" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_enttype" segcode="ENTTYPE" segrecno="43" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_memtype" segcode="MEMTYPE" segrecno="44" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_memstat" segcode="MEMSTAT" segrecno="45" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_eiatype" segcode="EIATYPE" segrecno="46" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_eiastat" segcode="EIASTAT" segrecno="47" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_tsktype" segcode="TSKTYPE" segrecno="48" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_tskstat" segcode="TSKSTAT" segrecno="49" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_tskcfg" segcode="TSKCFG" segrecno="85" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_ixnhead" segcode="IXNHEAD" segrecno="50" segverno="0" objcode="dic" hasattr="false" engineonly="true" />
+    <segment segname="mpi_ixnstat" segcode="IXNSTAT" segrecno="82" segverno="0" objcode="dic" hasattr="false" engineonly="true" />
+    <segment segname="mpi_seghead" segcode="SEGHEAD" segrecno="51" segverno="0" objcode="dic" hasattr="false" engineonly="true" />
+    <segment segname="mpi_segattr" segcode="SEGATTR" segrecno="52" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_segxfld" segcode="SEGXFLD" segrecno="53" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_segxdat" segcode="SEGXDAT" segrecno="81" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_srchead" segcode="SRCHEAD" segrecno="54" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_srcattr" segcode="SRCATTR" segrecno="65" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_srcxent" segcode="SRCXENT" segrecno="66" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_srcxsrc" segcode="SRCXSRC" segrecno="55" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_cvwhead" segcode="CVWHEAD" segrecno="56" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_cvwxseg" segcode="CVWXSEG" segrecno="57" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_cvwfunc" segcode="CVWFUNC" segrecno="77" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_grphead" segcode="GRPHEAD" segrecno="58" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_grpxixn" segcode="GRPXIXN" segrecno="59" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_grpxcvw" segcode="GRPXCVW" segrecno="60" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_grpxseg" segcode="GRPXSEG" segrecno="61" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_usrhead" segcode="USRHEAD" segrecno="62" segverno="1" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_handler" segcode="HANDLER" segrecno="73" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_appop" segcode="APPOP" segrecno="74" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_grpxapp" segcode="GRPXAPP" segrecno="75" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_reltype" segcode="RELTYPE" segrecno="76" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_relsegattr" segcode="RELSEGATTR" segrecno="78" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_relrule" segcode="RELRULE" segrecno="79" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_tagtype" segcode="TAGTYPE" segrecno="88" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_ruleset" segcode="RULESET" segrecno="89" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_rulesetarg" segcode="RULESETARG" segrecno="90" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_rule" segcode="RULE" segrecno="91" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_rulearg" segcode="RULEARG" segrecno="92" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_clustercfg" segcode="CLUSTERCFG" segrecno="93" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_evtdest" segcode="EVTDEST" segrecno="94" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_evtlist" segcode="EVTLIST" segrecno="95" segverno="0" objcode="dic" hasattr="false" engineonly="false" />
+    <segment segname="mpi_memhead" segcode="MEMHEAD" segrecno="101" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_membktd" segcode="MEMBKTD" segrecno="102" segverno="0" objcode="mem" hasattr="false" engineonly="true" />
+    <segment segname="mpi_memcmpd" segcode="MEMCMPD" segrecno="103" segverno="0" objcode="mem" hasattr="false" engineonly="true" />
+    <segment segname="mpi_memqryd" segcode="MEMQRYD" segrecno="104" segverno="0" objcode="mem" hasattr="false" engineonly="true" />
+    <segment segname="mpi_evtxmsg" segcode="EVTXMSG" segrecno="110" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_memique" segcode="MEMIQUE" segrecno="111" segverno="0" objcode="mem" hasattr="false" engineonly="true" />
+    <segment segname="mpi_memoque" segcode="MEMOQUE" segrecno="112" segverno="0" objcode="mem" hasattr="false" engineonly="true" />
+    <segment segname="mpi_memnote" segcode="MEMNOTE" segrecno="113" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_memxeia" segcode="MEMXEIA" segrecno="114" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_memxtsk" segcode="MEMXTSK" segrecno="115" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_memlink" segcode="MEMLINK" segrecno="116" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_memrule" segcode="MEMRULE" segrecno="117" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_entique" segcode="ENTIQUE" segrecno="121" segverno="0" objcode="mem" hasattr="false" engineonly="true" />
+    <segment segname="mpi_entoque" segcode="ENTOQUE" segrecno="122" segverno="0" objcode="mem" hasattr="false" engineonly="true" />
+    <segment segname="mpi_entnote" segcode="ENTNOTE" segrecno="123" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_entxeia" segcode="ENTXEIA" segrecno="124" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_entxtsk" segcode="ENTXTSK" segrecno="125" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_entlink" segcode="ENTLINK" segrecno="126" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_entrule" segcode="ENTRULE" segrecno="127" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_tsknote" segcode="TSKNOTE" segrecno="128" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_tskxmem" segcode="TSKXMEM" segrecno="129" segverno="0" objcode="mem" hasattr="false" engineonly="true" />
+    <segment segname="mpi_idtxtsk" segcode="IDTXTSK" segrecno="130" segverno="0" objcode="mem" hasattr="false" engineonly="false" />
+    <segment segname="mpi_memattr" segcode="MEMATTR" segrecno="131" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memenum" segcode="MEMENUM" segrecno="132" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memname" segcode="MEMNAME" segrecno="133" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memaddr" segcode="MEMADDR" segrecno="134" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memphone" segcode="MEMPHONE" segrecno="135" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memident" segcode="MEMIDENT" segrecno="137" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memdate" segcode="MEMDATE" segrecno="138" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memoref" segcode="MEMOREF" segrecno="140" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memappt" segcode="MEMAPPT" segrecno="141" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memelig" segcode="MEMELIG" segrecno="142" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memdrug" segcode="MEMDRUG" segrecno="143" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memcont" segcode="MEMCONT" segrecno="144" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memexta" segcode="MEMEXTA" segrecno="145" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memextb" segcode="MEMEXTB" segrecno="146" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memextc" segcode="MEMEXTC" segrecno="147" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memextd" segcode="MEMEXTD" segrecno="148" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_memexte" segcode="MEMEXTE" segrecno="149" segverno="0" objcode="mem" hasattr="true" engineonly="false" />
+    <segment segname="mpi_audhead" segcode="AUDHEAD" segrecno="201" segverno="0" objcode="aud" hasattr="false" engineonly="true" />
+    <segment segname="mpi_audattr" segcode="AUDATTR" segrecno="202" segverno="0" objcode="aud" hasattr="false" engineonly="true" />
+    <segment segname="mpi_audxmem" segcode="AUDXMEM" segrecno="203" segverno="0" objcode="aud" hasattr="false" engineonly="true" />
+    <segment segname="mpi_tagmon" segcode="TAGMON" segrecno="350" segverno="0" objcode="tag" hasattr="false" engineonly="false" />
+    <segment segname="mpi_tag" segcode="TAG" segrecno="351" segverno="0" objcode="tag" hasattr="false" engineonly="false" />
+    <segment segname="mpi_rellink" segcode="RELLINK" segrecno="400" segverno="0" objcode="rel" hasattr="false" engineonly="false" />
+    <segment segname="mpi_relxtsk" segcode="RELXTSK" segrecno="401" segverno="0" objcode="rel" hasattr="false" engineonly="false" />
+    <segment segname="mpi_idxique" segcode="IDXIQUE" segrecno="410" segverno="0" objcode="idx" hasattr="false" engineonly="false" />
+  </segments>
+</engine-metadata>
