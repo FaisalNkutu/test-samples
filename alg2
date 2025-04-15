@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<engine-algorithm-config version="1.0.2" memtypeno="1" memtype="PERSON" dvdcode="DVDPER">
+  <keyRegistry>
+    <key keyValue="731" keyClasstype="com.initiatesystems.workbench.model.algorithm.AlgorithmAttribute" />
+    <key keyValue="9" keyClasstype="com.initiatesystems.workbench.model.algorithm.AlgorithmMComparisonFunction" />
+    <key keyValue="86" keyClasstype="com.initiatesystems.workbench.model.algorithm.AlgorithmSrcXSrc" />
+    <key keyValue="10" keyClasstype="com.initiatesystems.workbench.model.algorithm.AlgorithmBucketingFunction" />
+    <key keyValue="33" keyClasstype="com.initiatesystems.workbench.model.algorithm.AlgorithmMStandardization" />
+    <key keyValue="2" keyClasstype="com.initiatesystems.workbench.model.algorithm.AlgorithmEntityType" />
+    <key keyValue="8" keyClasstype="com.initiatesystems.workbench.model.algorithm.AlgorithmBucketGroup" />
+    <key keyValue="30" keyClasstype="com.initiatesystems.workbench.model.algorithm.AlgorithmStandardization" />
+    <key keyValue="11" keyClasstype="com.initiatesystems.workbench.model.algorithm.AlgorithmComparisonRole" />
+    <key keyValue="9" keyClasstype="com.initiatesystems.workbench.model.algorithm.AlgorithmComparisonFunction" />
+    <key keyValue="10" keyClasstype="com.initiatesystems.workbench.model.algorithm.AlgorithmMBucketingFunction" />
+  </keyRegistry>
+  <cmphead>
+    <cmphead-row id="1" enttypeno="1" enttype="mdmper" cmpcode="CMPPER" cmpname="CMPPER" cmpdesc="CMPPER" wgtqod="5" wgtflr="5" wgtmat="100" wgtabs="80" wgtnrm="95" wgtcnv="20" wgtfpr="100000" wgtfnr="100">
+      <srcxsrc>
+        <srcxsrc-row id="86" srcrecno1="1" src1name="MDMS Person" srcrecno2="1" src2name="MDMS Person" alscore="150" crscore="70" recstat="A" />
+      </srcxsrc>
+    </cmphead-row>
+  </cmphead>
+  <dvdxstd>
+    <dvdxstd-row id="1" dvdseqno="1" stdfunccode="PXNM" anonstrcode="ANAME" equistrcode="" cmapstrcode="CMAP-PXNM" dvdargs="" rsfilter="AI" stdrole1="1" stdrole2="0" dvddesc="" stdrole1label="LGLNAME" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="168,169,170,171,172,173" fldargs="lastname,givenname1,givenname2,prefix,generation,givenname3" anonID="4" equiID="-1" cmapID="13" attrcode="PERLEGALNAME" attrrecno="1" />
+    <dvdxstd-row id="2" dvdseqno="2" stdfunccode="PXNM" anonstrcode="ANAME" equistrcode="" cmapstrcode="CMAP-PXNM" dvdargs="" rsfilter="AI" stdrole1="8" stdrole2="0" dvddesc="" stdrole1label="ALIASNAME" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="168,169,170,171,172,173" fldargs="lastname,givenname1,givenname2,prefix,generation,givenname3" anonID="4" equiID="-1" cmapID="13" attrcode="PERALIASNAME" attrrecno="710" />
+    <dvdxstd-row id="3" dvdseqno="3" stdfunccode="PXNM" anonstrcode="ANAME" equistrcode="" cmapstrcode="CMAP-PXNM" dvdargs="" rsfilter="AI" stdrole1="9" stdrole2="0" dvddesc="" stdrole1label="MAIDNAME" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="168,169,170,171,172,173" fldargs="lastname,givenname1,givenname2,prefix,generation,givenname3" anonID="4" equiID="-1" cmapID="13" attrcode="PERMAIDENNAM" attrrecno="709" />
+    <dvdxstd-row id="4" dvdseqno="4" stdfunccode="PXNM" anonstrcode="ANAME" equistrcode="" cmapstrcode="CMAP-PXNM" dvdargs="" rsfilter="AI" stdrole1="10" stdrole2="0" dvddesc="" stdrole1label="PREFNAME" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="168,169,170,171,172,173" fldargs="lastname,givenname1,givenname2,prefix,generation,givenname3" anonID="4" equiID="-1" cmapID="13" attrcode="PERPREFNAME" attrrecno="711" />
+    <dvdxstd-row id="5" dvdseqno="5" stdfunccode="PXNM" anonstrcode="ANAME" equistrcode="" cmapstrcode="CMAP-PXNM" dvdargs="" rsfilter="AI" stdrole1="11" stdrole2="0" dvddesc="" stdrole1label="PREVNAME" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="168,169,170,171,172,173" fldargs="lastname,givenname1,givenname2,prefix,generation,givenname3" anonID="4" equiID="-1" cmapID="13" attrcode="PERPREVNAME" attrrecno="712" />
+    <dvdxstd-row id="6" dvdseqno="6" stdfunccode="PXNM" anonstrcode="ANAME" equistrcode="" cmapstrcode="CMAP-PXNM" dvdargs="" rsfilter="AI" stdrole1="27" stdrole2="0" dvddesc="" stdrole1label="AKANAME" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="168,169,170,171,172,173" fldargs="lastname,givenname1,givenname2,prefix,generation,givenname3" anonID="4" equiID="-1" cmapID="13" attrcode="PERAKANAME" attrrecno="708" />
+    <dvdxstd-row id="7" dvdseqno="7" stdfunccode="PXNM" anonstrcode="ANAME" equistrcode="" cmapstrcode="CMAP-PXNM" dvdargs="" rsfilter="AI" stdrole1="28" stdrole2="0" dvddesc="" stdrole1label="NICKNAME" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="168,169,170,171,172,173" fldargs="lastname,givenname1,givenname2,prefix,generation,givenname3" anonID="4" equiID="-1" cmapID="13" attrcode="PERNICKNAME" attrrecno="705" />
+    <dvdxstd-row id="8" dvdseqno="8" stdfunccode="PXNM" anonstrcode="ANAME" equistrcode="" cmapstrcode="CMAP-PXNM" dvdargs="" rsfilter="AI" stdrole1="29" stdrole2="0" dvddesc="" stdrole1label="BUSNAME" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="168,169,170,171,172,173" fldargs="lastname,givenname1,givenname2,prefix,generation,givenname3" anonID="4" equiID="-1" cmapID="13" attrcode="PERBUSNAME" attrrecno="704" />
+    <dvdxstd-row id="9" dvdseqno="9" stdfunccode="RZIP" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="" dvdargs="PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="2" stdrole2="0" dvddesc="" stdrole1label="PRPOSTCODE" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="181" fldargs="postalcode" anonID="35" equiID="-1" cmapID="-1" attrcode="PERPRIMERRES" attrrecno="3" />
+    <dvdxstd-row id="10" dvdseqno="10" stdfunccode="INTADDR2R" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="CMAP-ADDR" dvdargs="ALLOWHASH,PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="4" stdrole2="0" dvddesc="" stdrole1label="PRADDR" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="215,177,178,179,180,182,181" fldargs="residencenum,addrline1,addrline2,addrline3,city,provstate,postalcode" anonID="35" equiID="-1" cmapID="9" attrcode="PERPRIMERRES" attrrecno="3" />
+    <dvdxstd-row id="11" dvdseqno="11" stdfunccode="INTADDR2R" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="CMAP-ADDR" dvdargs="ALLOWHASH,PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="12" stdrole2="0" dvddesc="" stdrole1label="MAADDR" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="215,177,178,179,180,182,181" fldargs="residencenum,addrline1,addrline2,addrline3,city,provstate,postalcode" anonID="35" equiID="-1" cmapID="9" attrcode="PERMAILADDR" attrrecno="715" />
+    <dvdxstd-row id="12" dvdseqno="12" stdfunccode="RZIP" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="" dvdargs="PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="15" stdrole2="0" dvddesc="" stdrole1label="MAPOSTCODE" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="181" fldargs="postalcode" anonID="35" equiID="-1" cmapID="-1" attrcode="PERMAILADDR" attrrecno="715" />
+    <dvdxstd-row id="13" dvdseqno="13" stdfunccode="INTADDR2R" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="CMAP-ADDR" dvdargs="ALLOWHASH,PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="14" stdrole2="0" dvddesc="" stdrole1label="OTADDR" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="215,177,178,179,180,182,181" fldargs="residencenum,addrline1,addrline2,addrline3,city,provstate,postalcode" anonID="35" equiID="-1" cmapID="9" attrcode="PEROTHERRES" attrrecno="713" />
+    <dvdxstd-row id="14" dvdseqno="14" stdfunccode="RZIP" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="" dvdargs="PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="17" stdrole2="0" dvddesc="" stdrole1label="OTPOSTCODE" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="181" fldargs="postalcode" anonID="35" equiID="-1" cmapID="-1" attrcode="PEROTHERRES" attrrecno="713" />
+    <dvdxstd-row id="15" dvdseqno="15" stdfunccode="INTADDR2R" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="CMAP-ADDR" dvdargs="ALLOWHASH,PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="19" stdrole2="0" dvddesc="" stdrole1label="SRADDR" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="215,177,178,179,180,182,181" fldargs="residencenum,addrline1,addrline2,addrline3,city,provstate,postalcode" anonID="35" equiID="-1" cmapID="9" attrcode="PERSECONDRES" attrrecno="718" />
+    <dvdxstd-row id="16" dvdseqno="16" stdfunccode="RZIP" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="" dvdargs="PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="18" stdrole2="0" dvddesc="" stdrole1label="SRPOSTCODE" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="181" fldargs="postalcode" anonID="35" equiID="-1" cmapID="-1" attrcode="PERSECONDRES" attrrecno="718" />
+    <dvdxstd-row id="17" dvdseqno="17" stdfunccode="RZIP" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="" dvdargs="PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="21" stdrole2="0" dvddesc="" stdrole1label="SUPOSTCODE" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="181" fldargs="postalcode" anonID="35" equiID="-1" cmapID="-1" attrcode="PERSUMMERRES" attrrecno="716" />
+    <dvdxstd-row id="18" dvdseqno="18" stdfunccode="INTADDR2R" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="CMAP-ADDR" dvdargs="ALLOWHASH,PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="20" stdrole2="0" dvddesc="" stdrole1label="SUADDR" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="215,177,178,179,180,182,181" fldargs="residencenum,addrline1,addrline2,addrline3,city,provstate,postalcode" anonID="35" equiID="-1" cmapID="9" attrcode="PERSUMMERRES" attrrecno="716" />
+    <dvdxstd-row id="19" dvdseqno="19" stdfunccode="RZIP" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="" dvdargs="PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="22" stdrole2="0" dvddesc="" stdrole1label="TEPOSTCODE" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="181" fldargs="postalcode" anonID="35" equiID="-1" cmapID="-1" attrcode="PERTEMPADDR" attrrecno="717" />
+    <dvdxstd-row id="20" dvdseqno="20" stdfunccode="INTADDR2R" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="CMAP-ADDR" dvdargs="ALLOWHASH,PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="23" stdrole2="0" dvddesc="" stdrole1label="TEADDR" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="215,177,178,179,180,182,181" fldargs="residencenum,addrline1,addrline2,addrline3,city,provstate,postalcode" anonID="35" equiID="-1" cmapID="9" attrcode="PERTEMPADDR" attrrecno="717" />
+    <dvdxstd-row id="30" dvdseqno="21" stdfunccode="PHONE2" anonstrcode="" equistrcode="" cmapstrcode="" dvdargs="" rsfilter="AI" stdrole1="5" stdrole2="0" dvddesc="" stdrole1label="" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="183" fldargs="refnum" anonID="-1" equiID="-1" cmapID="-1" attrcode="PERHOMEPHONE" attrrecno="6" />
+    <dvdxstd-row id="31" dvdseqno="22" stdfunccode="PHONE2" anonstrcode="" equistrcode="" cmapstrcode="" dvdargs="" rsfilter="AI" stdrole1="24" stdrole2="0" dvddesc="" stdrole1label="" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="183" fldargs="refnum" anonID="-1" equiID="-1" cmapID="-1" attrcode="PERCELLULAR" attrrecno="719" />
+    <dvdxstd-row id="32" dvdseqno="23" stdfunccode="PHONE2" anonstrcode="" equistrcode="" cmapstrcode="" dvdargs="" rsfilter="AI" stdrole1="25" stdrole2="0" dvddesc="" stdrole1label="" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="183" fldargs="refnum" anonID="-1" equiID="-1" cmapID="-1" attrcode="PERMOBILE" attrrecno="720" />
+    <dvdxstd-row id="24" dvdseqno="24" stdfunccode="INTADDR2R" anonstrcode="POSTCODE" equistrcode="" cmapstrcode="CMAP-ADDR" dvdargs="ALLOWHASH,PATTERNS=PATTERNSET" rsfilter="AI" stdrole1="13" stdrole2="0" dvddesc="" stdrole1label="BUSADDR" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="215,177,178,179,180,182,181" fldargs="residencenum,addrline1,addrline2,addrline3,city,provstate,postalcode" anonID="35" equiID="-1" cmapID="9" attrcode="PERBUSADDR" attrrecno="714" />
+    <dvdxstd-row id="25" dvdseqno="25" stdfunccode="PHONE2" anonstrcode="PHONE" equistrcode="" cmapstrcode="" dvdargs="" rsfilter="AI" stdrole1="16" stdrole2="0" dvddesc="" stdrole1label="BUSPHONE" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="183" fldargs="refnum" anonID="34" equiID="-1" cmapID="-1" attrcode="PERBUSPHONE" attrrecno="730" />
+    <dvdxstd-row id="26" dvdseqno="26" stdfunccode="ATTRN" anonstrcode="SSN" equistrcode="" cmapstrcode="" dvdargs="" rsfilter="AI" stdrole1="3" stdrole2="0" dvddesc="" stdrole1label="SSN" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="184" fldargs="idnum" anonID="43" equiID="-1" cmapID="-1" attrcode="PERSSN" attrrecno="4" />
+    <dvdxstd-row id="27" dvdseqno="27" stdfunccode="DATE2" anonstrcode="DATE" equistrcode="DATE2" cmapstrcode="" dvdargs="" rsfilter="AI" stdrole1="6" stdrole2="0" dvddesc="" stdrole1label="DOB" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="174" fldargs="val" anonID="15" equiID="16" cmapID="-1" attrcode="PERBIRTHDATE" attrrecno="2" />
+    <dvdxstd-row id="28" dvdseqno="28" stdfunccode="ATTR" anonstrcode="" equistrcode="GENDER" cmapstrcode="" dvdargs="" rsfilter="AI" stdrole1="7" stdrole2="0" dvddesc="" stdrole1label="GENDER" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="175" fldargs="gender" anonID="-1" equiID="31" cmapID="-1" attrcode="PERGENDER" attrrecno="5" />
+    <dvdxstd-row id="29" dvdseqno="29" stdfunccode="ATTR" anonstrcode="SIN" equistrcode="" cmapstrcode="" dvdargs="" rsfilter="AI" stdrole1="26" stdrole2="0" dvddesc="" stdrole1label="SIN" stdrole2label="" stdtype1="STRING" stdtype2="" fldids="184" fldargs="idnum" anonID="42" equiID="-1" cmapID="-1" attrcode="PERSIN" attrrecno="728" />
+  </dvdxstd>
+  <dvdxqry />
+  <dvdxcmp>
+    <dvdxcmp-row id="1" dvdseqno="1" cmprole="1" dvddesc="" cmprolelabel="Name" stdrole="1" minwgtfreq="20" rsfilter="AI" stdID="1" />
+    <dvdxcmp-row id="1" dvdseqno="2" cmprole="1" dvddesc="" cmprolelabel="Name" stdrole="8" minwgtfreq="20" rsfilter="AI" stdID="2" />
+    <dvdxcmp-row id="1" dvdseqno="3" cmprole="1" dvddesc="" cmprolelabel="Name" stdrole="9" minwgtfreq="20" rsfilter="AI" stdID="3" />
+    <dvdxcmp-row id="1" dvdseqno="4" cmprole="1" dvddesc="" cmprolelabel="Name" stdrole="10" minwgtfreq="20" rsfilter="AI" stdID="4" />
+    <dvdxcmp-row id="1" dvdseqno="5" cmprole="1" dvddesc="" cmprolelabel="Name" stdrole="11" minwgtfreq="20" rsfilter="AI" stdID="5" />
+    <dvdxcmp-row id="1" dvdseqno="6" cmprole="1" dvddesc="" cmprolelabel="Name" stdrole="27" minwgtfreq="20" rsfilter="AI" stdID="6" />
+    <dvdxcmp-row id="1" dvdseqno="7" cmprole="1" dvddesc="" cmprolelabel="Name" stdrole="28" minwgtfreq="20" rsfilter="AI" stdID="7" />
+    <dvdxcmp-row id="1" dvdseqno="8" cmprole="1" dvddesc="" cmprolelabel="Name" stdrole="29" minwgtfreq="20" rsfilter="AI" stdID="8" />
+    <dvdxcmp-row id="2" dvdseqno="9" cmprole="2" dvddesc="" cmprolelabel="Postal Code" stdrole="2" minwgtfreq="20" rsfilter="AI" stdID="9" />
+    <dvdxcmp-row id="2" dvdseqno="10" cmprole="2" dvddesc="" cmprolelabel="Postal Code" stdrole="15" minwgtfreq="20" rsfilter="AI" stdID="12" />
+    <dvdxcmp-row id="2" dvdseqno="11" cmprole="2" dvddesc="" cmprolelabel="Postal Code" stdrole="17" minwgtfreq="20" rsfilter="AI" stdID="14" />
+    <dvdxcmp-row id="2" dvdseqno="12" cmprole="2" dvddesc="" cmprolelabel="Postal Code" stdrole="18" minwgtfreq="20" rsfilter="AI" stdID="16" />
+    <dvdxcmp-row id="2" dvdseqno="13" cmprole="2" dvddesc="" cmprolelabel="Postal Code" stdrole="21" minwgtfreq="20" rsfilter="AI" stdID="17" />
+    <dvdxcmp-row id="2" dvdseqno="14" cmprole="2" dvddesc="" cmprolelabel="Postal Code" stdrole="22" minwgtfreq="20" rsfilter="AI" stdID="19" />
+    <dvdxcmp-row id="3" dvdseqno="15" cmprole="3" dvddesc="" cmprolelabel="Personal Address" stdrole="4" minwgtfreq="20" rsfilter="AI" stdID="10" />
+    <dvdxcmp-row id="3" dvdseqno="16" cmprole="3" dvddesc="" cmprolelabel="Personal Address" stdrole="12" minwgtfreq="20" rsfilter="AI" stdID="11" />
+    <dvdxcmp-row id="3" dvdseqno="17" cmprole="3" dvddesc="" cmprolelabel="Personal Address" stdrole="14" minwgtfreq="20" rsfilter="AI" stdID="13" />
+    <dvdxcmp-row id="3" dvdseqno="18" cmprole="3" dvddesc="" cmprolelabel="Personal Address" stdrole="19" minwgtfreq="20" rsfilter="AI" stdID="15" />
+    <dvdxcmp-row id="3" dvdseqno="19" cmprole="3" dvddesc="" cmprolelabel="Personal Address" stdrole="20" minwgtfreq="20" rsfilter="AI" stdID="18" />
+    <dvdxcmp-row id="3" dvdseqno="20" cmprole="3" dvddesc="" cmprolelabel="Personal Address" stdrole="23" minwgtfreq="20" rsfilter="AI" stdID="20" />
+    <dvdxcmp-row id="4" dvdseqno="21" cmprole="5" dvddesc="" cmprolelabel="Personal Phone" stdrole="5" minwgtfreq="20" rsfilter="AI" stdID="30" />
+    <dvdxcmp-row id="4" dvdseqno="22" cmprole="5" dvddesc="" cmprolelabel="Personal Phone" stdrole="25" minwgtfreq="20" rsfilter="AI" stdID="32" />
+    <dvdxcmp-row id="4" dvdseqno="23" cmprole="5" dvddesc="" cmprolelabel="Personal Phone" stdrole="24" minwgtfreq="20" rsfilter="AI" stdID="31" />
+    <dvdxcmp-row id="5" dvdseqno="24" cmprole="8" dvddesc="" cmprolelabel="Business Address" stdrole="13" minwgtfreq="20" rsfilter="AI" stdID="24" />
+    <dvdxcmp-row id="6" dvdseqno="25" cmprole="9" dvddesc="" cmprolelabel="Business Phone" stdrole="16" minwgtfreq="20" rsfilter="AI" stdID="25" />
+    <dvdxcmp-row id="7" dvdseqno="26" cmprole="4" dvddesc="" cmprolelabel="SSN" stdrole="3" minwgtfreq="20" rsfilter="AI" stdID="26" />
+    <dvdxcmp-row id="8" dvdseqno="27" cmprole="6" dvddesc="" cmprolelabel="DOB" stdrole="6" minwgtfreq="20" rsfilter="AI" stdID="27" />
+    <dvdxcmp-row id="9" dvdseqno="28" cmprole="7" dvddesc="" cmprolelabel="Gender" stdrole="7" minwgtfreq="20" rsfilter="AI" stdID="28" />
+    <dvdxcmp-row id="10" dvdseqno="29" cmprole="10" dvddesc="SIN" cmprolelabel="SIN" stdrole="26" minwgtfreq="20" rsfilter="AI" stdID="29" />
+  </dvdxcmp>
+  <cmpspec>
+    <cmpspec-row id="1" enttype="mdmper" cmpseqno="1" cmpargs="METAPHONE" cmpcode="CMPPER" cmpfunccode="QXNM" cmpspeccode="XNM" equistrcode="NICKNAME" isri="false" wgtcut="80" cmpgroupno="0" cmpmode="3" cmpdesc="" enttypeno="1" equiID="32" cmprole1="1" />
+    <cmpspec-row id="2" enttype="mdmper" cmpseqno="2" cmpargs="METAPHONE,UNITTYPES=AXPAPTSET" cmpcode="CMPPER" cmpfunccode="AXP" cmpspeccode="PADDRESS" equistrcode="" isri="false" wgtcut="80" cmpgroupno="1" cmpmode="3" cmpdesc="" enttypeno="1" equiID="-1" cmprole1="3" cmprole2="5" />
+    <cmpspec-row id="3" enttype="mdmper" cmpseqno="3" cmpargs="METAPHONE,UNITTYPES=AXPAPTSET" cmpcode="CMPPER" cmpfunccode="AXP" cmpspeccode="BADDRESS" equistrcode="" isri="false" wgtcut="80" cmpgroupno="1" cmpmode="3" cmpdesc="" enttypeno="1" equiID="-1" cmprole1="8" cmprole2="9" />
+    <cmpspec-row id="4" enttype="mdmper" cmpseqno="4" cmpargs="" cmpcode="CMPPER" cmpfunccode="DR1D1C" cmpspeccode="SSN" equistrcode="" isri="false" wgtcut="80" cmpgroupno="0" cmpmode="3" cmpdesc="" enttypeno="1" equiID="-1" cmprole1="4" />
+    <cmpspec-row id="5" enttype="mdmper" cmpseqno="5" cmpargs="" cmpcode="CMPPER" cmpfunccode="DATE2" cmpspeccode="DOB" equistrcode="" isri="false" wgtcut="80" cmpgroupno="0" cmpmode="3" cmpdesc="" enttypeno="1" equiID="-1" cmprole1="6" />
+    <cmpspec-row id="6" enttype="mdmper" cmpseqno="6" cmpargs="" cmpcode="CMPPER" cmpfunccode="EQVD" cmpspeccode="SEX" equistrcode="" isri="false" wgtcut="100" cmpgroupno="0" cmpmode="3" cmpdesc="" enttypeno="1" equiID="-1" cmprole1="7" />
+    <cmpspec-row id="7" enttype="mdmper" cmpseqno="7" cmpargs="" cmpcode="CMPPER" cmpfunccode="DR1D1C" cmpspeccode="SIN" equistrcode="" isri="false" wgtcut="80" cmpgroupno="0" cmpmode="3" cmpdesc="" enttypeno="1" equiID="-1" cmprole1="10" />
+  </cmpspec>
+  <dvdybkt>
+    <dvdybkt-row id="1" dvdseqno="1" bktfunccode="PXNM" genfunccode="EQUI" mintokens="2" maxtokens="2" equistrcode="NICKNAME" rbktstrcode="" anonstrcode="BKTANON" dvdargs="" dvddesc="" equiID="32" anonID="6" rbktID="-1" cmprole="1" dvdgrp="1" />
+    <dvdybkt-row id="2" dvdseqno="2" bktfunccode="PXNM" genfunccode="EQMETA" mintokens="1" maxtokens="2" equistrcode="NICKNAME" rbktstrcode="" anonstrcode="BKTANON" dvdargs="NORMPHONE" dvddesc="" equiID="32" anonID="6" rbktID="-1" cmprole="1" dvdgrp="2" />
+    <dvdybkt-row id="3" dvdseqno="3" bktfunccode="PXNM" genfunccode="EQMETA" mintokens="1" maxtokens="2" equistrcode="NICKNAME" rbktstrcode="" anonstrcode="BKTANON" dvdargs="NORMPHONE" dvddesc="" equiID="32" anonID="6" rbktID="-1" cmprole="1" dvdgrp="3" />
+    <dvdybkt-row id="4" dvdseqno="4" bktfunccode="ATTR" genfunccode="ASIS" mintokens="1" maxtokens="1" equistrcode="" rbktstrcode="" anonstrcode="POSTCODE" dvdargs="" dvddesc="" equiID="-1" anonID="35" rbktID="-1" cmprole="2" dvdgrp="3" />
+    <dvdybkt-row id="5" dvdseqno="5" bktfunccode="ATTR" genfunccode="NGRAM" mintokens="1" maxtokens="1" equistrcode="" rbktstrcode="" anonstrcode="" dvdargs="6" dvddesc="" equiID="-1" anonID="-1" rbktID="-1" cmprole="5" dvdgrp="4" />
+    <dvdybkt-row id="6" dvdseqno="6" bktfunccode="ATTR" genfunccode="NGRAM" mintokens="1" maxtokens="1" equistrcode="" rbktstrcode="" anonstrcode="" dvdargs="7" dvddesc="" equiID="-1" anonID="-1" rbktID="-1" cmprole="9" dvdgrp="7" />
+    <dvdybkt-row id="7" dvdseqno="7" bktfunccode="ATTR" genfunccode="ASIS" mintokens="1" maxtokens="1" equistrcode="" rbktstrcode="" anonstrcode="" dvdargs="" dvddesc="" equiID="-1" anonID="-1" rbktID="-1" cmprole="4" dvdgrp="5" />
+    <dvdybkt-row id="8" dvdseqno="8" bktfunccode="DATE" genfunccode="DTY4SMD" mintokens="1" maxtokens="1" equistrcode="" rbktstrcode="" anonstrcode="DATE" dvdargs="" dvddesc="" equiID="-1" anonID="15" rbktID="-1" cmprole="6" dvdgrp="2" />
+    <dvdybkt-row id="9" dvdseqno="9" bktfunccode="ATTR" genfunccode="ASIS" mintokens="1" maxtokens="1" equistrcode="" rbktstrcode="" anonstrcode="" dvdargs="" dvddesc="" equiID="-1" anonID="-1" rbktID="-1" cmprole="10" dvdgrp="6" />
+  </dvdybkt>
+  <dvdxbkt>
+    <dvdxbkt-row id="1" dvdseqno="1" bktrole="1" maxbktfreq="1000" dvdgrp="1" maxnway="2" minnway="2" dvddesc="" dvdgrplabel="Name" />
+    <dvdxbkt-row id="2" dvdseqno="2" bktrole="2" maxbktfreq="1000" dvdgrp="2" maxnway="3" minnway="2" dvddesc="" dvdgrplabel="Name + DOB" />
+    <dvdxbkt-row id="3" dvdseqno="3" bktrole="3" maxbktfreq="1000" dvdgrp="3" maxnway="3" minnway="2" dvddesc="" dvdgrplabel="Name + Post Code" />
+    <dvdxbkt-row id="4" dvdseqno="4" bktrole="4" maxbktfreq="1000" dvdgrp="4" maxnway="1" minnway="1" dvddesc="" dvdgrplabel="Phone" />
+    <dvdxbkt-row id="5" dvdseqno="5" bktrole="7" maxbktfreq="1000" dvdgrp="7" maxnway="1" minnway="1" dvddesc="" dvdgrplabel="Business Phone" />
+    <dvdxbkt-row id="6" dvdseqno="6" bktrole="5" maxbktfreq="1000" dvdgrp="5" maxnway="1" minnway="1" dvddesc="" dvdgrplabel="SSN" />
+    <dvdxbkt-row id="7" dvdseqno="7" bktrole="6" maxbktfreq="1000" dvdgrp="6" maxnway="1" minnway="1" dvddesc="" dvdgrplabel="SIN" />
+  </dvdxbkt>
+</engine-algorithm-config>
