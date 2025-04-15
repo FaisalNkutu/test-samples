@@ -1,0 +1,14 @@
+MEMHEAD	1	1	TR	SetString	srcCode
+MEMHEAD	1	2	TR	SetString	sourceRecno
+PERDOCUMENT	1	3	TR	SetString	docGrpTypeCd
+PERDOCUMENT	1	4	TR	SetString	memIdnum
+PERDOCUMENT	1	5	TR	SetString	identifier
+PERCITIZENSH	1	6	TR	SetString	countryCd
+PERLEGALNAME	1	7	TR	SetString	givenname1
+PERLEGALNAME	1	8	TR	SetString	givenname2
+PERLEGALNAME	1	9	TR	SetString	lastname
+PERBIRTHDATE	1	10	TR	SetDate	dob
+PERGENDER	1	11	TR	SetString	gender
+PERCITIZENSH	1	12	TR	SetString	ctznCountry
+MEMHEAD	1	4	TR	SetString	adminsyskeytype
+MEMHEAD	1	5	TR	SetString	adminsyskeyid
