@@ -1,15 +1,8 @@
-ErrorCWSAJ0065E: The specified file /disk/apps/websphere/AppServer/profiles/Dmgr/wstemp/null/upload/ibas.mdmpme.config.ext.cba_11.6.0.202504170944.cba cannot be parsed as a manifest file because of exception java.io.IOException: line too long
-
-COMPOSITEBUNDLE.MF
-Bundle-Name: ibas.mdmpme.config.ext.cba
-Bundle-SymbolicName: ibas.mdmpme.config.ext.cba
-Bundle-Version: 11.6.0.qualifier
-CompositeBundle-ManifestVersion: 1
 Manifest-Version: 1.0
-CompositeBundle-Content: ibas.mdmpme.config.ext;version="[11.6.0.qualifi
- er,11.6.0.qualifier]"
-Import-Package: org.osgi.framework,
-  org.apache.commons.logging,
-  com.ibm.mdm.mds.pme.api.osgi
-CompositeBundle-ExportService: com.ibm.mdm.mds.pme.api.osgi.MatchingServ
- iceConfiguration
+Bundle-Name: ibas.mdmpme.config.ext
+Bundle-SymbolicName: ibas.mdmpme.config.ext
+Bundle-Version: 11.6.0
+CompositeBundle-ManifestVersion: 1
+CompositeBundle-Content: ibas.mdmpme.config.ext;version="[11.6.0,11.6.0]"
+Import-Package: org.osgi.framework, org.apache.commons.logging, com.ibm.mdm.mds.pme.api.osgi
+CompositeBundle-ExportService: com.ibm.mdm.mds.pme.api.osgi.MatchingServiceConfiguration
