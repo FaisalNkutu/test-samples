@@ -1,0 +1,47 @@
+# Algorithm for Deduplication in IBM MDM PME
+
+ALGORITHM_NAME	DeduplicationAlgorithm
+ALGORITHM_TYPE	DUPLICATE
+
+# Member Type
+MEMBER_TYPE	PERSON
+
+# Blocking Strategies
+BLOCKDEF	BLOCK1
+BLOCK_ON	standardizedlastname
+BLOCK_ON	soundexlastname
+BLOCK_ON	standardizedgivenname1
+BLOCK_ON	birthyear
+
+BLOCKDEF	BLOCK2
+BLOCK_ON	standardizedgivenname1
+BLOCK_ON	standardizedlastname
+BLOCK_ON	gender
+
+# Matching Strategy
+MATCHING	MatchRule1
+BLOCKDEF	BLOCK1
+
+# Matching Rules
+RULEDEF	Rule1
+COMPARE	standardizedlastname	standardizedlastname	EXACT
+COMPARE	standardizedgivenname1	standardizedgivenname1	EXACT
+COMPARE	dob	dob	EXACT
+COMPARE	gender	gender	EXACT
+
+RULEDEF	Rule2
+COMPARE	soundexlastname	soundexlastname	SOUNDEX
+COMPARE	soundexgivenname1	soundexgivenname1	SOUNDEX
+COMPARE	birthyear	birthyear	EXACT
+COMPARE	docGrpTypeCd	docGrpTypeCd	EXACT
+COMPARE	identifier	identifier	EXACT
+
+# Weighting and Threshold
+THRESHOLD	85
+WEIGHTING	MATCH	100
+WEIGHTING	PARTIAL	50
+WEIGHTING	NOMATCH	0
+
+# Output Settings
+OUTPUT_MATCH_RESULTS	YES
+OUTPUT_SCORE	YES
