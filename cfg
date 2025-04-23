@@ -1,0 +1,12 @@
+MEMHEAD 1 1 TR SetString srcCode
+MEMHEAD 1 2 TR SetString memIdnum
+PERLEGALNAME 1 3 TR SetString givenname1
+PERLEGALNAME 1 4 TR SetString lastname
+PERPRIMERRES 1 5 TR SetString addrline1
+PERPRIMERRES 1 6 TR SetString city
+PERPRIMERRES 1 7 TR SetString provstate
+PERPRIMERRES 1 8 TR SetString postalcode
+PERHOMEPHONE 1 9 TR SetString refnum
+PERSSN 1 10 TR SetString idnum
+PERBIRTHDATE 1 11 TR SetString val
+PERGENDER 1 12 TR SetString gender
