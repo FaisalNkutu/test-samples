@@ -1,41 +1,25 @@
-INFORMATION_MODEL_MAP
+<?xml version="1.0" encoding="UTF-8"?>
+<InfoModel name="Party" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <EntityType name="Party">
+        <FieldMap>
+            <Field name="srcCode"              type="String"  path="MEMHEAD.1"/>
+            <Field name="sourceRecno"          type="String"  path="MEMHEAD.2"/>
+            <Field name="adminsyskeytype"      type="String"  path="MEMHEAD.4"/>
+            <Field name="adminsyskeyid"        type="String"  path="MEMHEAD.5"/>
 
-# =====================
-# Header Definitions
-# =====================
-MEMHEAD:srcCode                = String
-MEMHEAD:sourceRecno           = String
-MEMHEAD:adminsyskeytype       = String
-MEMHEAD:adminsyskeyid         = String
+            <Field name="docGrpTypeCd"         type="String"  path="PERDOCUMENT.3"/>
+            <Field name="memIdnum"             type="String"  path="PERDOCUMENT.4"/>
+            <Field name="identifier"           type="String"  path="PERDOCUMENT.5"/>
 
-# =====================
-# Document Info
-# =====================
-PERDOCUMENT:docGrpTypeCd      = String
-PERDOCUMENT:memIdnum          = String
-PERDOCUMENT:identifier        = String
+            <Field name="countryCd"            type="String"  path="PERCITIZENSH.6"/>
+            <Field name="ctznCountry"          type="String"  path="PERCITIZENSH.12"/>
 
-# =====================
-# Citizenship Info
-# =====================
-PERCITIZENSH:countryCd        = String
-PERCITIZENSH:ctznCountry      = String
+            <Field name="givenname1"           type="String"  path="PERLEGALNAME.7"/>
+            <Field name="givenname2"           type="String"  path="PERLEGALNAME.8"/>
+            <Field name="lastname"             type="String"  path="PERLEGALNAME.9"/>
 
-# =====================
-# Name Info
-# =====================
-PERLEGALNAME:givenname1       = String
-PERLEGALNAME:givenname2       = String
-PERLEGALNAME:lastname         = String
-
-# =====================
-# Birth Date
-# =====================
-PERBIRTHDATE:dob              = Date
-
-# =====================
-# Gender
-# =====================
-PERGENDER:gender              = String
-
-END_INFORMATION_MODEL_MAP
+            <Field name="dob"                  type="Date"    path="PERBIRTHDATE.10"/>
+            <Field name="gender"               type="String"  path="PERGENDER.11"/>
+        </FieldMap>
+    </EntityType>
+</InfoModel>
