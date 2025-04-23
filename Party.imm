@@ -1,0 +1,41 @@
+INFORMATION_MODEL_MAP
+
+# =====================
+# Header Definitions
+# =====================
+MEMHEAD:srcCode                = String
+MEMHEAD:sourceRecno           = String
+MEMHEAD:adminsyskeytype       = String
+MEMHEAD:adminsyskeyid         = String
+
+# =====================
+# Document Info
+# =====================
+PERDOCUMENT:docGrpTypeCd      = String
+PERDOCUMENT:memIdnum          = String
+PERDOCUMENT:identifier        = String
+
+# =====================
+# Citizenship Info
+# =====================
+PERCITIZENSH:countryCd        = String
+PERCITIZENSH:ctznCountry      = String
+
+# =====================
+# Name Info
+# =====================
+PERLEGALNAME:givenname1       = String
+PERLEGALNAME:givenname2       = String
+PERLEGALNAME:lastname         = String
+
+# =====================
+# Birth Date
+# =====================
+PERBIRTHDATE:dob              = Date
+
+# =====================
+# Gender
+# =====================
+PERGENDER:gender              = String
+
+END_INFORMATION_MODEL_MAP
