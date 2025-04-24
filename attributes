@@ -1,0 +1,30 @@
+      <attributes>
+        <segattr attrrecno="768" attrcode="PERLEGALNAME" attrname="Per Legal Name" attrlabel="Per Legal Name" attrdesc="Per Legal Name" adtrole="0" nsactive="5" nsexists="10" msfilter="A" storageType="normal" segrecno="500" segcode="PERNAME" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="769" attrcode="PERGENDER" attrname="Per Gender" attrlabel="Per Gender" attrdesc="Per Gender" adtrole="0" nsactive="1" nsexists="1" msfilter="A" storageType="normal" segrecno="502" segcode="PERGENDER" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="770" attrcode="PERBIRTHDATE" attrname="Per DOB" attrlabel="Per DOB" attrdesc="Per DOB" adtrole="0" nsactive="1" nsexists="1" msfilter="A" storageType="normal" segrecno="501" segcode="PERDATE" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="771" attrcode="PERCITIZENSH" attrname="Per Citizenship" attrlabel="Per Citizenship" attrdesc="Per Citizenship" adtrole="0" nsactive="1" nsexists="1" msfilter="A" storageType="normal" segrecno="522" segcode="PERCITIZENSH" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="772" attrcode="PERDOCUMENT" attrname="Per Document" attrlabel="Per Document" attrdesc="Per Document" adtrole="0" nsactive="0" nsexists="0" msfilter="A" storageType="normal" segrecno="506" segcode="PERIDENT" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="773" attrcode="COUNTRYCD" attrname="Country Code" attrlabel="Country Code" attrdesc="Country Code" adtrole="0" nsactive="1" nsexists="1" msfilter="A" storageType="normal" segrecno="522" segcode="PERCITIZENSH" edtID="-1" edtcode="">
+    		<attributeSources />
+    		<attrSourcesExt />
+		</segattr>
+		<segattr attrrecno="774" attrcode="CTZNCOUNTRY" attrname="Citizenship Country" attrlabel="Citizenship Country" attrdesc="Citizenship Country" adtrole="0" nsactive="1" nsexists="1" msfilter="A" storageType="normal" segrecno="522" segcode="PERCITIZENSH" edtID="-1" edtcode="">
+    		<attributeSources />
+    		<attrSourcesExt />
+		</segattr>
+      </attributes>
