@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<engine-core-config version="1.10.0">
+  <keyRegistry>
+    <key keyValue="502" keyClasstype="com.initiatesystems.workbench.model.core.CoreInteraction" />
+    <key keyValue="12" keyClasstype="com.initiatesystems.workbench.model.core.CoreApplication" />
+    <key keyValue="101" keyClasstype="com.initiatesystems.workbench.model.core.CoreString" />
+    <key keyValue="24" keyClasstype="com.initiatesystems.workbench.model.core.CoreEntity" />
+    <key keyValue="4" keyClasstype="com.initiatesystems.workbench.model.core.CoreLinkStatus" />
+    <key keyValue="101" keyClasstype="com.initiatesystems.workbench.model.core.CoreTaskType" />
+    <key keyValue="101" keyClasstype="com.initiatesystems.workbench.model.core.CoreGroup" />
+    <key keyValue="7" keyClasstype="com.initiatesystems.workbench.model.core.CoreTaskStatus" />
+    <key keyValue="7" keyClasstype="com.initiatesystems.workbench.model.core.CoreMemberAlgorithm" />
+    <key keyValue="11" keyClasstype="com.initiatesystems.workbench.model.core.CoreMember" />
+    <key keyValue="4784" keyClasstype="com.initiatesystems.workbench.model.core.CoreSegmentAttributeSource" />
+    <key keyValue="523" keyClasstype="com.initiatesystems.workbench.model.core.CoreSegment" />
+    <key keyValue="776" keyClasstype="com.initiatesystems.workbench.model.core.CoreSegmentAttribute" />
+    <key keyValue="1051" keyClasstype="com.initiatesystems.workbench.model.core.CoreEventType" />
+    <key keyValue="7" keyClasstype="com.initiatesystems.workbench.model.core.CoreAppProp" />
+    <key keyValue="237" keyClasstype="com.initiatesystems.workbench.model.core.CoreField" />
+    <key keyValue="495" keyClasstype="com.initiatesystems.workbench.model.core.CoreCompositeView" />
+    <key keyValue="308" keyClasstype="com.initiatesystems.workbench.model.core.CoreSource" />
+    <key keyValue="16" keyClasstype="com.initiatesystems.workbench.model.core.CoreLinkType" />
+  </keyRegistry>
+  <sources />
+  <segments>
+    <seghead segcode="PERNAME" segname="mpi_pername" segrecno="500" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="168" fldname="lastname" fldlabel="Lastname" isrequired="false" ispkey="false" isvirtual="false" fldseqno="1" fldtype="VARCHAR" fldlength="100" />
+      <segxfld id="169" fldname="givenname1" fldlabel="Given Name 1" isrequired="false" ispkey="false" isvirtual="false" fldseqno="2" fldtype="VARCHAR" fldlength="100" />
+      <segxfld id="170" fldname="givenname2" fldlabel="Given Name 2" isrequired="false" ispkey="false" isvirtual="false" fldseqno="3" fldtype="VARCHAR" fldlength="100" />
+      <segxfld id="172" fldname="prefix" fldlabel="Prefix" isrequired="false" ispkey="false" isvirtual="false" fldseqno="4" fldtype="VARCHAR" fldlength="20" />
+      <segxfld id="202" fldname="suffix" fldlabel="Suffix" isrequired="false" ispkey="false" isvirtual="false" fldseqno="5" fldtype="VARCHAR" fldlength="20" />
+    </seghead>
+    <seghead segcode="PERDATE" segname="mpi_perdate" segrecno="501" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="174" fldname="val" fldlabel="Date Value" isrequired="true" ispkey="false" isvirtual="false" fldseqno="1" fldtype="VARCHAR" fldlength="19" />
+    </seghead>
+    <seghead segcode="PERGENDER" segname="mpi_pergender" segrecno="502" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="175" fldname="gender" fldlabel="Gender" isrequired="true" ispkey="false" isvirtual="false" fldseqno="1" fldtype="VARCHAR" fldlength="1" />
+    </seghead>
+    <seghead segcode="PERIDENT" segname="mpi_perident" segrecno="506" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="184" fldname="idnum" fldlabel="Document number" isrequired="true" ispkey="false" isvirtual="false" fldseqno="1" fldtype="VARCHAR" fldlength="50" />
+      <segxfld id="233" fldname="doctypetpcd" fldlabel="Document type code" isrequired="false" ispkey="false" isvirtual="false" fldseqno="2" fldtype="VARCHAR" fldlength="3" />
+      <segxfld id="201" fldname="docgrouptpcd" fldlabel="Document group type code" isrequired="false" ispkey="false" isvirtual="false" fldseqno="3" fldtype="VARCHAR" fldlength="3" />
+      <segxfld id="234" fldname="docicc" fldlabel="Document issuing country code" isrequired="false" ispkey="false" isvirtual="false" fldseqno="4" fldtype="VARCHAR" fldlength="5" />
+    </seghead>
+    <seghead segcode="ORGNAME" segname="mpi_orgname" segrecno="511" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="190" fldname="orgname" fldlabel="Name" isrequired="true" ispkey="false" isvirtual="false" fldseqno="1" fldtype="VARCHAR" fldlength="255" />
+    </seghead>
+    <seghead segcode="ORGADDR" segname="mpi_orgaddr" segrecno="513" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="192" fldname="addrline1" fldlabel="Address Line 1" isrequired="false" ispkey="false" isvirtual="false" fldseqno="1" fldtype="VARCHAR" fldlength="150" />
+      <segxfld id="193" fldname="addrline2" fldlabel="Address Line 2" isrequired="false" ispkey="false" isvirtual="false" fldseqno="2" fldtype="VARCHAR" fldlength="100" />
+      <segxfld id="194" fldname="addrline3" fldlabel="Address Line 3" isrequired="false" ispkey="false" isvirtual="false" fldseqno="3" fldtype="VARCHAR" fldlength="100" />
+      <segxfld id="225" fldname="addrline4" fldlabel="Address Line 4" isrequired="false" ispkey="false" isvirtual="false" fldseqno="4" fldtype="VARCHAR" fldlength="10" />
+      <segxfld id="214" fldname="residencenum" fldlabel="Residence/Unit Number" isrequired="false" ispkey="false" isvirtual="false" fldseqno="5" fldtype="VARCHAR" fldlength="10" />
+      <segxfld id="195" fldname="city" fldlabel="City" isrequired="false" ispkey="false" isvirtual="false" fldseqno="6" fldtype="VARCHAR" fldlength="100" />
+      <segxfld id="197" fldname="provstate" fldlabel="Province/State" isrequired="false" ispkey="false" isvirtual="false" fldseqno="7" fldtype="VARCHAR" fldlength="36" />
+      <segxfld id="196" fldname="postalcode" fldlabel="Postal Code" isrequired="false" ispkey="false" isvirtual="false" fldseqno="8" fldtype="VARCHAR" fldlength="100" />
+      <segxfld id="206" fldname="country" fldlabel="Country" isrequired="false" ispkey="false" isvirtual="false" fldseqno="9" fldtype="VARCHAR" fldlength="100" />
+      <segxfld id="207" fldname="latitude" fldlabel="Latitude" isrequired="false" ispkey="false" isvirtual="false" fldseqno="10" fldtype="VARCHAR" fldlength="10" />
+      <segxfld id="208" fldname="longitude" fldlabel="Longitude" isrequired="false" ispkey="false" isvirtual="false" fldseqno="11" fldtype="VARCHAR" fldlength="10" />
+      <segxfld id="226" fldname="plus4" fldlabel="plus4" isrequired="false" ispkey="false" isvirtual="false" fldseqno="12" fldtype="VARCHAR" fldlength="4" />
+    </seghead>
+    <seghead segcode="ORGIDENT" segname="mpi_orgident" segrecno="515" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="198" fldname="idnum" fldlabel="Identifier" isrequired="false" ispkey="false" isvirtual="false" fldseqno="1" fldtype="VARCHAR" fldlength="50" />
+      <segxfld id="213" fldname="expirydate" fldlabel="Expiry Date" isrequired="false" ispkey="false" isvirtual="false" fldseqno="2" fldtype="VARCHAR" fldlength="128" />
+    </seghead>
+    <seghead segcode="ORGPHONE" segname="mpi_orgphone" segrecno="516" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="217" fldname="phicc" fldlabel="International Calling code" isrequired="false" ispkey="false" isvirtual="false" fldseqno="1" fldtype="VARCHAR" fldlength="4" />
+      <segxfld id="218" fldname="pharea" fldlabel="Area code" isrequired="false" ispkey="false" isvirtual="false" fldseqno="2" fldtype="VARCHAR" fldlength="6" />
+      <segxfld id="219" fldname="refnum" fldlabel="Reference Number" isrequired="true" ispkey="false" isvirtual="false" fldseqno="3" fldtype="VARCHAR" fldlength="50" />
+      <segxfld id="220" fldname="phext" fldlabel="Extension" isrequired="false" ispkey="false" isvirtual="false" fldseqno="4" fldtype="VARCHAR" fldlength="8" />
+    </seghead>
+    <seghead segcode="ORGDATE" segname="mpi_orgdate" segrecno="517" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="200" fldname="val" fldlabel="Value" isrequired="false" ispkey="false" isvirtual="false" fldseqno="1" fldtype="VARCHAR" fldlength="128" />
+    </seghead>
+    <seghead segcode="ORGTYPE" segname="mpi_orgtype" segrecno="519" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="210" fldname="orgtype" fldlabel="Organization Type" isrequired="false" ispkey="false" isvirtual="false" fldseqno="1" fldtype="VARCHAR" fldlength="120" />
+    </seghead>
+    <seghead segcode="PERCITIZENSH" segname="mpi_percitizensh" segrecno="522" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="232" fldname="val" fldlabel="Value" isrequired="true" ispkey="false" isvirtual="false" fldseqno="1" fldtype="VARCHAR" fldlength="5" />
+    </seghead>
+  </segments>
+  <members>
+    <memtype-row memtypeno="8" memtype="ORG" memtypelabel="Organization" memtypecat="Organization" memtypedesc="DVDORG" dvdcode="DVDORG" dvddesc="DVDORG" dvdname="DVDORG" optputmode="false" hashistory="false">
+      <sources>
+        <srchead-member-row srcrecno="289" srcname="MDMS Organization" srccode="MDMSO" phycode="SRC289" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="8" recstat="A" defentprior="100" />
+        <srchead-member-row srcrecno="302" srcname="OASEC" srccode="OASEC" phycode="SRC302" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="8" recstat="A" defentprior="100" />
+        <srchead-member-row srcrecno="303" srcname="OBN15" srccode="OBN15" phycode="SRC303" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="8" recstat="A" defentprior="100" />
+        <srchead-member-row srcrecno="304" srcname="OCAR" srccode="OCAR" phycode="SRC304" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="8" recstat="A" defentprior="100" />
+        <srchead-member-row srcrecno="305" srcname="OTCP" srccode="OTCP" phycode="SRC305" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="8" recstat="A" defentprior="100" />
+        <srchead-member-row srcrecno="306" srcname="OUSC" srccode="OUSC" phycode="SRC306" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="8" recstat="A" defentprior="100" />
+      </sources>
+      <attributes>
+        <segattr attrrecno="749" attrcode="ORGBUSNAME" attrname="Org Business Name" attrlabel="Org Business Name" attrdesc="Org Business Name" adtrole="0" nsactive="1" nsexists="100" msfilter="A" storageType="normal" segrecno="511" segcode="ORGNAME" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="751" attrcode="ORGBUSADDR" attrname="Org Business Address" attrlabel="Org Business Address" attrdesc="Org Business Address" adtrole="0" nsactive="1" nsexists="100" msfilter="A" storageType="normal" segrecno="513" segcode="ORGADDR" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="753" attrcode="ORGABBRNAME" attrname="Org Abbreviated Name" attrlabel="Org Abbreviated Name" attrdesc="Org Abbreviated Name" adtrole="0" nsactive="1" nsexists="100" msfilter="A" storageType="normal" segrecno="511" segcode="ORGNAME" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="756" attrcode="ORGBUSPHONE" attrname="Org Business Phone" attrlabel="Org Business Phone" attrdesc="Org Business Phone" adtrole="0" nsactive="1" nsexists="0" msfilter="A" storageType="normal" segrecno="516" segcode="ORGPHONE" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="765" attrcode="ORGTYPE" attrname="Org Type" attrlabel="Org Type" attrdesc="Org Type" adtrole="0" nsactive="1" nsexists="1" msfilter="A" storageType="normal" segrecno="519" segcode="ORGTYPE" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+      </attributes>
+      <entities>
+        <enttype-row enttypeno="22" enttype="mdmorg" enttypelabel="Organization" enttypedesc="CMPORG" enttypecat="Organization" msfilter="AO" cmpcode="CMPORG" cmpname="CMPORG" cmpdesc="CMPORG" cmpargs="" isasync="true" istrans="true" hasique="true" hasoque="true" hasnote="true" hasxeia="true" hasxtsk="true" haslink="true" hasrule="true" autolinkss="true" minbktrole="0" maxbktrole="0" maxfreqcands="0" maxentsize="1000" ssalscore="78" sscrscore="78" dsalscore="78" dscrscore="78">
+          <sourcePriorities />
+        </enttype-row>
+      </entities>
+      <algorithms>
+        <algorithm file="ORG.alg" description="" state="active" />
+      </algorithms>
+      <compositeViews>
+        <cvwhead-row cvwname="EMCAorg" cvwrecno="1" cvwdesc="Entity Most current" cvwkind="E" maxrows="0" mcalevel="1" rsfilter="A" audlevel="0" restricted="false" cvwfunccode="" cvwfuncargs="" cvwtype="">
+          <viewFilters />
+        </cvwhead-row>
+        <cvwhead-row cvwname="MMCAorg" cvwrecno="2" cvwdesc="Member Most Current" cvwkind="M" maxrows="0" mcalevel="1" rsfilter="A" audlevel="0" restricted="false" cvwfunccode="" cvwfuncargs="" cvwtype="">
+          <viewFilters />
+        </cvwhead-row>
+      </compositeViews>
+    </memtype-row>
+    <memtype-row memtypeno="10" memtype="PERSON" memtypelabel="Person" memtypecat="Person" memtypedesc="DVDPER" dvdcode="DVDPER" dvddesc="DVDPER" dvdname="DVDPER" optputmode="false" hashistory="false">
+      <sources>
+        <srchead-member-row srcrecno="291" srcname="PH" srccode="PH" phycode="SRC291" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="10" recstat="A" defentprior="100" />
+        <srchead-member-row srcrecno="292" srcname="EXIS" srccode="EXIS" phycode="SRC292" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="10" recstat="A" defentprior="100" />
+        <srchead-member-row srcrecno="298" srcname="MDMSP" srccode="MDMSP" phycode="SRC298" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="10" recstat="A" defentprior="100" />
+        <srchead-member-row srcrecno="299" srcname="IBAS" srccode="IBAS" phycode="SRC299" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="10" recstat="A" defentprior="100" />
+        <srchead-member-row srcrecno="300" srcname="ICES" srccode="ICES" phycode="SRC300" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="10" recstat="A" defentprior="100" />
+        <srchead-member-row srcrecno="301" srcname="PAXIS" srccode="PAXIS" phycode="SRC301" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="10" recstat="A" defentprior="100" />
+        <srchead-member-row srcrecno="307" srcname="GEC" srccode="GEC" phycode="SRC307" srctype="D" minlen="0" maxlen="128" richeck="false" pocmpcode="" poscore="0" isvirtual="false" memtypeno="10" recstat="A" defentprior="100" />
+      </sources>
+      <attributes>
+        <segattr attrrecno="768" attrcode="PERLEGALNAME" attrname="Per Legal Name" attrlabel="Per Legal Name" attrdesc="Per Legal Name" adtrole="0" nsactive="5" nsexists="10" msfilter="A" storageType="normal" segrecno="500" segcode="PERNAME" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="769" attrcode="PERGENDER" attrname="Per Gender" attrlabel="Per Gender" attrdesc="Per Gender" adtrole="0" nsactive="1" nsexists="1" msfilter="A" storageType="normal" segrecno="502" segcode="PERGENDER" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="770" attrcode="PERBIRTHDATE" attrname="Per DOB" attrlabel="Per DOB" attrdesc="Per DOB" adtrole="0" nsactive="1" nsexists="1" msfilter="A" storageType="normal" segrecno="501" segcode="PERDATE" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="771" attrcode="PERCITIZENSH" attrname="Per Citizenship" attrlabel="Per Citizenship" attrdesc="Per Citizenship" adtrole="0" nsactive="1" nsexists="1" msfilter="A" storageType="normal" segrecno="522" segcode="PERCITIZENSH" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+        <segattr attrrecno="772" attrcode="PERDOCUMENT" attrname="Per Document" attrlabel="Per Document" attrdesc="Per Document" adtrole="0" nsactive="0" nsexists="0" msfilter="A" storageType="normal" segrecno="506" segcode="PERIDENT" edtID="-1" edtcode="">
+          <attributeSources />
+          <attrSourcesExt />
+        </segattr>
+      </attributes>
+      <entities>
+        <enttype-row enttypeno="23" enttype="mdmper" enttypelabel="Person" enttypedesc="Person" enttypecat="Person" msfilter="AO" cmpcode="CMPPER" cmpname="CMPPER" cmpdesc="CMPPER" cmpargs="" isasync="true" istrans="true" hasique="true" hasoque="true" hasnote="true" hasxeia="true" hasxtsk="true" haslink="true" hasrule="true" autolinkss="true" minbktrole="0" maxbktrole="0" maxfreqcands="0" maxentsize="2000" ssalscore="280" sscrscore="237" dsalscore="280" dscrscore="237">
+          <sourcePriorities />
+        </enttype-row>
+      </entities>
+      <algorithms>
+        <algorithm file="PERSON.alg" description="" state="active" />
+      </algorithms>
+      <compositeViews>
+        <cvwhead-row cvwname="EMCAper" cvwrecno="165" cvwdesc="Entity Most Current Attribute" cvwkind="E" maxrows="0" mcalevel="1" rsfilter="A" audlevel="0" restricted="false" cvwfunccode="" cvwfuncargs="" cvwtype="">
+          <viewFilters />
+        </cvwhead-row>
+        <cvwhead-row cvwname="MMCAper" cvwrecno="166" cvwdesc="Member Most Current Attribute" cvwkind="M" maxrows="0" mcalevel="1" rsfilter="A" audlevel="0" restricted="false" cvwfunccode="" cvwfuncargs="" cvwtype="">
+          <viewFilters />
+        </cvwhead-row>
+      </compositeViews>
+    </memtype-row>
+  </members>
+  <strings>
+    <strhead-row strcode="ACNAME" id="1" strtype="ANON" strname="ACNAME" strdesc="Anon Company Names" minlen="0" maxlen="0" freqtot="0" strfile="acname.txt" />
+    <strhead-row strcode="ADDR-TOK" id="2" strtype="WORD" strname="ADDR-TOK-name" strdesc="ADDR-TOK-desc" minlen="0" maxlen="0" freqtot="0" strfile="addr-tok.txt" />
+    <strhead-row strcode="ADDR2-TOK" id="3" strtype="WORD" strname="ADDR2-TOK-name" strdesc="ADDR2-TOK-desc" minlen="0" maxlen="0" freqtot="0" strfile="addr2-tok.txt" />
+    <strhead-row strcode="BKTANON" id="6" strtype="ANON" strname="BKTANON" strdesc="New string code description" minlen="0" maxlen="0" freqtot="0" strfile="bktanon.txt" />
+    <strhead-row strcode="BXNM-ABS" id="7" strtype="EQUI" strname="BXNM-ABS-name" strdesc="BXNM-ABS-desc" minlen="0" maxlen="0" freqtot="0" strfile="bxnm-abs.txt" />
+    <strhead-row strcode="BXNM-TOK" id="8" strtype="WORD" strname="BXNM-TOK-name" strdesc="BXNM-TOK-desc" minlen="0" maxlen="0" freqtot="0" strfile="bxnm-tok.txt" />
+    <strhead-row strcode="CMAP-ADDR" id="9" strtype="CMAP" strname="CMAP-ADDR-name" strdesc="CMAP-ADDR-desc" minlen="0" maxlen="0" freqtot="0" strfile="cmap-addr.txt" />
+    <strhead-row strcode="CMAP-BXNM" id="10" strtype="CMAP" strname="CMAP-BXNM-name" strdesc="CMAP-BXNM-desc" minlen="0" maxlen="0" freqtot="0" strfile="cmap-bxnm.txt" />
+    <strhead-row strcode="CMAP-CJKCXNM" id="11" strtype="CMAP" strname="CMAP-CJKCXNM-name" strdesc="CMAP-CJKCXNM-desc" minlen="0" maxlen="0" freqtot="0" strfile="cmap-cjkcxnm.txt" />
+    <strhead-row strcode="CMAP-CXNM" id="12" strtype="CMAP" strname="CMAP-CXNM-name" strdesc="CMAP-CXNM-desc" minlen="0" maxlen="0" freqtot="0" strfile="cmap-cxnm.txt" />
+    <strhead-row strcode="CMAP-PXNM" id="13" strtype="CMAP" strname="CMAP-PXNM-name" strdesc="CMAP-PXNM-desc" minlen="0" maxlen="0" freqtot="0" strfile="cmap-pxnm.txt" />
+    <strhead-row strcode="CNICKNAME" id="14" strtype="EQUI" strname="CNICKNAME" strdesc="Company Name Equi" minlen="0" maxlen="0" freqtot="0" strfile="cnickname.txt" />
+    <strhead-row strcode="DATE" id="15" strtype="ANON" strname="DATE" strdesc="New string code description" minlen="0" maxlen="0" freqtot="0" strfile="date.txt" />
+    <strhead-row strcode="DATE2" id="16" strtype="EQUI" strname="DATE2" strdesc="New string code description" minlen="0" maxlen="0" freqtot="0" strfile="date2.txt" />
+    <strhead-row strcode="GENDER" id="31" strtype="EQUI" strname="GENDER" strdesc="New string code description" minlen="0" maxlen="0" freqtot="0" strfile="gender.txt" />
+    <strhead-row strcode="PATTERNSET" id="33" strtype="SET" strname="PATTERNSET" strdesc="New string code description" minlen="0" maxlen="0" freqtot="0" strfile="patternset.txt" />
+    <strhead-row strcode="PHONE" id="34" strtype="ANON" strname="PHONE" strdesc="New string code description" minlen="0" maxlen="0" freqtot="0" strfile="phone.txt" />
+    <strhead-row strcode="POSTCODE" id="35" strtype="ANON" strname="POSTCODE" strdesc="New string code description" minlen="0" maxlen="0" freqtot="0" strfile="postcode.txt" />
+    <strhead-row strcode="PXNM-DGR" id="36" strtype="WORD" strname="PXNM-DGR-name" strdesc="PXNM-DGR-desc" minlen="0" maxlen="0" freqtot="0" strfile="pxnm-dgr.txt" />
+    <strhead-row strcode="PXNM-FNJ" id="37" strtype="WORD" strname="PXNM-FNJ-name" strdesc="PXNM-FNJ-desc" minlen="0" maxlen="0" freqtot="0" strfile="pxnm-fnj.txt" />
+    <strhead-row strcode="PXNM-LNJ" id="38" strtype="WORD" strname="PXNM-LNJ-name" strdesc="PXNM-LNJ-desc" minlen="0" maxlen="0" freqtot="0" strfile="pxnm-lnj.txt" />
+    <strhead-row strcode="PXNM-MNJ" id="39" strtype="WORD" strname="PXNM-MNJ-name" strdesc="PXNM-MNJ-desc" minlen="0" maxlen="0" freqtot="0" strfile="pxnm-mnj.txt" />
+    <strhead-row strcode="PXNM-PFX" id="40" strtype="WORD" strname="PXNM-PFX-name" strdesc="PXNM-PFX-desc" minlen="0" maxlen="0" freqtot="0" strfile="pxnm-pfx.txt" />
+    <strhead-row strcode="PXNM-SFX" id="41" strtype="WORD" strname="PXNM-SFX-name" strdesc="PXNM-SFX-desc" minlen="0" maxlen="0" freqtot="0" strfile="pxnm-sfx.txt" />
+    <strhead-row strcode="AXPAPTSET" id="46" strtype="SET" strname="AXPAPTSET" strdesc="AXP Apt codes" minlen="0" maxlen="0" freqtot="0" strfile="axpaptset.txt" />
+    <strhead-row strcode="DVDORG-BR2" id="55" strtype="FREQ" strname="DVDORG-BR2" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdorg-br2.txt" />
+    <strhead-row strcode="DVDORG-BR3" id="56" strtype="FREQ" strname="DVDORG-BR3" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdorg-br3.txt" />
+    <strhead-row strcode="DVDORG-BR4" id="57" strtype="FREQ" strname="DVDORG-BR4" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdorg-br4.txt" />
+    <strhead-row strcode="DVDORG-BR5" id="58" strtype="FREQ" strname="DVDORG-BR5" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdorg-br5.txt" />
+    <strhead-row strcode="DVDORG-BR1" id="63" strtype="FREQ" strname="DVDORG-BR1" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdorg-br1.txt" />
+    <strhead-row strcode="ADDR2-MANON" id="70" strtype="ANON" strname="ADDR2-MANON" strdesc="ADDR2-MANON" minlen="0" maxlen="0" freqtot="0" strfile="addr2-manon.txt" />
+    <strhead-row strcode="DVDORG-BR6" id="72" strtype="FREQ" strname="DVDORG-BR6" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdorg-br6.txt" />
+    <strhead-row strcode="DVDORG-BR7" id="73" strtype="FREQ" strname="DVDORG-BR7" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdorg-br7.txt" />
+    <strhead-row strcode="DVDPER-BR1" id="76" strtype="FREQ" strname="DVDPER-BR1" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdper-br1.txt" />
+    <strhead-row strcode="DVDPER-BR2" id="77" strtype="FREQ" strname="DVDPER-BR2" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdper-br2.txt" />
+    <strhead-row strcode="DVDPER-BR3" id="78" strtype="FREQ" strname="DVDPER-BR3" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdper-br3.txt" />
+    <strhead-row strcode="DVDPER-BR4" id="79" strtype="FREQ" strname="DVDPER-BR4" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdper-br4.txt" />
+    <strhead-row strcode="DVDPER-BR5" id="80" strtype="FREQ" strname="DVDPER-BR5" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdper-br5.txt" />
+    <strhead-row strcode="DVDPER-BR6" id="81" strtype="FREQ" strname="DVDPER-BR6" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdper-br6.txt" />
+    <strhead-row strcode="DVDPER-BR7" id="82" strtype="FREQ" strname="DVDPER-BR7" strdesc="Used for frequency-based bucketing" minlen="0" maxlen="0" freqtot="0" strfile="dvdper-br7.txt" />
+    <strhead-row strcode="NICKNAME" id="83" strtype="EQUI" strname="NICKNAME" strdesc="New string code description" minlen="0" maxlen="0" freqtot="0" strfile="nickname.txt" />
+    <strhead-row strcode="ANON_NAME" id="84" strtype="ANON" strname="ANON_NAME" strdesc="ANON_NAME" minlen="0" maxlen="0" freqtot="0" strfile="anon_name.txt" />
+    <strhead-row strcode="ANON_DOCNUM" id="85" strtype="ANON" strname="ANON_DOCNUM" strdesc="ANON_DOCNUM" minlen="0" maxlen="0" freqtot="0" strfile="anon_docnum.txt" />
+    <strhead-row strcode="ANON_ADDR1" id="92" strtype="ANON" strname="ANON_ADDR1" strdesc="ANON_ADDR1" minlen="0" maxlen="0" freqtot="0" strfile="anon_addr1.txt" />
+    <strhead-row strcode="ANON_ZIP_4_CC" id="94" strtype="ANON" strname="ANON_ZIP_4_CC" strdesc="ANON_ZIP_4_CC" minlen="0" maxlen="0" freqtot="0" strfile="anon_zip_4_cc.txt" />
+    <strhead-row strcode="BKT_CNICKNAME" id="97" strtype="EQUI" strname="BKT_CNICKNAME" strdesc="BKT_CNICKNAME" minlen="0" maxlen="0" freqtot="0" strfile="bkt_cnickname.txt" />
+    <strhead-row strcode="EQUI_ADDRTOK" id="98" strtype="EQUI" strname="EQUI_ADDRTOK" strdesc="EQUI_ADDRTOK" minlen="0" maxlen="0" freqtot="0" strfile="equi_addrtok.txt" />
+    <strhead-row strcode="EQUI_CNICKNAME" id="99" strtype="EQUI" strname="EQUI_CNICKNAME" strdesc="EQUI_CNICKNAME" minlen="0" maxlen="0" freqtot="0" strfile="equi_cnickname.txt" />
+    <strhead-row strcode="ANON_CITYST" id="100" strtype="ANON" strname="ANON_CITYST" strdesc="New string code description" minlen="0" maxlen="0" freqtot="0" strfile="anon_cityst.txt" />
+  </strings>
+  <edts />
+  <taskTypes>
+    <tsktype-row tsktype="Potential Overlay" tsktypeno="1" tsktypelabel="1" tsktypecat="1" tskkind="M" islinking="true" iscontent="false" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="Potential Duplicate" tsktypeno="2" tsktypelabel="2" tsktypecat="2" tskkind="E" islinking="true" iscontent="false" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="Potential Linkage" tsktypeno="3" tsktypelabel="3" tsktypecat="3" tskkind="E" islinking="true" iscontent="false" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="Review Identifier" tsktypeno="4" tsktypelabel="4" tsktypecat="4" tskkind="E" islinking="true" iscontent="false" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="PreMerge" tsktypeno="5" tsktypelabel="5" tsktypecat="5" tskkind="M" islinking="false" iscontent="true" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="HasShadow" tsktypeno="6" tsktypelabel="6" tsktypecat="6" tskkind="M" islinking="false" iscontent="true" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="Multiplicity Relationship" tsktypeno="50" tsktypelabel="50" tsktypecat="50" tskkind="R" islinking="false" iscontent="false" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="Missing Relationship" tsktypeno="51" tsktypelabel="51" tsktypecat="51" tskkind="R" islinking="false" iscontent="false" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="Relationship Creation" tsktypeno="52" tsktypelabel="52" tsktypecat="52" tskkind="R" islinking="false" iscontent="false" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="Invalid Reference" tsktypeno="53" tsktypelabel="53" tsktypecat="53" tskkind="S" islinking="false" iscontent="false" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="Implementation Defined Task" tsktypeno="100" tsktypelabel="100" tsktypecat="100" tskkind="I" islinking="false" iscontent="false" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="Maximum Entity Size" tsktypeno="7" tsktypelabel="7" tsktypecat="7" tskkind="E" islinking="true" iscontent="false" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+    <tsktype-row tsktype="Potential Glue Member" tsktypeno="8" tsktypelabel="8" tsktypecat="8" tskkind="E" islinking="true" iscontent="false" initialtskstatno="1" supervisortype="N" supervisorrecno="0" expdays="0" />
+  </taskTypes>
+  <taskStatuses>
+    <tskstat-row tskstat="Unexamined" tskstatno="1" tskstatlabel="1" tskstatcat="UNEXAMINED" isresolved="false" isdeletable="true" isupdatable="true" recstat="A" />
+    <tskstat-row tskstat="Resolved" tskstatno="2" tskstatlabel="2" tskstatcat="RESOLVED" isresolved="true" isdeletable="true" isupdatable="true" recstat="A" />
+    <tskstat-row tskstat="Deferred" tskstatno="3" tskstatlabel="3" tskstatcat="DEFERRED" isresolved="false" isdeletable="true" isupdatable="true" recstat="A" />
+    <tskstat-row tskstat="OB-Sent" tskstatno="4" tskstatlabel="4" tskstatcat="OB-SENT" isresolved="S" isdeletable="true" isupdatable="true" recstat="A" />
+    <tskstat-row tskstat="OB-Reject" tskstatno="5" tskstatlabel="5" tskstatcat="OB-REJECT" isresolved="S" isdeletable="true" isupdatable="true" recstat="A" />
+    <tskstat-row tskstat="Expired" tskstatno="6" tskstatlabel="6" tskstatcat="EXPIRED" isresolved="false" isdeletable="true" isupdatable="true" recstat="A" />
+  </taskStatuses>
+  <linkTypes>
+    <eiatype-row eiatype="AutoLink-SS" eiatypeno="1" eiatypelabel="1" eiatypecat="1" eiakind="E" />
+    <eiatype-row eiatype="AutoLink-MS" eiatypeno="2" eiatypelabel="2" eiatypecat="2" eiakind="E" />
+    <eiatype-row eiatype="AutoUnlink" eiatypeno="3" eiatypelabel="3" eiatypecat="3" eiakind="E" />
+    <eiatype-row eiatype="ManuLink-SS" eiatypeno="4" eiatypelabel="4" eiatypecat="4" eiakind="E" />
+    <eiatype-row eiatype="ManuLink-MS" eiatypeno="5" eiatypelabel="5" eiatypecat="5" eiakind="E" />
+    <eiatype-row eiatype="ManuUnlink" eiatypeno="6" eiatypelabel="6" eiatypecat="6" eiakind="E" />
+    <eiatype-row eiatype="Merge" eiatypeno="7" eiatypelabel="7" eiatypecat="7" eiakind="M" />
+    <eiatype-row eiatype="Unmerge" eiatypeno="8" eiatypelabel="8" eiatypecat="8" eiakind="M" />
+    <eiatype-row eiatype="Delete" eiatypeno="9" eiatypelabel="9" eiatypecat="9" eiakind="M" />
+    <eiatype-row eiatype="Undelete" eiatypeno="10" eiatypelabel="10" eiatypecat="10" eiakind="M" />
+    <eiatype-row eiatype="NoChange" eiatypeno="11" eiatypelabel="11" eiatypecat="11" eiakind="B" />
+    <eiatype-row eiatype="Premerge" eiatypeno="12" eiatypelabel="12" eiatypecat="12" eiakind="M" />
+    <eiatype-row eiatype="Add" eiatypeno="13" eiatypelabel="13" eiatypecat="13" eiakind="E" />
+    <eiatype-row eiatype="TSUpdReprocess" eiatypeno="14" eiatypelabel="14" eiatypecat="14" eiakind="E" />
+    <eiatype-row eiatype="TSAutoRelink" eiatypeno="15" eiatypelabel="15" eiatypecat="15" eiakind="E" />
+  </linkTypes>
+  <linkStatuses>
+    <eiastat-row eiastat="Unexamined" eiastatno="1" eiastatlabel="1" eiastatcat="UNEXAMINED" isresolved="false" isdeletable="true" isupdatable="true" />
+    <eiastat-row eiastat="Examined-OK" eiastatno="2" eiastatlabel="2" eiastatcat="EXAMINED-OK" isresolved="true" isdeletable="true" isupdatable="true" />
+    <eiastat-row eiastat="Examined-ERROR" eiastatno="3" eiastatlabel="3" eiastatcat="EXAMINED-ERROR" isresolved="true" isdeletable="true" isupdatable="true" />
+  </linkStatuses>
+  <eventTypes>
+    <evttype-row evttype="000" evttypeno="0" evttypelabel="0" evttypecat="NON-EVENT" />
+    <evttype-row evttype="A01" evttypeno="1" evttypelabel="1" evttypecat="REGISTRATION" />
+    <evttype-row evttype="A02" evttypeno="2" evttypelabel="2" evttypecat="OTHER" />
+    <evttype-row evttype="A03" evttypeno="3" evttypelabel="3" evttypecat="OTHER" />
+    <evttype-row evttype="A04" evttypeno="4" evttypelabel="4" evttypecat="REGISTRATION" />
+    <evttype-row evttype="A05" evttypeno="5" evttypelabel="5" evttypecat="OTHER" />
+    <evttype-row evttype="A06" evttypeno="6" evttypelabel="6" evttypecat="OTHER" />
+    <evttype-row evttype="A07" evttypeno="7" evttypelabel="7" evttypecat="OTHER" />
+    <evttype-row evttype="A08" evttypeno="8" evttypelabel="8" evttypecat="UPDATE" />
+    <evttype-row evttype="A09" evttypeno="9" evttypelabel="9" evttypecat="OTHER" />
+    <evttype-row evttype="A10" evttypeno="10" evttypelabel="10" evttypecat="OTHER" />
+    <evttype-row evttype="A11" evttypeno="11" evttypelabel="11" evttypecat="OTHER" />
+    <evttype-row evttype="A12" evttypeno="12" evttypelabel="12" evttypecat="OTHER" />
+    <evttype-row evttype="A13" evttypeno="13" evttypelabel="13" evttypecat="OTHER" />
+    <evttype-row evttype="A14" evttypeno="14" evttypelabel="14" evttypecat="OTHER" />
+    <evttype-row evttype="A15" evttypeno="15" evttypelabel="15" evttypecat="UPDATE" />
+    <evttype-row evttype="A16" evttypeno="16" evttypelabel="16" evttypecat="UPDATE" />
+    <evttype-row evttype="A17" evttypeno="17" evttypelabel="17" evttypecat="UPDATE" />
+    <evttype-row evttype="A18" evttypeno="18" evttypelabel="18" evttypecat="MERGE" />
+    <evttype-row evttype="A34" evttypeno="34" evttypelabel="18" evttypecat="A34" />
+    <evttype-row evttype="ADD" evttypeno="100" evttypelabel="100" evttypecat="ADD" />
+    <evttype-row evttype="CHG" evttypeno="101" evttypelabel="101" evttypecat="CHANGE" />
+    <evttype-row evttype="MRG" evttypeno="102" evttypelabel="102" evttypecat="MERGE" />
+    <evttype-row evttype="DEL" evttypeno="103" evttypelabel="103" evttypecat="DELETE" />
+    <evttype-row evttype="C" evttypeno="1000" evttypelabel="MEMBER CREATED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="R" evttypeno="1001" evttypelabel="MEMBER REPROCESSED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="U" evttypeno="1002" evttypelabel="MEMBER UPDATED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="M" evttypeno="1003" evttypelabel="MEMBER MERGED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="N" evttypeno="1004" evttypelabel="MEMBER UNMERGED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="D" evttypeno="1005" evttypelabel="MEMBER DELETED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="P" evttypeno="1006" evttypelabel="MEMBER UNDELETED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="V" evttypeno="1008" evttypelabel="MEMBER UNLINKED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="L" evttypeno="1009" evttypelabel="MEMBER LINKED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="A" evttypeno="1010" evttypelabel="ENTITY CREATED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="W" evttypeno="1011" evttypelabel="ENTITY DELETED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="S" evttypeno="1012" evttypelabel="ENTITY UPDATED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="T" evttypeno="1013" evttypelabel="TASK CREATED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="Y" evttypeno="1014" evttypelabel="TASK UPDATED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="Z" evttypeno="1015" evttypelabel="TASK RESOLVED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="Q" evttypeno="1016" evttypelabel="TASK DELETED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="I" evttypeno="1017" evttypelabel="RELATIONSHIP CREATED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="J" evttypeno="1018" evttypelabel="RELATIONSHIP DELETED" evttypecat="EVENT NOTIFICATION" />
+    <evttype-row evttype="K" evttypeno="1019" evttypelabel="RELATIONSHIP UPDATED" evttypecat="EVENT NOTIFICATION" />
+  </eventTypes>
+  <applications filter="apprecno != 10 and apprecno != 11">
+    <apphead-row appname="Enterprise Viewer" apprecno="1" />
+    <apphead-row appname="Workbench" apprecno="5" />
+    <apphead-row appname="Scheduler" apprecno="6" />
+    <apphead-row appname="Extractor" apprecno="7" />
+    <apphead-row appname="Identity Hub Reports" apprecno="8">
+      <appprop-row id="4" propname="reports.operational" propval="operationalOutstandingTaskCountBySource" segrecno="0" therecno="14" recstat="A" />
+      <appprop-row id="5" propname="reports.operational" propval="operationalAssignedTaskCountByOwner" segrecno="0" therecno="15" recstat="A" />
+      <appprop-row id="6" propname="reports.operational" propval="operationalTaskCountByTagType" segrecno="0" therecno="16" recstat="A" />
+    </apphead-row>
+  </applications>
+  <interactions>
+    <ixnhead-row ixnname="MEMGET" ixnrecno="1" ixnlabel="Get Member" ixncat="CAT" ixncode="MEMGET" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="MEMPUT" ixnrecno="2" ixnlabel="Update Member" ixncat="CAT" ixncode="MEMPUT" libcode="LIB0" audlevel="2" issingle="false" />
+    <ixnhead-row ixnname="MEMDROP" ixnrecno="3" ixnlabel="Drop Member" ixncat="CAT" ixncode="MEMDROP" libcode="LIB0" audlevel="2" issingle="false" />
+    <ixnhead-row ixnname="MEMMATCH" ixnrecno="4" ixnlabel="Match Members" ixncat="CAT" ixncode="MEMMATCH" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="MEMSEARCH" ixnrecno="5" ixnlabel="Search Members" ixncat="CAT" ixncode="MEMSEARCH" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="MEMCOMPARE" ixnrecno="6" ixnlabel="Compare Members" ixncat="CAT" ixncode="MEMCOMPARE" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="MEMMERGE" ixnrecno="7" ixnlabel="Merge Members" ixncat="CAT" ixncode="MEMMERGE" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="MEMUNMERGE" ixnrecno="8" ixnlabel="Un-merge Members" ixncat="CAT" ixncode="MEMUNMERGE" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="MEMPUTQUAL" ixnrecno="9" ixnlabel="Update Member Qualified" ixncat="CAT" ixncode="MEMPUTQUAL" libcode="LIB0" audlevel="2" issingle="false" />
+    <ixnhead-row ixnname="MEMCOMPUTE" ixnrecno="11" ixnlabel="Compute Member Data" ixncat="CAT" ixncode="MEMCOMPUTE" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="MEMGENKEY" ixnrecno="12" ixnlabel="Special" ixncat="CAT" ixncode="MEMGENKEY" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="MEMDELETE" ixnrecno="13" ixnlabel="Delete Member" ixncat="CAT" ixncode="MEMDELETE" libcode="LIB0" audlevel="2" issingle="false" />
+    <ixnhead-row ixnname="MEMUNDELETE" ixnrecno="14" ixnlabel="Un-delete Member" ixncat="CAT" ixncode="MEMUNDELETE" libcode="LIB0" audlevel="2" issingle="false" />
+    <ixnhead-row ixnname="MEMCREATE" ixnrecno="15" ixnlabel="Create Member" ixncat="CAT" ixncode="MEMCREATE" libcode="LIB0" audlevel="2" issingle="false" />
+    <ixnhead-row ixnname="MEMPOSTIT" ixnrecno="16" ixnlabel="Manage Member Notes" ixncat="CAT" ixncode="MEMPOSTIT" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="MEMPUTBULK" ixnrecno="17" ixnlabel="Update Member Bulk" ixncat="CAT" ixncode="MEMPUTBULK" libcode="LIB0" audlevel="2" issingle="false" />
+    <ixnhead-row ixnname="MEMSEARCHEXT" ixnrecno="18" ixnlabel="Search Members Extended" ixncat="CAT" ixncode="MEMSEARCHEXT" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="EIAGET" ixnrecno="21" ixnlabel="Get Linkage Audit Data" ixncat="CAT" ixncode="EIAGET" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="EIAPUT" ixnrecno="22" ixnlabel="Update Linkage Audit Data" ixncat="CAT" ixncode="EIAPUT" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="EIASEARCH" ixnrecno="23" ixnlabel="Search Linkage Audit Data" ixncat="CAT" ixncode="EIASEARCH" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="TSKGET" ixnrecno="31" ixnlabel="Get Task" ixncat="CAT" ixncode="TSKGET" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="TSKPUT" ixnrecno="32" ixnlabel="Update Task" ixncat="CAT" ixncode="TSKPUT" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="TSKSEARCH" ixnrecno="33" ixnlabel="Search Tasks" ixncat="CAT" ixncode="TSKSEARCH" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="DICGET" ixnrecno="41" ixnlabel="Get Dictionary Data" ixncat="CAT" ixncode="DICGET" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="DICPUT" ixnrecno="42" ixnlabel="Update Dictionary Data" ixncat="CAT" ixncode="DICPUT" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="DICGENKEY" ixnrecno="43" ixnlabel="Special" ixncat="CAT" ixncode="DICGENKEY" libcode="LIB0" audlevel="1" issingle="true" />
+    <ixnhead-row ixnname="USRGETINFO" ixnrecno="45" ixnlabel="Get User Data" ixncat="CAT" ixncode="USRGETINFO" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="APPGETINFO" ixnrecno="46" ixnlabel="Get Application Data" ixncat="CAT" ixncode="APPGETINFO" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="NETGETINFO" ixnrecno="47" ixnlabel="Get Network Data" ixncat="CAT" ixncode="NETGETINFO" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="GRPGETINFO" ixnrecno="49" ixnlabel="Get Group Data" ixncat="CAT" ixncode="GRPGETINFO" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="AUDGET" ixnrecno="51" ixnlabel="Get Audit Data" ixncat="CAT" ixncode="AUDGET" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="AUDPUT" ixnrecno="52" ixnlabel="Update Audit Data" ixncat="CAT" ixncode="AUDPUT" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="AUDSEARCH" ixnrecno="53" ixnlabel="Search Audit Data" ixncat="CAT" ixncode="AUDSEARCH" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="ENGSETINFO" ixnrecno="54" ixnlabel="Set Engine Data" ixncat="CAT" ixncode="ENGSETINFO" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="ENGGETINFO" ixnrecno="55" ixnlabel="Get Engine Data" ixncat="CAT" ixncode="ENGGETINFO" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="AUDSEARCHHIST" ixnrecno="61" ixnlabel="Search Audit History" ixncat="CAT" ixncode="AUDSEARCHHIST" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="MEMGETHIST" ixnrecno="62" ixnlabel="Get Member History" ixncat="CAT" ixncode="MEMGETHIST" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="RELGETHIST" ixnrecno="63" ixnlabel="Get Relationship History" ixncat="CAT" ixncode="RELGETHIST" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="MPXINIT" ixnrecno="71" ixnlabel="MPX Initialization" ixncat="CAT" ixncode="MPXINIT" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="MPIRETSK" ixnrecno="72" ixnlabel="Batch Task Generation" ixncat="CAT" ixncode="MPIRETSK" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="MPILOADI" ixnrecno="73" ixnlabel="Special" ixncat="CAT" ixncode="MPILOADI" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="MPILOADU" ixnrecno="74" ixnlabel="Special" ixncat="CAT" ixncode="MPILOADU" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="ENTMNGMEM" ixnrecno="75" ixnlabel="Special" ixncat="CAT" ixncode="ENTMNGMEM" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="RELGET" ixnrecno="76" ixnlabel="Special" ixncat="CAT" ixncode="RELGET" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="RELSEARCHCOUNT" ixnrecno="77" ixnlabel="Special" ixncat="CAT" ixncode="RELSEARCHCOUNT" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="RELPUT" ixnrecno="78" ixnlabel="Special" ixncat="CAT" ixncode="RELPUT" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="RELDELETE" ixnrecno="79" ixnlabel="Special" ixncat="CAT" ixncode="RELDELETE" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="MEMSCORE" ixnrecno="80" ixnlabel="Score Members" ixncat="CAT" ixncode="MEMSCORE" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="NATIVE" ixnrecno="81" ixnlabel="Special" ixncat="CAT" ixncode="NATIVE" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="RELLINKER" ixnrecno="82" ixnlabel="Relationship Linker" ixncat="CAT" ixncode="RELLINKER" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="RELTSKSEARCH" ixnrecno="83" ixnlabel="Relationship Task Search" ixncat="CAT" ixncode="RELTSKSEARCH" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="RELTSKRESOLVE" ixnrecno="84" ixnlabel="Relationship Task Resolve" ixncat="CAT" ixncode="RELTSKRESOLVE" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="RELTSKDELETE" ixnrecno="85" ixnlabel="Relationship Task Delete" ixncat="CAT" ixncode="RELTSKDELETE" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="RELTSKGET" ixnrecno="86" ixnlabel="Relationship Task Get" ixncat="CAT" ixncode="RELTSKGET" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="RELSEARCH" ixnrecno="87" ixnlabel="Relationship Search" ixncat="CAT" ixncode="RELSEARCH" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="RELPATHTOROOT" ixnrecno="88" ixnlabel="Relationship Path to Root" ixncat="CAT" ixncode="RELPATHTOROOT" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="TAGENGINE" ixnrecno="89" ixnlabel="Tag Engine" ixncat="CAT" ixncode="TAGENGINE" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="TAGGET" ixnrecno="90" ixnlabel="Tag Get" ixncat="CAT" ixncode="TAGGET" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="TAGPUT" ixnrecno="91" ixnlabel="Tag Put" ixncat="CAT" ixncode="TAGPUT" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="TAGDELETE" ixnrecno="92" ixnlabel="Tag Delete" ixncat="CAT" ixncode="TAGDELETE" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="TSKSEARCHCOUNT" ixnrecno="93" ixnlabel="Task Search Count" ixncat="CAT" ixncode="TSKSEARCHCOUNT" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="TSKPUTBYCRITERIA" ixnrecno="94" ixnlabel="Task Put by Criteria" ixncat="CAT" ixncode="TSKPUTBYCRITERIA" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="TAGRESET" ixnrecno="95" ixnlabel="Tag Reset" ixncat="CAT" ixncode="TAGRESET" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="MEMUNPUT" ixnrecno="105" ixnlabel="Undo Memput" ixncat="CAT" ixncode="MEMUNPUT" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="MEMUNDO" ixnrecno="106" ixnlabel="Member Undo" ixncat="CAT" ixncode="MEMUNDO" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="RELMOVE" ixnrecno="107" ixnlabel="Relationship Move" ixncat="CAT" ixncode="RELMOVE" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="QUEPUT" ixnrecno="108" ixnlabel="Output Queue Put" ixncat="CAT" ixncode="QUEPUT" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="QUEGET" ixnrecno="109" ixnlabel="Output Queue Get" ixncat="CAT" ixncode="QUEGET" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="QUERESET" ixnrecno="110" ixnlabel="Output Queue Reset" ixncat="CAT" ixncode="QUERESET" libcode="LIB0" audlevel="0" issingle="false" />
+    <ixnhead-row ixnname="MEMTEXTSEARCH" ixnrecno="111" ixnlabel="Full Text Member Search" ixncat="CAT" ixncode="MEMTEXTSEARCH" libcode="LIB0" audlevel="1" issingle="false" />
+    <ixnhead-row ixnname="MEMTERMSEARCH" ixnrecno="112" ixnlabel="Full Text Member Term Search" ixncat="CAT" ixncode="MEMTERMSEARCH" libcode="LIB0" audlevel="1" issingle="false" />
+  </interactions>
+  <groups />
+  <relTypes />
+  <handlers />
+  <segxdats />
+  <eventDests />
+</engine-core-config>
