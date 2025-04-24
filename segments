@@ -1,0 +1,24 @@
+  <segments>
+    <seghead segcode="PERNAME" segname="mpi_pername" segrecno="500" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="168" fldname="lastname" fldlabel="Lastname" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="100" />
+      <segxfld id="169" fldname="givenname1" fldlabel="Given Name 1" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="100" />
+      <segxfld id="170" fldname="givenname2" fldlabel="Given Name 2" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="100" />
+    </seghead>
+    <seghead segcode="PERDATE" segname="mpi_perdate" segrecno="501" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="174" fldname="val" fldlabel="Date Value" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="19" />
+    </seghead>
+    <seghead segcode="PERGENDER" segname="mpi_pergender" segrecno="502" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="175" fldname="gender" fldlabel="Gender" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="1" />
+    </seghead>
+    <seghead segcode="PERIDENT" segname="mpi_perident" segrecno="506" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="184" fldname="idnum" fldlabel="Document Number" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="50" />
+      <segxfld id="233" fldname="doctypetpcd" fldlabel="Document Type Code" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="3" />
+      <segxfld id="201" fldname="docgrouptpcd" fldlabel="Document Group Type Code" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="3" />
+      <segxfld id="234" fldname="docicc" fldlabel="Document Issue Country Code" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="5" />
+    </seghead>
+    <seghead segcode="PERCITIZENSH" segname="mpi_percitizensh" segrecno="522" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="232" fldname="val" fldlabel="Citizenship Country Code" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="5" />
+      <segxfld id="235" fldname="countryCd" fldlabel="Country Code" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="5" />
+      <segxfld id="236" fldname="ctznCountry" fldlabel="Citizenship Country" isrequired="false" ispkey="false" isvirtual="false" fldseqno="0" fldtype="VARCHAR" fldlength="5" />
+    </seghead>
+  </segments>
