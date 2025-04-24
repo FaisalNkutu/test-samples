@@ -1,0 +1,9 @@
+<segattr attrrecno="773" attrcode="COUNTRYCD" attrname="Country Code" attrlabel="Country Code" attrdesc="Country Code" adtrole="0" nsactive="1" nsexists="1" msfilter="A" storageType="normal" segrecno="522" segcode="PERCITIZENSH" edtID="-1" edtcode="">
+    <attributeSources />
+    <attrSourcesExt />
+</segattr>
+
+<segattr attrrecno="774" attrcode="CTZNCOUNTRY" attrname="Citizenship Country" attrlabel="Citizenship Country" attrdesc="Citizenship Country" adtrole="0" nsactive="1" nsexists="1" msfilter="A" storageType="normal" segrecno="522" segcode="PERCITIZENSH" edtID="-1" edtcode="">
+    <attributeSources />
+    <attrSourcesExt />
+</segattr>
