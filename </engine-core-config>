@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<engine-core-config version="1.10.0">
+  <keyRegistry>
+    <key keyValue="502" keyClasstype="com.initiatesystems.workbench.model.core.CoreInteraction" />
+    <key keyValue="12" keyClasstype="com.initiatesystems.workbench.model.core.CoreApplication" />
+    <key keyValue="101" keyClasstype="com.initiatesystems.workbench.model.core.CoreString" />
+    <key keyValue="24" keyClasstype="com.initiatesystems.workbench.model.core.CoreEntity" />
+    <key keyValue="4" keyClasstype="com.initiatesystems.workbench.model.core.CoreLinkStatus" />
+    <key keyValue="7" keyClasstype="com.initiatesystems.workbench.model.core.CoreMemberAlgorithm" />
+    <key keyValue="11" keyClasstype="com.initiatesystems.workbench.model.core.CoreMember" />
+    <key keyValue="523" keyClasstype="com.initiatesystems.workbench.model.core.CoreSegment" />
+    <key keyValue="776" keyClasstype="com.initiatesystems.workbench.model.core.CoreSegmentAttribute" />
+  </keyRegistry>
+
+  <segments>
+    <seghead segcode="PERNAME" segname="mpi_pername" segrecno="500" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="168" fldname="lastname" fldlabel="Lastname" fldtype="VARCHAR" fldlength="100" fldseqno="1" />
+      <segxfld id="169" fldname="givenname1" fldlabel="Given Name 1" fldtype="VARCHAR" fldlength="100" fldseqno="2" />
+      <segxfld id="170" fldname="givenname2" fldlabel="Given Name 2" fldtype="VARCHAR" fldlength="100" fldseqno="3" />
+    </seghead>
+
+    <seghead segcode="PERDATE" segname="mpi_perdate" segrecno="501" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="174" fldname="val" fldlabel="Date Value" fldtype="VARCHAR" fldlength="19" fldseqno="1" />
+    </seghead>
+
+    <seghead segcode="PERGENDER" segname="mpi_pergender" segrecno="502" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="175" fldname="gender" fldlabel="Gender" fldtype="VARCHAR" fldlength="1" fldseqno="1" />
+    </seghead>
+
+    <seghead segcode="PERIDENT" segname="mpi_perident" segrecno="506" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="184" fldname="idnum" fldlabel="Document Number" fldtype="VARCHAR" fldlength="50" fldseqno="1" />
+      <segxfld id="233" fldname="doctypetpcd" fldlabel="Document Type Code" fldtype="VARCHAR" fldlength="3" fldseqno="2" />
+      <segxfld id="201" fldname="docgrouptpcd" fldlabel="Document Group Type Code" fldtype="VARCHAR" fldlength="3" fldseqno="3" />
+      <segxfld id="234" fldname="docicc" fldlabel="Document Issue Country Code" fldtype="VARCHAR" fldlength="5" fldseqno="4" />
+    </seghead>
+
+    <seghead segcode="PERCITIZENSH" segname="mpi_percitizensh" segrecno="522" segverno="0" editable="true" objcode="mem" hashistory="false">
+      <segxfld id="232" fldname="val" fldlabel="Citizenship Country" fldtype="VARCHAR" fldlength="5" fldseqno="1" />
+    </seghead>
+  </segments>
+
+  <members>
+    <memtype-row memtypeno="10" memtype="PERSON" memtypelabel="Person" memtypecat="Person" memtypedesc="DVDPER" dvdcode="DVDPER" dvddesc="DVDPER" dvdname="DVDPER">
+      <attributes>
+        <segattr attrrecno="768" attrcode="PERLEGALNAME" attrname="Per Legal Name" attrlabel="Per Legal Name" attrdesc="Per Legal Name" segrecno="500" segcode="PERNAME" />
+        <segattr attrrecno="769" attrcode="PERGENDER" attrname="Per Gender" attrlabel="Per Gender" attrdesc="Per Gender" segrecno="502" segcode="PERGENDER" />
+        <segattr attrrecno="770" attrcode="PERBIRTHDATE" attrname="Per DOB" attrlabel="Per DOB" attrdesc="Per DOB" segrecno="501" segcode="PERDATE" />
+        <segattr attrrecno="771" attrcode="PERCITIZENSH" attrname="Per Citizenship" attrlabel="Per Citizenship" attrdesc="Per Citizenship" segrecno="522" segcode="PERCITIZENSH" />
+        <segattr attrrecno="772" attrcode="PERDOCUMENT" attrname="Per Document" attrlabel="Per Document" attrdesc="Per Document" segrecno="506" segcode="PERIDENT" />
+      </attributes>
+      <entities>
+        <enttype-row enttypeno="23" enttype="mdmper" enttypelabel="Person" enttypedesc="Person" enttypecat="Person" />
+      </entities>
+      <algorithms>
+        <algorithm file="PERSON.alg" description="" state="active" />
+      </algorithms>
+    </memtype-row>
+  </members>
+</engine-core-config>
