@@ -1,0 +1,32 @@
+<algorithm>
+  <rule>
+    <if>
+      <and>
+        <exists attr="PERDOCUMENT" />
+      </and>
+    </if>
+    <then>
+      <!-- Doc Type Equivalence -->
+      <compare attr="PERDOCUMENT.doctypetpcd" func="Equivalence" weight="15" name="Doc Type Equiv" />
+
+      <!-- Doc Number Match -->
+      <compare attr="PERDOCUMENT.idnum" func="Equivalence" weight="25" name="Document Number Match" />
+      <compare attr="PERDOCUMENT.idnum" func="FalsePositiveFilter" weight="0" />
+
+      <!-- Doc Issue Country Code Match -->
+      <compare attr="PERDOCUMENT.docicc" func="Equivalence" weight="10" name="Country Match" />
+
+      <!-- Optional: Composite logic or thresholds can be added here -->
+    </then>
+  </rule>
+
+  <!-- Bucketing to limit comparisons to similar documents -->
+  <bucket>
+    <key>
+      <attr name="PERDOCUMENT.doctypetpcd" />
+      <attr name="PERDOCUMENT.idnum" />
+      <attr name="PERDOCUMENT.docicc" />
+    </key>
+    <group name="DocType+ID+Country Bucket" />
+  </bucket>
+</algorithm>
