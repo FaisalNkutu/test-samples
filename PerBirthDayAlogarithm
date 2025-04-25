@@ -1,0 +1,17 @@
+<rule>
+  <if>
+    <and>
+      <exists attr="PERBIRTHDATE" />
+    </and>
+  </if>
+  <then>
+    <!-- Exact format YYYYMMDD match -->
+    <compare attr="PERBIRTHDATE.val" func="YYYYMMDD" weight="30" />
+
+    <!-- Date format equivalence: e.g., 01/02/1980 vs 1980-02-01 -->
+    <compare attr="PERBIRTHDATE.val" func="Date" weight="25" />
+
+    <!-- False positive filtering, zero weight but safeguards match noise -->
+    <compare attr="PERBIRTHDATE.val" func="FalsePositiveFilter" weight="0" />
+  </then>
+</rule>
