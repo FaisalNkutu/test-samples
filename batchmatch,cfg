@@ -1,0 +1,53 @@
+###############################################################################
+# Batch Match Configuration
+###############################################################################
+
+# Name of your IMM project (the .imm file you have been building)
+immConfig=Person IMM
+
+# Data file containing your input records (.unl file)
+sourceFile=persondata.unl
+
+# Match results output file (this will be created after matching)
+resultFile=personmatch.out
+
+# Entity Type (normally 'PERSON' based on your IMM)
+entityType=PERSON
+
+# The Review File where possible matches for human review will be written
+reviewFile=person_review.out
+
+# The AutoMerge File where matches that exceed merge threshold will be written
+automergeFile=person_automerge.out
+
+# Weight File (your customized weights file)
+weightFile=mpi_wgt4dim_full_plus_country.unl
+
+# Match Thresholds
+# The minimum score to be considered a possible match
+reviewThreshold=70
+
+# The minimum score to automatically merge two records
+autoMergeThreshold=90
+
+# Batch size (as you asked earlier)
+batchSize=5000
+
+# Log file to capture batchmatch process logs
+logFile=batchmatch.log
+
+###############################################################################
+# Optional Settings (default is fine unless you want to fine-tune)
+###############################################################################
+
+# Whether to log progress details (true/false)
+verboseLogging=true
+
+# Whether to generate diagnostics information (useful for troubleshooting)
+generateDiagnostics=false
+
+# Maximum memory to allocate (depends on your environment)
+maxMemory=2048
+
+# Whether to automatically purge temporary files after match
+autoPurgeTempFiles=true
