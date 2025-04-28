@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AutoMergeProfile version="1.0">
+    <Profile name="PersonAutoMerge">
+        <Description>AutoMerge Profile for PERSON member type</Description>
+        <MemberType>PERSON</MemberType>
+        <Threshold>28.0</Threshold>  <!-- Records scoring 28.0 or above are auto-merged -->
+        <MergeRules>
+            <Rule attribute="PERLEGALNAME" action="MERGE" />
+            <Rule attribute="PERBIRTHDATE" action="MERGE" />
+            <Rule attribute="PERGENDER" action="MERGE" />
+            <Rule attribute="PERDOCUMENT" action="MERGE" />
+            <Rule attribute="PERCITIZENSH" action="MERGE" />
+            <Rule attribute="COUNTRYCD" action="MERGE" />
+            <Rule attribute="CTZNCOUNTRY" action="MERGE" />
+        </MergeRules>
+    </Profile>
+</AutoMergeProfile>
