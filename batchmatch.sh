@@ -1,0 +1,12 @@
+batchmatch.sh \
+-d /opt/IBM/MDM \
+-u mdmuser \
+-p mdmpassword \
+-i /path/to/persondata.unl \
+-r /path/to/person_review.rev \
+-a /path/to/person_automerge_profile.xml \
+-m PERSON \
+-s Batch \
+-t Default \
+-l /path/to/match_log.txt \
+-b 5000
