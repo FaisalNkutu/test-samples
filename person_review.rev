@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReviewFile version="1.0">
+    <ReviewProfile name="PersonReview">
+        <Description>Review Profile for PERSON member type</Description>
+        <MemberType>PERSON</MemberType>
+        <Threshold>23.7</Threshold>  <!-- Records scoring 23.7 or above go to review -->
+        <Bucketed>false</Bucketed>   <!-- Optional: if you used bucketing, change to true -->
+        <Scoring>
+            <Score name="PERLEGALNAME" weight="100" />
+            <Score name="PERBIRTHDATE" weight="100" />
+            <Score name="PERGENDER" weight="100" />
+            <Score name="PERDOCUMENT" weight="100" />
+            <Score name="PERCITIZENSH" weight="90" />
+            <Score name="COUNTRYCD" weight="90" />
+            <Score name="CTZNCOUNTRY" weight="90" />
+        </Scoring>
+    </ReviewProfile>
+</ReviewFile>
