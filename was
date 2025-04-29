@@ -1,0 +1,6 @@
+Failed to create the task chain. The specified input does not exist: /home/fxn703/batch/input
+./batchmatch.sh: line 3: /home/fxn703/batch/input/persondata.unl: Permission denied
+./batchmatch.sh: line 4: /home/fxn703/batch/config/person_review.rev: Permission denied
+./batchmatch.sh: line 5: /home/fxn703/batch/config/person_automerge_profile.xml: Permission denied
+./batchmatch.sh: line 6: /home/fxn703/batch/logs/match_log.txt: Permission denied
+./batchmatch.sh: line 7: 5000: command not found
