@@ -1,0 +1,3 @@
+#!/bin/bash
+/disk/apps/mdm/BatchProcessor/bin/runbatch.sh \
+-d /disk/apps/websphere/AppServer -u fxn703 -p 12JuneSummer969 -i persondata.unl -r person_review.rev -a person_automerge_profile.xml -m PERSON -s Batch -t Default -l match_log.txt -b 5000
