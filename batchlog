@@ -1,0 +1,145 @@
+MDM Logger factory being used is com.dwl.base.logging.DWLLog4jLoggerFactory
+log4j:ERROR setFile(null,true) call failed.
+java.io.FileNotFoundException: /disk/apps/mdm/BatchProcessor/logs/Batch.log (Permission denied)
+        at java.io.FileOutputStream.open0(Native Method)
+        at java.io.FileOutputStream.open(FileOutputStream.java:286)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:226)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:144)
+        at org.apache.log4j.FileAppender.setFile(FileAppender.java:294)
+        at org.apache.log4j.RollingFileAppender.setFile(RollingFileAppender.java:207)
+        at org.apache.log4j.FileAppender.activateOptions(FileAppender.java:165)
+        at org.apache.log4j.config.PropertySetter.activate(PropertySetter.java:307)
+        at org.apache.log4j.config.PropertySetter.setProperties(PropertySetter.java:172)
+        at org.apache.log4j.config.PropertySetter.setProperties(PropertySetter.java:104)
+        at org.apache.log4j.PropertyConfigurator.parseAppender(PropertyConfigurator.java:809)
+        at org.apache.log4j.PropertyConfigurator.parseCategory(PropertyConfigurator.java:735)
+        at org.apache.log4j.PropertyConfigurator.configureRootCategory(PropertyConfigurator.java:615)
+        at org.apache.log4j.PropertyConfigurator.doConfigure(PropertyConfigurator.java:502)
+        at org.apache.log4j.PropertyConfigurator.doConfigure(PropertyConfigurator.java:547)
+        at org.apache.log4j.PropertyConfigurator.configure(PropertyConfigurator.java:415)
+        at com.dwl.base.logging.DWLLog4jLogger.<clinit>(DWLLog4jLogger.java:89)
+        at com.dwl.base.logging.DWLLog4jLoggerFactory.getLogger(DWLLog4jLoggerFactory.java:91)
+        at com.dwl.base.logging.DWLLog4jLoggerFactory.getLogger(DWLLog4jLoggerFactory.java:82)
+        at com.dwl.base.logging.DWLLoggerManager.getLogger(DWLLoggerManager.java:123)
+        at com.dwl.batchframework.BatchController.<clinit>(BatchController.java:145)
+log4j:ERROR setFile(null,true) call failed.
+java.io.FileNotFoundException: /disk/apps/mdm/BatchProcessor/logs/Activity.log (Permission denied)
+        at java.io.FileOutputStream.open(FileOutputStream.java:286)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:226)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:144)
+        at org.apache.log4j.FileAppender.setFile(FileAppender.java:294)
+        at org.apache.log4j.RollingFileAppender.setFile(RollingFileAppender.java:207)
+        at org.apache.log4j.FileAppender.activateOptions(FileAppender.java:165)
+        at org.apache.log4j.config.PropertySetter.activate(PropertySetter.java:307)
+        at org.apache.log4j.config.PropertySetter.setProperties(PropertySetter.java:172)
+        at org.apache.log4j.config.PropertySetter.setProperties(PropertySetter.java:104)
+        at org.apache.log4j.PropertyConfigurator.parseAppender(PropertyConfigurator.java:809)
+        at org.apache.log4j.PropertyConfigurator.parseCategory(PropertyConfigurator.java:735)
+        at org.apache.log4j.PropertyConfigurator.parseCatsAndRenderers(PropertyConfigurator.java:639)
+        at org.apache.log4j.PropertyConfigurator.doConfigure(PropertyConfigurator.java:504)
+        at org.apache.log4j.PropertyConfigurator.doConfigure(PropertyConfigurator.java:547)
+        at org.apache.log4j.PropertyConfigurator.configure(PropertyConfigurator.java:415)
+        at com.dwl.base.logging.DWLLog4jLogger.<clinit>(DWLLog4jLogger.java:89)
+        at com.dwl.base.logging.DWLLog4jLoggerFactory.getLogger(DWLLog4jLoggerFactory.java:91)
+        at com.dwl.base.logging.DWLLog4jLoggerFactory.getLogger(DWLLog4jLoggerFactory.java:82)
+        at com.dwl.base.logging.DWLLoggerManager.getLogger(DWLLoggerManager.java:123)
+        at com.dwl.batchframework.BatchController.<clinit>(BatchController.java:145)
+---------------
+Usage #1
+---------------
+  Purpose
+    Printing out this help information.
+  Syntax
+    runbatch <-? | -help>
+
+---------------
+Usage #2
+---------------
+  Purpose
+    Running a batch with a single input file
+  Syntax
+    runbatch inputURL outputURL [<batch_ext>
+        | <batch_ext> <batchLoadPropertyFile>
+        | <batch_ext> <batchLoadPropertyFile> <instance>]
+  Parameters
+    inputURL: The URL resource to use as input source, such as the input
+        file name.
+    outputURL: The URL resource to use as output source, such as the output
+        folder or file (depending on the interpretation of the writer)
+    batch_ext: The name of the batch extension properties file (without the
+        file extension .properties). The batch extension properties file
+        contains additional batch run properties that override
+        Batch.properties file. The properties file must be available in the
+        classpath of batch client.
+    batchLoadPropertyFile: The name of the batch load properties file that
+        resides on the server (without the file extension .properties). The
+        batch load properties file contains the properties that can be set
+        on the context that is passed to the server application instance.
+        The properties file must be available in the classpath of the
+        server application.
+    instance: The instance name. This instance is a prefix added to a
+        property in the batch load properties file (see the
+        batchLoadPropertyFile parameter). The instance serves as a grouping
+        of related properties, enabling a single batch load properties file
+        to contain different groupings of properties. By specifying this
+        argument, the batch load properties that are prefixed by this
+        instance name will be used.
+
+---------------
+Usage #3
+---------------
+  Purpose
+    Running a batch with multiple input files
+  Syntax
+    runbatch
+  Description
+    The Batch Processor reads the SIF_INPUT_PATH, SIF_INPUT_FILE_NAMES, and
+    SIF_OUTPUT_PATH properties in the Batch.properties file and processes
+    the files one by one.
+
+---------------
+Usage #4
+---------------
+  Purpose
+    Running a batch with one or more job definition file
+  Syntax
+    runbatch -job [-name <name>] <job file1> [job file2] [job file3] ...
+  Description
+    The Batch Processor creates a job chain with the given name and job
+    definition files and then processes the specified jobs. If the name
+    is not specified, a descriptive name will be generated.
+
+---------------
+Usage #5
+---------------
+  Purpose
+    Restarting a job chain
+  Syntax
+    runbatch <-restart | -restartWithErrors> <processId>
+  Parameters
+    -restart: Restart the task chain from where it was stopped
+    -restartWithErrors: Restart the task chain from where it was stopped
+         and retry the failed transactions
+    processId: The process id of the task chain to be restarted
+
+---------------
+Usage #6
+---------------
+  Purpose
+    Stopping a job chain
+  Syntax
+    runbatch -stop <processId>
+  Parameters
+    processId: The process id of the task chain to be stopped
+
+---------------
+Usage #7
+---------------
+  Purpose
+    Processing the next due task chain
+  Syntax
+    runbatch null null
+  Description
+    The Batch Processor checks if there is any task chain due now. If there
+    is, then the Batch Processor will process one of the task chains that
+    is due.
