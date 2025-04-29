@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReviewProfile name="person_review_profile">
+  <MatchType>PERSON</MatchType>
+  <Thresholds>
+    <!-- Records with score >= 90 will be automatically merged -->
+    <!-- Records with score between 70 and 89 will be sent for review -->
+    <Threshold>
+      <LowerBound>70</LowerBound>
+      <UpperBound>89</UpperBound>
+      <Action>Review</Action>
+    </Threshold>
+  </Thresholds>
+</ReviewProfile>
