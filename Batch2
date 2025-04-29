@@ -1,0 +1,12 @@
+# Set environment variables for the classpath
+export MDM_HOME="/home/fxn703"
+export CLASSPATH="$MDM_HOME/lib/*:$MDM_HOME/config:$MDM_HOME/classes"
+
+# Java command using the MDM Match Processor class
+java -Xms512m -Xmx2048m \
+  -Ddwldbuser=fxn703 \
+  -Dlog4j.configuration=file:$MDM_HOME/config/log4j.properties \
+  com.dwl.tcrm.batch.match.TCRMBatchMatch \
+  -d $MDM_HOME \
+  -u fxn703 \
+  -p yourPasswordHere
