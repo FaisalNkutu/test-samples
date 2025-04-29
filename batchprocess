@@ -1,0 +1,914 @@
+[was@ec01ld6632 batch]$ ./batchmatch.sh
+MDM Logger factory being used is com.dwl.base.logging.DWLLog4jLoggerFactory
+Task chain is created for the batch: processId = 734174596220843530; number of tasks = 1
+Processing task chain: processId = 734174596220843530; number of remaining tasks = 1
+Task id(s): [177474596221055101]
+------ Process task #1 - 177474596221055101 ------
+Task name: Pure Batch
+The system reads the input file: /home/was/batch/input/persondata.unl
+The system writes to the output file: /home/was/batch/output/persondata
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 1; processorID = ParseAndExecuteConsumer; messageID = 8; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>4</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>978274596221193101</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.933</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 1 Message ID: 8
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 2; processorID = ParseAndExecuteConsumer; messageID = 17; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>44</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>916774596221194301</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.974</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 2 Message ID: 17
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 3; processorID = ParseAndExecuteConsumer; messageID = 1; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>2</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>685874596221199101</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.991</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 3 Message ID: 1
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 4; processorID = ParseAndExecuteConsumer; messageID = 23; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>12</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>707574596221193301</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.935</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 4 Message ID: 23
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 5; processorID = ParseAndExecuteConsumer; messageID = 26; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>29</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>692674596221194401</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.96</ControlExtensionProperty>               </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 5 Message ID: 26
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 6; processorID = ParseAndExecuteConsumer; messageID = 4; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>58</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>496374596221193201</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.972</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 7; processorID = ParseAndExecuteConsumer; messageID = 15; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>2</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>956474596221200701</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.008</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 8; processorID = ParseAndExecuteConsumer; messageID = 9; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>43</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>614074596221198301</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.016</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 9; processorID = ParseAndExecuteConsumer; messageID = 7; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>3</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>767274596221203701</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.038</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 10; processorID = ParseAndExecuteConsumer; messageID = 3; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>11</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>365774596221199501</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.996</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 6 Message ID: 4
+Faulty record: 7 Message ID: 15
+Faulty record: 8 Message ID: 9
+Faulty record: 9 Message ID: 7
+Faulty record: 10 Message ID: 3
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 11; processorID = ParseAndExecuteConsumer; messageID = 25; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>2</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>218774596221204301</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.043</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 12; processorID = ParseAndExecuteConsumer; messageID = 10; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>9</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>417774596221204401</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.051</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 13; processorID = ParseAndExecuteConsumer; messageID = 32; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>2</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>966674596221199101</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.992</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 14; processorID = ParseAndExecuteConsumer; messageID = 13; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>48</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>814474596221193501</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.96</ControlExtensionProperty>               </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 11 Message ID: 25
+Faulty record: 12 Message ID: 10
+Faulty record: 13 Message ID: 32
+Faulty record: 14 Message ID: 13
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 15; processorID = ParseAndExecuteConsumer; messageID = 24; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>5</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>124874596221204401</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.047</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 16; processorID = ParseAndExecuteConsumer; messageID = 14; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>9</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>152974596221195301</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.958</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 17; processorID = ParseAndExecuteConsumer; messageID = 28; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>17</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>148474596221198901</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.993</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 18; processorID = ParseAndExecuteConsumer; messageID = 30; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>2</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>355674596221204001</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.041</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 19; processorID = ParseAndExecuteConsumer; messageID = 19; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>12</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>942874596221199301</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.995</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 20; processorID = ParseAndExecuteConsumer; messageID = 29; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>85</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>205074596221200101</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.016</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 21; processorID = ParseAndExecuteConsumer; messageID = 18; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>22</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>655474596221198301</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.003</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 15 Message ID: 24
+Faulty record: 16 Message ID: 14
+Faulty record: 17 Message ID: 28
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 22; processorID = ParseAndExecuteConsumer; messageID = 21; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>2</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>344274596221199001</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.991</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 18 Message ID: 30
+Faulty record: 19 Message ID: 19
+Faulty record: 20 Message ID: 29
+Faulty record: 21 Message ID: 18
+Faulty record: 22 Message ID: 21
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 23; processorID = ParseAndExecuteConsumer; messageID = 27; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>21</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>132374596221199901</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.011</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 24; processorID = ParseAndExecuteConsumer; messageID = 20; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>22</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>251074596221197801</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.98</ControlExtensionProperty>               </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 23 Message ID: 27
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 25; processorID = ParseAndExecuteConsumer; messageID = 16; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>43</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>898074596221194501</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.974</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 24 Message ID: 20
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 26; processorID = ParseAndExecuteConsumer; messageID = 6; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>59</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>278374596221193401</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.974</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 25 Message ID: 16
+Faulty record: 26 Message ID: 6
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 27; processorID = ParseAndExecuteConsumer; messageID = 2; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>38</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>983774596221194401</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.959</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 28; processorID = ParseAndExecuteConsumer; messageID = 12; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>19</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>992274596221194501</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.959</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 27 Message ID: 2
+Faulty record: 28 Message ID: 12
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 29; processorID = ParseAndExecuteConsumer; messageID = 5; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>58</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>163074596221195201</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.008</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 30; processorID = ParseAndExecuteConsumer; messageID = 22; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>7</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>455174596221199901</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:12.001</ControlExtensionProperty>              </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 31; processorID = ParseAndExecuteConsumer; messageID = 31; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>41</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>469274596221194601</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.96</ControlExtensionProperty>               </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+ERROR     - [Exception_BatchController_ExceptionCount:] CDKBC2006E:Exception occurred: count = 32; processorID = ParseAndExecuteConsumer; messageID = 11; additional error message = <?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+        <ResponseControl>
+                <ResultCode>FATAL</ResultCode>
+                <ServiceTime>53</ServiceTime>
+                <DWLControl>
+                        <requesterLanguage>100</requesterLanguage>
+                        <requesterLocale>en</requesterLocale>
+                        <requestID>869074596221193201</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-04-29 17:30:11.96</ControlExtensionProperty>               </DWLControl>
+        </ResponseControl>
+        <TxResponse>
+                <RequestType>processTx</RequestType>
+                <TxResult>
+                        <ResultCode>FATAL</ResultCode>
+                        <DWLError>
+                                <ComponentType>106</ComponentType>
+                                <ErrorMessage>Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.</ErrorMessage>
+                                <ErrorType>READERR</ErrorType>
+                                <LanguageCode>100</LanguageCode>
+                                <ReasonCode>4928</ReasonCode>
+                                <Severity>0</Severity>
+                                <Throwable>com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null.</Throwable>
+                        </DWLError>
+                </TxResult>
+        </TxResponse>
+</TCRMService>
+Faulty record: 29 Message ID: 5
+Faulty record: 30 Message ID: 22
+Faulty record: 31 Message ID: 31
+Faulty record: 32 Message ID: 11
+The system finished processing. Read 32 records and processed 32 records (successful = 0, failures = 32); Time spent (in milliseconds) = 945
+--------------------------------------------------
+./batchmatch.sh: line 3: /home/was/batch/input/persondata.unl: Permission denied
+./batchmatch.sh: line 4: /home/was/batch/config/person_review.rev: Permission denied
+./batchmatch.sh: line 5: /home/was/batch/config/person_automerge_profile.xml: Permission denied
+./batchmatch.sh: line 6: /home/was/batch/logs/match_log.txt: Permission denied
+[was@ec01ld6632 batch]$ nano /home/was/batch/input/persondata.unl
+[was@ec01ld6632 batch]$ whoami
+was
