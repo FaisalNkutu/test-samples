@@ -5,3 +5,17 @@
   -in /home/fxn703/batch/input/persondata.unl \
   -out /home/fxn703/batch/output/matched_results.out \
   -log /home/fxn703/batch/logs/match_log.txt
+
+
+
+[fxn703@ec01ld6632 batch]$ ./batchmatch.sh
+./batchmatch.sh: line 4: /opt/IBM/MDM/scripts/BatchProcessor.sh: No such file or directory
+[fxn703@ec01ld6632 batch]$ find /disk/apps/websphere/AppServer -name "*Batch*.sh" 2>/dev/null
+/disk/apps/websphere/AppServer/bin/JspBatchCompiler.sh
+/disk/apps/websphere/AppServer/bin/WSBatchPackager.sh
+/disk/apps/websphere/AppServer/profiles/Dmgr/bin/JspBatchCompiler.sh
+/disk/apps/websphere/AppServer/profiles/Dmgr/bin/WSBatchPackager.sh
+/disk/apps/websphere/AppServer/profiles/MDM32/bin/JspBatchCompiler.sh
+/disk/apps/websphere/AppServer/profiles/MDM32/bin/WSBatchPackager.sh
+/disk/apps/websphere/AppServer/profiles/MDM32-2/bin/JspBatchCompiler.sh
+/disk/apps/websphere/AppServer/profiles/MDM32-2/bin/WSBatchPackager.sh
