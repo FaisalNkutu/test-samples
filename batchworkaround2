@@ -1,0 +1,7 @@
+cp /disk/apps/websphere/AppServer/profiles/MDM32/config/bundlecache/com.ibm.mdm.mds.api.app_11.6.0.11/*.jar /home/fxn703/mdm-pme/lib/
+cp /disk/apps/websphere/AppServer/profiles/MDM32/config/bundlecache/*/Party.pmeConfig_*.jar /home/fxn703/mdm-pme/lib/
+cp /disk/apps/websphere/AppServer/profiles/MDM32/config/bundlecache/*/mdmpme.config.ext_*.jar /home/fxn703/mdm-pme/lib/
+
+ls -l /home/fxn703/mdm-pme/lib/
+jar tf /home/fxn703/mdm-pme/lib/com.ibm.mdm.mds.pme.api_11.6.0.11-202001172108.jar | grep -i batch
+jar tf /home/fxn703/mdm-pme/lib/com.ibm.mdm.mds.pme.api_11.6.0.11-202001172108.jar | grep -i batch
