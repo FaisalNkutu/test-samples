@@ -1,0 +1,14 @@
+{
+  "PartyType": "Person",
+  "FirstName": "KOMAL",
+  "MiddleName": "CHRISTINA KAUR",
+  "LastName": "BAHIA",
+  "BirthDate": "1992-08-08",
+  "Gender": "1",
+  "Document": {
+    "DocumentType": "13",
+    "DocumentNumber": "AN972945",
+    "IssuingCountry": "268"
+  },
+  "Citizenship": "31"
+}
