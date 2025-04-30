@@ -1,0 +1,83 @@
+Thank you for the update — let’s fix this completely.
+
+If SoapUI still doesn’t show requests after importing the simplified project, then it’s likely:
+
+### 🔍 Root Cause:
+The `.xml` file is still being treated as a **SoapUI Test Suite project**, not a native **REST request project**.
+
+---
+
+## ✅ Definitive Fix: Build It Manually (Takes 2 Minutes)
+
+Here's how to **manually create the REST test** in SoapUI that always works:
+
+---
+
+### ✅ Step-by-Step (Manual Creation)
+
+#### 🧩 Step 1: Create a New REST Project
+
+1. Open SoapUI
+2. Go to: **File → New REST Project**
+3. For the URL, paste:
+   ```
+   https://ec01ld6632.isvcs.net:9443/com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful/party
+   ```
+4. Name the project: `MDM Dedup`
+
+Click **OK** – this creates a working REST method.
+
+---
+
+#### 🧩 Step 2: Configure the Request
+
+1. Click the **request** under the new project
+2. In the **Method dropdown**, select **POST**
+3. In the **Media Type**, choose **application/json**
+4. In the **Headers tab**, add:
+   ```
+   Authorization: Basic Y2lyMm1kbV9yZXF1ZXN0ZXI6cEBzc3cwcmQ=
+   Content-Type: application/json
+   Accept: application/json
+   ```
+
+---
+
+#### 🧩 Step 3: Paste JSON Body
+
+In the **request body** tab, paste:
+
+```json
+{
+  "PartyType": "Person",
+  "FirstName": "KOMAL",
+  "MiddleName": "CHRISTINA KAUR",
+  "LastName": "BAHIA",
+  "BirthDate": "1992-08-08",
+  "Gender": "1",
+  "Document": {
+    "DocumentType": "13",
+    "DocumentNumber": "AN972945",
+    "IssuingCountry": "268"
+  },
+  "Citizenship": "31"
+}
+```
+
+Then **click Submit** (green play button).
+
+---
+
+### ✅ Do the Same to Add "Near Duplicate"
+
+Repeat Steps 1–3 above, and change:
+- `FirstName`: `KAMAL`
+- `DocumentNumber`: `AN972946`
+- `BirthDate`: `1992-08-09`
+
+---
+
+### ✅ Let Me Help Automate in Postman Instead?  
+If SoapUI keeps blocking this flow, I can generate a ready-to-import **Postman Collection** — which is better suited for REST.
+
+Would you prefer a Postman version now?
