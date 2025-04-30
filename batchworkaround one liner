@@ -1,0 +1,1 @@
+for jar in *.jar; do echo "Checking $jar"; jar tf "$jar" | grep -i MatchProcessor; done
