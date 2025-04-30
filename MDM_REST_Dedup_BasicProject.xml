@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project xmlns:con="http://eviware.com/soapui/config" name="MDM REST Dedup Basic" resourceRoot="" soapui-version="5.7.0">
+  <con:restService name="MDMWSRESTful">
+    <con:endpoint>https://ec01ld6632.isvcs.net:9443</con:endpoint>
+    <con:resource path="/com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful/party" name="PartyResource">
+      <con:method name="POST" method="POST">
+        <con:request name="OriginalParty" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">
+              <![CDATA[
+Authorization: Basic Y2lyMm1kbV9yZXF1ZXN0ZXI6cEBzc3cwcmQ=
+Content-Type: application/json
+Accept: application/json
+              ]]>
+            </con:setting>
+          </con:settings>
+          <con:request>
+            <![CDATA[
+{
+  "PartyType": "Person",
+  "FirstName": "KOMAL",
+  "MiddleName": "CHRISTINA KAUR",
+  "LastName": "BAHIA",
+  "BirthDate": "1992-08-08",
+  "Gender": "1",
+  "Document": {
+    "DocumentType": "13",
+    "DocumentNumber": "AN972945",
+    "IssuingCountry": "268"
+  },
+  "Citizenship": "31"
+}
+            ]]>
+          </con:request>
+        </con:request>
+
+        <con:request name="NearDuplicateParty" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">
+              <![CDATA[
+Authorization: Basic Y2lyMm1kbV9yZXF1ZXN0ZXI6cEBzc3cwcmQ=
+Content-Type: application/json
+Accept: application/json
+              ]]>
+            </con:setting>
+          </con:settings>
+          <con:request>
+            <![CDATA[
+{
+  "PartyType": "Person",
+  "FirstName": "KAMAL",
+  "MiddleName": "CHRISTINA",
+  "LastName": "BAHIA",
+  "BirthDate": "1992-08-09",
+  "Gender": "1",
+  "Document": {
+    "DocumentType": "13",
+    "DocumentNumber": "AN972946",
+    "IssuingCountry": "268"
+  },
+  "Citizenship": "31"
+}
+            ]]>
+          </con:request>
+        </con:request>
+
+      </con:method>
+    </con:resource>
+  </con:restService>
+</con:soapui-project>
