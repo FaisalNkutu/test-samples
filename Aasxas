@@ -1,0 +1,15 @@
+chown: invalid group: ‘fxn703:fxn703’
+[fxn703@ec01ld6632 batch]$ chown fxn703 /home/fxn703/batch/input/persondata.unl
+[fxn703@ec01ld6632 batch]$ chown fxn703 /home/fxn703/batch/config/person_review.rev
+[fxn703@ec01ld6632 batch]$ chown fxn703 /home/fxn703/batch/config/person_automerge_profile.xml
+[fxn703@ec01ld6632 batch]$ chown fxn703 /home/fxn703/batch/logs/match_log.txt
+chown: cannot access ‘/home/fxn703/batch/logs/match_log.txt’: No such file or directory
+[fxn703@ec01ld6632 batch]$ chown fxn703 /home/fxn703/batch/logs/
+[fxn703@ec01ld6632 batch]$ ./batchmatch.sh
+Error: Could not find or load main class com.dwl.tcrm.batch.match.TCRMBatchMatch
+./batchmatch.sh: line 14: -i: command not found
+./batchmatch.sh: line 15: /home/fxn703/batch/input/persondata.unl: Permission denied
+./batchmatch.sh: line 16: /home/fxn703/batch/config/person_review.rev: Permission denied
+./batchmatch.sh: line 17: /home/fxn703/batch/config/person_automerge_profile.xml: Permission denied
+./batchmatch.sh: line 18: /home/fxn703/batch/logs/match_log.txt: No such file or directory
+[fxn703@ec01ld6632 batch]$
