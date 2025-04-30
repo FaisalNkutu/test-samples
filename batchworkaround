@@ -1,0 +1,106 @@
+Since you're missing the official BatchProcessor.sh tool, but you do have the PME runtime jars, I’ll guide you to build a custom Java runner to invoke PME batch matching directly.
+
+✅ Step-by-Step: Build a Custom PME Batch Runner
+🔹 Step 1: Identify Required JARs
+You will need to gather the following JARs (found in your search):
+
+com.ibm.mdm.mds.pme.api_11.6.0.11-202001172108.jar
+
+com.ibm.mdm.mds.pme.core_11.6.0.11-202001172108.jar
+
+Possibly:
+
+mdmutils.jar
+
+mdmenginecore.jar
+
+mdmhubcommon.jar
+
+🟡 Many of these are located under:
+
+swift
+Copy
+Edit
+/disk/apps/websphere/AppServer/profiles/MDM32/config/bundlecache/
+Create a directory, e.g., /home/fxn703/mdm-pme/lib/, and copy those .jar files into it.
+
+🔹 Step 2: Build a Custom Java Command to Run PME
+Create a script runPMEBatch.sh:
+
+bash
+Copy
+Edit
+#!/bin/bash
+
+# Path to Java
+JAVA_HOME=/path/to/java11
+JAVACMD=$JAVA_HOME/bin/java
+
+# Path to your copied jars
+LIB_PATH=/home/fxn703/mdm-pme/lib
+
+# Input files
+INPUT=/home/fxn703/batch/input/persondata.unl
+REV=/home/fxn703/batch/config/person_review.rev
+PROFILE=/home/fxn703/batch/config/person_automerge_profile.xml
+LOG=/home/fxn703/batch/logs/match_log.txt
+
+# Build classpath
+CLASSPATH=$(find $LIB_PATH -name "*.jar" | tr '\n' ':')
+
+# Run PME batch match
+$JAVACMD -cp "$CLASSPATH" com.ibm.mdm.pme.batch.BatchMatchProcessor \
+  -in $INPUT \
+  -rev $REV \
+  -profile $PROFILE \
+  -log $LOG
+🔁 Adjust class name if it's not BatchMatchProcessor. We will verify it in the next step.
+
+🔹 Step 3: Verify the Correct PME Entry Class
+To find the actual PME batch match entry class, run this:
+
+bash
+Copy
+Edit
+jar tf /home/fxn703/mdm-pme/lib/com.ibm.mdm.mds.pme.api_11.6.0.11-202001172108.jar | grep -i batch
+You're looking for a class like:
+
+swift
+Copy
+Edit
+com/ibm/mdm/pme/batch/BatchMatchProcessor.class
+If it's not there, try the same on pme.core or other .jars.
+
+Once confirmed, update your script’s com.ibm.mdm.pme.batch.BatchMatchProcessor line if needed.
+
+🔹 Step 4: Run It
+bash
+Copy
+Edit
+chmod +x runPMEBatch.sh
+./runPMEBatch.sh
+📌 Optional: Validate Configuration Files
+Make sure:
+
+.unl is formatted correctly and matches .cfg
+
+.rev is an empty or existing review file
+
+.xml is your automerge profile
+
+.imm and engine-metadata.xml are in the right relative path (if used)
+
+🛠 If Class Not Found or Error
+Let me know:
+
+The result of jar tf ... | grep -i batch from your jars
+
+The full error (e.g., ClassNotFoundException or NoClassDefFoundError)
+
+And I can adjust your command or write a Java launcher class if needed
+
+Would you like me to:
+
+Help you identify all .jar files needed to copy?
+
+Write a working batchprocessor.cfg file for your .unl input?
