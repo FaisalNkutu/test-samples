@@ -1,0 +1,1 @@
+find /disk/apps/websphere/AppServer/profiles/ -name "SystemOut.log" -exec ls -lh {} \; | sort -k6,8
