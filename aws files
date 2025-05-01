@@ -1,0 +1,25 @@
+If using Amazon S3, proceed with the AWS CLI or SDK meth
+
+Install AWS CLI and run:
+
+bash
+Copy
+Edit
+aws s3 cp s3://your-bucket-name/your-file.csv ./your-file.csv
+Add --profile your-profile if using named credentials.
+
+3. For Large Files
+Use --expected-size or --no-progress to optimize:
+
+bash
+Copy
+Edit
+aws s3 cp s3://your-bucket/large-file.csv ./ --no-progress
+4. Alternative: AWS SDK (e.g., Python)
+python
+Copy
+Edit
+import boto3
+
+s3 = boto3.client('s3')
+s3.download_file('your-bucket-name', 'your-file.csv', 'local-file.csv')
