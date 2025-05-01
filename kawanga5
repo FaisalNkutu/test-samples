@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.ibm.com/mdm/schema"
+             xsi:schemaLocation="http://www.ibm.com/mdm/schema MDMDomains.xsd">
+
+    <RequestControl>
+        <requestID>0316925531</requestID>
+        <DWLControl>
+            <requesterName>EXR054</requesterName>
+            <requesterLanguage>100</requesterLanguage>
+            <requestTime>2025-05-01T16:05:00-0400</requestTime>
+            <lineOfBusiness>IBAS</lineOfBusiness>
+            <company>CBSA</company>
+            <clientTransactionName>IdentityResolution</clientTransactionName>
+            <clientSystemName>ERSS</clientSystemName>
+            <externalCorrelationId>EXR054</externalCorrelationId>
+            <updateMethodCode>REAL-TIME</updateMethodCode>
+            <requestOrigin>4</requestOrigin>
+            <ControlExtensionProperty name="SkipDataFilter">Y</ControlExtensionProperty>
+        </DWLControl>
+    </RequestControl>
+
+    <TCRMTx>
+        <TCRMTxType>searchCBSAPerson</TCRMTxType>
+        <TCRMTxObject>CBSAPersonSearchBObj</TCRMTxObject>
+        <TCRMObject>
+            <CBSAPersonSearchBObj>
+                <ObjectReferenceId/>
+                <GivenNames>JANE A</GivenNames>
+                <LastName>DOE</LastName>
+                <BirthYear>1980</BirthYear>
+                <BirthMonth>1</BirthMonth>
+                <BirthDay>1</BirthDay>
+                <GenderType>2</GenderType>
+                <GenderValue/>
+                <CitizenshipType></CitizenshipType>
+                <CitizenshipValue/>
+                <IdentificationType>PP</IdentificationType>
+                <IdentificationValue/>
+                <IdentificationNumber>P12345678</IdentificationNumber>
+                <IssueCountryType></IssueCountryType>
+                <IssueCountryValue/>
+            </CBSAPersonSearchBObj>
+        </TCRMObject>
+    </TCRMTx>
+
+</TCRMService>
