@@ -1,1 +1,26 @@
 tail -f /disk/apps/websphere/AppServer/profiles/MDM32-2/logs/was-cbsa-mdm-DML-01-32-2/SystemOut.log
+
+
+[fxn703@ec01ld6632 AppServer]$ tail -f /disk/apps/websphere/AppServer/profiles/MDM32-2/logs/was-cbsa-mdm-DML-01-32-2/SystemOut.log
+[4/30/25 17:29:53:336 EDT] 000013b9 WebContainer  E com.ibm.ws.webcontainer.internal.WebContainer handleRequest SRVE0255E: A WebGroup/Virtual Host to handle /com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful/party has not been defined.
+[4/30/25 17:31:28:807 EDT] 000013b9 WebContainer  E com.ibm.ws.webcontainer.internal.WebContainer handleRequest SRVE0255E: A WebGroup/Virtual Host to handle /com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful/party has not been defined.
+[4/30/25 17:31:38:261 EDT] 000013b9 WebContainer  E com.ibm.ws.webcontainer.internal.WebContainer handleRequest SRVE0255E: A WebGroup/Virtual Host to handle /com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful/party has not been defined.
+[4/30/25 17:43:06:343 EDT] 000013b9 WebContainer  E com.ibm.ws.webcontainer.internal.WebContainer handleRequest SRVE0255E: A WebGroup/Virtual Host to handle /com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful/ has not been defined.
+[4/30/25 17:43:15:970 EDT] 000013b9 WebContainer  E com.ibm.ws.webcontainer.internal.WebContainer handleRequest SRVE0255E: A WebGroup/Virtual Host to handle /com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful/ has not been defined.
+[4/30/25 17:43:50:434 EDT] 000013b9 WebContainer  E com.ibm.ws.webcontainer.internal.WebContainer handleRequest SRVE0255E: A WebGroup/Virtual Host to handle /com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful has not been defined.
+[4/30/25 17:50:03:668 EDT] 000013b9 WebContainer  E com.ibm.ws.webcontainer.internal.WebContainer handleRequest SRVE0255E: A WebGroup/Virtual Host to handle /com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful/ has not been defined.
+[5/1/25 7:39:59:884 EDT] 000013b9 WebContainer  E com.ibm.ws.webcontainer.internal.WebContainer handleRequest SRVE0255E: A WebGroup/Virtual Host to handle /ibm.mdm.server.ws.restful/resources/MDMWSRESTful has not been defined.
+[5/1/25 7:40:04:683 EDT] 000014a2 WebContainer  E com.ibm.ws.webcontainer.internal.WebContainer handleRequest SRVE0255E: A WebGroup/Virtual Host to handle /favicon.ico has not been defined.
+[5/1/25 11:03:24:827 EDT] 000000c2 LdapConnectio I com.ibm.ws.wim.adapter.ldap.LdapConnection DirContext reCreateDirContext(String errorMessage) CWWIM4564I  The user registry is now connected to 'ldap://master-dir-t.isvcs.net:389' LDAP Server. Or, the user registry is able to ping the LDAP server successfully.
+^X^C
+[fxn703@ec01ld6632 AppServer]$ tail -f /disk/apps/websphere/AppServer/profiles/MDM32-2/logs/was-cbsa-mdm-DML-01-32-2/SystemErr.log
+[4/17/25 11:10:59:380 EDT] 000000c1 SystemErr     R     at org.apache.xerces.impl.XMLVersionDetector.determineDocVersion(Unknown Source)
+[4/17/25 11:10:59:380 EDT] 000000c1 SystemErr     R     at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+[4/17/25 11:10:59:380 EDT] 000000c1 SystemErr     R     at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+[4/17/25 11:10:59:380 EDT] 000000c1 SystemErr     R     at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+[4/17/25 11:10:59:380 EDT] 000000c1 SystemErr     R     at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
+[4/17/25 11:10:59:380 EDT] 000000c1 SystemErr     R     at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+[4/17/25 11:10:59:380 EDT] 000000c1 SystemErr     R     at org.apache.xerces.jaxp.SAXParserImpl.parse(Unknown Source)
+[4/17/25 11:10:59:380 EDT] 000000c1 SystemErr     R     at javax.xml.parsers.SAXParser.parse(Unknown Source)
+[4/17/25 11:10:59:380 EDT] 000000c1 SystemErr     R     at com.ibm.ws.runtime.config.ConfigDocumentImpl.load(ConfigDocumentImpl.java:200)
+[4/17/25 11:10:59:380 EDT] 000000c1 SystemErr     R     ... 38 more
