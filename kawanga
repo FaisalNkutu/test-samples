@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns="http://www.ibm.com/mdm/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ibm.com/mdm/schema MDMDomains.xsd">
+    <RequestControl>
+        <requestID>5403</requestID>
+        <DWLControl>
+            <requesterName>EXR054</requesterName>
+            <requesterLanguage>100</requesterLanguage>
+            <requestTime>${#Project#requestTime}</requestTime>
+            <lineOfBusiness>MDM</lineOfBusiness>
+            <company>CBSA</company>
+            <clientTransactionName>IdentityResolution</clientTransactionName>
+            <clientSystemName>MDM</clientSystemName>
+            <externalCorrelationId>Validation Check</externalCorrelationId>
+            <updateMethodCode>REAL-TIME</updateMethodCode>
+            <requestOrigin>4</requestOrigin>
+            <ControlExtensionProperty name="SkipDataFilter">Y</ControlExtensionProperty>
+        </DWLControl>
+    </RequestControl>
+    <TCRMInquiry>
+        <InquiryType>ramdHeartbeat</InquiryType>
+        <InquiryParam>
+            <tcrmParam name="DatabaseChk">Y</tcrmParam>
+        </InquiryParam>
+    </TCRMInquiry>
+</TCRMService>
