@@ -1,0 +1,83 @@
+Thank you for the detailed screenshot — you're navigating the native WAR structure precisely. Here's what we've confirmed and what you should do next:
+
+---
+
+## ✅ Summary of What You've Found
+
+- You are inside:
+  ```
+  /disk/apps/websphere/AppServer/profiles/MDM32/installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/
+  ```
+- Inside `WEB-INF/` you found:
+  ```
+  web.xml
+  ```
+
+**But no `lib/`, no `.jar`, and no `CompositeServiceConfig.xml` are present here.**
+
+---
+
+## 🧠 What This Tells Us
+
+- The configuration files (`CompositeServiceConfig.xml`, `TransactionInputConfig.xml`, etc.) and the actual logic **are not part of `native.war`**.
+- Instead, they are likely embedded in a separate **custom `.jar`** or **CBA-deployed component**.
+
+This is typical in IBM MDM when:
+- The `.cba` (Composite Bundle Archive) is used to install services.
+- Those files are deployed to OSGi containers, not inside the `.ear` or `.war` file.
+
+---
+
+## ✅ What You Should Do Next
+
+### 🔍 1. Search inside the `installedCBAs` directory
+
+Run:
+
+```bash
+find /disk/apps/websphere/AppServer/profiles/MDM32/installedCBAs/ -type f -name "*.jar"
+```
+
+Then check which of those `.jar`s are large (size > 100KB) and likely to contain mappings:
+
+```bash
+ls -lh /disk/apps/websphere/AppServer/profiles/MDM32/installedCBAs/**/*.jar | sort -k5 -h
+```
+
+Once identified, run:
+
+```bash
+jar tf <jarfile> | grep -Ei "Composite|CBSAPerson|Transaction"
+```
+
+Example:
+
+```bash
+jar tf com.ibm.mdm.cbsapersonservice.bundle.jar | grep -Ei "CBSAPerson|Composite"
+```
+
+---
+
+### 📦 2. You’re Likely Looking for a JAR like:
+
+- `com.ibm.mdm.*.bundle.jar`
+- `cbsapersonservice*.jar`
+- Anything with `pme`, `search`, or `transaction` in the name
+
+---
+
+## 🎯 Goal:
+
+You want to locate files like:
+- `CompositeServiceConfig.xml`
+- `CBSAPersonSearchBObj.xsd`
+- `TransactionInputConfig.xml`
+
+Once found, they will confirm:
+- How `CBSAPersonSearchBObj` maps to `PER*` fields
+- Which PME attributes are used (e.g., `PERLEGALNAME`, `PERDOCUMENT`)
+- Whether scoring, bucketing, etc. are happening as expected
+
+---
+
+Would you like to upload one of those `.jar` files once you locate it? I can extract and decode the config for you.
