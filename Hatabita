@@ -1,0 +1,51 @@
+HTTP/1.1 200 OK
+X-Powered-By: Servlet/3.0
+Content-Type: application/xml;charset=UTF-8
+Content-Language: en-US
+Set-Cookie: LtpaToken2=fe7m8m3i3qd9lP97BwRQGW29mBhow8QMQRBrdaw3NPdl/B3TaiqrehaODSMZ6DhQfKZib0OnUeTZ5WrK1QDmEeEIUsgNn0bbs95PEy0TSOZAetO4L5JCKpQQcAM5z5sqK8VWLAbOoyWKDLqQpBiNRiIaPfYsD8fgcpyekyYloWjnfCrYe3Dvyon958RqD0zLriZI1OP1ViD6Lz+dnZ2/sisOxF9Us9tlgf4Lo7h9Ol5qVLQ0d0vSTQLWbPQmjV6XlXbji0tONf/sLuHDCyLYaOJ+OpTaJTt2c47VDjsZSJDbC1+kWi+F94YJTDoSsRmdNpS/9lrrrnw+NnFGixdRlljflLWt0M34+4LmKnHKi+ce9VmpQDOpxyMnXvP9S350umwrqRdtXn82jpEpZjHKedxeeCN6QAkrl2PvRb2n0SKYRliV26w1PRGHCQM1GEx05R57zeOMY3QSMbBGRiXJMdCG3VT0iSzzoqW1BzeaBZFGozpow7hP8lL5U3JsVBNI58tG0X32YlDmIRYvMHw3gOmbS/f9uJ4JaEicIthYPv0GNGEgPgoQ3MAZ5A0MOKtXp/rb9/trL3skKZz8nhuV45es1AjB+gUMd0qjDz5fK4RkXXB4dYTPR3KkGHEhx03m4n0iktKhz/7kK2S6z7CuPtM6/0wc1ZkKwNlZxCrQfmVrTv6a+Oxe3jghWmrjFJ1aCSoLBa23bOdMcCWIWlqhGhWpkYVTmL1i7oBFVmov8qg13hyYhyDWplgb3DQGs7kMj8MKNe5vevXXXFBwTQprZQ==; Path=/; HttpOnly
+Transfer-Encoding: chunked
+Date: Thu, 01 May 2025 19:40:03 GMT
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Cache-Control: no-cache="set-cookie, set-cookie2"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<TCRMService xmlns="http://www.ibm.com/mdm/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ibm.com/mdm/schema MDMDomains.xsd">
+	<ResponseControl>
+		<ResultCode>SUCCESS</ResultCode>
+		<ServiceTime>15</ServiceTime>
+		<DWLControl>
+			<requesterName>cir2mdm_requester</requesterName>
+			<requesterLanguage>100</requesterLanguage>
+			<requesterLocale>en</requesterLocale>
+			<requestTime>2025-05-01 15:40:04.069-0400</requestTime>
+			<lineOfBusiness>MDM</lineOfBusiness>
+			<company>CBSA</company>
+			<clientTransactionName>IdentityResolution</clientTransactionName>
+			<clientSystemName>MDM</clientSystemName>
+			<externalCorrelationId>Validation Check</externalCorrelationId>
+			<updateMethodCode>REAL-TIME</updateMethodCode>
+			<requestOrigin>4</requestOrigin>
+			<userRole>loco_wsaccess_yh</userRole>
+			<userRole>loco_wsaccess_qr</userRole>
+			<userRole>loco_wsaccess_yd</userRole>
+			<userRole>loco_wsaccess_lr</userRole>
+			<userRole>loco_wsaccess_hr</userRole>
+			<userRole>loco_wsaccess_tr</userRole>
+			<requestID>5403</requestID>
+<ControlExtensionProperty name="MDMOrigin">ZWMwMWxkNjYzMi5pc3Zjcy5uZXQ=</ControlExtensionProperty><ControlExtensionProperty name="SkipDataFilter">Y</ControlExtensionProperty><ControlExtensionProperty name="ResponseTime">2025-05-01 15:40:04.088</ControlExtensionProperty>		</DWLControl>
+	</ResponseControl>
+	<TxResponse>
+		<RequestType>ramdHeartbeat</RequestType>
+		<TxResult>
+			<ResultCode>SUCCESS</ResultCode>
+		</TxResult>
+		<ResponseObject>
+			<TCRMOrganizationBObj>
+				<PartyActiveIndicator>Y</PartyActiveIndicator>
+				<DWLStatus>
+					<Status>0</Status>
+				</DWLStatus>
+			</TCRMOrganizationBObj>
+		</ResponseObject>
+	</TxResponse>
+</TCRMService>
