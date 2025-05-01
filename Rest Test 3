@@ -1,0 +1,55 @@
+<TCRMService xmlns="http://www.ibm.com/mdm/schema"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+  <RequestType>processTx</RequestType>
+  <TCRMTx>
+    <TCRMPersonBObj>
+      <PartyType>Person</PartyType>
+      <TCRMPersonNameBObj>
+        <FirstName>KOMAL</FirstName>
+        <MiddleName>CHRISTINA KAUR</MiddleName>
+        <LastName>BAHIA</LastName>
+      </TCRMPersonNameBObj>
+      <TCRMPersonCharacteristicBObj>
+        <BirthDate>1952-08-08</BirthDate>
+      </TCRMPersonCharacteristicBObj>
+      <TCRMPartyBObj>
+        <Gender>1</Gender>
+        <Citizenship>31</Citizenship>
+      </TCRMPartyBObj>
+      <TCRMPartyIdentificationBObj>
+        <DocumentType>13</DocumentType>
+        <DocumentNumber>AN579239</DocumentNumber>
+      </TCRMPartyIdentificationBObj>
+    </TCRMPersonBObj>
+  </TCRMTx>
+</TCRMService>
+
+-------------------------------------------------------------------------------------
+
+<TCRMServiceBObj xmlns="http://www.ibm.com/mdm/schema"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+  <RequestType>processTx</RequestType>
+  <TCRMTx>
+    <TCRMPersonBObj>
+      <PartyType>Person</PartyType>
+      <TCRMPersonNameBObj>
+        <FirstName>KOMAL</FirstName>
+        <MiddleName>CHRISTINA KAUR</MiddleName>
+        <LastName>BAHIA</LastName>
+      </TCRMPersonNameBObj>
+      <TCRMPersonCharacteristicBObj>
+        <BirthDate>1952-08-08</BirthDate>
+      </TCRMPersonCharacteristicBObj>
+      <TCRMPartyBObj>
+        <Gender>1</Gender>
+        <Citizenship>31</Citizenship>
+      </TCRMPartyBObj>
+      <TCRMPartyIdentificationBObj>
+        <DocumentType>13</DocumentType>
+        <DocumentNumber>AN579239</DocumentNumber>
+      </TCRMPartyIdentificationBObj>
+    </TCRMPersonBObj>
+  </TCRMTx>
+</TCRMServiceBObj>
