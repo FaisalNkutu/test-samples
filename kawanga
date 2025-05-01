@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TCRMService xmlns="http://www.ibm.com/mdm/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ibm.com/mdm/schema MDMDomains.xsd">
-    <RequestControl>
-        <requestID>5403</requestID>
-        <DWLControl>
-            <requesterName>EXR054</requesterName>
-            <requesterLanguage>100</requesterLanguage>
-            <requestTime>${#Project#requestTime}</requestTime>
-            <lineOfBusiness>MDM</lineOfBusiness>
-            <company>CBSA</company>
-            <clientTransactionName>IdentityResolution</clientTransactionName>
-            <clientSystemName>MDM</clientSystemName>
-            <externalCorrelationId>Validation Check</externalCorrelationId>
-            <updateMethodCode>REAL-TIME</updateMethodCode>
-            <requestOrigin>4</requestOrigin>
-            <ControlExtensionProperty name="SkipDataFilter">Y</ControlExtensionProperty>
-        </DWLControl>
-    </RequestControl>
-    <TCRMInquiry>
-        <InquiryType>ramdHeartbeat</InquiryType>
-        <InquiryParam>
-            <tcrmParam name="DatabaseChk">Y</tcrmParam>
-        </InquiryParam>
-    </TCRMInquiry>
+<TCRMService xmlns="http://www.ibm.com/mdm/schema"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.ibm.com/mdm/schema MDMDomains.xsd">
+  
+  <RequestControl>
+    <requestID>5404</requestID>
+    <DWLControl>
+      <requesterName>EXR054</requesterName>
+      <requesterLanguage>100</requesterLanguage>
+      <requestTime>2025-05-01T15:55:00-0400</requestTime>
+      <lineOfBusiness>MDM</lineOfBusiness>
+      <company>CBSA</company>
+      <clientTransactionName>IdentityResolution</clientTransactionName>
+      <clientSystemName>MDM</clientSystemName>
+      <externalCorrelationId>Test-PME-Person</externalCorrelationId>
+      <updateMethodCode>REAL-TIME</updateMethodCode>
+      <requestOrigin>4</requestOrigin>
+      <ControlExtensionProperty name="SkipDataFilter">Y</ControlExtensionProperty>
+    </DWLControl>
+  </RequestControl>
+
+  <RequestType>processTx</RequestType>
+  
+  <TCRMTx>
+    <TCRMPersonBObj>
+      <PartyType>Person</PartyType>
+
+      <TCRMPersonNameBObj>
+        <FirstName>JANE</FirstName>
+        <MiddleName>A</MiddleName>
+        <LastName>DOE</LastName>
+      </TCRMPersonNameBObj>
+
+      <TCRMPersonCharacteristicBObj>
+        <BirthDate>1980-01-01</BirthDate>
+      </TCRMPersonCharacteristicBObj>
+
+      <TCRMPartyBObj>
+        <Gender>2</Gender>
+        <Citizenship>CAN</Citizenship>
+      </TCRMPartyBObj>
+
+      <TCRMPartyIdentificationBObj>
+        <DocumentType>PP</DocumentType>
+        <DocumentNumber>P12345678</DocumentNumber>
+      </TCRMPartyIdentificationBObj>
+      
+    </TCRMPersonBObj>
+  </TCRMTx>
+  
 </TCRMService>
