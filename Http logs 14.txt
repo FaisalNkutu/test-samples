@@ -1,0 +1,27 @@
+{"TCRMService": {
+   "@noNamespaceSchemaLocation": "MDMDomains.xsd",
+   "ResponseControl":    {
+      "ResultCode": "FATAL",
+      "ServiceTime": "2",
+      "DWLControl":       {
+         "requesterLanguage": "100",
+         "requesterLocale": "en",
+         "requestID": "155574610199842801"
+      }
+   },
+   "TxResponse":    {
+      "RequestType": "processTx",
+      "TxResult":       {
+         "ResultCode": "FATAL",
+         "DWLError":          {
+            "ComponentType": "106",
+            "ErrorMessage": "Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.",
+            "ErrorType": "READERR",
+            "LanguageCode": "100",
+            "ReasonCode": "4928",
+            "Severity": "0",
+            "Throwable": "com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null."
+         }
+      }
+   }
+}}
