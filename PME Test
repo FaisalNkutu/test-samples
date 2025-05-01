@@ -1,27 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TCRMService xsi:schemaLocation="http://www.ibm.com/mdm/schema MDMDomains.xsd" xmlns="http://www.ibm.com/mdm/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <RequestControl>
-        <requestID>1000</requestID>
-        <DWLControl>
-            <requesterName>EXR054</requesterName>
-            <requesterLanguage>100</requesterLanguage>
-            <requestTime>${#Project#requestTime}</requestTime>
-            <lineOfBusiness>MDM</lineOfBusiness>
-            <company>CBSA</company>
-            <clientTransactionName>IdentityResolution</clientTransactionName>
-            <clientSystemName>MDM</clientSystemName>
-            <externalCorrelationId>1000</externalCorrelationId>
-            <updateMethodCode>REAL-TIME</updateMethodCode>
-            <requestOrigin>4</requestOrigin>
-            <ControlExtensionProperty name="SkipDataFilter">Y</ControlExtensionProperty>
-        </DWLControl>
-    </RequestControl>
-    <TCRMInquiry>
-        <InquiryType>getCBSAPerson</InquiryType>
-        <InquiryParam>
-            <tcrmParam name="PartyId">708157568522102603</tcrmParam>
-            <tcrmParam name="Filter">ALL</tcrmParam>
-            <tcrmParam name="InquiryLevel">2001</tcrmParam>
-        </InquiryParam>
-    </TCRMInquiry>
+<TCRMService xmlns="http://www.ibm.com/mdm/schema"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+  <RequestType>processTx</RequestType>
+  <TCRMTx>
+    <TCRMPersonBObj>
+      <PartyType>Person</PartyType>
+
+      <TCRMPersonNameBObj>
+        <FirstName>KOMAL</FirstName>
+        <MiddleName>CHRISTINA KAUR</MiddleName>
+        <LastName>BAHIA</LastName>
+      </TCRMPersonNameBObj>
+
+      <TCRMPersonCharacteristicBObj>
+        <BirthDate>1952-08-08</BirthDate>
+      </TCRMPersonCharacteristicBObj>
+
+      <TCRMPartyBObj>
+        <Gender>1</Gender>
+        <Citizenship>31</Citizenship>
+      </TCRMPartyBObj>
+
+      <TCRMPartyIdentificationBObj>
+        <DocumentType>13</DocumentType>
+        <DocumentNumber>AN579245</DocumentNumber>
+        <IssuingCountry>268</IssuingCountry>
+      </TCRMPartyIdentificationBObj>
+
+    </TCRMPersonBObj>
+  </TCRMTx>
 </TCRMService>
