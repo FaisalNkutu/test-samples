@@ -1,0 +1,31 @@
+<TCRMService xmlns="http://www.ibm.com/mdm/schema"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+  <RequestType>processTx</RequestType>
+  <TCRMTx>
+    <TCRMPersonBObj>
+      <PartyType>Person</PartyType>
+
+      <TCRMPersonNameBObj>
+        <FirstName>JANE</FirstName>
+        <MiddleName>A</MiddleName>
+        <LastName>DOE</LastName>
+      </TCRMPersonNameBObj>
+
+      <TCRMPersonCharacteristicBObj>
+        <BirthDate>1980-01-01</BirthDate>
+      </TCRMPersonCharacteristicBObj>
+
+      <TCRMPartyBObj>
+        <Gender>2</Gender>
+        <Citizenship>CAN</Citizenship>
+      </TCRMPartyBObj>
+
+      <TCRMPartyIdentificationBObj>
+        <DocumentType>PP</DocumentType>
+        <DocumentNumber>P12345678</DocumentNumber>
+      </TCRMPartyIdentificationBObj>
+
+    </TCRMPersonBObj>
+  </TCRMTx>
+</TCRMService>
