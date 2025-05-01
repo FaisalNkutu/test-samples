@@ -1,49 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TCRMService xmlns="http://www.ibm.com/mdm/schema"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
-
-  <RequestControl>
-    <requestID>5404</requestID>
-    <DWLControl>
-      <requesterName>EXR054</requesterName>
-      <requesterLanguage>100</requesterLanguage>
-      <requestTime>2025-05-01T15:55:00-0400</requestTime>
-      <lineOfBusiness>MDM</lineOfBusiness>
-      <company>CBSA</company>
-      <clientTransactionName>IdentityResolution</clientTransactionName>
-      <clientSystemName>MDM</clientSystemName>
-      <externalCorrelationId>Test-PME-Person</externalCorrelationId>
-      <updateMethodCode>REAL-TIME</updateMethodCode>
-      <requestOrigin>4</requestOrigin>
-      <ControlExtensionProperty name="SkipDataFilter">Y</ControlExtensionProperty>
-    </DWLControl>
-  </RequestControl>
-
-  <RequestType>processCompositeService</RequestType>
-
-  <TCRMRequest>
-    <CompositeServiceName>PMEMatchPerson</CompositeServiceName>
-    <TCRMPayload>
-      <TCRMPersonBObj>
-        <PartyType>Person</PartyType>
-        <TCRMPersonNameBObj>
-          <FirstName>JANE</FirstName>
-          <MiddleName>A</MiddleName>
-          <LastName>DOE</LastName>
-        </TCRMPersonNameBObj>
-        <TCRMPersonCharacteristicBObj>
-          <BirthDate>1980-01-01</BirthDate>
-        </TCRMPersonCharacteristicBObj>
-        <TCRMPartyBObj>
-          <Gender>2</Gender>
-          <Citizenship>CAN</Citizenship>
-        </TCRMPartyBObj>
-        <TCRMPartyIdentificationBObj>
-          <DocumentType>PP</DocumentType>
-          <DocumentNumber>P12345678</DocumentNumber>
-        </TCRMPartyIdentificationBObj>
-      </TCRMPersonBObj>
-    </TCRMPayload>
-  </TCRMRequest>
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ibm.com/mdm/schema" xsi:schemaLocation="http://www.ibm.com/mdm/schema MDMDomains.xsd">
+    <RequestControl>
+        <requestID>0316925530</requestID>
+        <DWLControl>
+            <requesterName>EXR054</requesterName>
+            <requesterLanguage>100</requesterLanguage>
+            <requestTime>${#Project#requestTime}</requestTime>
+            <lineOfBusiness>IBAS</lineOfBusiness>
+            <company>CBSA</company>
+            <clientTransactionName>IdentityResolution</clientTransactionName>
+            <clientSystemName>ERSS</clientSystemName>
+            <externalCorrelationId>EXR054</externalCorrelationId>
+            <updateMethodCode>REAL-TIME</updateMethodCode>
+            <requestOrigin>4</requestOrigin>
+            <ControlExtensionProperty name="SkipDataFilter">Y</ControlExtensionProperty>
+        </DWLControl>
+    </RequestControl>
+    <TCRMTx>
+        <TCRMTxType>searchCBSAPerson</TCRMTxType>
+        <TCRMTxObject>CBSAPersonSearchBObj</TCRMTxObject>
+        <TCRMObject>
+            <CBSAPersonSearchBObj>
+                <ObjectReferenceId/>
+                <GivenNames>AFZAL HUSSEIN</GivenNames>
+                <LastName>SAHIB</LastName>
+                <BirthYear>1970</BirthYear>
+                <BirthMonth>1</BirthMonth>
+                <BirthDay>24</BirthDay>
+                <GenderType>2</GenderType>
+                <GenderValue/>
+                <CitizenshipType></CitizenshipType>
+                <CitizenshipValue/>
+                <IdentificationType>13</IdentificationType>
+                <IdentificationValue/>
+                <IdentificationNumber>X501589256</IdentificationNumber>
+                <IssueCountryType></IssueCountryType>
+                <IssueCountryValue/>
+            </CBSAPersonSearchBObj>
+        </TCRMObject>
+    </TCRMTx>
 </TCRMService>
