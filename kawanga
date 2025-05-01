@@ -50,3 +50,44 @@
   </TCRMTx>
   
 </TCRMService>
+=============================================================================================
+{"TCRMService": {
+   "@schemaLocation": "http://www.ibm.com/mdm/schema MDMDomains.xsd",
+   "ResponseControl":    {
+      "ResultCode": "FATAL",
+      "ServiceTime": "4",
+      "DWLControl":       {
+         "requesterName": "EXR054",
+         "requesterLanguage": "100",
+         "requesterLocale": "en",
+         "requestTime": "2025-05-01T15:55:00-0400",
+         "lineOfBusiness": "MDM",
+         "company": "CBSA",
+         "clientTransactionName": "IdentityResolution",
+         "clientSystemName": "MDM",
+         "externalCorrelationId": "Test-PME-Person",
+         "updateMethodCode": "REAL-TIME",
+         "requestOrigin": "4",
+         "requestID": "5404",
+         "ControlExtensionProperty":          {
+            "@name": "SkipDataFilter",
+            "$": "Y"
+         }
+      }
+   },
+   "TxResponse":    {
+      "RequestType": "processTx",
+      "TxResult":       {
+         "ResultCode": "FATAL",
+         "DWLError":          {
+            "ComponentType": "106",
+            "ErrorMessage": "Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.",
+            "ErrorType": "READERR",
+            "LanguageCode": "100",
+            "ReasonCode": "4928",
+            "Severity": "0",
+            "Throwable": "com.dwl.base.requestHandler.exception.RequestParserException: cvc-complex-type.2.4.a: Invalid content was found starting with element 'RequestType'. One of '{\"http://www.ibm.com/mdm/schema\":TCRMTx, \"http://www.ibm.com/mdm/schema\":TCRMInquiry, \"http://www.ibm.com/mdm/schema\":TxResponse}' is expected."
+         }
+      }
+   }
+}}
