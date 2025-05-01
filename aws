@@ -1,0 +1,31 @@
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
+import software.amazon.awssdk.core.sync.ResponseTransformer;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
+
+import java.nio.file.Paths;
+
+public class S3CsvDownloader {
+
+    public static void main(String[] args) {
+        String bucketName = "your-bucket-name";
+        String key = "your-large-file.csv"; // Path to the CSV file in S3
+        String destinationPath = "your-local-file.csv"; // Local path to save the file
+
+        S3Client s3 = S3Client.builder()
+                .region(Region.US_EAST_1) // Change region as needed
+                .credentialsProvider(ProfileCredentialsProvider.create()) // Uses ~/.aws/credentials
+                .build();
+
+        GetObjectRequest request = GetObjectRequest.builder()
+                .bucket(bucketName)
+                .key(key)
+                .build();
+
+        // Downloads and saves directly to disk
+        s3.getObject(request, ResponseTransformer.toFile(Paths.get(destinationPath)));
+
+        System.out.println("Download complete!");
+    }
+}
