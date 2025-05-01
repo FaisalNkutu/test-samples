@@ -1,0 +1,60 @@
+{
+  "TCRMService": {
+    "RequestType": "processTx",
+    "TCRMTx": {
+      "TCRMPersonBObj": {
+        "PartyType": "Person",
+        "TCRMPersonNameBObj": {
+          "FirstName": "KOMAL",
+          "MiddleName": "CHRISTINA KAUR",
+          "LastName": "BAHIA"
+        },
+        "TCRMPersonCharacteristicBObj": {
+          "BirthDate": "1952-08-08"
+        },
+        "TCRMPartyBObj": {
+          "Gender": "1",
+          "Citizenship": "31"
+        },
+        "TCRMPartyIdentificationBObj": {
+          "DocumentType": "13",
+          "DocumentNumber": "AN579245",
+          "IssuingCountry": "268"
+        }
+      }
+    }
+  }
+}
+
+
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+  <RequestType>processTx</RequestType>
+  <TCRMTx>
+    <TCRMPersonBObj>
+      <PartyType>Person</PartyType>
+
+      <TCRMPersonNameBObj>
+        <FirstName>KOMAL</FirstName>
+        <MiddleName>CHRISTINA KAUR</MiddleName>
+        <LastName>BAHIA</LastName>
+      </TCRMPersonNameBObj>
+
+      <TCRMPersonCharacteristicBObj>
+        <BirthDate>1952-08-08</BirthDate>
+      </TCRMPersonCharacteristicBObj>
+
+      <TCRMPartyBObj>
+        <Gender>1</Gender>
+        <Citizenship>31</Citizenship>
+      </TCRMPartyBObj>
+
+      <TCRMPartyIdentificationBObj>
+        <DocumentType>13</DocumentType>
+        <DocumentNumber>AN579245</DocumentNumber>
+        <IssuingCountry>268</IssuingCountry>
+      </TCRMPartyIdentificationBObj>
+
+    </TCRMPersonBObj>
+  </TCRMTx>
+</TCRMService>
