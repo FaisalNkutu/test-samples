@@ -1,0 +1,65 @@
+Thanks again — based on your latest image, we can confirm:
+
+---
+
+## 🧠 Current Findings:
+
+| Observation | Meaning |
+|------------|---------|
+| You're deep inside the EAR structure: `/MDM-native-MDME001.ear` | ✅ You are now in the correct deployed MDM application |
+| Search for files like `CompositeServiceConfig.xml`, `TransactionMappings.xml`, or anything containing `CBSAPerson` returned nothing visible | ❌ These files are likely packaged **inside a `.jar`** or compressed archive — not as raw XML on disk |
+
+---
+
+## ✅ What to Do Next
+
+You’ll need to extract them from inside the `.ear` or its embedded `.jar` files:
+
+---
+
+### 🔧 Step-by-Step: Extract from `.ear` or `.jar`
+
+#### 1. Navigate into the EAR:
+```bash
+cd /disk/apps/websphere/AppServer/profiles/MDM32/installedApps/DmgrNodeCell/applications/MDM-native-MDME001.ear/
+```
+
+#### 2. Look for `.jar` files inside `native.war`:
+```bash
+cd native.war/WEB-INF/lib
+ls -l
+```
+
+You should see something like:
+```
+mdm-custom-cba.jar
+mdm-pme-wrapper.jar
+```
+
+---
+
+#### 3. Extract target config from jar:
+Pick one `.jar` file and run:
+```bash
+jar tf mdm-custom-cba.jar | grep -Ei "CBSAPerson|Composite|Transaction"
+```
+
+If you find:
+- `CompositeServiceConfig.xml`
+- `TransactionMappings.xml`
+- `CBSAPersonSearchBObj.xsd`
+
+…then extract them:
+```bash
+jar xf mdm-custom-cba.jar path/to/CompositeServiceConfig.xml
+```
+
+---
+
+### ✅ Want Faster Insight?
+
+If you’d like, upload one of those `.jar` files (e.g., `mdm-custom-cba.jar`) here, and I’ll:
+- Extract all mapping/config files
+- Show you exactly how `CBSAPersonSearchBObj` maps to your PME engine
+
+Would you like to proceed with extracting from a specific `.jar`, or upload it here for analysis?
