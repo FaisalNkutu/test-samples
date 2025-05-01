@@ -1,0 +1,55 @@
+Thu May 01 09:38:32 EDT 2025: DEBUG: http-outgoing >> 
+PUT /com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful HTTP/1.1
+Accept-Encoding: gzip,deflate
+Authorization: Basic Y2lyMm1kbV9yZXF1ZXN0ZXI6cEBzc3cwcmQ=
+Accept: application/json
+Content-Type: application/json
+Content-Length: 898
+Host: ec01ld6632:9443
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.5 (Java/17.0.12)
+
+<TCRMService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+  <RequestType>processTx</RequestType>
+  <TCRMTx>
+    <TCRMPersonBObj>
+      <PartyType>Person</PartyType>
+
+      <TCRMPersonNameBObj>
+        <FirstName>KOMAL</FirstName>
+        <MiddleName>CHRISTINA KAUR</MiddleName>
+        <LastName>BAHIA</LastName>
+      </TCRMPersonNameBObj>
+
+      <TCRMPersonCharacteristicBObj>
+        <BirthDate>1952-08-08</BirthDate>
+      </TCRMPersonCharacteristicBObj>
+
+      <TCRMPartyBObj>
+        <Gender>1</Gender>
+        <Citizenship>31</Citizenship>
+      </TCRMPartyBObj>
+
+      <TCRMPartyIdentificationBObj>
+        <DocumentType>13</DocumentType>
+        <DocumentNumber>AN579245</DocumentNumber>
+        <IssuingCountry>268</IssuingCountry>
+      </TCRMPartyIdentificationBObj>
+
+    </TCRMPersonBObj>
+  </TCRMTx>
+</TCRMService>
+
+Thu May 01 09:38:32 EDT 2025: DEBUG: http-incoming << 
+HTTP/1.1 200 OK
+X-Powered-By: Servlet/3.0
+Content-Type: application/json
+Content-Language: en-US
+Content-Length: 732
+Set-Cookie: LtpaToken2=k+Cu8krC0+q/k78upLbh92xTuXZj5QuB6T6FpeZ/cs3WyRFEQXnqzCRH9rywszotl53ej6V4/mpXZl0GCqo8T+KAYIeQD6ggXJDh0it8Q2JYIwU4LeGRFrQtyZNKlwzfz/NPOUPhpL6+9BmFzws0vwPsT+3lG/aUwXI4xeGpLMdcEoCKwbF1x4UBxw6jbarSmIvOTqnKguPx2xY20QXVG9qdMWI5DoZE+vD9HG68OE6cvgtQb94SyZPF5NcvkZyxD5JYJavOMzwvfHtjAI8JeU3UjvihoXwrmSw89YWin1nYg7aFJrLGMCvvcqah5zpdPTYNspe0gZ5TDisFTtJa9FhKPEiBuxqf9zdvRzta3DslLopxWO9KIEFg0FKDzc0uecFLNaMKnIUG23uBoB5E9QyazhDEc+IDsf+KafJ43GXU5UL1gMRP/AggvwEgLh4MDw0m67QiC+ah4CX1kEcJ9Q5YruVHp2Im7khC+oFv6e+oGRU9tqkIlQYUFKwUmwaW4nwM6PvrZoXJkhcnOs7A1+8NVVsc0hc1PKl+VgutjvrmaBjFCeUBPCjR/yyd4GOX/YP2jgJUSmKeFRLDDlpQltfl+EvGjHbxwOPOb8fv4IV68xzmU5dcgCNo0MTfOxydkF0qCpOXy4KFO6WAVs2MgUin0GctgXHO6wc8PsBp5x7EkeVI/8SuRmKqB2XSyq3IODlUyCblgiK0TgOMOwYn5m4YPdeQf2nxiqyAsjFy9iypmbBevU6p7g+xVthXwHnFEyJczGncMg43R54Sk3PJBw==; Path=/; HttpOnly
+Date: Thu, 01 May 2025 13:38:31 GMT
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Cache-Control: no-cache="set-cookie, set-cookie2"
+
+{"TCRMService":{"@noNamespaceSchemaLocation":"MDMDomains.xsd","ResponseControl":{"ResultCode":"FATAL","ServiceTime":"37","DWLControl":{"requesterLanguage":"100","requesterLocale":"en","requestID":"919874610671219401"}},"TxResponse":{"RequestType":"processTx","TxResult":{"ResultCode":"FATAL","DWLError":{"ComponentType":"106","ErrorMessage":"Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.","ErrorType":"READERR","LanguageCode":"100","ReasonCode":"4928","Severity":"0","Throwable":"com.dwl.base.requestHandler.exception.RequestParserException: TargetNamespace.2: Expecting no namespace, but the schema document has a target namespace of 'http://www.ibm.com/mdm/schema'."}}}}}
