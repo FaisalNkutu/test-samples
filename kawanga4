@@ -1,28 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-{"TCRMService": {
-   "@noNamespaceSchemaLocation": "MDMDomains.xsd",
-   "ResponseControl":    {
-      "ResultCode": "FATAL",
-      "ServiceTime": "2",
-      "DWLControl":       {
-         "requesterLanguage": "100",
-         "requesterLocale": "en",
-         "requestID": "734774613253782001"
-      }
-   },
-   "TxResponse":    {
-      "RequestType": "processTx",
-      "TxResult":       {
-         "ResultCode": "FATAL",
-         "DWLError":          {
-            "ComponentType": "106",
-            "ErrorMessage": "Parser DWLTransaction failed. The format of the message is not correct or an application error occurred.",
-            "ErrorType": "READERR",
-            "LanguageCode": "100",
-            "ReasonCode": "4928",
-            "Severity": "0",
-            "Throwable": "com.dwl.base.requestHandler.exception.RequestParserException: [Exception_SchemaProperties_SchemaNameCannotBeNull:] CDKCS2035E:The schema name cannot be null."
-         }
-      }
-   }
-}}
+<TCRMService xmlns="http://www.ibm.com/mdm/schema"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+
+  <RequestControl>
+    <requestID>5404</requestID>
+    <DWLControl>
+      <requesterName>EXR054</requesterName>
+      <requesterLanguage>100</requesterLanguage>
+      <requestTime>2025-05-01T15:55:00-0400</requestTime>
+      <lineOfBusiness>MDM</lineOfBusiness>
+      <company>CBSA</company>
+      <clientTransactionName>IdentityResolution</clientTransactionName>
+      <clientSystemName>MDM</clientSystemName>
+      <externalCorrelationId>Test-PME-Person</externalCorrelationId>
+      <updateMethodCode>REAL-TIME</updateMethodCode>
+      <requestOrigin>4</requestOrigin>
+      <ControlExtensionProperty name="SkipDataFilter">Y</ControlExtensionProperty>
+    </DWLControl>
+  </RequestControl>
+
+  <RequestType>processCompositeService</RequestType>
+
+  <TCRMRequest>
+    <CompositeServiceName>PMEMatchPerson</CompositeServiceName>
+    <TCRMPayload>
+      <TCRMPersonBObj>
+        <PartyType>Person</PartyType>
+        <TCRMPersonNameBObj>
+          <FirstName>JANE</FirstName>
+          <MiddleName>A</MiddleName>
+          <LastName>DOE</LastName>
+        </TCRMPersonNameBObj>
+        <TCRMPersonCharacteristicBObj>
+          <BirthDate>1980-01-01</BirthDate>
+        </TCRMPersonCharacteristicBObj>
+        <TCRMPartyBObj>
+          <Gender>2</Gender>
+          <Citizenship>CAN</Citizenship>
+        </TCRMPartyBObj>
+        <TCRMPartyIdentificationBObj>
+          <DocumentType>PP</DocumentType>
+          <DocumentNumber>P12345678</DocumentNumber>
+        </TCRMPartyIdentificationBObj>
+      </TCRMPersonBObj>
+    </TCRMPayload>
+  </TCRMRequest>
+</TCRMService>
