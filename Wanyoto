@@ -1,0 +1,55 @@
+Thank you — the screenshot confirms that:
+
+---
+
+## ❌ Directory `/disk/apps/websphere/AppServer/profiles/MDM32/installedCBAs/` does not exist
+
+That’s likely because:
+- Your MDM environment deployed the `.cba` via a **different profile** (like `MDM32-2`)
+- Or the `installedCBAs` directory is placed under a **shared `AppServer` directory**, not inside a specific profile
+
+---
+
+## ✅ Try These Locations Instead
+
+Run this search at the AppServer level:
+
+```bash
+find /disk/apps/websphere/AppServer/ -type f -name "*.jar" | grep -i installedCBAs
+```
+
+If that fails, widen the scope:
+
+```bash
+find /disk/apps/websphere/ -type f -name "*.jar" | grep -i installedCBAs
+```
+
+Once you locate a path like:
+```
+/disk/apps/websphere/AppServer/installedCBAs/com.ibm.mdm.xxx.bundle.jar
+```
+
+Run this:
+
+```bash
+jar tf /full/path/to/that.jar | grep -Ei "CBSAPerson|Composite|Transaction"
+```
+
+---
+
+## 📦 Alternative (based on known installations)
+
+You can also try:
+```bash
+cd /disk/apps/websphere/AppServer/installedCBAs/
+ls -l
+```
+
+Or:
+```bash
+find / -type d -name "installedCBAs" 2>/dev/null
+```
+
+---
+
+Would you like a command to **extract all XML/XSD files from all JARs** in one go?
