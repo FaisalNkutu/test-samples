@@ -1,0 +1,1 @@
+SEARCH_DIR=${1:-/disk/apps/websphere/}; find "$SEARCH_DIR" -type f \( -iname "*.wsdl" -o -iname "*.wadl" -o -iname "*.xml" \) 2>/dev/null | while read file; do if grep -Ei "processTx|party" "$file" > /dev/null; then echo "✅ Match found in: $file"; grep -Ein "processTx|party" "$file" | sed 's/^/    /'; echo "--------------------------------------------------"; fi; done
