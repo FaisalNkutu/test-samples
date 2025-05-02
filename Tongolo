@@ -4,3 +4,7 @@ find /disk/apps/websphere/ -type f -name "*.jar" 2>/dev/null | while read jar; d
 
 ✅ Match found in: /disk/apps/websphere/AppServer/plugins/org.apache.tuscany.sdo.sca.core.model/tuscany-assembly-1.5.1-SNAPSHOT.jar
 org/apache/tuscany/sca/assembly/builder/impl/CompositeServiceConfigurationBuilderImpl.class
+
+
+
+find /disk/apps/websphere/ -type f -name "*.jar" 2>/dev/null | while read jar; do if jar tf "$jar" 2>/dev/null | grep -Ei "CBSAPersonSearchBObj|CompositeServiceConfig\.xml|TransactionInputConfig\.xml|TransactionMappings\.xml" > /dev/null; then echo "✅ Match found in: $jar"; jar tf "$jar" | grep -Ei "CBSAPersonSearchBObj|CompositeServiceConfig\.xml|TransactionInputConfig\.xml|TransactionMappings\.xml"; echo "--------------------------------------------------"; fi; done
