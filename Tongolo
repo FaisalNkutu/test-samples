@@ -1,0 +1,1 @@
+find /disk/apps/websphere/ -type f -name "*.jar" 2>/dev/null | while read jar; do if jar tf "$jar" 2>/dev/null | grep -Ei "CBSAPerson|Composite|Transaction" > /dev/null; then echo "✅ Match found in: $jar"; jar tf "$jar" | grep -Ei "CBSAPerson|Composite|Transaction"; echo "--------------------------------------------------"; fi; done
