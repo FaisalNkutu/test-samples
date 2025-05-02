@@ -1,0 +1,556 @@
+package ca.gc.cbsa.emdm.datamodel.component;
+
+import com.dwl.base.DWLControl;
+import com.dwl.base.error.DWLError;
+import com.dwl.base.error.DWLStatus;
+import com.dwl.base.logging.DWLLoggerManager;
+import com.dwl.base.logging.IDWLLogger;
+import com.dwl.base.util.DWLClassFactory;
+import com.dwl.base.util.DWLFunctionUtils;
+import com.dwl.tcrm.common.TCRMCommon;
+import com.ibm.mdm.common.codetype.interfaces.CodeTypeComponentHelper;
+import com.ibm.mdm.common.codetype.obj.CodeTypeBObj;
+
+public class CBSAPersonSearchBObj extends TCRMCommon {
+  private static final IDWLLogger logger = DWLLoggerManager.getLogger(CBSAPersonSearchBObj.class);
+  
+  protected String lastName;
+  
+  protected String givenNames;
+  
+  protected String birthYear;
+  
+  protected String birthMonth;
+  
+  protected String birthDay;
+  
+  protected String genderType;
+  
+  protected String genderValue;
+  
+  protected String citizenshipType;
+  
+  protected String citizenshipValue;
+  
+  protected String identificationType;
+  
+  protected String identificationValue;
+  
+  protected String identificationNumber;
+  
+  protected String issueCountryType;
+  
+  protected String issueCountryValue;
+  
+  public CBSAPersonSearchBObj() {
+    init();
+    setComponentID("2001160");
+  }
+  
+  private void init() {
+    this.metaDataMap.put("GivenNames", null);
+    this.metaDataMap.put("LastName", null);
+    this.metaDataMap.put("BirthYear", null);
+    this.metaDataMap.put("BirthMonth", null);
+    this.metaDataMap.put("BirthDay", null);
+    this.metaDataMap.put("GenderType", null);
+    this.metaDataMap.put("GenderValue", null);
+    this.metaDataMap.put("CitizenshipType", null);
+    this.metaDataMap.put("CitizenshipValue", null);
+    this.metaDataMap.put("IdentificationType", null);
+    this.metaDataMap.put("IdentificationValue", null);
+    this.metaDataMap.put("IdentificationNumber", null);
+    this.metaDataMap.put("IssueCountryType", null);
+    this.metaDataMap.put("IssueCountryValue", null);
+  }
+  
+  public void setControl(DWLControl newDWLControl) {
+    super.setControl(newDWLControl);
+  }
+  
+  public String getLastName() {
+    return this.lastName;
+  }
+  
+  public void setLastName(String newLastName) throws Exception {
+    this.metaDataMap.put("LastName", newLastName);
+    if (newLastName == null || newLastName
+      .equals(""))
+      newLastName = null; 
+    this.lastName = newLastName;
+  }
+  
+  public String getGivenNames() {
+    return this.givenNames;
+  }
+  
+  public void setGivenNames(String newGivenNames) throws Exception {
+    this.metaDataMap.put("GivenNames", newGivenNames);
+    if (newGivenNames == null || newGivenNames
+      .equals(""))
+      newGivenNames = null; 
+    this.givenNames = newGivenNames;
+  }
+  
+  public String getBirthYear() {
+    return this.birthYear;
+  }
+  
+  public void setBirthYear(String newBirthYear) throws Exception {
+    this.metaDataMap.put("BirthYear", newBirthYear);
+    if (newBirthYear == null || newBirthYear
+      .equals(""))
+      newBirthYear = null; 
+    this.birthYear = newBirthYear;
+  }
+  
+  public String getBirthMonth() {
+    return this.birthMonth;
+  }
+  
+  public void setBirthMonth(String newBirthMonth) throws Exception {
+    this.metaDataMap.put("BirthMonth", newBirthMonth);
+    if (newBirthMonth == null || newBirthMonth
+      .equals(""))
+      newBirthMonth = null; 
+    this.birthMonth = newBirthMonth;
+  }
+  
+  public String getBirthDay() {
+    return this.birthDay;
+  }
+  
+  public void setBirthDay(String newBirthDay) throws Exception {
+    this.metaDataMap.put("BirthDay", newBirthDay);
+    if (newBirthDay == null || newBirthDay
+      .equals(""))
+      newBirthDay = null; 
+    this.birthDay = newBirthDay;
+  }
+  
+  public String getGenderType() {
+    return this.genderType;
+  }
+  
+  public void setGenderType(String newGenderType) throws Exception {
+    this.metaDataMap.put("GenderType", newGenderType);
+    if (newGenderType == null || newGenderType
+      .equals(""))
+      newGenderType = null; 
+    this.genderType = newGenderType;
+  }
+  
+  public String getGenderValue() {
+    return this.genderValue;
+  }
+  
+  public void setGenderValue(String newGenderValue) throws Exception {
+    this.metaDataMap.put("GenderValue", newGenderValue);
+    if (newGenderValue == null || newGenderValue
+      .equals(""))
+      newGenderValue = null; 
+    this.genderValue = newGenderValue;
+  }
+  
+  public String getCitizenshipType() {
+    return this.citizenshipType;
+  }
+  
+  public void setCitizenshipType(String newCitizenshipType) throws Exception {
+    this.metaDataMap.put("CitizenshipType", newCitizenshipType);
+    if (newCitizenshipType == null || newCitizenshipType
+      .equals(""))
+      newCitizenshipType = null; 
+    this.citizenshipType = newCitizenshipType;
+  }
+  
+  public String getCitizenshipValue() {
+    return this.citizenshipValue;
+  }
+  
+  public void setCitizenshipValue(String newCitizenshipValue) throws Exception {
+    this.metaDataMap.put("CitizenshipValue", newCitizenshipValue);
+    if (newCitizenshipValue == null || newCitizenshipValue
+      .equals(""))
+      newCitizenshipValue = null; 
+    this.citizenshipValue = newCitizenshipValue;
+  }
+  
+  public String getIdentificationType() {
+    return this.identificationType;
+  }
+  
+  public void setIdentificationType(String newIdentificationType) throws Exception {
+    this.metaDataMap.put("IdentificationType", newIdentificationType);
+    if (newIdentificationType == null || newIdentificationType
+      .equals(""))
+      newIdentificationType = null; 
+    this.identificationType = newIdentificationType;
+  }
+  
+  public String getIdentificationValue() {
+    return this.identificationValue;
+  }
+  
+  public void setIdentificationValue(String newIdentificationValue) throws Exception {
+    this.metaDataMap.put("IdentificationValue", newIdentificationValue);
+    if (newIdentificationValue == null || newIdentificationValue
+      .equals(""))
+      newIdentificationValue = null; 
+    this.identificationValue = newIdentificationValue;
+  }
+  
+  public String getIdentificationNumber() {
+    return this.identificationNumber;
+  }
+  
+  public void setIdentificationNumber(String newIdentificationNumber) throws Exception {
+    this.metaDataMap.put("IdentificationNumber", newIdentificationNumber);
+    if (newIdentificationNumber == null || newIdentificationNumber
+      .equals(""))
+      newIdentificationNumber = null; 
+    this.identificationNumber = newIdentificationNumber;
+  }
+  
+  public String getIssueCountryType() {
+    return this.issueCountryType;
+  }
+  
+  public void setIssueCountryType(String newIssueCountryType) throws Exception {
+    this.metaDataMap.put("IssueCountryType", newIssueCountryType);
+    if (newIssueCountryType == null || newIssueCountryType
+      .equals(""))
+      newIssueCountryType = null; 
+    this.issueCountryType = newIssueCountryType;
+  }
+  
+  public String getIssueCountryValue() {
+    return this.issueCountryValue;
+  }
+  
+  public void setIssueCountryValue(String newIssueCountryValue) throws Exception {
+    this.metaDataMap.put("IssueCountryValue", newIssueCountryValue);
+    if (newIssueCountryValue == null || newIssueCountryValue
+      .equals(""))
+      newIssueCountryValue = null; 
+    this.issueCountryValue = newIssueCountryValue;
+  }
+  
+  public DWLStatus validateAdd(int level, DWLStatus status) throws Exception {
+    logger.finest("ENTER validateAdd(int level, DWLStatus status)");
+    status = super.validateAdd(level, status);
+    if (level == 1);
+    if (level == 2);
+    status = getValidationStatus(level, status);
+    if (logger.isFinestEnabled()) {
+      String returnValue = status.toString();
+      logger.finest("RETURN validateAdd(int level, DWLStatus status) " + returnValue);
+    } 
+    return status;
+  }
+  
+  public DWLStatus validateUpdate(int level, DWLStatus status) throws Exception {
+    logger.finest("ENTER validateUpdate(int level, DWLStatus status)");
+    status = super.validateUpdate(level, status);
+    if (level == 1);
+    if (level == 2);
+    status = getValidationStatus(level, status);
+    if (logger.isFinestEnabled()) {
+      String returnValue = status.toString();
+      logger.finest("RETURN validateUpdate(int level, DWLStatus status) " + returnValue);
+    } 
+    return status;
+  }
+  
+  private DWLStatus getValidationStatus(int level, DWLStatus status) throws Exception {
+    logger.finest("ENTER getValidationStatus(int level, DWLStatus status)");
+    if (level == 1) {
+      boolean isGenderNull = false;
+      if (getGenderType() == null && (
+        getGenderValue() == null || 
+        getGenderValue()
+        .trim().equals("")))
+        isGenderNull = true; 
+      if (!isGenderNull && 
+        checkForInvalidCbsapersonsearchGender()) {
+        DWLError err = new DWLError();
+        err.setComponentType((new Long("2001160")).longValue());
+        err.setReasonCode((new Long("2001196")).longValue());
+        err.setErrorType("FVERR");
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "Error: Custom validation error occured for transient entity CBSAPersonSearch, component type " + err.getComponentType() + " ReasonCode " + err.getReasonCode() + "  ";
+          logger.finest("getValidationStatus(int level, DWLStatus status) " + infoForLogging);
+        } 
+        status.addError(err);
+      } 
+      boolean isCitizenshipNull = false;
+      if (getCitizenshipType() == null && (
+        getCitizenshipValue() == null || 
+        getCitizenshipValue()
+        .trim().equals("")))
+        isCitizenshipNull = true; 
+      if (!isCitizenshipNull && 
+        checkForInvalidCbsapersonsearchCitizenship()) {
+        DWLError err = new DWLError();
+        err.setComponentType((new Long("2001160")).longValue());
+        err.setReasonCode((new Long("2001203")).longValue());
+        err.setErrorType("FVERR");
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "Error: Custom validation error occured for transient entity CBSAPersonSearch, component type " + err.getComponentType() + " ReasonCode " + err.getReasonCode() + "  ";
+          logger.finest("getValidationStatus(int level, DWLStatus status) " + infoForLogging);
+        } 
+        status.addError(err);
+      } 
+      boolean isIdentificationNull = false;
+      if (getIdentificationType() == null && (
+        getIdentificationValue() == null || 
+        getIdentificationValue()
+        .trim().equals("")))
+        isIdentificationNull = true; 
+      if (!isIdentificationNull && 
+        checkForInvalidCbsapersonsearchIdentification()) {
+        DWLError err = new DWLError();
+        err.setComponentType((new Long("2001160")).longValue());
+        err.setReasonCode((new Long("2001214")).longValue());
+        err.setErrorType("FVERR");
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "Error: Custom validation error occured for transient entity CBSAPersonSearch, component type " + err.getComponentType() + " ReasonCode " + err.getReasonCode() + "  ";
+          logger.finest("getValidationStatus(int level, DWLStatus status) " + infoForLogging);
+        } 
+        status.addError(err);
+      } 
+      boolean isIssueCountryNull = false;
+      if (getIssueCountryType() == null && (
+        getIssueCountryValue() == null || 
+        getIssueCountryValue()
+        .trim().equals("")))
+        isIssueCountryNull = true; 
+      if (!isIssueCountryNull && 
+        checkForInvalidCbsapersonsearchIssuecountry()) {
+        DWLError err = new DWLError();
+        err.setComponentType((new Long("2001160")).longValue());
+        err.setReasonCode((new Long("2001227")).longValue());
+        err.setErrorType("FVERR");
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "Error: Custom validation error occured for transient entity CBSAPersonSearch, component type " + err.getComponentType() + " ReasonCode " + err.getReasonCode() + "  ";
+          logger.finest("getValidationStatus(int level, DWLStatus status) " + infoForLogging);
+        } 
+        status.addError(err);
+      } 
+    } 
+    if (level == 2);
+    if (logger.isFinestEnabled()) {
+      String returnValue = status.toString();
+      logger.finest("RETURN getValidationStatus(int level, DWLStatus status) " + returnValue);
+    } 
+    return status;
+  }
+  
+  private boolean checkForInvalidCbsapersonsearchGender() throws Exception {
+    logger.finest("ENTER checkForInvalidCbsapersonsearchGender()");
+    boolean notValid = false;
+    String langId = (String)getControl().get("langId");
+    CodeTypeComponentHelper codeTypeCompHelper = DWLClassFactory.getCodeTypeComponentHelper();
+    Long codeType = DWLFunctionUtils.getLongFromString(getGenderType());
+    String codeValue = getGenderValue();
+    if (codeValue != null && codeValue.trim().equals(""))
+      codeValue = null; 
+    if (codeType != null && codeValue == null) {
+      if (codeTypeCompHelper.isCodeValid("cdcbsagendertp", langId, getGenderType(), "ACTIVE", 
+          getControl())) {
+        CodeTypeBObj ctBObj = codeTypeCompHelper.getCodeTypeByCode("cdcbsagendertp", langId, getGenderType(), 
+            getControl());
+        if (ctBObj != null)
+          setGenderValue(ctBObj.getvalue()); 
+      } else {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 1";
+          logger.finest("checkForInvalidCbsapersonsearchGender() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } else if (codeType == null && codeValue != null) {
+      CodeTypeBObj ctBObj = codeTypeCompHelper.getCodeTypeByValue("cdcbsagendertp", langId, codeValue, 
+          getControl());
+      if (ctBObj != null) {
+        setGenderType(ctBObj.gettp_cd());
+      } else {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 2";
+          logger.finest("checkForInvalidCbsapersonsearchGender() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } else if (codeType != null && codeValue != null) {
+      if (!codeTypeCompHelper.isCodeValuePairValid("cdcbsagendertp", langId, getGenderType(), new String[] { codeValue }, "ACTIVE", 
+          getControl())) {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 3";
+          logger.finest("checkForInvalidCbsapersonsearchGender() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } 
+    if (logger.isFinestEnabled()) {
+      String returnValue = "" + notValid;
+      logger.finest("RETURN checkForInvalidCbsapersonsearchGender() " + returnValue);
+    } 
+    return notValid;
+  }
+  
+  private boolean checkForInvalidCbsapersonsearchCitizenship() throws Exception {
+    logger.finest("ENTER checkForInvalidCbsapersonsearchCitizenship()");
+    boolean notValid = false;
+    String langId = (String)getControl().get("langId");
+    CodeTypeComponentHelper codeTypeCompHelper = DWLClassFactory.getCodeTypeComponentHelper();
+    Long codeType = DWLFunctionUtils.getLongFromString(getCitizenshipType());
+    String codeValue = getCitizenshipValue();
+    if (codeValue != null && codeValue.trim().equals(""))
+      codeValue = null; 
+    if (codeType != null && codeValue == null) {
+      if (codeTypeCompHelper.isCodeValid("cdcountrytp", langId, getCitizenshipType(), "ACTIVE", 
+          getControl())) {
+        CodeTypeBObj ctBObj = codeTypeCompHelper.getCodeTypeByCode("cdcountrytp", langId, getCitizenshipType(), 
+            getControl());
+        if (ctBObj != null)
+          setCitizenshipValue(ctBObj.getvalue()); 
+      } else {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 1";
+          logger.finest("checkForInvalidCbsapersonsearchCitizenship() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } else if (codeType == null && codeValue != null) {
+      CodeTypeBObj ctBObj = codeTypeCompHelper.getCodeTypeByValue("cdcountrytp", langId, codeValue, 
+          getControl());
+      if (ctBObj != null) {
+        setCitizenshipType(ctBObj.gettp_cd());
+      } else {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 2";
+          logger.finest("checkForInvalidCbsapersonsearchCitizenship() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } else if (codeType != null && codeValue != null) {
+      if (!codeTypeCompHelper.isCodeValuePairValid("cdcountrytp", langId, getCitizenshipType(), new String[] { codeValue }, "ACTIVE", 
+          getControl())) {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 3";
+          logger.finest("checkForInvalidCbsapersonsearchCitizenship() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } 
+    if (logger.isFinestEnabled()) {
+      String returnValue = "" + notValid;
+      logger.finest("RETURN checkForInvalidCbsapersonsearchCitizenship() " + returnValue);
+    } 
+    return notValid;
+  }
+  
+  private boolean checkForInvalidCbsapersonsearchIdentification() throws Exception {
+    logger.finest("ENTER checkForInvalidCbsapersonsearchIdentification()");
+    boolean notValid = false;
+    String langId = (String)getControl().get("langId");
+    CodeTypeComponentHelper codeTypeCompHelper = DWLClassFactory.getCodeTypeComponentHelper();
+    Long codeType = DWLFunctionUtils.getLongFromString(getIdentificationType());
+    String codeValue = getIdentificationValue();
+    if (codeValue != null && codeValue.trim().equals(""))
+      codeValue = null; 
+    if (codeType != null && codeValue == null) {
+      if (codeTypeCompHelper.isCodeValid("cdidtp", langId, getIdentificationType(), "ACTIVE", 
+          getControl())) {
+        CodeTypeBObj ctBObj = codeTypeCompHelper.getCodeTypeByCode("cdidtp", langId, getIdentificationType(), 
+            getControl());
+        if (ctBObj != null)
+          setIdentificationValue(ctBObj.getvalue()); 
+      } else {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 1";
+          logger.finest("checkForInvalidCbsapersonsearchIdentification() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } else if (codeType == null && codeValue != null) {
+      CodeTypeBObj ctBObj = codeTypeCompHelper.getCodeTypeByValue("cdidtp", langId, codeValue, 
+          getControl());
+      if (ctBObj != null) {
+        setIdentificationType(ctBObj.gettp_cd());
+      } else {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 2";
+          logger.finest("checkForInvalidCbsapersonsearchIdentification() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } else if (codeType != null && codeValue != null) {
+      if (!codeTypeCompHelper.isCodeValuePairValid("cdidtp", langId, getIdentificationType(), new String[] { codeValue }, "ACTIVE", 
+          getControl())) {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 3";
+          logger.finest("checkForInvalidCbsapersonsearchIdentification() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } 
+    if (logger.isFinestEnabled()) {
+      String returnValue = "" + notValid;
+      logger.finest("RETURN checkForInvalidCbsapersonsearchIdentification() " + returnValue);
+    } 
+    return notValid;
+  }
+  
+  private boolean checkForInvalidCbsapersonsearchIssuecountry() throws Exception {
+    logger.finest("ENTER checkForInvalidCbsapersonsearchIssuecountry()");
+    boolean notValid = false;
+    String langId = (String)getControl().get("langId");
+    CodeTypeComponentHelper codeTypeCompHelper = DWLClassFactory.getCodeTypeComponentHelper();
+    Long codeType = DWLFunctionUtils.getLongFromString(getIssueCountryType());
+    String codeValue = getIssueCountryValue();
+    if (codeValue != null && codeValue.trim().equals(""))
+      codeValue = null; 
+    if (codeType != null && codeValue == null) {
+      if (codeTypeCompHelper.isCodeValid("cdcountrytp", langId, getIssueCountryType(), "ACTIVE", 
+          getControl())) {
+        CodeTypeBObj ctBObj = codeTypeCompHelper.getCodeTypeByCode("cdcountrytp", langId, getIssueCountryType(), 
+            getControl());
+        if (ctBObj != null)
+          setIssueCountryValue(ctBObj.getvalue()); 
+      } else {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 1";
+          logger.finest("checkForInvalidCbsapersonsearchIssuecountry() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } else if (codeType == null && codeValue != null) {
+      CodeTypeBObj ctBObj = codeTypeCompHelper.getCodeTypeByValue("cdcountrytp", langId, codeValue, 
+          getControl());
+      if (ctBObj != null) {
+        setIssueCountryType(ctBObj.gettp_cd());
+      } else {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 2";
+          logger.finest("checkForInvalidCbsapersonsearchIssuecountry() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } else if (codeType != null && codeValue != null) {
+      if (!codeTypeCompHelper.isCodeValuePairValid("cdcountrytp", langId, getIssueCountryType(), new String[] { codeValue }, "ACTIVE", 
+          getControl())) {
+        if (logger.isFinestEnabled()) {
+          String infoForLogging = "NotValid 3";
+          logger.finest("checkForInvalidCbsapersonsearchIssuecountry() " + infoForLogging);
+        } 
+        notValid = true;
+      } 
+    } 
+    if (logger.isFinestEnabled()) {
+      String returnValue = "" + notValid;
+      logger.finest("RETURN checkForInvalidCbsapersonsearchIssuecountry() " + returnValue);
+    } 
+    return notValid;
+  }
+}
