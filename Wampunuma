@@ -1,0 +1,59 @@
+Excellent work — you’ve now uncovered the full set of deployed `.jar` files from:
+
+- `native.war`
+- `installedEBAs`
+- `installedApps`
+
+From your output, the most **promising lead** is this `.jar` file:
+
+```
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.common.jar
+```
+
+This one likely contains or references:
+- `CBSAPersonSearchBObj` class or schema
+- `CompositeServiceConfig.xml` or `TransactionInputConfig.xml`
+- PME-triggering logic (based on "common" naming in IBM MDM)
+
+---
+
+## ✅ Next Step: Extract and Search Inside
+
+Please do the following:
+
+### 🔍 1. Copy the `.jar` file somewhere safe (optional but recommended)
+```bash
+cp installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.common.jar /tmp/
+cd /tmp/
+```
+
+### 🔍 2. Extract its contents:
+```bash
+jar xf com.ibm.mdm.mds.common.jar
+```
+
+### 🔍 3. Search for mapping/config/XSD:
+```bash
+find . -type f \( -name "*.xml" -o -name "*.xsd" \) | grep -Ei "CBSAPerson|Composite|Transaction"
+```
+
+Also try:
+```bash
+grep -i CBSAPerson * -R | less
+```
+
+You're looking for any of:
+- `CompositeServiceConfig.xml`
+- `TransactionInputConfig.xml`
+- `CBSAPersonSearchBObj.xsd`
+- Any `.java` file or `.class` with `CBSAPerson` in name
+
+---
+
+## ✅ If Found:
+Please upload the XML or XSD file(s) and I will:
+- Explain the PME field mappings
+- Confirm what attributes it uses (`PERDOCUMENT`, `PERLEGALNAME`, etc.)
+- Link them back to your `.alg` and `.imm`
+
+Would you like me to walk you through automated scripting to extract multiple `.jar` files and scan for `CBSAPerson` if needed?
