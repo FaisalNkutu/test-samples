@@ -1,0 +1,128 @@
+Excellent question — if you're unsure whether you're hitting the **correct MDM endpoint** for your deduplication + automerge workflow, here’s how to **systematically find the correct endpoint** in IBM MDM.
+
+---
+
+## ✅ Step-by-Step: How to Find the Correct PME-Compatible Endpoint
+
+### 🔍 1. **Know What You're Trying to Trigger**
+Since you're doing **DeDuplication + AutoMerge**, you want to trigger:
+
+| Goal                  | Trigger Type         |
+|-----------------------|----------------------|
+| PME Match             | `processTx` with `TCRMPersonBObj` |
+| AutoMerge             | Defined in `EntityConfig.xml` and rules |
+| Web API Endpoint      | RESTful or SOAP endpoint mapped to `processTx` |
+
+---
+
+### 🛠️ 2. **Search the CompositeServiceConfig.xml**
+
+This file maps:
+- **Service names** like `processTx`, `searchXYZ`
+- To **objects** like `TCRMPersonBObj`, `TCRMOrganizationBObj`, etc.
+- And links to **PME match + merge logic**
+
+**How to find it:**
+
+```bash
+find /disk/apps/websphere/ -name "CompositeServiceConfig.xml" 2>/dev/null
+```
+
+Then extract it:
+```bash
+jar xf path/to/matching.jar path/to/CompositeServiceConfig.xml
+```
+
+Open the XML and search for entries like:
+```xml
+<CompositeService name="processTx">
+    <ObjectType>TCRMPersonBObj</ObjectType>
+    ...
+</CompositeService>
+```
+
+✅ If this exists, the REST endpoint:
+```
+POST /com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful
+```
+is valid for your `TCRMPersonBObj`-based `processTx`.
+
+---
+
+### 🔍 3. **Check Installed WSDLs or OpenAPI (if SOAP)**
+
+For SOAP-style interfaces:
+```bash
+find /disk/apps/websphere/ -name "*.wsdl" | grep -i MDM
+```
+
+If you're using the old SOAP interface, the endpoint might be something like:
+
+```
+http://<host>:<port>/mdm/services/TCRMService
+```
+
+---
+
+### ✅ 4. **Test Known Working Payloads**
+
+From your earlier tests:
+- This worked:
+```xml
+<TCRMTxType>searchCBSAPerson</TCRMTxType>
+```
+…but was **search**, not dedup.
+
+You want:
+```xml
+<RequestType>processTx</RequestType>
+<TCRMTx>
+  <TCRMPersonBObj>...</TCRMPersonBObj>
+</TCRMTx>
+```
+
+Submit it to:
+```
+POST https://<server>/com.ibm.mdm.server.ws.restful/resources/MDMWSRESTful
+```
+
+If it returns:
+```xml
+<ResultCode>SUCCESS</ResultCode>
+```
+Or:
+```xml
+<ResultCode>FATAL</ResultCode> but ErrorMessage contains 'match candidate'
+```
+✅ Then the PME path is invoked.
+
+---
+
+### 🧠 5. **Inspect Logs for PME Match Traces**
+
+Tail this to confirm it’s hitting the PME:
+```bash
+tail -f /disk/apps/websphere/AppServer/profiles/MDM32*/logs/*/SystemOut.log
+```
+
+Look for:
+```
+Invoking PME Match
+Running auto-merge
+Match candidates found
+```
+
+---
+
+## ✅ Summary
+
+| Task                        | How to Find It |
+|-----------------------------|----------------|
+| Right endpoint              | Check `CompositeServiceConfig.xml` for `processTx` |
+| PME match trigger confirmed | Watch logs: `SystemOut.log` |
+| REST compatibility          | Confirm `/MDMWSRESTful` exists and accepts `TCRMPersonBObj` |
+| Test auto-merge             | Submit payload, check for resolution/suspect creation |
+
+---
+
+Would you like me to generate a mock `CompositeServiceConfig.xml` example to help you visually spot the relevant `processTx` entry?
