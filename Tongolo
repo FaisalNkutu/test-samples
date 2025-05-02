@@ -1,1 +1,6 @@
 find /disk/apps/websphere/ -type f -name "*.jar" 2>/dev/null | while read jar; do if jar tf "$jar" 2>/dev/null | grep -Ei "CBSAPerson|Composite|Transaction" > /dev/null; then echo "✅ Match found in: $jar"; jar tf "$jar" | grep -Ei "CBSAPerson|Composite|Transaction"; echo "--------------------------------------------------"; fi; done
+
+[was@ec01ld6632 MDM32]$ find /disk/apps/websphere/ -type f -name "*.jar" 2>/dev/null | while read jar; do if jar tf "$jar" 2>/dev/null | grep -Ei "CBSAPersonSearchObject|CompositeServiceConfig|TransactionInputConfig|TransactionMapping" > /dev/null; then echo "✅ Match found in: $jar"; jar tf "$jar" | grep -Ei "CBSAPersonSearchObject|CompositeServiceConfig|TransactionInputConfig|TransactionMapping"; echo "--------------------------------------------------"; fi; done
+
+✅ Match found in: /disk/apps/websphere/AppServer/plugins/org.apache.tuscany.sdo.sca.core.model/tuscany-assembly-1.5.1-SNAPSHOT.jar
+org/apache/tuscany/sca/assembly/builder/impl/CompositeServiceConfigurationBuilderImpl.class
