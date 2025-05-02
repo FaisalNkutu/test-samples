@@ -1,0 +1,85 @@
+Thanks — based on the WSDL list you provided, you **do not have `CompositeServiceConfig.xml`**, but you **do have WSDLs**, which means you're using **SOAP-based endpoints**, not REST Composite Services.
+
+---
+
+## ✅ Your Best Matching Endpoint: `TCRMService` (SOAP)
+
+From your WSDL paths, this one is key:
+
+```
+/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/wsdl/IdentityHub.wsdl
+```
+
+This usually corresponds to the classic MDM SOAP service:
+```
+https://<host>:<port>/ibminitiatews/TCRMService
+```
+
+---
+
+## 🧪 What You Can Do Now
+
+### ✅ Use `processTx` Over SOAP with `TCRMPersonBObj`
+
+Send a payload like this:
+
+```xml
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:urn="http://www.ibm.com/mdm/schema">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:TCRMService>
+      <urn:RequestType>processTx</urn:RequestType>
+      <urn:TCRMTx>
+        <urn:TCRMPersonBObj>
+          <urn:PartyType>Person</urn:PartyType>
+          <urn:TCRMPersonNameBObj>
+            <urn:FirstName>KOMAL</urn:FirstName>
+            <urn:MiddleName>CHRISTINA KAUR</urn:MiddleName>
+            <urn:LastName>BAHIA</urn:LastName>
+          </urn:TCRMPersonNameBObj>
+          <urn:TCRMPersonCharacteristicBObj>
+            <urn:BirthDate>1952-08-08</urn:BirthDate>
+          </urn:TCRMPersonCharacteristicBObj>
+          <urn:TCRMPartyBObj>
+            <urn:Gender>1</urn:Gender>
+            <urn:Citizenship>31</urn:Citizenship>
+          </urn:TCRMPartyBObj>
+          <urn:TCRMPartyIdentificationBObj>
+            <urn:DocumentType>13</urn:DocumentType>
+            <urn:DocumentNumber>AN579239</urn:DocumentNumber>
+          </urn:TCRMPartyIdentificationBObj>
+        </urn:TCRMPersonBObj>
+      </urn:TCRMTx>
+    </urn:TCRMService>
+  </soapenv:Body>
+</soapenv:Envelope>
+```
+
+---
+
+## 🔍 How to Confirm Endpoint
+
+If you're unsure about the correct host and port, check your WebSphere Admin Console:
+
+1. Go to `Servers > Server Types > WebSphere Application Servers > [Your Server]`
+2. Under **Web Container**, check the host and port
+3. Validate:
+   ```
+   https://<host>:<port>/ibminitiatews/TCRMService?wsdl
+   ```
+   in a browser or SoapUI
+
+---
+
+## ✅ Summary
+
+| You Want                | Use                                             |
+|-------------------------|--------------------------------------------------|
+| AutoMerge via PME       | `TCRMService → processTx` with `TCRMPersonBObj` |
+| Your interface style    | SOAP (based on `IdentityHub.wsdl`)             |
+| REST Composite not used | No `CompositeServiceConfig.xml` present         |
+
+---
+
+Would you like a SoapUI project template for testing this endpoint directly?
