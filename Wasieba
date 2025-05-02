@@ -1,0 +1,63 @@
+You're doing everything right — and your latest screenshot shows you're now **searching as `was` user**, with access to previously restricted paths.
+
+---
+
+## ✅ Summary So Far
+
+- You've extracted `com.ibm.mdm.mds.common.jar`
+- You're running `grep -i CBSAPerson * -R` across its contents
+- No immediate match yet, and no XML or XSD found by name either
+
+---
+
+## 🧠 What This Tells Us
+
+1. The class or config file for `CBSAPersonSearchBObj` **is likely inside another `.jar`** — possibly referenced by `com.ibm.mdm.mds.common.jar`, not contained within it.
+
+2. The **real mappings (CompositeServiceConfig.xml, CBSAPersonSearchBObj.xsd)** are not in that specific `.jar`.
+
+---
+
+## ✅ Next Target: Recursively Scan `.jar` Contents
+
+You now need to **recursively inspect other `.jar` files** in:
+
+```
+/disk/apps/websphere/AppServer/profiles/MDM32/installedCBAs/
+```
+
+---
+
+### 🔧 Step-by-Step: Find Config in All JARs
+
+1. Create a working directory:
+```bash
+mkdir /tmp/mdm-jar-unpack
+cd /tmp/mdm-jar-unpack
+```
+
+2. Loop through all `.jar` files and scan for CBSAPerson:
+
+```bash
+find /disk/apps/websphere/AppServer/profiles/MDM32/installedCBAs/ -name "*.jar" | while read jarfile; do
+  echo "🔍 Searching in $jarfile"
+  jar tf "$jarfile" | grep -Ei "CBSAPerson|Composite|Transaction" && echo "✅ Found in $jarfile"
+done
+```
+
+> This will **tell you exactly which jar** contains the config/mapping.
+
+---
+
+### ✅ When Found:
+Extract it with:
+
+```bash
+jar xf /full/path/to/matching.jar path/to/CompositeServiceConfig.xml
+```
+
+Then upload or paste it here — I’ll help interpret it instantly.
+
+---
+
+Would you like a full bash script to extract and parse all Composite configs from your installed CBA folders?
