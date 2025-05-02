@@ -1,0 +1,140 @@
+-bash: [fxn703@ec01ld6632: command not found
+[fxn703@ec01ld6632 WEB-INF]$ find /disk/apps/websphere/AppServer/profiles/MDM32/installedCBAs/ -type f -name "*.jar"
+find: ‘/disk/apps/websphere/AppServer/profiles/MDM32/installedCBAs/’: No such file or directory
+[fxn703@ec01ld6632 WEB-INF]$ cd /disk/apps/websphere/AppServer/profiles/MDM32/installedCBAs
+-bash: cd: /disk/apps/websphere/AppServer/profiles/MDM32/installedCBAs: No such file or directory
+[fxn703@ec01ld6632 WEB-INF]$ cd /disk/apps/websphere/AppServer/profiles/MDM32/
+[fxn703@ec01ld6632 MDM32]$ ls
+bin     configuration  expandedBundles  installableApps  installedAssets      installedEBAs     logs        servers        temp     workspace  xd_discovery
+config  etc            firststeps       installedApps    installedConnectors  installedFilters  properties  staticContent  tranlog  wstemp
+[fxn703@ec01ld6632 MDM32]$ find /installedEBAs/ -type f -name "*.jar"
+find: ‘/installedEBAs/’: No such file or directory
+[fxn703@ec01ld6632 MDM32]$ find /installedEBAs/ -type f -name "*.jar"
+find: ‘/installedEBAs/’: No such file or directory
+[fxn703@ec01ld6632 MDM32]$ find installedEBAs/ -type f -name "*.jar"
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.36/36/spring-beans.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.36/36/spring-core.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.36/36/commons-dbcp.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.36/36/commons-pool.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.57/57/ant-contrib.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.57/57/ant-launcher.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.57/57/ant.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.57/57/ant-nodeps.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.57/57/groovy-all.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.61/61/castor-xml.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.61/61/castor-core.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.95/95/lucene-core.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.47/47/jrules-res-session-ejb3-WAS85-8.7.0.0.1.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.3/3/arm4.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.24/24/log4j.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.52/52/org.eclipse.emf.ecore_2.6.1.v20100914-1218.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.52/52/org.eclipse.xsd_2.6.0.v20100914-1218.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.52/52/org.eclipse.emf.common_2.6.0.v20100914-1218.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.32/32/jaxb-xjc.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.97/97/Acxiom.jar
+installedEBAs/com.ibm.mdm.hub.server-MDME001_11.6.0.11/byValue/dd5197ea-b711-49a6-98bc-28fc44973f94.23/23/WEB-INF/lib/jettison-1.3.8.jar
+[fxn703@ec01ld6632 MDM32]$ find installedApps/ -type f -name "*.jar"
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/ant-contrib.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/ant.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.data.validator.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.de.ant.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.de.config.appserver.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.de.config.appserver.remoteclient.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.commandline.base.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.commandline.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.common.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.jmx.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.job.client.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.messages.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.orm.api.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.orm.jdbc.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.orm.mybatis.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.relationship.service.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.util.txm.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.mds.util.weightqa.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/com.ibm.mdm.server.hybrid.commandline.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/commons-beanutils.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/commons-collections.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/commons-dbcp.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/commons-lang.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/commons-logging.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/commons-pool.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/groovy-all.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/log4j.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/madapi.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/madjdbc.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/mybatis.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/sdk/madapi-nodeps.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/sdk/madapi.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/sdk/madcommon.jar
+installedApps/DmgrNodeCell/MDM-native-MDME001.ear/native.war/lib/xmltask.jar
+installedApps/DmgrNodeCell/MDM-web-services-MDME001.ear/lib/com.ibm.mdm.mdmclient.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/slf4j-api-1.7.24.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/wss4j-ws-security-common-2.1.12.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/com.ibm.mdm.mds.api-11.6.0.11.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/xmlsec-2.0.10.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/axis-1.4.1-MDM.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/slf4j-jdk14-1.7.24.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/log4j-1.2.16.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/wsdl4j-1.6.3.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/axis-saaj-1.4.1-MDM.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/commons-logging-1.1.1.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/com.ibm.ws.admin.client-8.5.0.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/wss4j-ws-security-dom-2.1.12.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/axis-jaxrpc-1.4.1-MDM.jar
+installedApps/DmgrNodeCell/MDM-web-services-virtual-MDME001.ear/ibminitiatews.war/WEB-INF/lib/commons-discovery-0.2.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/aopalliance-1.0.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/asm-5.0.4.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/com.ibm.mdm.mds.api.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/com.ibm.mdm.mds.appservices.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/com.ibm.mdm.mds.common.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/com.ibm.mdm.mds.esoa.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/commons-beanutils-1.8.3.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/commons-codec-1.11.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/commons-lang-2.6.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/commons-logging-1.1.1.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/commons-pool-1.6.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/cxf-core-3.1.16.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/cxf-rt-bindings-soap-3.1.16.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/cxf-rt-databinding-jaxb-3.1.16.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/cxf-rt-frontend-jaxrs-3.1.16.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/cxf-rt-frontend-jaxws-3.1.16.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/cxf-rt-frontend-simple-3.1.16.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/cxf-rt-rs-service-description-3.1.16.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/cxf-rt-transports-http-3.1.16.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/cxf-rt-wsdl-3.1.16.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/geronimo-annotation_1.0_spec-1.1.1.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/geronimo-javamail_1.4_spec-1.7.1.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/geronimo-jaxws_2.2_spec-1.0.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/geronimo-ws-metadata_2.0_spec-1.1.3.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/jackson-core-asl-1.8.5.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/jackson-jaxrs-1.8.5.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/jackson-mapper-asl-1.8.5.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/jackson-xc-1.8.5.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/javax.annotation-api-1.2.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/javax.ws.rs-api-2.0.1.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/jaxp-ri-1.4.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/neethi-3.1.1.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/saaj-api-1.3.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/saaj-impl-1.3.2.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/slf4j-api-1.7.24.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/slf4j-jdk14-1.7.24.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/spring-aop-4.1.9.RELEASE.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/spring-beans-4.1.9.RELEASE.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/spring-context-4.1.9.RELEASE.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/spring-core-4.1.9.RELEASE.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/spring-expression-4.1.9.RELEASE.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/spring-web-4.1.9.RELEASE.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/stax2-api-3.1.4.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/woodstox-core-asl-4.4.1.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/wss4j-ws-security-common-2.1.12.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/wss4j-ws-security-dom-2.1.12.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/xmlschema-core-2.2.3.jar
+installedApps/DmgrNodeCell/com.ibm.mdm.mds.appservices.app-MDME001.ear/com.ibm.mdm.mds.appserviceswar.war/WEB-INF/lib/xmlsec-2.0.10.jar
+[fxn703@ec01ld6632 MDM32]$
+[fxn703@ec01ld6632 MDM32]$ cd /disk/apps/websphere/AppServer/profiles/MDM32
+[fxn703@ec01ld6632 MDM32]$ ls
+bin     configuration  expandedBundles  installableApps  installedAssets      installedEBAs     logs        servers        temp     workspace  xd_discovery
+config  etc            firststeps       installedApps    installedConnectors  installedFilters  properties  staticContent  tranlog  wstemp
+[fxn703@ec01ld6632 MDM32]$ find installableApps/ -type f -name "*.jar"
+[fxn703@ec01ld6632 MDM32]$ find /disk/apps/websphere/AppServer -name "*bundle.jar" 2>/dev/null
