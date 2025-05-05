@@ -1,0 +1,80 @@
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.UUID;
+
+import com.dwl.base.DWLControl;
+import com.dwl.base.requestHandler.DWLServiceController;
+import com.dwl.tcrm.common.TCRMRequestType;
+import com.dwl.tcrm.common.TCRMService;
+import com.dwl.tcrm.common.TCRMTx;
+import com.dwl.tcrm.coreParty.component.TCRMPersonBObj;
+import com.dwl.tcrm.coreParty.component.TCRMPersonNameBObj;
+import com.dwl.tcrm.coreParty.component.TCRMPartyIdentificationBObj;
+
+public class TCRMServiceClient {
+
+    public String invokeProcessTx(PersonInput input) throws Exception {
+        // Construct TCRMService object
+        TCRMService tcrmService = new TCRMService();
+
+        // Set RequestControl
+        TCRMService.RequestControl requestControl = new TCRMService.RequestControl();
+        requestControl.setRequestID("req-" + UUID.randomUUID().toString());
+
+        DWLControl dwlControl = new DWLControl();
+        dwlControl.setRequesterName("restapp");
+        dwlControl.setRequesterLocale("en");
+        requestControl.setDWLControl(dwlControl);
+
+        tcrmService.setRequestControl(requestControl);
+
+        // Set RequestType
+        tcrmService.setRequestType(TCRMRequestType.PROCESS_TX);
+
+        // Construct TCRMTx with TCRMPersonBObj
+        TCRMTx tcrmTx = new TCRMTx();
+        TCRMPersonBObj person = new TCRMPersonBObj();
+        person.setPartyType("P");
+        person.setDisplayName(input.getDisplayName());
+        person.setBirthDate(input.getBirthDate());
+
+        TCRMPersonNameBObj name = new TCRMPersonNameBObj();
+        name.setNameUsageType("1");
+        name.setGivenNameOne(input.getFirstName());
+        name.setMiddleName(input.getMiddleName());
+        name.setLastName(input.getLastName());
+        person.getTCRMPersonNameBObj().add(name);
+
+        TCRMPartyIdentificationBObj id = new TCRMPartyIdentificationBObj();
+        id.setIdentificationType(input.getDocType());
+        id.setIdentificationNumber(input.getDocNumber());
+        id.setCountryType(input.getDocIssueCountry());
+        person.getTCRMPartyIdentificationBObj().add(id);
+
+        tcrmTx.getTCRMPersonBObj().add(person);
+        tcrmService.setTCRMTx(tcrmTx);
+
+        // Prepare context
+        HashMap<String, Object> context = new HashMap<>();
+        context.put("TargetApplication", "tcrm");
+        context.put("RequestType", "standard");
+        context.put("Parser", "TCRMService");
+        context.put("ResponseType", "standard");
+        context.put("Constructor", "TCRMService");
+        context.put("OperationType", "All");
+
+        // Invoke MDM service
+        DWLServiceController controller = new DWLServiceController();
+        Serializable response = controller.processRequest(context, tcrmService);
+
+        // Convert response to XML string (implementation depends on your XML handling)
+        String responseXml = convertResponseToXml(response);
+        return responseXml;
+    }
+
+    private String convertResponseToXml(Serializable response) {
+        // Implement XML conversion logic here
+        // This could involve JAXB marshalling or other XML serialization
+        return response.toString(); // Placeholder
+    }
+}
