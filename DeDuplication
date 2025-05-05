@@ -1,0 +1,41 @@
+<TCRMService xmlns="http://www.ibm.com/mdm/schema"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="MDMDomains.xsd">
+  <RequestControl>
+    <requestID>tx-001-IMM-ALIGNED</requestID>
+    <DWLControl>
+      <requesterName>mdmadmin</requesterName>
+      <requesterLocale>en</requesterLocale>
+    </DWLControl>
+  </RequestControl>
+  <RequestType>processTx</RequestType>
+  <TCRMTx>
+    <TCRMPersonBObj>
+      <PartyType>P</PartyType>
+      <DisplayName>Komal Bahia</DisplayName>
+
+      <TCRMPersonNameBObj>
+        <NameUsageType>1</NameUsageType> <!-- 1 = Legal Name -->
+        <GivenNameOne>Komal</GivenNameOne>
+        <MiddleName>Christina Kaur</MiddleName>
+        <LastName>Bahia</LastName>
+      </TCRMPersonNameBObj>
+
+      <TCRMPersonCharacteristicBObj>
+        <BirthDate>1952-08-08</BirthDate>
+      </TCRMPersonCharacteristicBObj>
+
+      <TCRMPartyBObj>
+        <Gender>1</Gender>               <!-- gendertpcd (1 = Female, 2 = Male by default) -->
+        <Citizenship>31</Citizenship>    <!-- citizentpcd (e.g. 31 = Canada) -->
+      </TCRMPartyBObj>
+
+      <TCRMPartyIdentificationBObj>
+        <IdentificationType>13</IdentificationType> <!-- doctypetpcd (13 = Driver's License, etc.) -->
+        <IdentificationNumber>AN579243</IdentificationNumber> <!-- idnum -->
+        <IdentificationStatusType>2</IdentificationStatusType> <!-- e.g. Active -->
+        <CountryType>31</CountryType>   <!-- docicc: Document Issuing Country -->
+      </TCRMPartyIdentificationBObj>
+    </TCRMPersonBObj>
+  </TCRMTx>
+</TCRMService>
