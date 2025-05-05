@@ -1,0 +1,38 @@
+<TCRMService xmlns="http://www.ibm.com/mdm/schema" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="http://www.ibm.com/mdm/schema MDMDomains.xsd">   http://<MDM_HOST>:<MDM_PORT>/mdmrest/matchParties
+
+    <RequestControl>
+        <requestID>12345</requestID>
+        <DWLControl>
+            <requesterName>mdmadmin</requesterName>
+            <requesterLocale>en</requesterLocale>
+        </DWLControl>
+    </RequestControl>
+    <TCRMTxType>MatchParties</TCRMTxType>
+    <TCRMTxObject>TCRMPartyListBObj</TCRMTxObject>
+    <TCRMObject>
+        <TCRMPartyListBObj>
+            <!-- Source party (record to match from) -->
+            <TCRMPersonBObj>
+                <BirthDate>1980-01-01 00:00:00.0</BirthDate>
+                <TCRMPersonNameBObj>
+                    <NameUsageType>1</NameUsageType>
+                    <NameUsageValue>Legal</NameUsageValue>
+                    <GivenNameOne>John</GivenNameOne>
+                    <LastName>Smith</LastName>
+                </TCRMPersonNameBObj>
+            </TCRMPersonBObj>
+            <!-- Candidate party (record to match against) -->
+            <TCRMPersonBObj>
+                <BirthDate>1980-01-01 00:00:00.0</BirthDate>
+                <TCRMPersonNameBObj>
+                    <NameUsageType>1</NameUsageType>
+                    <NameUsageValue>Legal</NameUsageValue>
+                    <GivenNameOne>Jon</GivenNameOne>
+                    <LastName>Smith</LastName>
+                </TCRMPersonNameBObj>
+            </TCRMPersonBObj>
+        </TCRMPartyListBObj>
+    </TCRMObject>
+</TCRMService>
