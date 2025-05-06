@@ -1,0 +1,78 @@
+Thanks for uploading the latest log. Now we're **extremely close** — the log gives us a precise next fix:
+
+---
+
+### 🔥 New Critical Error:
+
+```
+!MESSAGE Could not find extension: reference:file:com.ibm.cds_3.0.1.201410101357.jar
+!MESSAGE Could not find extension: reference:file:org.eclipse.osgi.compatibility.state_1.0.200.v20160504-1419.jar
+!MESSAGE Could not find extension: reference:file:org.eclipse.wst.jsdt.nashorn.extension_1.0.0.v201605131737.jar
+```
+
+And the fatal error:
+
+```
+java.lang.ClassNotFoundException: org.eclipse.core.runtime.adaptor.EclipseStarter
+```
+
+This means:
+
+* You’ve reached the **runtime loader** stage ✔️
+* But key extension plugins listed in `config.ini` are **still missing** ❌
+
+---
+
+### ✅ Fix This by Doing the Following
+
+#### 🔍 Step 1: Search for missing JARs
+
+Search your disk for **each of these JARs**:
+
+| Missing JAR                                                       | What to Search                                      |
+| ----------------------------------------------------------------- | --------------------------------------------------- |
+| `com.ibm.cds_3.0.1.201410101357.jar`                              | `com.ibm.cds_3.0.1*.jar`                            |
+| `org.eclipse.osgi.compatibility.state_1.0.200.v20160504-1419.jar` | `org.eclipse.osgi.compatibility.state_1.0.200*.jar` |
+| `org.eclipse.wst.jsdt.nashorn.extension_1.0.0.v201605131737.jar`  | `nashorn.extension*.jar`                            |
+
+Once found, **copy them into**:
+
+```
+C:\Program Files\IBM\SDP\plugins\
+```
+
+---
+
+#### 🧹 Step 2: If you can’t find them — comment out the extensions
+
+Edit your `config.ini` and remove (or comment out) this line:
+
+```ini
+osgi.framework.extensions=reference\:file\:com.ibm.cds_3.0.1.201410101357.jar,reference\:file\:org.eclipse.osgi.compatibility.state_1.0.200.v20160504-1419.jar,reference\:file\:org.eclipse.wst.jsdt.nashorn.extension_1.0.0.v201605131737.jar
+```
+
+> You can also just prefix the line with `#` to comment it out.
+
+---
+
+#### 🔁 Step 3: Clean and Relaunch
+
+1. Delete everything again from:
+
+   ```
+   C:\Program Files\IBM\SDP\configuration\
+   ```
+
+   Except `config.ini`.
+
+2. Run:
+
+   ```
+   eclipse.exe -clean
+   ```
+
+---
+
+This should finally **resolve the ClassNotFoundException** and start the Eclipse platform.
+
+Would you like me to generate a fresh `config.ini` with those broken references removed?
