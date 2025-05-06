@@ -1,0 +1,1 @@
+osgi.framework=reference\:file\:plugins/org.eclipse.osgi_3.11.2.v20161107-1947.jar
