@@ -1,0 +1,57 @@
+Great — here's a clean, minimal config.ini and a checklist of 5 required JARs to get IBM MDM Workbench (Eclipse-based) running properly.
+
+✅ Step 1: Use This config.ini
+Replace your current C:\Program Files\IBM\SDP\configuration\config.ini with the following:
+osgi.bundles=reference\:file\:plugins/org.eclipse.core.runtime_3.6.0.v20100505.jar@default\:start,reference\:file\:plugins/org.eclipse.equinox.simpleconfigurator_1.1.200.v20160504-1450.jar@1\:start
+osgi.framework=reference\:file\:plugins/org.eclipse.osgi_3.11.2.v20161107-1947.jar
+osgi.bundles.defaultStartLevel=4
+eclipse.product=com.ibm.rational.rad.product.v96.ide
+eclipse.p2.data.area=@config.dir/../p2/
+osgi.instance.area.default=@user.home/IBM/rationalsdp/workspace
+osgi.configuration.cascaded=true
+org.eclipse.equinox.simpleconfigurator.configUrl=file\:org.eclipse.equinox.simpleconfigurator/bundles.info
+
+
+✅ Step 2: Ensure These 5 JARs Exist in C:\Program Files\IBM\SDP\plugins\
+Plugin Name
+Version
+org.eclipse.core.runtime_3.6.0.v20100505.jar
+✔️ Download from Eclipse 3.6 archive
+org.eclipse.osgi_3.11.2.v20161107-1947.jar
+Already in your setup
+org.eclipse.equinox.simpleconfigurator_1.1.200.v20160504-1450.jar
+Already referenced correctly
+org.eclipse.equinox.launcher_*.jar
+Required for Eclipse bootstrapping
+org.eclipse.update.configurator_*.jar
+Often required to locate and activate update sites
+
+
+✅ Step 3: Clean and Launch
+Delete all contents of:
+
+ C:\Program Files\IBM\SDP\configuration\
+ Except the new config.ini
+
+
+Open Command Prompt as Administrator
+
+
+Run:
+
+ "C:\Program Files\IBM\SDP\eclipse.exe" -clean
+
+
+
+🧪 What if it still fails?
+Then upload:
+Your new log file from configuration/
+
+
+The output of this command (run from SDP\plugins\):
+
+ dir org.eclipse.core.runtime_*.jar
+
+
+This will confirm if the file was replaced correctly and visible to the launcher.
+Would you like a script to automatically validate the presence of these 5 JARs?
