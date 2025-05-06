@@ -1,0 +1,5 @@
+org.eclipse.core.runtime_*.jar
+
+org.eclipse.osgi_*.jar
+
+org.eclipse.equinox.launcher_*.jar
