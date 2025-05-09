@@ -1,0 +1,1292 @@
+Package Details
+OmniStudio (Managed)
+ 
+Help for this Page
+Installed Package Detail
+  
+Package Name	OmniStudio	Version Number	254.9.2
+Language	English	First Installed Version Number	252.7
+Version Name	Spring 2025	Package Type	Managed
+Namespace Prefix	omnistudio	Modified By	OmniStudio, 2025-05-07, 6:36 a.m.
+Version Setting	namespace	 	 
+Package	0334W000000WKUr	 	 
+Publisher	Salesforce	 	 
+Description	 
+Installed By	Lidan Li, 2025-01-16, 9:31 a.m.	 	 
+ 	 
+Count Towards Limits	Not Checked	Tabs	9
+Apps	1	Objects	15
+Metadata Components Included in Package
+ 	 
+Action	Component Name	Parent Object	Type
+ 	Default	 	Document Template Setting [omnistudio]
+ 	VlocityScheduledJob	Vlocity Scheduled Job	Apex Trigger
+ 	VlocityDataPack	Vlocity DataPack Object	Apex Trigger
+ 	Interface_DRGenericTrigger	Vlocity Data Mapper Object Interface	Apex Trigger
+ 	DRBulk	Data Mapper Bulk Data	Apex Trigger
+ 	JsonToXmlTest	 	Apex Class
+ 	OmniScriptDesignerController	 	Apex Class
+ 	PlatformOmniStudioUtils	 	Apex Class
+ 	JsonToXml	 	Apex Class
+ 	OmniScriptCompilerCtrl	 	Apex Class
+ 	PlatformObjectMappings	 	Apex Class
+ 	JSONUtilities	 	Apex Class
+ 	OmniNamedCredentialMockResponse	 	Apex Class
+ 	PlatformInvokeService	 	Apex Class
+ 	JSONResult	 	Apex Class
+ 	OmniLanguageDynamicPicklistTest	 	Apex Class
+ 	PlatformInvokeInterface	 	Apex Class
+ 	JSONMessage	 	Apex Class
+ 	OmniLanguageDynamicPicklist	 	Apex Class
+ 	PlatformGeneralSettingsUtilitiesAux	 	Apex Class
+ 	JSONDownloadController	 	Apex Class
+ 	ObjectUtilitiesTest	 	Apex Class
+ 	PlatformGeneralSettingsUtilities	 	Apex Class
+ 	JSAuthenticatorHttpMock	 	Apex Class
+ 	ObjectUtilities	 	Apex Class
+ 	PlatformDocuSignIntegrationService	 	Apex Class
+ 	JSAuthenticator	 	Apex Class
+ 	ObjectDocumentCreationDocxServiceTest	 	Apex Class
+ 	PlatformCustomSettingsUtilitiesTest	 	Apex Class
+ 	PlatformSecurityChecker	 	Apex Class
+ 	LWCPicklist	 	Apex Class
+ 	LWCDesignerControllerTest	 	Apex Class
+ 	OmniScriptHomeController	 	Apex Class
+ 	LWCDesignerController	 	Apex Class
+ 	OmniScriptDesignerControllerTest	 	Apex Class
+ 	ImageBlobGeneratorMock	 	Apex Class
+ 	NewportUtilitiesTest	 	Apex Class
+ 	ITrigger	 	Apex Class
+ 	NewportUtilities	 	Apex Class
+ 	IPPickList	 	Apex Class
+ 	NewportTestUtils	 	Apex Class
+ 	IDRPreprocessTest	 	Apex Class
+ 	NamespaceUtilitiesTest	 	Apex Class
+ 	IDRPreprocess	 	Apex Class
+ 	NamespaceUtilities	 	Apex Class
+ 	HexUtil	 	Apex Class
+ 	MockDocuSignCalloutTemplatesResponse	 	Apex Class
+ 	GuestUserUtilitiesTest	 	Apex Class
+ 	MockDocuSignCalloutResponse	 	Apex Class
+ 	MetadataQueryWithoutSharing	 	Apex Class
+ 	IsFoundationPkg	 	Apex Class
+ 	ObjectDocumentCreationDocxService	 	Apex Class
+ 	PlatformCustomSettingsUtilities	 	Apex Class
+ 	InvokeService	 	Apex Class
+ 	ObjectDocumentCreationDocxHandler	 	Apex Class
+ 	PlatformCoreTriggerFactory	 	Apex Class
+ 	InvokeResource	 	Apex Class
+ 	ObjectDocumentCreationDocxControllerTest	 	Apex Class
+ 	IntegrationProcedureServiceTest	 	Apex Class
+ 	ObjectDocumentCreationDocxController	 	Apex Class
+ 	IntegrationProcedureService	 	Apex Class
+ 	ObjectDocumentCreationDocxCntrlTokenTest	 	Apex Class
+ 	IntegrationProcedureResourceV1	 	Apex Class
+ 	ObjectDescriberV2Test	 	Apex Class
+ 	IntegrationProcedureExternalObject	 	Apex Class
+ 	ObjectDescriberV2	 	Apex Class
+ 	IntegrationProcedureDataSourceProvider	 	Apex Class
+ 	ObjectCopyUtility	 	Apex Class
+ 	DocuSignCredentialControllerTest	 	Apex Class
+ 	FormulaParserService	 	Apex Class
+ 	MatchingKeyService	 	Apex Class
+ 	DocuSignCredentialController	 	Apex Class
+ 	FormulaParser	 	Apex Class
+ 	MapUtilityTest	 	Apex Class
+ 	DocuSignBatch	 	Apex Class
+ 	FontUtilityTest	 	Apex Class
+ 	MapUtility	 	Apex Class
+ 	DocuSignAccountSetting	 	Apex Class
+ 	FontUtility	 	Apex Class
+ 	LoggerTest	 	Apex Class
+ 	DocgenPostInstallClassTest	 	Apex Class
+ 	FlexRuntimeTest	 	Apex Class
+ 	Logger	 	Apex Class
+ 	DocgenPostInstallClass	 	Apex Class
+ 	FlexRuntime	 	Apex Class
+ 	LabelUtilityServiceTest	 	Apex Class
+ 	DocgenPermSetMethodsTest	 	Apex Class
+ 	FlexCardException	 	Apex Class
+ 	LabelUtilityService	 	Apex Class
+ 	DocgenPermSetMethods	 	Apex Class
+ 	FlexCardControllerWithoutSharingTest	 	Apex Class
+ 	LWCUtilitiesTest	 	Apex Class
+ 	DocumentServiceClientTest	 	Apex Class
+ 	DocumentServiceClient	 	Apex Class
+ 	GuestUserUtilities	 	Apex Class
+ 	DocumentClauseTriggerHandlerTest	 	Apex Class
+ 	GuestUserRESTController	 	Apex Class
+ 	DocumentClauseTriggerHandler	 	Apex Class
+ 	FormulaParserTest	 	Apex Class
+ 	MatchingKeyServiceTest	 	Apex Class
+ 	DocGenSecurityCheckerTest	 	Apex Class
+ 	FetchStaticResourceUrl	 	Apex Class
+ 	DocGenSecurityChecker	 	Apex Class
+ 	EmbeddingBusinessProcessController	 	Apex Class
+ 	DocGenPermUtilTest	 	Apex Class
+ 	ElementTriggerHandlerTest	 	Apex Class
+ 	DocGenPermUtil	 	Apex Class
+ 	ElementTriggerHandler	 	Apex Class
+ 	DocGenObjectMappingsTest	 	Apex Class
+ 	DocxGenUtilTest	 	Apex Class
+ 	DocGenObjectMappings	 	Apex Class
+ 	DocxGenUtil	 	Apex Class
+ 	DocumentTemplateTriggerHandlerTest	 	Apex Class
+ 	asyncUtils	 	Lightning Web Component Bundle
+ 	baseElementPropertyMixin	 	Lightning Web Component Bundle
+ 	DocgenOpenInterfaceSharingWrapper	 	Apex Class
+ 	FlexCardControllerWithoutSharing	 	Apex Class
+ 	LWCUtilities	 	Apex Class
+ 	accordion	 	Lightning Web Component Bundle
+ 	DocgenAppHandlerTest	 	Apex Class
+ 	FlexCardControllerTest	 	Apex Class
+ 	accordionSection	 	Lightning Web Component Bundle
+ 	DocgenAppHandler	 	Apex Class
+ 	FlexCardController	 	Apex Class
+ 	action	 	Lightning Web Component Bundle
+ 	DocTemplateMappingAbstractClass	 	Apex Class
+ 	FlexCardCompilerTest	 	Apex Class
+ 	actionElementProperty	 	Lightning Web Component Bundle
+ 	DocTemplateListControllerTest	 	Apex Class
+ 	FlexCardCompiler	 	Apex Class
+ 	actionUtility	 	Lightning Web Component Bundle
+ 	DocTemplateListController	 	Apex Class
+ 	FetchUserDetailsTest	 	Apex Class
+ 	alert	 	Lightning Web Component Bundle
+ 	DocGenUtilityTest	 	Apex Class
+ 	FetchUserDetails	 	Apex Class
+ 	ariaAttributePropertyPanel	 	Lightning Web Component Bundle
+ 	DocGenUtility	 	Apex Class
+ 	FetchStaticResourceUrlTest	 	Apex Class
+ 	DefaultPDFOmniScriptIntegration	 	Apex Class
+ 	DocumentTemplateService	 	Apex Class
+ 	DefaultOmniscriptApexRestService	 	Apex Class
+ 	DocumentTemplateSectionTriggerTest	 	Apex Class
+ 	DefaultOmniScriptTypeAheadLookupTest	 	Apex Class
+ 	DocumentTemplateSectionTriggerHandler	 	Apex Class
+ 	DefaultOmniScriptTypeAheadLookup	 	Apex Class
+ 	DocumentTemplateSectionModel	 	Apex Class
+ 	DefaultOmniScriptSendEmailTest	 	Apex Class
+ 	DocumentTemplateDisplayControllerTest	 	Apex Class
+ 	DefaultOmniScriptSendEmail	 	Apex Class
+ 	DocumentTemplateDisplayController	 	Apex Class
+ 	DefaultOmniScriptSObjectPicklistTest	 	Apex Class
+ 	DocumentServiceGatewayTest	 	Apex Class
+ 	DefaultOmniScriptSObjectPicklist	 	Apex Class
+ 	DocumentServiceGateway	 	Apex Class
+ 	DocGenInvokeService	 	Apex Class
+ 	DocGenIndPermUtilTest	 	Apex Class
+ 	DocGenIndPermUtil	 	Apex Class
+ 	DocumentTemplateTriggerHandler	 	Apex Class
+ 	DefaultUserCustomLabelsImplementation	 	Apex Class
+ 	DocumentTemplateServiceTest	 	Apex Class
+ 	DefaultKnowledgeOmniScriptIntegration	 	Apex Class
+ 	DefaultInvocableActionTest	 	Apex Class
+ 	DefaultInvocableAction	 	Apex Class
+ 	DefaultGetProductListImplementation	 	Apex Class
+ 	DefaultGenerateGlobalKeyImplementation	 	Apex Class
+ 	DefaultGenGlobalKeyVersionTest	 	Apex Class
+ 	DefaultOmniScriptNamedCredentialCallout	 	Apex Class
+ 	DefaultOmniScriptMatrixTest	 	Apex Class
+ 	DefaultOmniScriptMatrix	 	Apex Class
+ 	DefaultOmniScriptImplTests	 	Apex Class
+ 	DefaultOmniScriptEditBlockTest	 	Apex Class
+ 	DefaultOmniScriptEditBlock	 	Apex Class
+ 	DefaultOmniScriptApplicationServiceTest	 	Apex Class
+ 	DefaultOmniScriptApplicationService	 	Apex Class
+ 	DefaultDocuSignOmniScriptIntegrationTest	 	Apex Class
+ 	DefaultDocuSignOmniScriptIntegration	 	Apex Class
+ 	DefaultDROmniScriptIntegration	 	Apex Class
+ 	DRUtilityService	 	Apex Class
+ 	DRUtilitiesTest	 	Apex Class
+ 	DRUtilities	 	Apex Class
+ 	DRTriggerHandler	 	Apex Class
+ 	Vlocity_Digital_Studio	 	App
+ 	DefaultGenGlobalKeyVersionImplementation	 	Apex Class
+ 	DefaultFetchPicklistOptionsImplTest	 	Apex Class
+ 	DefaultFetchPicklistOptionsImpl	 	Apex Class
+ 	DRMapper	 	Static Resource
+ 	DRHome	 	Static Resource
+ 	DRVComp	 	Static Resource
+ 	DRMapperCss	 	Static Resource
+ 	DELNODE	 	Static Resource
+ 	DAGRED3JS	 	Static Resource
+ 	DP_TEMPLATES_OmniScriptNewport	 	Static Resource
+ 	DP_TEMPLATES_OmniScriptLightning	 	Static Resource
+ 	D3JS	 	Static Resource
+ 	ANGULARBOOT	 	Static Resource
+ 	HierarchyCSS	 	Static Resource
+ 	VlocityChatBotConsolertlCss	 	Static Resource
+ 	ForceTKJS	 	Static Resource
+ 	VlocityChatBotConsoleCss	 	Static Resource
+ 	AngularDragAndDropLists	 	Static Resource
+ 	IntegrationProcedureDesigner	 	Static Resource
+ 	AngularBootstrapAccordionJS	 	Static Resource
+ 	IcoMoonIconPack	 	Static Resource
+ 	VlocityChatBotCss	 	Static Resource
+ 	DocxGenerateSections	 	Static Resource
+ 	TestDataSaver	 	Static Resource
+ 	DocxGenTemplate	 	Static Resource
+ 	SldsAngular	 	Static Resource
+ 	FontAwesome	 	Static Resource
+ 	ViaDirectives	 	Static Resource
+ 	ExpressionEngineV2	 	Static Resource
+ 	UnderscoreJS	 	Static Resource
+ 	DocumentTemplateApp	 	Static Resource
+ 	OmniVlocity	 	Static Resource
+ 	DocumentBaseCss	 	Static Resource
+ 	DocumentTokenMappingApp	 	Static Resource
+ 	Sass	 	Static Resource
+ 	DocumentTemplateCss	 	Static Resource
+ 	OmniscriptLwcCompiler	 	Static Resource
+ 	DataRaptor	 	Static Resource
+ 	DataPacksHome	 	Static Resource
+ 	DocXContentTypes	 	Static Resource
+ 	DocGenerationSampleCss	 	Static Resource
+ 	BusinessProcessSLDSTemplates	 	Static Resource
+ 	BusinessProcessNewPortTemplates	 	Static Resource
+ 	CoreResources	 	Static Resource
+ 	BusinessProcessTemplates	 	Static Resource
+ 	AngularUISelectJS	 	Static Resource
+ 	AngularUISelectCSS	 	Static Resource
+ 	BusinessProcessJS	 	Static Resource
+ 	BootstrapCSS	 	Static Resource
+ 	AngularStrapTplJS	 	Static Resource
+ 	AngularStrapJS	 	Static Resource
+ 	VlocityBatchFramework	 	Apex Class
+ 	cs_pdftron_lean	 	Static Resource
+ 	lwc_cs_pdf_previewer_config	 	Static Resource
+ 	VFActionFunctionControllerTest	 	Apex Class
+ 	cs_pdftron_external	 	Static Resource
+ 	lwc_cs_pdf_generation_config	 	Static Resource
+ 	VFActionFunctionController	 	Apex Class
+ 	cs_pdftron_office	 	Static Resource
+ 	maps	 	Static Resource
+ 	UtilsUnitTest	 	Apex Class
+ 	cs_pdftron_lib	 	Static Resource
+ 	lwc_offplatform	 	Static Resource
+ 	Utils	 	Apex Class
+ 	cs_pdfconversion_iframe	 	Static Resource
+ 	less_min	 	Static Resource
+ 	UserProfile	 	Apex Class
+ 	cs_dynamicimageprocessing	 	Static Resource
+ 	jsziputils	 	Static Resource
+ 	UserCustomLabelsServiceTest	 	Apex Class
+ 	cs_pdftron_documentgeneration	 	Static Resource
+ 	lwc_cs_merge_pdf_generation_config	 	Static Resource
+ 	UserCustomLabelsService	 	Apex Class
+ 	cs_pdftron_asm	 	Static Resource
+ 	lodash_4_11_17	 	Static Resource
+ 	javascriptNumberFormatter	 	Static Resource
+ 	core	 	Static Resource
+ 	jsforce_1_7	 	Static Resource
+ 	consoleStyles	 	Static Resource
+ 	jquery_2_2_4	 	Static Resource
+ 	OmniScriptOuiSldsrtlCss	 	Static Resource
+ 	VlocityBatchFrameworkTest	 	Apex Class
+ 	StoreResponses	 	Apex Class
+ 	ZippexTests	 	Apex Class
+ 	docxtemplater_bundle	 	Static Resource
+ 	sldscustomhelpicon	 	Static Resource
+ 	SoqlQueryTest	 	Apex Class
+ 	Zippex	 	Apex Class
+ 	docgenutil	 	Static Resource
+ 	slds_2_5_0	 	Static Resource
+ 	SoqlQueryBuilderTest	 	Apex Class
+ 	XmlToJsonTest	 	Apex Class
+ 	eventactive	 	Static Resource
+ 	SoqlQueryBuilder	 	Apex Class
+ 	XmlToJson	 	Apex Class
+ 	dropzone	 	Static Resource
+ 	taskactive	 	Static Resource
+ 	SoqlQuery	 	Apex Class
+ 	VlocityTrackingServiceFoundationTest	 	Apex Class
+ 	cs_pdftron_webfonts_openwingdings	 	Static Resource
+ 	sharedObjectService	 	Static Resource
+ 	SoqlPredicateTest	 	Apex Class
+ 	VlocityTrackingServiceFieldMappingsTest	 	Apex Class
+ 	cs_pdftron_webfonts_opensans	 	Static Resource
+ 	ps_assets	 	Static Resource
+ 	vstrap2	 	Static Resource
+ 	SoqlPredicate	 	Apex Class
+ 	VlocityTrackingServiceFieldMappings	 	Apex Class
+ 	deepmerge	 	Static Resource
+ 	slds_2_2_2	 	Static Resource
+ 	SoqlParameterTest	 	Apex Class
+ 	VlocityTrackingService	 	Apex Class
+ 	d3_v5	 	Static Resource
+ 	slds	 	Static Resource
+ 	UserCustomLabelsController	 	Apex Class
+ 	cs_pdftron_webfonts_carlito	 	Static Resource
+ 	oui	 	Static Resource
+ 	vlocitysdk	 	Static Resource
+ 	TriggerException	 	Apex Class
+ 	cs_pdftron_webfonts_caladea	 	Static Resource
+ 	noimage	 	Static Resource
+ 	vlocityouisldsdependency	 	Static Resource
+ 	TransformService	 	Apex Class
+ 	cs_pdftron_webfonts_main	 	Static Resource
+ 	product_placeholder	 	Static Resource
+ 	vstrap	 	Static Resource
+ 	TranformServiceTest	 	Apex Class
+ 	cs_pdftron_webfonts_liberationserif	 	Static Resource
+ 	pastshadow	 	Static Resource
+ 	vlocityupcsdk	 	Static Resource
+ 	TokenMappingComponentControllerTest	 	Apex Class
+ 	cs_pdftron_officeresource	 	Static Resource
+ 	nearley	 	Static Resource
+ 	TokenMappingComponentController	 	Apex Class
+ 	cs_pdftron_officeasm	 	Static Resource
+ 	monaco	 	Static Resource
+ 	TokenExtractionUtilityTest	 	Apex Class
+ 	cs_pdftron_webfonts_arimo	 	Static Resource
+ 	ngInfiniteScroll	 	Static Resource
+ 	vlocityouidependency	 	Static Resource
+ 	TokenExtractionUtility	 	Apex Class
+ 	cs_pdftron_resource	 	Static Resource
+ 	newport	 	Static Resource
+ 	Jquery	 	Static Resource
+ 	PicklistTranslationControllerTest	 	Apex Class
+ 	SoqlOrder	 	Apex Class
+ 	VlocityOmniFormLibs	 	Static Resource
+ 	JSZip	 	Static Resource
+ 	PicklistTranslationController	 	Apex Class
+ 	SoqlLimitTest	 	Apex Class
+ 	VlocityOmniFormJS	 	Static Resource
+ 	VlocityOpenInterfaceExecutorTest	 	Apex Class
+ 	LeafletCSS	 	Static Resource
+ 	PersonAccountSettingTest	 	Apex Class
+ 	SoqlLimit	 	Apex Class
+ 	VlocityOmniFormrtlCss	 	Static Resource
+ 	VlocityOpenInterfaceExecutor	 	Apex Class
+ 	JqueryGrid	 	Static Resource
+ 	PersonAccountSetting	 	Apex Class
+ 	SoqlConditionTest	 	Apex Class
+ 	VlocityOmniFormTemplates	 	Static Resource
+ 	VlocityOpenInterface2	 	Apex Class
+ 	JQUERYJS	 	Static Resource
+ 	PDFTronUtilTest	 	Apex Class
+ 	SoqlConditionBuilderTest	 	Apex Class
+ 	VlocityDynamicForm	 	Static Resource
+ 	VlocityOpenInterface	 	Apex Class
+ 	JQUERY211	 	Static Resource
+ 	PDFTRonUtil	 	Apex Class
+ 	SoqlConditionBuilder	 	Apex Class
+ 	VlocityChatBotTemplates	 	Static Resource
+ 	VlocityErrorLoggingServiceTest	 	Apex Class
+ 	JSONTreeCSS	 	Static Resource
+ 	OrgCacheManagerTest	 	Apex Class
+ 	SoqlCondition	 	Apex Class
+ 	VlocityErrorLoggingService	 	Apex Class
+ 	VlocityOmniFormCss	 	Static Resource
+ 	JSONTree	 	Static Resource
+ 	OrgCacheManagerInterface	 	Apex Class
+ 	SingleRequestMock2	 	Apex Class
+ 	VlocityDocsUtilsTest	 	Apex Class
+ 	VlocityExpressionEngine	 	Static Resource
+ 	SoqlParameter	 	Apex Class
+ 	VlocityTrackingEntryMigrationBatch	 	Apex Class
+ 	VlocityScheduledJobTriggerHandler	 	Apex Class
+ 	Ionic	 	Static Resource
+ 	VlocityChatBotLibs	 	Static Resource
+ 	VlocityChatBotJS	 	Static Resource
+ 	AngularLeafletMinJS	 	Static Resource
+ 	AngularLeafletJS	 	Static Resource
+ 	IntegrationProcedureHome	 	Static Resource
+ 	PlatformApplicationUtilitiesTest	 	Apex Class
+ 	PlatformApplicationUtilities	 	Apex Class
+ 	SoqlOrderTest	 	Apex Class
+ 	OmniScriptLwcCompilerCss	 	Static Resource
+ 	OmniStudioPostUninstallClass	 	Apex Class
+ 	Puff	 	Apex Class
+ 	cometd	 	Static Resource
+ 	iframeresizer	 	Static Resource
+ 	OmniScriptLPThirdParty	 	Static Resource
+ 	OmniStudioPostInstallClassTest	 	Apex Class
+ 	ProcedureTestFrameworkV1	 	Apex Class
+ 	clockicon	 	Static Resource
+ 	htmlminifier	 	Static Resource
+ 	OmniScriptOuiSldsCssrtl	 	Static Resource
+ 	OmniStudioPostInstallClass	 	Apex Class
+ 	PricingMatrixCalculationServiceTest	 	Apex Class
+ 	consoleHelpers	 	Static Resource
+ 	OmniScriptOuiSldsCss	 	Static Resource
+ 	OmniStudioFileBasedContentUtil	 	Apex Class
+ 	PricingMatrixCalculationService	 	Apex Class
+ 	community	 	Static Resource
+ 	OmniScriptDesignerCss	 	Static Resource
+ 	OmniScriptWorkbenchController	 	Apex Class
+ 	PlatformVFPageControllerBaseTest	 	Apex Class
+ 	angular_utils_pagination	 	Static Resource
+ 	fndServerSideDocumentGeneration	 	Static Resource
+ 	OmniScriptDesigner	 	Static Resource
+ 	OmniScriptUtil	 	Apex Class
+ 	PlatformVFPageControllerBase	 	Apex Class
+ 	angular_touch	 	Static Resource
+ 	fndDocGenerationSampleLwc	 	Static Resource
+ 	OmniScriptHomeCss	 	Static Resource
+ 	OmniScriptInstanceController	 	Apex Class
+ 	PlatformTriggerFactory	 	Apex Class
+ 	chartjs	 	Static Resource
+ 	htmldiff	 	Static Resource
+ 	OmniScriptHome	 	Static Resource
+ 	OmniScriptHomeControllerTest	 	Apex Class
+ 	PlatformSecurityCheckerTest	 	Apex Class
+ 	bootstrap	 	Static Resource
+ 	google_api	 	Static Resource
+ 	OmniLwcUtilsrtlCss	 	Static Resource
+ 	OrgCacheManager	 	Apex Class
+ 	SideBySideNavigationControllerTest	 	Apex Class
+ 	VlocityDocsUtils	 	Apex Class
+ 	angular_dynamic_locale	 	Static Resource
+ 	fileSaver_2_0_1	 	Static Resource
+ 	OmniLwcUtilsCss	 	Static Resource
+ 	OmniUiCardTriggerHandlerTest	 	Apex Class
+ 	SideBySideNavigationController	 	Apex Class
+ 	VlocityContinuationIntegration	 	Apex Class
+ 	angular_drag_drop_lists	 	Static Resource
+ 	eventicon	 	Static Resource
+ 	OmniScriptCommunitiesCss	 	Static Resource
+ 	OmniUiCardTriggerHandler	 	Apex Class
+ 	SessionIdHandler	 	Apex Class
+ 	VlocityBatchSObjectJob	 	Apex Class
+ 	angular_strap_bundle_1_6	 	Static Resource
+ 	flexipageStyle	 	Static Resource
+ 	OmniScriptCPThirdParty	 	Static Resource
+ 	OmniTypeDynamicPicklistTest	 	Apex Class
+ 	ScaleCacheService	 	Apex Class
+ 	angular_i18n	 	Static Resource
+ 	flex_loadCustomStylesheet	 	Static Resource
+ 	MINILOADING	 	Static Resource
+ 	OmniTypeDynamicPicklist	 	Apex Class
+ 	SObjectProxyTest	 	Apex Class
+ 	WAITGIF	 	Static Resource
+ 	LeafletJS	 	Static Resource
+ 	OmniSubTypeDynamicPicklistTest	 	Apex Class
+ 	SObjectProxy	 	Apex Class
+ 	VlocityPdf	 	Static Resource
+ 	MonacoEditor	 	Static Resource
+ 	OmniSubTypeDynamicPicklist	 	Apex Class
+ 	RTEPropSetManagerTest	 	Apex Class
+ 	angular_carousel	 	Static Resource
+ 	MobileOuiCSS	 	Static Resource
+ 	OmniStudioPostUninstallClassTest	 	Apex Class
+ 	RTEPropSetManager	 	Apex Class
+ 	angular_bundle_1_6	 	Static Resource
+ 	omniscriptTime	 	Lightning Web Component Bundle
+ 	summaryComponentPropertySet	 	Lightning Web Component Bundle
+ 	omniscriptTrackingServiceUtils	 	Lightning Web Component Bundle
+ 	tab	 	Lightning Web Component Bundle
+ 	omniscriptTypeahead	 	Lightning Web Component Bundle
+ 	tabset	 	Lightning Web Component Bundle
+ 	omniscriptTypeaheadBlock	 	Lightning Web Component Bundle
+ 	textarea	 	Lightning Web Component Bundle
+ 	omniscriptUrl	 	Lightning Web Component Bundle
+ 	timePicker	 	Lightning Web Component Bundle
+ 	omniscriptUtils	 	Lightning Web Component Bundle
+ 	toast	 	Lightning Web Component Bundle
+ 	omniscriptValidation	 	Lightning Web Component Bundle
+ 	toggle	 	Lightning Web Component Bundle
+ 	omnistudioStandardRuntimeWrapper	 	Lightning Web Component Bundle
+ 	toggleElementProperty	 	Lightning Web Component Bundle
+ 	omniscriptSetValues	 	Lightning Web Component Bundle
+ 	sdkUtility	 	Lightning Web Component Bundle
+ 	omniscriptStep	 	Lightning Web Component Bundle
+ 	sideBySideWizard	 	Lightning Web Component Bundle
+ 	omniscriptStepChart	 	Lightning Web Component Bundle
+ 	signaturePropertySet	 	Lightning Web Component Bundle
+ 	omniscriptStepChartItems	 	Lightning Web Component Bundle
+ 	sldsHeader	 	Lightning Web Component Bundle
+ 	omniscriptTelephone	 	Lightning Web Component Bundle
+ 	slider	 	Lightning Web Component Bundle
+ 	omniscriptText	 	Lightning Web Component Bundle
+ 	spinner	 	Lightning Web Component Bundle
+ 	omniscriptTextBlock	 	Lightning Web Component Bundle
+ 	statePropertyPanel	 	Lightning Web Component Bundle
+ 	omniscriptTextarea	 	Lightning Web Component Bundle
+ 	styles	 	Lightning Web Component Bundle
+ 	treeItem	 	Lightning Web Component Bundle
+ 	treeListSelector	 	Lightning Web Component Bundle
+ 	treeListSelectorItem	 	Lightning Web Component Bundle
+ 	triggerActionElement	 	Lightning Web Component Bundle
+ 	DRTestUtilities	 	Apex Class
+ 	typeahead	 	Lightning Web Component Bundle
+ 	DRScheduler	 	Apex Class
+ 	utility	 	Lightning Web Component Bundle
+ 	DRSObjectGeneratorTest	 	Apex Class
+ 	vlocDayJSHelpers	 	Lightning Web Component Bundle
+ 	DRSObjectGenerator	 	Apex Class
+ 	vlocityDocsUtil	 	Lightning Web Component Bundle
+ 	optionsPanel	 	Lightning Web Component Bundle
+ 	tooltip	 	Lightning Web Component Bundle
+ 	outputElementProperty	 	Lightning Web Component Bundle
+ 	tree	 	Lightning Web Component Bundle
+ 	outputField	 	Lightning Web Component Bundle
+ 	DRProcessorTest	 	Apex Class
+ 	DRProcessor	 	Apex Class
+ 	DRProcessResult	 	Apex Class
+ 	DRProcessObject	 	Apex Class
+ 	DRProcessException	 	Apex Class
+ 	DRProcessBatch	 	Apex Class
+ 	DROpenImplementationClass	 	Apex Class
+ 	DRMapperControllerFoundationTest	 	Apex Class
+ 	DRRestResourceV2	 	Apex Class
+ 	vlocityFlexCardHome	 	Lightning Web Component Bundle
+ 	DRRestResource	 	Apex Class
+ 	vlocityFormulaEditor	 	Lightning Web Component Bundle
+ 	DRReprocessBatch	 	Apex Class
+ 	wizard	 	Lightning Web Component Bundle
+ 	DRQueryService	 	Apex Class
+ 	wizardItem	 	Lightning Web Component Bundle
+ 	DRQueryRunner	 	Apex Class
+ 	DRQueryResult	 	Apex Class
+ 	DRQueryObject	 	Apex Class
+ 	DRQueryException	 	Apex Class
+ 	OmniStudio DocuSign Setup	 	Tab
+ 	OmniScript Workbench	 	Tab
+ 	OmniScripts	 	Tab
+ 	BusinessProcessTriggerHandlerTest	 	Apex Class
+ 	OmniStudio Integration Procedures	 	Tab
+ 	BusinessProcessTriggerHandler	 	Apex Class
+ 	DREngineUtilitiesFoundation	 	Apex Class
+ 	BusinessProcessTest	 	Apex Class
+ 	DREngine	 	Apex Class
+ 	BusinessProcessDisplayController	 	Apex Class
+ 	DRDuplicateFoundException	 	Apex Class
+ 	BusinessProcessController	 	Apex Class
+ 	DRDocTemplateIntegrationUtilityService	 	Apex Class
+ 	DRMapperControllerFoundation	 	Apex Class
+ 	DRMapItemTriggerHandlerTest	 	Apex Class
+ 	DRMapItemTriggerHandler	 	Apex Class
+ 	DRInsertObject	 	Apex Class
+ 	DRGlobal	 	Apex Class
+ 	OmniStudio FlexCards	 	Tab
+ 	DRErrorUtility	 	Apex Class
+ 	Document Template Designer	 	Tab
+ 	Omnistudio Data Mappers	 	Tab
+ 	OmniStudio DataPacks	 	Tab
+ 	AutoCustomLabelReferenceTestCards	 	Apex Class
+ 	DRDataPackRestResource	 	Apex Class
+ 	omniDesignerMatrixActionPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerTelephonePropertySet	 	Lightning Web Component Bundle
+ 	omniscriptEditBlock	 	Lightning Web Component Bundle
+ 	ApplicationServiceTest	 	Apex Class
+ 	DRDataPackOUIOpenImplementation	 	Apex Class
+ 	omniDesignerMessagesProperty	 	Lightning Web Component Bundle
+ 	omniDesignerTextAreaPropertySet	 	Lightning Web Component Bundle
+ 	omniscriptEditBlockDesigner	 	Lightning Web Component Bundle
+ 	ApplicationService	 	Apex Class
+ 	DRDataPackMappingsUtility	 	Apex Class
+ 	omniDesignerMessagingPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerTextBlockPropertySet	 	Lightning Web Component Bundle
+ 	omniscriptEditBlockLabel	 	Lightning Web Component Bundle
+ 	ApplicationResource	 	Apex Class
+ 	DRDataPackFoundOpenImplementation	 	Apex Class
+ 	omniDesignerModalActivateOmniScript	 	Lightning Web Component Bundle
+ 	omniDesignerTextPropertySet	 	Lightning Web Component Bundle
+ 	omniscriptEditBlockNew	 	Lightning Web Component Bundle
+ 	ApplicationDisplayController	 	Apex Class
+ 	DRDataModelUtility	 	Apex Class
+ 	omniDesignerModalConvertToMultiLang	 	Lightning Web Component Bundle
+ 	omniDesignerTimePropertySet	 	Lightning Web Component Bundle
+ 	omniscriptEditBlockUtils	 	Lightning Web Component Bundle
+ 	ActiveIntegrationProcedureDynPicklist	 	Apex Class
+ 	DRCleanupBatch	 	Apex Class
+ 	omniDesignerModalConvertToMultiLangTable	 	Lightning Web Component Bundle
+ 	omniDesignerTreeItem	 	Lightning Web Component Bundle
+ 	omniscriptEditBlockWrapper	 	Lightning Web Component Bundle
+ 	AccessTokenControllerTest	 	Apex Class
+ 	DRBundleTriggerHandler	 	Apex Class
+ 	omniDesignerModalConvertToMultiLangTableEdit	 	Lightning Web Component Bundle
+ 	omniDesignerTreeOverview	 	Lightning Web Component Bundle
+ 	omniscriptEmail	 	Lightning Web Component Bundle
+ 	AccessTokenController	 	Apex Class
+ 	CustomTokenDataExtractorTest	 	Apex Class
+ 	omniDesignerModalHowToLaunch	 	Lightning Web Component Bundle
+ 	omniDesignerTypeaheadBlockPropertySet	 	Lightning Web Component Bundle
+ 	omniscriptEmailAction	 	Lightning Web Component Bundle
+ 	BusinessProcessContTest	 	Apex Class
+ 	DRDocTemplateIntegrationTest	 	Apex Class
+ 	omniDesignerIntegrationProcedureActionPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerSelectPropertySet	 	Lightning Web Component Bundle
+ 	BaseDisplayControllerTest	 	Apex Class
+ 	DRDataPackTriggerHandler	 	Apex Class
+ 	omniDesignerIntegrationProcedureComponentSelect	 	Lightning Web Component Bundle
+ 	omniDesignerSetErrorsActionPropertySet	 	Lightning Web Component Bundle
+ 	BaseDisplayController	 	Apex Class
+ 	DRDataPackServiceInternalTest	 	Apex Class
+ 	omniDesignerKeyValueProperty	 	Lightning Web Component Bundle
+ 	omniDesignerSetValuesPropertySet	 	Lightning Web Component Bundle
+ 	AutoCustomLabelReferenceTestResources	 	Apex Class
+ 	DRDataPackServiceInternal	 	Apex Class
+ 	omniDesignerKeyValueTypeahead	 	Lightning Web Component Bundle
+ 	omniDesignerShowHideEditor	 	Lightning Web Component Bundle
+ 	AutoCustomLabelReferenceTestPlatform	 	Apex Class
+ 	DRDataPackServiceFoundationTest	 	Apex Class
+ 	omniDesignerLineBreakPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerShowHideEditorModal	 	Lightning Web Component Bundle
+ 	AutoCustomLabelReferenceTestOui	 	Apex Class
+ 	DRDataPackServiceBatch	 	Apex Class
+ 	omniDesignerListProperty	 	Lightning Web Component Bundle
+ 	omniDesignerShowHideGroup	 	Lightning Web Component Bundle
+ 	AutoCustomLabelReferenceTestDocgen	 	Apex Class
+ 	DRDataPackService	 	Apex Class
+ 	omniDesignerLookupPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerShowHideRow	 	Lightning Web Component Bundle
+ 	AutoCustomLabelReferenceTestComponents	 	Apex Class
+ 	DRDataPackRunnerController	 	Apex Class
+ 	omniDesignerLwcComponentSelect	 	Lightning Web Component Bundle
+ 	omniDesignerStepPropertySet	 	Lightning Web Component Bundle
+ 	omniscriptFormula	 	Lightning Web Component Bundle
+ 	omniScriptDocumentMatrixPropertySet	 	Lightning Web Component Bundle
+ 	omniscriptGroupElement	 	Lightning Web Component Bundle
+ 	omniscriptActionBlock	 	Lightning Web Component Bundle
+ 	omniscriptHeader	 	Lightning Web Component Bundle
+ 	omniscriptActionUtils	 	Lightning Web Component Bundle
+ 	omniscriptHttpAction	 	Lightning Web Component Bundle
+ 	CreateEleTypeToHTMLTemplateListTest	 	Apex Class
+ 	omniscriptAggregate	 	Lightning Web Component Bundle
+ 	omniscriptImage	 	Lightning Web Component Bundle
+ 	CreateEleTypeToHTMLTemplateList	 	Apex Class
+ 	omniscriptAtomicElement	 	Lightning Web Component Bundle
+ 	omniscriptInternalUtils	 	Lightning Web Component Bundle
+ 	CoreGlobalInterfaces	 	Apex Class
+ 	omniscriptBaseAction	 	Lightning Web Component Bundle
+ 	omniscriptIpAction	 	Lightning Web Component Bundle
+ 	CustomLabelTranslationControllerTest	 	Apex Class
+ 	omniDesignerMultiSelectPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerUrlPropertySet	 	Lightning Web Component Bundle
+ 	omniscriptFile	 	Lightning Web Component Bundle
+ 	CustomLabelTranslationController	 	Apex Class
+ 	omniDesignerNavigateActionPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerUtils	 	Lightning Web Component Bundle
+ 	omniscriptFormattedRichText	 	Lightning Web Component Bundle
+ 	CurrencyCodeTest	 	Apex Class
+ 	omniDesignerNewOmniScriptForm	 	Lightning Web Component Bundle
+ 	omniDesignerWarningDialog	 	Lightning Web Component Bundle
+ 	CurrencyCode	 	Apex Class
+ 	omniDesignerNumberPropertySet	 	Lightning Web Component Bundle
+ 	omniScriptCompilerPage	 	Lightning Web Component Bundle
+ 	CreateRelativeResumeLinkBatchTest	 	Apex Class
+ 	omniDesignerPaletteDraggableElement	 	Lightning Web Component Bundle
+ 	CreateRelativeResumeLinkBatch	 	Apex Class
+ 	omniscriptCustomLwc	 	Lightning Web Component Bundle
+ 	omniscriptNumber	 	Lightning Web Component Bundle
+ 	platformObjectMappings	 	Lightning Web Component Bundle
+ 	omniscriptCustomLwcInPreview	 	Lightning Web Component Bundle
+ 	omniscriptOptionsMixin	 	Lightning Web Component Bundle
+ 	popover	 	Lightning Web Component Bundle
+ 	omniscriptDate	 	Lightning Web Component Bundle
+ 	omniscriptPassword	 	Lightning Web Component Bundle
+ 	progressBar	 	Lightning Web Component Bundle
+ 	omniscriptDateTime	 	Lightning Web Component Bundle
+ 	omniscriptPdfAction	 	Lightning Web Component Bundle
+ 	prompt	 	Lightning Web Component Bundle
+ 	omniscriptDeleteAction	 	Lightning Web Component Bundle
+ 	omniscriptPlacesTypeahead	 	Lightning Web Component Bundle
+ 	propertyPanel	 	Lightning Web Component Bundle
+ 	omniscriptDisclosure	 	Lightning Web Component Bundle
+ 	omniscriptPreview	 	Lightning Web Component Bundle
+ 	propertySection	 	Lightning Web Component Bundle
+ 	omniscriptDocusignEnvelopeAction	 	Lightning Web Component Bundle
+ 	omniscriptPreviewBlock	 	Lightning Web Component Bundle
+ 	pubsub	 	Lightning Web Component Bundle
+ 	omniscriptDocusignSignatureAction	 	Lightning Web Component Bundle
+ 	omniscriptPreviewEditBlock	 	Lightning Web Component Bundle
+ 	qrCodePropertySet	 	Lightning Web Component Bundle
+ 	ComponentControllerTest	 	Apex Class
+ 	omniscriptBaseElement	 	Lightning Web Component Bundle
+ 	omniscriptKnowledgeBase	 	Lightning Web Component Bundle
+ 	ComponentController	 	Apex Class
+ 	omniscriptBaseMixin	 	Lightning Web Component Bundle
+ 	omniscriptLineBreak	 	Lightning Web Component Bundle
+ 	ClmMockHttpPdfResponse	 	Apex Class
+ 	omniscriptBlock	 	Lightning Web Component Bundle
+ 	omniscriptLookup	 	Lightning Web Component Bundle
+ 	CLMUtilityServiceTest	 	Apex Class
+ 	omniscriptCalculationAction	 	Lightning Web Component Bundle
+ 	omniscriptMatrixAction	 	Lightning Web Component Bundle
+ 	CLMUtilityService	 	Apex Class
+ 	omniscriptCancelAction	 	Lightning Web Component Bundle
+ 	omniscriptMessaging	 	Lightning Web Component Bundle
+ 	BusinessProcessUtilityTest	 	Apex Class
+ 	omniscriptCheckbox	 	Lightning Web Component Bundle
+ 	omniscriptModal	 	Lightning Web Component Bundle
+ 	BusinessProcessUtility	 	Apex Class
+ 	omniscriptCurrency	 	Lightning Web Component Bundle
+ 	omniscriptMultiselect	 	Lightning Web Component Bundle
+ 	omniscriptCustomLabels	 	Lightning Web Component Bundle
+ 	omniscriptNavigateAction	 	Lightning Web Component Bundle
+ 	pill	 	Lightning Web Component Bundle
+ 	radioGroup	 	Lightning Web Component Bundle
+ 	omniscriptRadioGroup	 	Lightning Web Component Bundle
+ 	radioImageGroup	 	Lightning Web Component Bundle
+ 	omniscriptRange	 	Lightning Web Component Bundle
+ 	radioPropertyPanel	 	Lightning Web Component Bundle
+ 	omniscriptRemoteAction	 	Lightning Web Component Bundle
+ 	relatedList	 	Lightning Web Component Bundle
+ 	omniscriptRestApi	 	Lightning Web Component Bundle
+ 	resizablePanel	 	Lightning Web Component Bundle
+ 	omniscriptSaveForLaterAcknowledge	 	Lightning Web Component Bundle
+ 	richTextEditor	 	Lightning Web Component Bundle
+ 	omniscriptSelect	 	Lightning Web Component Bundle
+ 	rightSidebar	 	Lightning Web Component Bundle
+ 	omniscriptSetErrors	 	Lightning Web Component Bundle
+ 	salesforceUtils	 	Lightning Web Component Bundle
+ 	omniscriptDrExtractAction	 	Lightning Web Component Bundle
+ 	omniscriptPreviewJsonDefCache	 	Lightning Web Component Bundle
+ 	radioColorPickGroup	 	Lightning Web Component Bundle
+ 	omniscriptDrPostAction	 	Lightning Web Component Bundle
+ 	omniscriptPreviewTypeaheadBlock	 	Lightning Web Component Bundle
+ 	omniscriptDrTransformAction	 	Lightning Web Component Bundle
+ 	omniscriptRadio	 	Lightning Web Component Bundle
+ 	omniscriptDrTurboAction	 	Lightning Web Component Bundle
+ 	datasourceApexrest	 	Lightning Web Component Bundle
+ 	flexToggle	 	Lightning Web Component Bundle
+ 	datasourceDataraptor	 	Lightning Web Component Bundle
+ 	form	 	Lightning Web Component Bundle
+ 	datasourceIntegrationprocedure	 	Lightning Web Component Bundle
+ 	googlePlacesService	 	Lightning Web Component Bundle
+ 	omniDesignerCalculationActionPropertySet	 	Lightning Web Component Bundle
+ 	datasourceQuery	 	Lightning Web Component Bundle
+ 	helpPanel	 	Lightning Web Component Bundle
+ 	omniDesignerCanvas	 	Lightning Web Component Bundle
+ 	datasourceRest	 	Lightning Web Component Bundle
+ 	hotkeys	 	Lightning Web Component Bundle
+ 	omniDesignerCanvasBody	 	Lightning Web Component Bundle
+ 	datasourceSdkComponent	 	Lightning Web Component Bundle
+ 	icon	 	Lightning Web Component Bundle
+ 	omniDesignerCanvasDebuggerRightPanel	 	Lightning Web Component Bundle
+ 	datasourceSearch	 	Lightning Web Component Bundle
+ 	iconPicker	 	Lightning Web Component Bundle
+ 	omniDesignerCanvasElementProxy	 	Lightning Web Component Bundle
+ 	datePicker	 	Lightning Web Component Bundle
+ 	iconPickerModal	 	Lightning Web Component Bundle
+ 	omniDesignerCanvasLeftPanel	 	Lightning Web Component Bundle
+ 	dataTable	 	Lightning Web Component Bundle
+ 	flexDatatable	 	Lightning Web Component Bundle
+ 	dataTableCell	 	Lightning Web Component Bundle
+ 	flexDatatablePropertyPanel	 	Lightning Web Component Bundle
+ 	datapackExport	 	Lightning Web Component Bundle
+ 	flexIcon	 	Lightning Web Component Bundle
+ 	datapackImport	 	Lightning Web Component Bundle
+ 	flexImg	 	Lightning Web Component Bundle
+ 	datapackTree	 	Lightning Web Component Bundle
+ 	flexMenu	 	Lightning Web Component Bundle
+ 	datapackUtility	 	Lightning Web Component Bundle
+ 	flexMenuItem	 	Lightning Web Component Bundle
+ 	datasource	 	Lightning Web Component Bundle
+ 	flexMultiSelectInput	 	Lightning Web Component Bundle
+ 	datasourceApexremote	 	Lightning Web Component Bundle
+ 	flexRadioInput	 	Lightning Web Component Bundle
+ 	omniDesignerCustomLwcPropertySet	 	Lightning Web Component Bundle
+ 	layout	 	Lightning Web Component Bundle
+ 	omniDesignerDataManager	 	Lightning Web Component Bundle
+ 	layoutItem	 	Lightning Web Component Bundle
+ 	omniDesignerDataRaptorExtractActionPropertySet	 	Lightning Web Component Bundle
+ 	list	 	Lightning Web Component Bundle
+ 	omniDesignerDataRaptorPostActionPropertySet	 	Lightning Web Component Bundle
+ 	listItems	 	Lightning Web Component Bundle
+ 	omniDesignerDataRaptorTransformActionPropertySet	 	Lightning Web Component Bundle
+ 	date_fns	 	Lightning Web Component Bundle
+ 	iconPropertyPanel	 	Lightning Web Component Bundle
+ 	omniDesignerCanvasRightPanel	 	Lightning Web Component Bundle
+ 	datetimePicker	 	Lightning Web Component Bundle
+ 	imask	 	Lightning Web Component Bundle
+ 	omniDesignerCanvasScrollableCenterPanel	 	Lightning Web Component Bundle
+ 	dayjs	 	Lightning Web Component Bundle
+ 	img	 	Lightning Web Component Bundle
+ 	omniDesignerCheckboxPropertySet	 	Lightning Web Component Bundle
+ 	deleteConfirmationModal	 	Lightning Web Component Bundle
+ 	imgElementProperty	 	Lightning Web Component Bundle
+ 	omniDesignerCurrencyPropertySet	 	Lightning Web Component Bundle
+ 	dragAndDropMixin	 	Lightning Web Component Bundle
+ 	imgPicker	 	Lightning Web Component Bundle
+ 	dragAndDropPlaceholder	 	Lightning Web Component Bundle
+ 	input	 	Lightning Web Component Bundle
+ 	draggableElement	 	Lightning Web Component Bundle
+ 	multiSelectElementPropertyPanel	 	Lightning Web Component Bundle
+ 	omniDesignerDebugDataJsonPanel	 	Lightning Web Component Bundle
+ 	multipleActionContainer	 	Lightning Web Component Bundle
+ 	omniDesignerDeleteActionPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerPasswordPropertySet	 	Lightning Web Component Bundle
+ 	namespaceUtils	 	Lightning Web Component Bundle
+ 	omniDesignerDeletePrompt	 	Lightning Web Component Bundle
+ 	omniDesignerPdfActionPropertySet	 	Lightning Web Component Bundle
+ 	navigateAction	 	Lightning Web Component Bundle
+ 	omniDesignerDisclosurePropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerPreview	 	Lightning Web Component Bundle
+ 	navigationUtils	 	Lightning Web Component Bundle
+ 	omniDesignerDocusignEnvelopeActionPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerPropertyGroup	 	Lightning Web Component Bundle
+ 	nearley	 	Lightning Web Component Bundle
+ 	omniDesignerDocusignSignatureActionPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerPropertyGroupCard	 	Lightning Web Component Bundle
+ 	newportLoader	 	Lightning Web Component Bundle
+ 	omniDesignerEditBlockPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerPropertyWithDocs	 	Lightning Web Component Bundle
+ 	oaUtils	 	Lightning Web Component Bundle
+ 	omniDesignerEditableGridCell	 	Lightning Web Component Bundle
+ 	omniDesignerRadioGroupPropertySet	 	Lightning Web Component Bundle
+ 	lodash	 	Lightning Web Component Bundle
+ 	omniDesignerDataRaptorTurboActionPropertySet	 	Lightning Web Component Bundle
+ 	lwcXmlDesigner	 	Lightning Web Component Bundle
+ 	omniDesignerDataUtils	 	Lightning Web Component Bundle
+ 	maskedInput	 	Lightning Web Component Bundle
+ 	omniDesignerDataraptorComponentSelect	 	Lightning Web Component Bundle
+ 	menu	 	Lightning Web Component Bundle
+ 	omniDesignerDatePropertySet	 	Lightning Web Component Bundle
+ 	menuElementProperty	 	Lightning Web Component Bundle
+ 	omniDesignerDateTimePropertySet	 	Lightning Web Component Bundle
+ 	menuItem	 	Lightning Web Component Bundle
+ 	omniDesignerDebugActionsPanel	 	Lightning Web Component Bundle
+ 	modal	 	Lightning Web Component Bundle
+ 	omniDesignerDebugActionsPanelRow	 	Lightning Web Component Bundle
+ 	monacoEditor	 	Lightning Web Component Bundle
+ 	omniDesignerDebugActionsPanelRowItem	 	Lightning Web Component Bundle
+ 	omniDesignerRestActionPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerFilePropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerReusableOmniScriptPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerFormulaPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerRichTextEditorModal	 	Lightning Web Component Bundle
+ 	omniDesignerHeader	 	Lightning Web Component Bundle
+ 	omniDesignerRichTextField	 	Lightning Web Component Bundle
+ 	omniDesignerHelpTextPosition	 	Lightning Web Component Bundle
+ 	omniDesignerRootElementsVisualOverview	 	Lightning Web Component Bundle
+ 	omniDesignerImagePropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerScriptConfigurationPropertySet	 	Lightning Web Component Bundle
+ 	oaVtag	 	Lightning Web Component Bundle
+ 	omniDesignerElementCard	 	Lightning Web Component Bundle
+ 	omniDesignerRadioPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerActionBlockPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerElementPalette	 	Lightning Web Component Bundle
+ 	omniDesignerRangePropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerAggregatePropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerElementProperties	 	Lightning Web Component Bundle
+ 	omniDesignerRemoteActionPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerBaseActionPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerEmailActionPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerBasePropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerEmailPropertySet	 	Lightning Web Component Bundle
+ 	omniDesignerBlockPropertySet	 	Lightning Web Component Bundle
+ 	cardDataSourceHelper	 	Lightning Web Component Bundle
+ 	cardDesigner	 	Lightning Web Component Bundle
+ 	cardDesignerActionDebugger	 	Lightning Web Component Bundle
+ 	cardDesignerActionDebuggerRow	 	Lightning Web Component Bundle
+ 	cardDesignerActivateModal	 	Lightning Web Component Bundle
+ 	clmDocxPreviewDocument	 	Lightning Web Component Bundle
+ 	cardDesignerBaseInputElementsPalette	 	Lightning Web Component Bundle
+ 	clmMultiDocxPreviewDocument	 	Lightning Web Component Bundle
+ 	cardDesignerCanvasDebuggerRightPanel	 	Lightning Web Component Bundle
+ 	clmMultiPdfConverter	 	Lightning Web Component Bundle
+ 	cardDesignerCanvasElementProxy	 	Lightning Web Component Bundle
+ 	clmOsArrangeSelectedTemplateList	 	Lightning Web Component Bundle
+ 	baseFlexElementMixin	 	Lightning Web Component Bundle
+ 	baseInputElement	 	Lightning Web Component Bundle
+ 	baseInputElementPropertyPanel	 	Lightning Web Component Bundle
+ 	block	 	Lightning Web Component Bundle
+ 	blockElementProperty	 	Lightning Web Component Bundle
+ 	buffer	 	Lightning Web Component Bundle
+ 	button	 	Lightning Web Component Bundle
+ 	cardDataSource	 	Lightning Web Component Bundle
+ 	clmOsWebGenerateDocument	 	Lightning Web Component Bundle
+ 	cardDesignerStateElement	 	Lightning Web Component Bundle
+ 	clmOsWebGenerateWordDocument	 	Lightning Web Component Bundle
+ 	cardDesignerStylePanel	 	Lightning Web Component Bundle
+ 	clmPdfConverter	 	Lightning Web Component Bundle
+ 	cardDesignerDebugDataJsonPanel	 	Lightning Web Component Bundle
+ 	clmOsDocxGenerateDocument	 	Lightning Web Component Bundle
+ 	cardDesignerElementsPalette	 	Lightning Web Component Bundle
+ 	clmOsDocxGenerateWordDocument	 	Lightning Web Component Bundle
+ 	cardDesignerFieldsPalette	 	Lightning Web Component Bundle
+ 	clmOsGeneratePdfMergeDocument	 	Lightning Web Component Bundle
+ 	cardDesignerHeader	 	Lightning Web Component Bundle
+ 	clmOsMultiDocxGenerateDocument	 	Lightning Web Component Bundle
+ 	cardDesignerHelpPage	 	Lightning Web Component Bundle
+ 	clmOsMultiDocxGenerateWordDocument	 	Lightning Web Component Bundle
+ 	cardDesignerHelptext	 	Lightning Web Component Bundle
+ 	clmOsMultiPdfDocumentConverter	 	Lightning Web Component Bundle
+ 	cardDesignerPreview	 	Lightning Web Component Bundle
+ 	cardDesignerPropertyGroup	 	Lightning Web Component Bundle
+ 	carddesignerPublishOption	 	Lightning Web Component Bundle
+ 	clmUtils	 	Lightning Web Component Bundle
+ 	carddesignerSidebarBaseMixin	 	Lightning Web Component Bundle
+ 	colorPalette	 	Lightning Web Component Bundle
+ 	carddesignerUtility	 	Lightning Web Component Bundle
+ 	combobox	 	Lightning Web Component Bundle
+ 	carousel	 	Lightning Web Component Bundle
+ 	componentLibrary	 	Lightning Web Component Bundle
+ 	droppedElementProxy	 	Lightning Web Component Bundle
+ 	carouselItem	 	Lightning Web Component Bundle
+ 	componentPlaceholder	 	Lightning Web Component Bundle
+ 	elementPropertyPanel	 	Lightning Web Component Bundle
+ 	changeCase	 	Lightning Web Component Bundle
+ 	conditionsElementProperty	 	Lightning Web Component Bundle
+ 	expressionEngine	 	Lightning Web Component Bundle
+ 	chart	 	Lightning Web Component Bundle
+ 	conditionsGroup	 	Lightning Web Component Bundle
+ 	expressionEngineEditor	 	Lightning Web Component Bundle
+ 	chartDonut	 	Lightning Web Component Bundle
+ 	currencyjs	 	Lightning Web Component Bundle
+ 	flexAction	 	Lightning Web Component Bundle
+ 	cardDesignerStylePanelContainer	 	Lightning Web Component Bundle
+ 	clmPdfMergeViewer	 	Lightning Web Component Bundle
+ 	cardEventListener	 	Lightning Web Component Bundle
+ 	clmSelectRowCellExtended	 	Lightning Web Component Bundle
+ 	cardPreview	 	Lightning Web Component Bundle
+ 	clmSelectUseDrExtractCellExtended	 	Lightning Web Component Bundle
+ 	cardPropertyPanel	 	Lightning Web Component Bundle
+ 	clmSelectableItems	 	Lightning Web Component Bundle
+ 	cardSetupPanel	 	Lightning Web Component Bundle
+ 	clmShowPdfThumbnail	 	Lightning Web Component Bundle
+ 	cardTrackFieldsElement	 	Lightning Web Component Bundle
+ 	clmShowThumbnail	 	Lightning Web Component Bundle
+ 	carddesignerCommon	 	Lightning Web Component Bundle
+ 	clmShowWordPptThumbnail	 	Lightning Web Component Bundle
+ 	carddesignerPropertyPanel	 	Lightning Web Component Bundle
+ 	clmShowtoast	 	Lightning Web Component Bundle
+ 	flexCardState	 	Lightning Web Component Bundle
+ 	customTextElementMasking	 	Lightning Web Component Bundle
+ 	flexCardUtility	 	Lightning Web Component Bundle
+ 	customTextElementValidation	 	Lightning Web Component Bundle
+ 	flexCardUtils	 	Lightning Web Component Bundle
+ 	dataInterpolation	 	Lightning Web Component Bundle
+ 	flexChart	 	Lightning Web Component Bundle
+ 	chartElementProperty	 	Lightning Web Component Bundle
+ 	customComponentAction	 	Lightning Web Component Bundle
+ 	flexActionPropertyPanel	 	Lightning Web Component Bundle
+ 	checkboxGroup	 	Lightning Web Component Bundle
+ 	customComponentKnowledge	 	Lightning Web Component Bundle
+ 	flexCardCompile	 	Lightning Web Component Bundle
+ 	checkboxImageGroup	 	Lightning Web Component Bundle
+ 	customComponentSibling	 	Lightning Web Component Bundle
+ 	flexCardHomeFilterPanel	 	Lightning Web Component Bundle
+ 	childCardPreview	 	Lightning Web Component Bundle
+ 	customComponentWithMixin	 	Lightning Web Component Bundle
+ 	flexCardMixin	 	Lightning Web Component Bundle
+ 	childCardPropertyPanel	 	Lightning Web Component Bundle
+ 	customEvents	 	Lightning Web Component Bundle
+ 	flexCardStandardRuntimeWrapper	 	Lightning Web Component Bundle
+ 	clmContentVersionProcessingUtil	 	Lightning Web Component Bundle
+ 	customLwc	 	Lightning Web Component Bundle
+ 	clmCustomLabels	 	Lightning Web Component Bundle
+ 	customLwcWrapper	 	Lightning Web Component Bundle
+ 	clmDocumentPreviewer	 	Lightning Web Component Bundle
+ 	VlocityLibrary	 	Remote Site
+ 	VlocityDocsHttps	 	Remote Site
+ 	Column044	Vlocity Data Mapper Object Interface	Custom Field
+ 	Disable Streaming API	Card Framework Configuration	Custom Field
+ 	Column007	Vlocity Data Mapper Object Interface	Custom Field
+ 	Disable Datasource SOSL Search	Card Framework Configuration	Custom Field
+ 	Document Generation 2.0 Notification	 	Tab
+ 	Column006	Vlocity Data Mapper Object Interface	Custom Field
+ 	Disable Datasource REST	Card Framework Configuration	Custom Field
+ 	Column015	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column052	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column014	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column051	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column013	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column050	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column012	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column049	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column011	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column048	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column010	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column047	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column009	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column046	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column008	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column045	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column035	Vlocity Data Mapper Object Interface	Custom Field
+ 	Job Queue	Vlocity Scheduled Job	Custom Field
+ 	Column034	Vlocity Data Mapper Object Interface	Custom Field
+ 	Frequency	Vlocity Scheduled Job	Custom Field
+ 	Data Source Type	Vlocity Scheduled Job	Custom Field
+ 	Source Type	Vlocity Error Log Entry	Custom Field
+ 	Error Type	Vlocity Error Log Entry	Custom Field
+ 	Status	Test Result	Custom Field
+ 	Started At	Data Mapper Workers	Custom Field
+ 	Data Mapper Status	Data Mapper Workers	Custom Field
+ 	Column005	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column043	Vlocity Data Mapper Object Interface	Custom Field
+ 	Disable Datasource SOQL Query	Card Framework Configuration	Custom Field
+ 	Column004	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column042	Vlocity Data Mapper Object Interface	Custom Field
+ 	Disable Datasource IntegrationProcedures	Card Framework Configuration	Custom Field
+ 	Column003	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column041	Vlocity Data Mapper Object Interface	Custom Field
+ 	Disable Datasource Data Mapper	Card Framework Configuration	Custom Field
+ 	Column002	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column040	Vlocity Data Mapper Object Interface	Custom Field
+ 	Disable Datasource ApexRemote	Card Framework Configuration	Custom Field
+ 	Column001	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column039	Vlocity Data Mapper Object Interface	Custom Field
+ 	Disable Cache	Card Framework Configuration	Custom Field
+ 	Add Space After Content	Document Template Setting	Custom Field
+ 	Column038	Vlocity Data Mapper Object Interface	Custom Field
+ 	Wrap Up Process Type	Vlocity Scheduled Job	Custom Field
+ 	Column037	Vlocity Data Mapper Object Interface	Custom Field
+ 	Send Email On	Vlocity Scheduled Job	Custom Field
+ 	Column036	Vlocity Data Mapper Object Interface	Custom Field
+ 	Process Type	Vlocity Scheduled Job	Custom Field
+ 	Column070	Vlocity Data Mapper Object Interface	Custom Field
+ 	Is Last Processed	Vlocity DataPack Object	Custom Field
+ 	Description	Vlocity DataPack Object	Custom Field
+ 	Column033	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column032	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column069	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column078	Vlocity Data Mapper Object Interface	Custom Field
+ 	Description	Vlocity DocuSign Template	Custom Field
+ 	Column077	Vlocity Data Mapper Object Interface	Custom Field
+ 	Version	Vlocity DataPack Object	Custom Field
+ 	Column076	Vlocity Data Mapper Object Interface	Custom Field
+ 	Type	Vlocity DataPack Object	Custom Field
+ 	Column075	Vlocity Data Mapper Object Interface	Custom Field
+ 	Status	Vlocity DataPack Object	Custom Field
+ 	Column074	Vlocity Data Mapper Object Interface	Custom Field
+ 	Source	Vlocity DataPack Object	Custom Field
+ 	Column073	Vlocity Data Mapper Object Interface	Custom Field
+ 	Primary DataPack Type	Vlocity DataPack Object	Custom Field
+ 	Column072	Vlocity Data Mapper Object Interface	Custom Field
+ 	LastProcessedDateTime	Vlocity DataPack Object	Custom Field
+ 	Column071	Vlocity Data Mapper Object Interface	Custom Field
+ 	LastProcessedBy	Vlocity DataPack Object	Custom Field
+ 	Column023	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column060	Vlocity Data Mapper Object Interface	Custom Field
+ 	Test Name	Test Result	Custom Field
+ 	Apex Job ID	Test Result	Custom Field
+ 	Column022	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column059	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column021	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column058	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column020	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column057	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column019	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column056	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column018	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column055	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column017	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column054	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column016	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column053	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column031	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column068	Vlocity Data Mapper Object Interface	Custom Field
+ 	Async Apex Job Type	Vlocity DataPack Object	Custom Field
+ 	Column030	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column067	Vlocity Data Mapper Object Interface	Custom Field
+ 	Async Apex Job Id	Vlocity DataPack Object	Custom Field
+ 	Column029	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column066	Vlocity Data Mapper Object Interface	Custom Field
+ 	Activation Status	Vlocity DataPack Object	Custom Field
+ 	Column028	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column065	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column027	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column064	Vlocity Data Mapper Object Interface	Custom Field
+ 	Value	UISettings	Custom Field
+ 	Column026	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column063	Vlocity Data Mapper Object Interface	Custom Field
+ 	Key	UISettings	Custom Field
+ 	Column025	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column062	Vlocity Data Mapper Object Interface	Custom Field
+ 	Trigger On	Trigger Setup	Custom Field
+ 	Column024	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column061	Vlocity Data Mapper Object Interface	Custom Field
+ 	Test Suite Unique Key	Test Result	Custom Field
+ 	Data Mapper Progress	Data Mapper Bulk Data	Custom Field
+ 	Data Mapper Object Name	Data Mapper Workers	Custom Field
+ 	Data Mapper Bundle Name	Data Mapper Workers	Custom Field
+ 	Apex Job Id	Data Mapper Workers	Custom Field
+ 	Action	Data Mapper Workers	Custom Field
+ 	Prevent Query Of Encrypted Fields	Data Mapper Encryption	Custom Field
+ 	Global Key	Data Mapper Bulk Data	Custom Field
+ 	Data	Data Mapper Bulk Data	Custom Field
+ 	Data Mapper Status	Data Mapper Bulk Data	Custom Field
+ 	Enable Future Method	Card Framework Configuration	Custom Field
+ 	Data Mapper Error	Data Mapper Bulk Data	Custom Field
+ 	Data Mapper Custom Setting	Data Mapper Bulk Data	Custom Field
+ 	Bulk Chunk Status	Data Mapper Bulk Data	Custom Field
+ 	Bulk Chunk Id	Data Mapper Bulk Data	Custom Field
+ 	Async Apex Job Id	Data Mapper Bulk Data	Custom Field
+ 	Data Mapper Status	Vlocity Data Mapper Batch Queue	Custom Field
+ 	Data Mapper Bundle Name	Vlocity Data Mapper Batch Queue	Custom Field
+ 	Action	Vlocity Data Mapper Batch Queue	Custom Field
+ 	Data Source Spec	Vlocity Scheduled Job	Custom Field
+ 	Data Source Data	Vlocity Scheduled Job	Custom Field
+ 	Large Data	Vlocity Data Mapper Object Interface	Custom Field
+ 	Next Run DateTime	Vlocity Scheduled Job	Custom Field
+ 	Last Run Error Message	Vlocity Scheduled Job	Custom Field
+ 	Last Run DateTime	Vlocity Scheduled Job	Custom Field
+ 	Is Input As List	Vlocity Scheduled Job	Custom Field
+ 	Active	Vlocity Scheduled Job	Custom Field
+ 	Global Key	Vlocity Scheduled Job	Custom Field
+ 	Email Address List	Vlocity Scheduled Job	Custom Field
+ 	Description	Vlocity Scheduled Job	Custom Field
+ 	Column086	Vlocity Data Mapper Object Interface	Custom Field
+ 	Error Code	Vlocity Error Log Entry	Custom Field
+ 	Column085	Vlocity Data Mapper Object Interface	Custom Field
+ 	Context Id	Vlocity Error Log Entry	Custom Field
+ 	Action	Vlocity Error Log Entry	Custom Field
+ 	Column084	Vlocity Data Mapper Object Interface	Custom Field
+ 	Column083	Vlocity Data Mapper Object Interface	Custom Field
+ 	Template Id	Vlocity DocuSign Template	Custom Field
+ 	Column082	Vlocity Data Mapper Object Interface	Custom Field
+ 	Tabs	Vlocity DocuSign Template	Custom Field
+ 	Column081	Vlocity Data Mapper Object Interface	Custom Field
+ 	Roles	Vlocity DocuSign Template	Custom Field
+ 	Column080	Vlocity Data Mapper Object Interface	Custom Field
+ 	Role Tabs	Vlocity DocuSign Template	Custom Field
+ 	Column079	Vlocity Data Mapper Object Interface	Custom Field
+ 	DocuSign Account Id	Vlocity DocuSign Template	Custom Field
+ 	Batch Size	Vlocity Scheduled Job	Custom Field
+ 	DR Status	Vlocity Data Mapper Object Interface	Custom Field
+ 	Apex Job ID	Vlocity Scheduled Job	Custom Field
+ 	DR Progress	Vlocity Data Mapper Object Interface	Custom Field
+ 	DR Error	Vlocity Data Mapper Object Interface	Custom Field
+ 	Vlocity Interaction Token	Vlocity Error Log Entry	Custom Field
+ 	DR Custom Setting	Vlocity Data Mapper Object Interface	Custom Field
+ 	Source Name	Vlocity Error Log Entry	Custom Field
+ 	Column090	Vlocity Data Mapper Object Interface	Custom Field
+ 	Object Name	Vlocity Error Log Entry	Custom Field
+ 	Column089	Vlocity Data Mapper Object Interface	Custom Field
+ 	Input Data	Vlocity Error Log Entry	Custom Field
+ 	Column088	Vlocity Data Mapper Object Interface	Custom Field
+ 	Error Time	Vlocity Error Log Entry	Custom Field
+ 	Column087	Vlocity Data Mapper Object Interface	Custom Field
+ 	Error Message	Vlocity Error Log Entry	Custom Field
+ 	TrackingService	Vlocity Tracking Entry	Custom Field
+ 	Timestamp	Vlocity Tracking Entry	Custom Field
+ 	Data	Vlocity Tracking Entry	Custom Field
+ 	Customer Interaction Token	Vlocity Tracking Entry	Custom Field
+ 	Context Id	Vlocity Tracking Entry	Custom Field
+ 	Wrap Up Process Name	Vlocity Scheduled Job	Custom Field
+ 	Process Name	Vlocity Scheduled Job	Custom Field
+ 	Next Scheduled Job	Vlocity Scheduled Job	Custom Field
+ 	Vlocity Interaction Token	Vlocity Tracking Entry	Custom Field
+ 	Vlocity_Digital_Studio_UtilityBar	 	Lightning Page
+ 	LWCFlexCards	 	Lightning Page
+ 	Vlocity_OmniScript_Designer	 	Lightning Page
+ 	FlexCardDesigner	 	Lightning Page
+ 	vk_beautify	 	Static Resource
+ 	vkBeautify	 	Static Resource
+ 	vlocityThemeCSS	 	Static Resource
+ 	vlocityCSS	 	Static Resource
+ 	treeGrid	 	Static Resource
+ 	tinymce_5	 	Static Resource
+ 	vis	 	Static Resource
+ 	ui_tinymce	 	Static Resource
+ 	taskicon	 	Static Resource
+ 	tinymce	 	Static Resource
+ 	templatecompiler	 	Static Resource
+ 	vlocityomnioutlwcsample_resources	 	Static Resource
+ 	vlocityomnioutlwcsample	 	Static Resource
+ 	vlocityoui_assets	 	Static Resource
+ 	vlocityomnimobile	 	Static Resource
+ 	vlocityomniaem	 	Static Resource
+ 	vlocityomnioutlwc	 	Static Resource
+ 	vlocityomniout	 	Static Resource
+ 	vlocitychatbot	 	Static Resource
+ 	vlocityb2bexpresssdk	 	Static Resource
+ 	vlocitydcsdk	 	Static Resource
+ 	vlocitycpqsdk	 	Static Resource
+ 	vlocity_core_assets	 	Static Resource
+ 	vlocity_assets	 	Static Resource
+ 	vlocityaccountsdk	 	Static Resource
+ 	vlocity_lightning_assets	 	Static Resource
+ 	VlocityMetadata	 	Platform Cache Partition
+ 	VlocityAPIResponse	 	Platform Cache Partition
+ 	OmniDesignerAuraWrapper	 	Aura Component Bundle
+ 	vlocityLwcComponentLoadErrorEvent	 	Aura Component Bundle
+ 	OmniDesignerCustomizationNewFormAuraWrapper	 	Aura Component Bundle
+ 	OmniPreviewAuraWrapper	 	Aura Component Bundle
+ 	flexCardHomeWrapper	 	Aura Component Bundle
+ 	flexCardMetadataTemplate	 	Aura Component Bundle
+ 	ltngOutVF	 	Aura Component Bundle
+ 	genericWrapper	 	Aura Component Bundle
+ 	vlocityConsoleRecordPage	 	Aura Component Bundle
+ 	SideBySideNavigation	 	Aura Component Bundle
+ 	ltngOutAppSupport	 	Aura Component Bundle
+ 	vlocityLWCOmniWrapper	 	Aura Component Bundle
+ 	cardsDesignerTemplate	 	Aura Component Bundle
+ 	vlocityLWCWrapper	 	Aura Component Bundle
+ 	Test Result Layout	Test Result	Page Layout
+ 	Vlocity Data Pack Layout	Vlocity DataPack Object	Page Layout
+ 	Interface_DRGeneric Layout	Vlocity Data Mapper Object Interface	Page Layout
+ 	DataRaptor Bulk Data Layout	Data Mapper Bulk Data	Page Layout
+ 	Document Template Setting Layout	Document Template Setting	Page Layout
+ 	DRBatch Queue Layout	Vlocity Data Mapper Batch Queue	Page Layout
+ 	Vlocity Scheduled Job Layout	Vlocity Scheduled Job	Page Layout
+ 	Vlocity Tracking Entry Layout	Vlocity Tracking Entry	Page Layout
+ 	Vlocity DocuSign Template Layout	Vlocity DocuSign Template	Page Layout
+ 	Vlocity Error Log Entry Layout	Vlocity Error Log Entry	Page Layout
+ 	LegalBannerSetup	 	Visualforce Page
+ 	Test Result	 	Custom Object
+ 	Vlocity Data Mapper Object Interface	 	Custom Object
+ 	Vlocity DocuSign Template	 	Custom Object
+ 	Vlocity DataPack Object	 	Custom Object
+ 	UISettings	 	Custom Setting
+ 	Trigger Setup	 	Custom Setting
+ 	Vlocity Tracking Entry	 	Custom Object
+ 	Vlocity Scheduled Job	 	Custom Object
+ 	Vlocity Error Log Entry	 	Custom Object
+ 	All	Vlocity Data Mapper Object Interface	List View
+ 	All	Vlocity DocuSign Template	List View
+ 	All	Vlocity DataPack Object	List View
+ 	All	Vlocity Scheduled Job	List View
+ 	All	Vlocity Error Log Entry	List View
+ 	All	Vlocity Tracking Entry	List View
+ 	Card Framework Configuration	 	Custom Setting
+ 	Data Mapper Workers	 	Custom Setting
+ 	Data Mapper Encryption	 	Custom Setting
+ 	Data Mapper Bulk Data	 	Custom Object
+ 	Vlocity Data Mapper Batch Queue	 	Custom Object
+ 	Document Template Setting	 	Custom Metadata Type
+ 	VFPageDeprecatedMessage	 	Visualforce Component
+ 	OmniBaseUrlForContent	 	Visualforce Component
+ 	OmniScriptInstanceComponent	 	Visualforce Component
+ 	BusinessProcessComponent	 	Visualforce Component
+ 	EmbeddingBusinessProcessComponent	 	Visualforce Component
+ 	TokenMappingComponent	 	Visualforce Component
+ 	VFActionFunction	 	Visualforce Component
+ 	DocgenOpenInterfaceSharingWrapperTest	 	Apex Class
+ 	LegalBannerController	 	Apex Class
+ 	LegalBannerControllerTest	 	Apex Class
+ 	OmniScriptDesigner	 	Visualforce Page
+ 	OmniLwcDesignerTinyMceEditor	 	Visualforce Page
+ 	OmniScriptInstancePage	 	Visualforce Page
+ 	OmniScriptHome	 	Visualforce Page
+ 	OmniscriptLwcPreviewPage	 	Visualforce Page
+ 	OmniScriptPreviewPage	 	Visualforce Page
+ 	SideBySideNavigation	 	Visualforce Page
+ 	SessionIdHandler	 	Visualforce Page
+ 	UserCustomLabels	 	Visualforce Page
+ 	TemplateCompilerVFPage	 	Visualforce Page
+ 	picklistTranslationPage	 	Visualforce Page
+ 	OmniScriptDocuSignReturnPage	 	Visualforce Page
+ 	SessionPage	 	Visualforce Page
+ 	OmniScriptLwcDocuSignViewPdf	 	Visualforce Page
+ 	BusinessProcessCloneDesigner	 	Visualforce Page
+ 	BusinessProcessActivateVersionDesigner	 	Visualforce Page
+ 	CustomLabelTranslation	 	Visualforce Page
+ 	BusinessProcessDeactivateVersionDesigner	 	Visualforce Page
+ 	DRMapper	 	Visualforce Page
+ 	DRHome	 	Visualforce Page
+ 	DocGenFileUtil	 	Visualforce Page
+ 	DataPacksHome	 	Visualforce Page
+ 	DocuSignCredentialSetup	 	Visualforce Page
+ 	DocTemplateList	 	Visualforce Page
+ 	EmbeddingBusinessProcessPage	 	Visualforce Page
+ 	DocumentTemplate	 	Visualforce Page
+ 	Vlocity Document Uploads	 	Document Folder
+ 	IntegrationProcedureDesigner	 	Visualforce Page
+ 	FlexCardCompilePage	 	Visualforce Page
+ 	JSONDownload	 	Visualforce Page
+ 	IntegrationProcedureHome	 	Visualforce Page
+ 	LwcGeneratorPage	 	Visualforce Page
+ 	Vlocity Resources	 	Document Folder
+ 	LWCPreviewVFPage	 	Visualforce Page
+ 	OmniLwcCompile	 	Visualforce Page
+ 	OmniDesignerCustomLabelDeployer	 	Visualforce Page
+ 	clmBrowserBasedPdfViewer	 	Lightning Web Component Bundle
+ 	clmPdfMergeBrowserBasedViewer	 	Lightning Web Component Bundle
+ 	ssDocumentPolling	 	Lightning Web Component Bundle
+ 	ssPdfConverter	 	Lightning Web Component Bundle
