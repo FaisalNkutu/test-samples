@@ -1,0 +1,3 @@
+System.debug([SELECT Id, Name FROM User WHERE UserType = 'Guest' AND Profile.Name LIKE '%Service Request Portal%']);
+https://<yourInstance>.lightning.force.com/<UserID>
+https://csXX.lightning.force.com/005XXXXXXXXXXXX
