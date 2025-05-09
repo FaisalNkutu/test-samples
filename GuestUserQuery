@@ -5,3 +5,71 @@ https://csXX.lightning.force.com/005XXXXXXXXXXXX
 
 SELECT Id, Name, Profile.Name, UserType, Username FROM User 
 WHERE UserType = 'Guest'
+
+
+
+
+
+Perfect — the image confirms the **Guest User exists** for your site:
+
+* **Username:** `portal@ask-dem-csps-efpc.force.com.hrforms`
+* **Profile Name:** `portal Profile`
+* **User Id:** `0055o000001pyqsAAA`
+
+Now let’s proceed to enable the **OmniStudio runtime for this Guest User**, which will fix the `%Label.lblXYZ%` issue.
+
+---
+
+### ✅ Next Steps to Enable Public Access (OmniStudio Runtime)
+
+#### 1. Go to the Guest User’s Profile:
+
+Use this direct link (replace `INSTANCE` with your Salesforce domain):
+
+```
+https://INSTANCE.lightning.force.com/0055o000001pyqsAAA
+```
+
+On that user’s record:
+
+* Click the **Profile Name** (`portal Profile`)
+
+---
+
+#### 2. In the Profile Settings page:
+
+Scroll down and enable the following:
+
+✅ **Apex Class Access**:
+Click *“Enabled Apex Class Access”* → Edit → Add and Save:
+
+* `omnistudio.CustomLabelTranslationController`
+* `omnistudio.UserCustomLabelsService`
+
+✅ **Visualforce Page Access**:
+(If your OmniScript relies on Visualforce) → Add:
+
+* `OmniScriptPreviewPage`
+* `OmniScriptInstancePage`
+* `OmniScriptLwcDocuSignViewPdf` *(if used)*
+
+✅ **Custom Permissions (optional but recommended)**:
+
+* `OmniStudioRuntimeAccess`
+* `FlexCardAccess` *(if you use FlexCards)*
+
+---
+
+#### 3. Save, then Test the Public Site URL again
+
+Open your portal anonymously (e.g., via Incognito window):
+
+```
+https://ask-dem-csps-efpc--hrforms.sandbox.preview.salesforce-experience.com/portal/s/
+```
+
+Now the `%Label.lblXYZ%` values should resolve into proper translations.
+
+---
+
+Would you like me to prepare a checklist or Apex script to verify all Guest User settings quickly?
