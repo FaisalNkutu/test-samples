@@ -1,0 +1,51 @@
+public with sharing class RetirementDataHandler {
+
+    public class FormInput {
+        @InvocableVariable public String name;
+        @InvocableVariable public String language;
+        @InvocableVariable public String telephone;
+        @InvocableVariable public String email;
+        @InvocableVariable public String certificate;
+        @InvocableVariable public String serviceYears;
+        @InvocableVariable public String other;
+        @InvocableVariable public String retirementDate;
+        @InvocableVariable public String address;
+        @InvocableVariable public String cityProvince;
+        @InvocableVariable public String postCode;
+    }
+
+    public class FormOutput {
+        @InvocableVariable public String status;
+    }
+
+    @InvocableMethod(label='Submit Form Data')
+    public static List<FormOutput> SubmitData(List<FormInput> inputs) {
+        List<FormOutput> results = new List<FormOutput>();
+
+        for (FormInput input : inputs) {
+            FormOutput output = new FormOutput();
+            try {
+                Retirement_Recognition_pdf__c formData = new Retirement_Recognition_pdf__c();
+                formData.Name__c = input.name;
+                formData.Language__c = input.language;
+                formData.Telephone__c = input.telephone;
+                formData.Email__c = input.email;
+                formData.Certificate__c = input.certificate;
+                formData.ServiceYears__c = input.serviceYears;
+                formData.Other__c = input.other;
+                formData.Retirement_Date__c = Date.valueOf(input.retirementDate);
+                formData.Address__c = input.address;
+                formData.cityProvince__c = input.cityProvince;
+                formData.postCode__c = input.postCode;
+
+                insert formData;
+                output.status = 'SUCCESS';
+            } catch (Exception e) {
+                output.status = 'ERROR: ' + e.getMessage();
+            }
+            results.add(output);
+        }
+
+        return results;
+    }
+}
