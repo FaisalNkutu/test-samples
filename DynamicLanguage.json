@@ -1,0 +1,61 @@
+{
+  "type": "Form",
+  "subType": "Create",
+  "language": "English",
+  "label": "RetirementForm",
+  "version": 1,
+  "elements": [
+    {
+      "type": "SetValues",
+      "name": "SetDynamicLabels",
+      "label": "Set Language-Based Labels",
+      "properties": {
+        "value": {
+          "ServiceYearsLabel": "{{Context.User.Language == 'fr' ? 'Années de service' : 'Years of Service'}}",
+          "FullNameLabel": "{{Context.User.Language == 'fr' ? 'Nom et prénom' : 'Full Name'}}",
+          "PhoneLabel": "{{Context.User.Language == 'fr' ? 'Téléphone' : 'Phone Number'}}",
+          "EmailLabel": "{{Context.User.Language == 'fr' ? 'Courriel' : 'Email'}}",
+          "CertificateLabel": "{{Context.User.Language == 'fr' ? 'Type de certificat' : 'Type of Certificate'}}",
+          "RetirementDateLabel": "{{Context.User.Language == 'fr' ? 'Date de retraite' : 'Retirement Date'}}"
+        }
+      }
+    },
+    {
+      "type": "Step",
+      "name": "Step1",
+      "label": "Step 1",
+      "elements": [
+        {
+          "type": "Text",
+          "name": "fullName",
+          "label": "{FullNameLabel}"
+        },
+        {
+          "type": "Text",
+          "name": "phone",
+          "label": "{PhoneLabel}"
+        },
+        {
+          "type": "Text",
+          "name": "email",
+          "label": "{EmailLabel}"
+        },
+        {
+          "type": "Text",
+          "name": "serviceYears",
+          "label": "{ServiceYearsLabel}"
+        },
+        {
+          "type": "Text",
+          "name": "certificate",
+          "label": "{CertificateLabel}"
+        },
+        {
+          "type": "Date",
+          "name": "retirementDate",
+          "label": "{RetirementDateLabel}"
+        }
+      ]
+    }
+  ]
+}
