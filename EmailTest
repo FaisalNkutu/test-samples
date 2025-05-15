@@ -1,0 +1,14 @@
+Dear {{Step1.Name}},
+
+This is to confirm that we have received your Retirement Recognition form.
+
+Details:
+- Certificate: {{Step1.Certificate}}
+- Retirement Date: {{Step1.RetirementDate}}
+- Years of Service: {{Step1.Service}}
+- Address: {{Step1.Address}}, {{Step1.CityProvince}}, {{Step1.PostalCode}}
+
+We thank you for your service.
+
+Sincerely,  
+The HR Team
