@@ -1,0 +1,19 @@
+"emailInformation": {
+  "toAddressList": [
+    "faisal.nkutu@csps-efpc.gc.ca"
+  ],
+  "ccAddressList": [],
+  "bccAddressList": [],
+  "emailSubject": "HR Awards",
+  "emailBody": "Dear %%Name%%,\n\nThis is to confirm that we have received your Retirement Recognition form.\n\nDetails:\n- Certificate: %%Certificate%%\n- Retirement Date: %%RetirementDate%%\n- Years of Service: %%Service%%\n- Address: %%Address%%, %%CityProvince%%, %%PostalCode%%\n\nWe thank you for your service.\n\nSincerely,\nThe HR Team",
+  "emailBodyParams": {
+    "Name": "{Step1.Name}",
+    "Certificate": "{Step1.Certificate}",
+    "RetirementDate": "{Step1.RetirementDate}",
+    "Service": "{Step1.Service}",
+    "Address": "{Step1.Address}",
+    "CityProvince": "{Step1.cityProvince}",
+    "PostalCode": "{Step1.PostalCode}"
+  },
+  "setHtmlBody": false
+}
