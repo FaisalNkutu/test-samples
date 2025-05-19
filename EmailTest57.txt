@@ -1,0 +1,58 @@
+RequestData
+{
+  "objectList": {
+    "LanguageCode": "en_US",
+    "userProfile": "System Administrator",
+    "timeStamp": "2025-05-19T16:55:49.684Z",
+    "userTimeZoneName": "America/Toronto",
+    "userTimeZone": "-240",
+    "userCurrencyCode": "CAD",
+    "userName": "faisal.nkutu@csps-efpc.gc.ca.hrforms",
+    "userId": "005Au00000OLdt1IAD",
+    "omniProcessId": "0jNAu000000L3J3MAK",
+    "localTimeZoneName": "America/Toronto",
+    "Step1": {
+      "Name": "Fedd ",
+      "Telephone": "6123444447",
+      "Email": "Faisal.Nkutsssu@csps-efpc.gc.caxzd",
+      "Other": null,
+      "RetirementDate": "2003-09-08",
+      "Address": "323 Stiwe Crt",
+      "cityProvince": "Ottawa, ON ",
+      "postalCode": "K26 1Z7",
+      "Language": "French",
+      "Certificate": "Electronic",
+      "Service": "40 years"
+    }
+  },
+  "bundleName": "RetirementFormDataMapper"
+}
+
+===============================
+
+{
+  "emailElementName": "SubmitFormToHR",
+  "useTemplate": false,
+  "emailTemplateName": "Retirement_Recognition",
+  "emailTargetObjectId": "",
+  "whatId": "",
+  "saveAsActivity": false,
+  "toAddressList": [
+    "faisal.nkutu@csps-efpc.gc.ca"
+  ],
+  "OrgWideEmailAddress": "",
+  "ccAddressList": [],
+  "bccAddressList": [],
+  "emailSubject": "HR Awards",
+  "emailBody": "Dear {Step1.Name},\n\nThis is to confirm that we have received your Retirement Recognition form.\n\nDetails:\n- Certificate: {Step1.Certificate}\n- Retirement Date: {Step1.RetirementDate}\n- Years of Service: {Step1.Service}\n- Address: {Step1.Address}, {Step1.CityProvince}, {Step1.PostalCode}\n\nWe thank you for your service.\n\nSincerely,  \nThe HR Team",
+  "setHtmlBody": false,
+  "uploadContDoc": true,
+  "fileAttachments": [],
+  "documentAttachments": [],
+  "useQueueableApexRemoting": false,
+  "ignoreCache": false,
+  "vlcClass": "omnistudio.DefaultOmniScriptSendEmail",
+  "useContinuation": false
+}
+=========================================
+
