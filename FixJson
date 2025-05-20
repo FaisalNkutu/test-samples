@@ -15,7 +15,7 @@
     "ccAddressList": [],
     "bccAddressList": [],
     "emailSubject": "HR Awards",
-    "emailBody": "Dear %%Name%%<br>,This is to confirm that we have received your Retirement Recognition form.<br>Details:<br>- Certificate: %%Certificate%%<br> Retirement Date: %%RetirementDate%%<br> Years of Service: %%Service%%<br> Address: %%Address%%, <br> %%CityProvince%%,<br> %%PostalCode%%<br>
+    "emailBody": "Dear %%Name%%,<br>This is to confirm that we have received your Retirement Recognition form.<br>Details:<br>- Certificate: %%Certificate%%<br>Retirement Date: %%RetirementDate%%<br>Years of Service: %%Service%%<br>Address: %%Address%%,<br>%%CityProvince%%,<br>%%PostalCode%%<br>",
     "setHtmlBody": true
   },
   "OrgWideEmailAddress": "",
@@ -58,3 +58,7 @@
   "businessEvent": "",
   "lwcComponentOverride": ""
 }
+
+
+"emailBody": "Dear %%Step1.Name%%,<br>This is to confirm that we have received your Retirement Recognition form.<br>Details:<br>- Certificate: %%Step1.Certificate%%<br>Retirement Date: %%Step1.RetirementDate%%<br>Years of Service: %%Step1.Service%%<br>Address: %%Step1.Address%%,<br>%%Step1.CityProvince%%,<br>%%Step1.PostalCode%%<br>"
+
