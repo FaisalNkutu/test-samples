@@ -1,0 +1,3 @@
+"emailBody": "Dear {Name},<br>This is to confirm that we have received your Retirement Recognition form.<br>Details:<br>- Certificate: {Certificate}<br>Retirement Date: {RetirementDate}<br>Years of Service: {Service}<br>Address: {Address},<br>{CityProvince},<br>{PostalCode}<br>"
+
+
