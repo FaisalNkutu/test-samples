@@ -1,0 +1,12 @@
+THis Dear %%Name%%,
+
+This is to confirm that we have received your Retirement Recognition form.
+
+Details:
+- Certificate: %%Certificate%%
+- Retirement Date: %%RetirementDate%%
+- Years of Service: %%Service%%
+- Address: %%Address%%, %%CityProvince%%, %%PostalCode%%
+
+
+Generates Dear %Fred DoeElectronic2003-09-0820 years323 Stiwe Crt%
