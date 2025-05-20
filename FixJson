@@ -1,0 +1,60 @@
+{
+  "controlWidth": 12,
+  "label": "Email Form to HR",
+  "useTemplate": false,
+  "emailTemplateInformation": {
+    "emailTemplateName": "Retirement_Recognition",
+    "emailTargetObjectId": "",
+    "saveAsActivity": false,
+    "whatId": ""
+  },
+  "emailInformation": {
+    "toAddressList": [
+      "faisal.nkutu@csps-efpc.gc.ca"
+    ],
+    "ccAddressList": [],
+    "bccAddressList": [],
+    "emailSubject": "HR Awards",
+    "emailBody": "Dear %%Name%%<br>,This is to confirm that we have received your Retirement Recognition form.<br>Details:<br>- Certificate: %%Certificate%%<br> Retirement Date: %%RetirementDate%%<br> Years of Service: %%Service%%<br> Address: %%Address%%, <br> %%CityProvince%%,<br> %%PostalCode%%<br>
+    "setHtmlBody": true
+  },
+  "OrgWideEmailAddress": "",
+  "fileAttachments": "",
+  "attachmentList": "",
+  "contentVersionList": "",
+  "staticDocList": [],
+  "docList": "",
+  "remoteTimeout": 30000,
+  "inProgressMessage": "In Progress",
+  "postMessage": "Done",
+  "failureNextLabel": "Continue",
+  "failureAbortLabel": "",
+  "failureGoBackLabel": "Go Back",
+  "failureAbortMessage": "",
+  "validationRequired": "None",
+  "redirectPageName": "",
+  "redirectTemplateUrl": "vlcAcknowledge.html",
+  "redirectNextLabel": "",
+  "redirectNextWidth": 3,
+  "redirectPreviousLabel": "",
+  "redirectPreviousWidth": 3,
+  "showPersistentComponent": [
+    true,
+    false
+  ],
+  "show": null,
+  "HTMLTemplateId": "",
+  "wpm": false,
+  "ssm": false,
+  "message": {},
+  "pubsub": false,
+  "errorMessage": {
+    "custom": [],
+    "default": null
+  },
+  "enableDefaultAbort": false,
+  "enableActionMessage": true,
+  "businessCategory": "",
+  "businessEvent": "",
+  "lwcComponentOverride": ""
+}
