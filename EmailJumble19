@@ -1,0 +1,11 @@
+<p>Dear %%Name%%,</p>
+<p>We received your submission.</p>
+<p>You will be contacted at %%Email%% or %%Telephone%%.</p>
+
+<p><strong>Details:</strong></p>
+<ul>
+  <li>Certificate: %%Certificate%%</li>
+  <li>Years of Service: %%Service%%</li>
+  <li>Retirement Date: %%RetirementDate%%</li>
+  <li>Address: %%Address%%, %%CityProvince%%, %%PostalCode%%</li>
+</ul>
