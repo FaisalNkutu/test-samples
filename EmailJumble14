@@ -1,0 +1,24 @@
+{
+  "emailElementName": "EmailFormToHR",
+  "useTemplate": false,
+  "emailTemplateName": "Retirement_Recognition",
+  "emailTargetObjectId": "",
+  "whatId": "",
+  "saveAsActivity": false,
+  "toAddressList": [
+    "faisal.nkutu@csps-efpc.gc.ca"
+  ],
+  "OrgWideEmailAddress": "",
+  "ccAddressList": [],
+  "bccAddressList": [],
+  "emailSubject": "HR Awards",
+  "emailBody": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Long Service Award & Retirement Form</title>\n</head>\n<body style=\"font-family:sans-serif;\">\n  <h2 style=\"color:#2f195c;\">Long Service Award & Retirement Form</h2>\n  <table border=\"1\" cellpadding=\"6\" cellspacing=\"0\" style=\"border-collapse:collapse; width:100FaisalEnglishFaisal.Nkutu@csps-efpc.gc.caTestom6123444444Electronic20 years2003-09-09323 Stiwe Crt%&nbsp;</td></tr>\n\n    <tr style=\"background-color:#2f195c; color:white;\">\n      <th colspan=\"2\" align=\"left\">3. Submit the form</th>\n    </tr>\n    <tr>\n      <td colspan=\"2\">\n        Please open the form on your desktop to submit it to\n        <a href=\"mailto:recognitionreconnaissance@csps-efpc.gc.ca\">\n          recognitionreconnaissance@csps-efpc.gc.ca\n        </a>.\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+  "setHtmlBody": true,
+  "uploadContDoc": true,
+  "fileAttachments": [],
+  "documentAttachments": [],
+  "useQueueableApexRemoting": false,
+  "ignoreCache": false,
+  "vlcClass": "omnistudiocore.DefaultOmniScriptSendEmail",
+  "useContinuation": false
+}
