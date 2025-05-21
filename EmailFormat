@@ -1,0 +1,31 @@
+<h2 style="color:#2f195c;">Long Service Award & Retirement Form</h2>
+
+<table style="width:100%; border-collapse:collapse; font-family:sans-serif;">
+  <tr style="background-color:#2f195c; color:white;">
+    <th colspan="2" style="text-align:left; padding:8px;">1. Recipient</th>
+  </tr>
+  <tr><td style="padding:8px;">Last name, first name:</td><td style="padding:8px;">%%Name%%</td></tr>
+  <tr><td style="padding:8px;">Preferred language:</td><td style="padding:8px;">%%Language%%</td></tr>
+  <tr><td style="padding:8px;">Email:</td><td style="padding:8px;">%%Email%%</td></tr>
+  <tr><td style="padding:8px;">Telephone number:</td><td style="padding:8px;">%%Telephone%%</td></tr>
+  <tr><td style="padding:8px;">Type of certificate:</td><td style="padding:8px;">%%Certificate%%</td></tr>
+  <tr><td style="padding:8px;">Years of service:</td><td style="padding:8px;">%%Service%%</td></tr>
+  <tr><td style="padding:8px;">If other, please specify:</td><td style="padding:8px;">%%Other%%</td></tr>
+  <tr><td style="padding:8px;">Retirement date (if applicable):</td><td style="padding:8px;">%%RetirementDate%%</td></tr>
+
+  <tr style="background-color:#2f195c; color:white;">
+    <th colspan="2" style="text-align:left; padding:8px;">2. Shipping information</th>
+  </tr>
+  <tr><td style="padding:8px;">Address:</td><td style="padding:8px;">%%Address%%</td></tr>
+  <tr><td style="padding:8px;">City, Province:</td><td style="padding:8px;">%%CityProvince%%</td></tr>
+  <tr><td style="padding:8px;">Postal code:</td><td style="padding:8px;">%%PostalCode%%</td></tr>
+
+  <tr style="background-color:#2f195c; color:white;">
+    <th colspan="2" style="text-align:left; padding:8px;">3. Submit the form</th>
+  </tr>
+  <tr>
+    <td colspan="2" style="padding:8px;">
+      Please open the form on your desktop to submit it to <a href="mailto:recognitionreconnaissance@csps-efpc.gc.ca">recognitionreconnaissance@csps-efpc.gc.ca</a>.
+    </td>
+  </tr>
+</table>
