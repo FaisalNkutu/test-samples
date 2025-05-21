@@ -1,0 +1,11 @@
+<p>Dear %%Name%%,</p>
+<p>Your retirement recognition form has been received.</p>
+<p>We will contact you at %%Email%% or %%Telephone%%.</p>
+<p>Certificate: %%Certificate%%<br>
+Years of Service: %%Service%%<br>
+Retirement Date: %%RetirementDate%%</p>
+
+<p><strong>Shipping Info</strong><br>
+%%Address%%<br>
+%%CityProvince%%<br>
+%%PostalCode%%</p>
