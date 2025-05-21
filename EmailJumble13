@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Long Service Award & Retirement Form</title>
+</head>
+<body style="font-family:sans-serif;">
+  <h2 style="color:#2f195c;">Long Service Award & Retirement Form</h2>
+  <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse; width:100%;">
+    <tr style="background-color:#2f195c; color:white;">
+      <th colspan="2" align="left">1. Recipient</th>
+    </tr>
+    <tr><td>Last name, first name:</td><td>%%Name%%&nbsp;</td></tr>
+    <tr><td>Preferred language:</td><td>%%Language%%&nbsp;</td></tr>
+    <tr><td>Email:</td><td>%%Email%%&nbsp;</td></tr>
+    <tr><td>Telephone number:</td><td>%%Telephone%%&nbsp;</td></tr>
+    <tr><td>Type of certificate:</td><td>%%Certificate%%&nbsp;</td></tr>
+    <tr><td>Years of service:</td><td>%%Service%%&nbsp;</td></tr>
+    <tr><td>If other, please specify:</td><td>%%Other%%&nbsp;</td></tr>
+    <tr><td>Retirement date (if applicable):</td><td>%%RetirementDate%%&nbsp;</td></tr>
+
+    <tr style="background-color:#2f195c; color:white;">
+      <th colspan="2" align="left">2. Shipping Information</th>
+    </tr>
+    <tr><td>Address:</td><td>%%Address%%&nbsp;</td></tr>
+    <tr><td>City, Province:</td><td>%%CityProvince%%&nbsp;</td></tr>
+    <tr><td>Postal code:</td><td>%%PostalCode%%&nbsp;</td></tr>
+
+    <tr style="background-color:#2f195c; color:white;">
+      <th colspan="2" align="left">3. Submit the form</th>
+    </tr>
+    <tr>
+      <td colspan="2">
+        Please open the form on your desktop to submit it to
+        <a href="mailto:recognitionreconnaissance@csps-efpc.gc.ca">
+          recognitionreconnaissance@csps-efpc.gc.ca
+        </a>.
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
