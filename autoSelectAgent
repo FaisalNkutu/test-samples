@@ -1,0 +1,131 @@
+private AgentInfo autoSelectAgent(
+        String question) {
+
+    if (availableAgents == null
+            || availableAgents.isEmpty()) {
+
+        return null;
+    }
+
+    try {
+
+        System.out.println();
+        System.out.println(
+                "========================================");
+        System.out.println(
+                "DEBUG AUTO: Calling Python /router/select");
+        System.out.println(
+                "DEBUG AUTO: Question = " + question);
+        System.out.println(
+                "DEBUG AUTO: Available agents = "
+                        + availableAgents.size());
+
+        AgentRoutingResult result =
+                AgentRouterClient.selectAgent(
+                        AI_SERVICE_ADDRESS,
+                        question,
+                        contextId,
+                        null,
+                        availableAgents);
+
+        if (result == null) {
+
+            System.out.println(
+                    "DEBUG AUTO: Router returned NULL");
+
+            return null;
+        }
+
+        AgentInfo routedAgent =
+                result.getAgent();
+
+        if (routedAgent == null) {
+
+            System.out.println(
+                    "DEBUG AUTO: Router returned no agent");
+
+            return null;
+        }
+
+        System.out.println(
+                "DEBUG AUTO: Router selected = "
+                        + routedAgent.getName());
+
+        System.out.println(
+                "DEBUG AUTO: Confidence = "
+                        + result.getConfidence());
+
+        System.out.println(
+                "DEBUG AUTO: Reason = "
+                        + result.getReason());
+
+        /*
+         * IMPORTANT:
+         *
+         * Return the AgentInfo already stored in
+         * availableAgents.
+         *
+         * That object contains the real endpoint supplied
+         * by AI Core, for example:
+         *
+         * translation-agent
+         * -> http://127.0.0.1:15048/translate
+         */
+
+        for (AgentInfo availableAgent :
+                availableAgents) {
+
+            if (availableAgent == null) {
+                continue;
+            }
+
+            boolean idMatches =
+                    routedAgent.getId() != null
+                            && availableAgent.getId() != null
+                            && routedAgent.getId()
+                            .equalsIgnoreCase(
+                                    availableAgent.getId());
+
+            boolean nameMatches =
+                    routedAgent.getName() != null
+                            && availableAgent.getName() != null
+                            && routedAgent.getName()
+                            .equalsIgnoreCase(
+                                    availableAgent.getName());
+
+            if (idMatches || nameMatches) {
+
+                System.out.println(
+                        "DEBUG AUTO: Matched local agent = "
+                                + availableAgent.getName());
+
+                System.out.println(
+                        "DEBUG AUTO: Local endpoint = "
+                                + availableAgent.getEndpoint());
+
+                return availableAgent;
+            }
+        }
+
+        System.out.println(
+                "DEBUG AUTO: Selected router agent "
+                        + "was not found in availableAgents");
+
+        return null;
+
+    } catch (Exception exception) {
+
+        System.out.println(
+                "DEBUG AUTO: Router call FAILED");
+
+        System.out.println(
+                "DEBUG AUTO: "
+                        + exception.getClass().getName()
+                        + ": "
+                        + exception.getMessage());
+
+        exception.printStackTrace();
+
+        return null;
+    }
+}
