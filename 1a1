@@ -4,3 +4,8 @@ C:\Users\f.nkutu>
 
 
 curl -X POST http://127.0.0.1:9999/router/select -H "Content-Type: application/json" -d "{\"message\":\"Roll two dice\",\"contextId\":\"test-002\",\"previousAgentId\":\"\",\"agents\":[{\"id\":\"translation-agent\",\"name\":\"translation-agent\",\"description\":\"Commands: translation-agent\",\"skills\":[]},{\"id\":\"Dice Agent\",\"name\":\"Dice Agent\",\"description\":\"Commands: Dice Agent\",\"skills\":[]}]}"
+
+
+C:\Users\f.nkutu>curl -X POST http://127.0.0.1:9999/router/select -H "Content-Type: application/json" -d "{\"message\":\"Roll two dice\",\"contextId\":\"test-002\",\"previousAgentId\":\"\",\"agents\":[{\"id\":\"translation-agent\",\"name\":\"translation-agent\",\"description\":\"Commands: translation-agent\",\"skills\":[]},{\"id\":\"Dice Agent\",\"name\":\"Dice Agent\",\"description\":\"Commands: Dice Agent\",\"skills\":[]}]}"
+{"agent":{"id":"Dice Agent","name":"Dice Agent","description":"Commands: Dice Agent","skills":[]},"confidence":0.8200000000000001,"reason":"Agent selected by matching request intent against agent name, description and skills. Matches: ['dice']"}
+C:\Users\f.nkutu>
