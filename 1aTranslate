@@ -1,0 +1,550 @@
+cd C:\dev - Copy\vcci\vcci; "JAVA_HOME=C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.10.7-hotspot" M2_HOME=C:\\Users\\f.nkutu\\sf-ci-tools\\maven cmd /c "\"C:\\Users\\f.nkutu\\sf-ci-tools\\maven\\bin\\mvn.cmd\" \"-Dexec.vmArgs=-Xms1024M -Xmx2048M -Dcom.sun.management.jmxremote -Djava.rmi.server.hostname=localhost -Djava.net.preferIPv4Stack=true -Dlogback.configurationFile=config/logging.xml -Dcom.simfront.properties=config/VCCI.xml -Dcom.simfront.plugins=\\\"C:\\ProgramData\\Simfront\\vcci\\plugins_dev\\\" -splash:data/vcci/Splash/calian-logo.gif\" \"-Dexec.args=${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}\" -Dexec.appArgs= -Dexec.mainClass=com.simfront.vcci.VcciMain \"-Dexec.executable=C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.10.7-hotspot\\bin\\java.exe\" \"-Dexec.workingdir=C:\\dev - Copy\\vcci\\vcci\" -DskipTests=true \"-Dmaven.ext.class.path=C:\\Program Files\\NetBeans-19\\netbeans\\java\\maven-nblib\\netbeans-eventspy.jar\" --no-transfer-progress process-classes org.codehaus.mojo:exec-maven-plugin:3.1.0:exec"
+Scanning for projects...
+
+-------------------------< com.simfront:vcci >--------------------------
+Building VCCI 5.2.0-SNAPSHOT
+  from pom.xml
+--------------------------------[ jar ]---------------------------------
+The POM for com.simfront:paradigm-core:jar:5.2.0-20260414.162704-121 is invalid, transitive dependencies (if any) will not be available: 1 problem was encountered while building the effective model for com.simfront:paradigm-core:5.2.0-SNAPSHOT
+'dependencies.dependency.version' for com.simfront:jar-loader:jar is missing. @ 
+
+
+--- git-commit-id:9.0.2:revision (get-the-git-infos) @ vcci ---
+
+--- enforcer:3.5.0:enforce (enforce-sf-build-standards) @ vcci ---
+Rule 0: org.codehaus.mojo.extraenforcer.dependencies.BanCircularDependencies passed
+Rule 1: org.apache.maven.enforcer.rules.BanDuplicatePomDependencyVersions passed
+Rule 2: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+Rule 3: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+Rule 4: org.apache.maven.enforcer.rules.RequireJavaVendor passed
+Rule 5: org.apache.maven.enforcer.rules.BanDistributionManagement passed
+Rule 6: org.apache.maven.enforcer.rules.RequireNoRepositories passed
+Rule 7: org.apache.maven.enforcer.rules.BannedPlugins passed
+
+--- enforcer:3.5.0:enforce (enforce-sf-package-standards) @ vcci ---
+Rule 0: org.codehaus.mojo.extraenforcer.dependencies.BanCircularDependencies passed
+Rule 1: org.apache.maven.enforcer.rules.BanDuplicatePomDependencyVersions passed
+Rule 2: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+Rule 3: org.apache.maven.enforcer.rules.RequireJavaVendor passed
+Rule 4: org.apache.maven.enforcer.rules.BanDistributionManagement passed
+Rule 5: org.apache.maven.enforcer.rules.RequireNoRepositories passed
+Rule 6: org.apache.maven.enforcer.rules.BannedPlugins passed
+
+--- artifactory:3.7.1:publish (attach-properties) @ vcci ---
+
+--- git-commit-id:9.0.2:revision (write-git-commit-properties-to-file) @ vcci ---
+
+--- git-commit-id:9.0.2:revision (write-all-git-properties-to-file) @ vcci ---
+
+--- build-helper:3.6.1:parse-version (parse-version) @ vcci ---
+
+--- build-helper:3.6.1:timestamp-property (set-date-for-application-version) @ vcci ---
+
+--- remote-resources:3.3.0:process (process-license-resource) @ vcci ---
+Preparing remote bundle com.simfront.ott.license:ott_v1:1.0
+Copying 1 resource from 1 bundle.
+
+--- dependency:3.6.0:copy (get_common-project-files) @ vcci ---
+Configured Artifact: com.simfront.common-project-files:calian-logo:1.0.0:gif
+Copying calian-logo-1.0.0.gif to C:\dev - Copy\vcci\vcci\src\main\setup\calian-logo.gif
+
+--- dependency:3.6.0:copy (get_common-project-files-calian-logo-loading) @ vcci ---
+Configured Artifact: com.simfront.common-project-files:calian-logo-loading:1.0.0:gif
+com.simfront.common-project-files:calian-logo-loading:1.0.0:gif already exists in C:\dev - Copy\vcci\vcci\src\main\data\vcci\splash
+
+--- resources:3.3.1:resources (default-resources) @ vcci ---
+Copying 72 resources from src\main\resources to target\classes
+Copying 0 resource from src\main\admin to target\non-packaged-resources
+Copying 1 resource from target\maven-shared-archive-resources to target\classes
+
+--- compiler:3.14.0:compile (default-compile) @ vcci ---
+Nothing to compile - all classes are up to date.
+
+--- exec:3.1.0:exec (default-cli) @ vcci ---
+========================================================================
+  _   _______________
+ | | / / ___/ ___/  _/
+ | |/ / /__/ /___/ /  
+ |___/\___/\___/___/ 
+========================================================================
+16:27:18.425 INFO  VcciMain.java:62 ::: VCCI Properties:
+	Timestamp : '2026-10-06T20:27:16Z'
+	Version : '5.2.0-SNAPSHOT'
+	ID : '83708e77c276755783668d8a603a51f3de30fb9b'
+	Build : '0'
+16:27:18.428 INFO  VcciMain.java:63 ::: Paradigm Properties:
+	Paradigm Version : '5.2.0-SNAPSHOT'
+	Paradigm ID : 'caa880133f83dc0d48ebcbfab76284f890a6083d'
+16:27:18.632 INFO  ProductMain.java:59 ::: Product Start PID:2648 com.calian.paradigm.core.components.MasterOMAdaptor CREATE_LOGENTRY
+16:27:18.866 INFO  LifecycleMonitor.java:54 ::: Performing initial licence check...
+16:27:19.284 ERROR ProductMain.java:129 ::: Unable to load plugins.  Plugin folder does not exist.
+16:27:19.628 INFO  ProductMain.java:257 ::: Waiting for controller to initialize...
+16:27:19.638 INFO  ObjectBrokerServer.java:548 ::: Listening for connections on port: 7777 on all interfaces.
+16:27:19.641 INFO  ProductMain.java:276 ::: Creating components...
+16:27:19.711 WARN  ComponentGroup.java:215 ::: Unable to create component 'com.calian.paradigm.service.startstateservice.StartStateService' --- Missing from Classpath.
+16:27:19.712 WARN  ConfigProperties.java:74 ::: com.calian.paradigm.service.startstateservice.StartStateService removed from capability list.  Capability failed to initialize.
+16:27:19.857 INFO  RabbitMQConfig.java:67 ::: Reading config file :config\aiconfig.json  From directory C:\dev - Copy\vcci\vcci
+16:27:19.859 INFO  RabbitMQConfig.java:74 ::: Rabbit Configuration read
+16:27:19.918 INFO  RabbitMQConfig.java:79 ::: Rabbit Configuration converted to object
+16:27:19.918 INFO  RabbitMQComm.java:40 ::: RabbitMQComm is up and running
+16:27:20.064 INFO  RabbitMQComm.java:55 ::: VCCI_AI_SERVICE RabbitMQ Sender Up
+16:27:20.065 INFO  RabbitMQComm.java:56 ::: VCCI_AI_SERVICE RabbitMQ Receiver Up
+16:27:20.065 INFO  RabbitMQComm.java:57 ::: VCCI_AI_SERVICE RabbitMQ Connection Parameters ::: [exchange = AI_CORE_EXCHANGE]
+16:27:20.087 WARN  ComponentGroup.java:215 ::: Unable to create component 'com.calian.paradigm.adaptor.hiveadaptor.HiveAdaptor' --- Missing from Classpath.
+16:27:20.088 WARN  ConfigProperties.java:74 ::: com.calian.paradigm.adaptor.hiveadaptor.HiveAdaptor removed from capability list.  Capability failed to initialize.
+16:27:20.088 WARN  ComponentGroup.java:215 ::: Unable to create component 'com.calian.paradigm.adaptor.mip44adaptor.MIP44Adaptor' --- Missing from Classpath.
+16:27:20.090 WARN  ConfigProperties.java:74 ::: com.calian.paradigm.adaptor.mip44adaptor.MIP44Adaptor removed from capability list.  Capability failed to initialize.
+16:27:20.091 WARN  ComponentGroup.java:215 ::: Unable to create component 'com.calian.paradigm.adaptor.nmea0183adaptor.NmeaAdaptor' --- Missing from Classpath.
+16:27:20.091 WARN  ConfigProperties.java:74 ::: com.calian.paradigm.adaptor.nmea0183adaptor.NmeaAdaptor removed from capability list.  Capability failed to initialize.
+16:27:21.613 INFO  UIDelegate.java:61 ::: Swing Thread loaded in 1960 milliseconds
+16:27:45.329 INFO  VCCIDashBoard.java:412 ::: Task 3 of 4 - Initializing CURSIT
+16:27:45.433 INFO  LocalServer.java:77 ::: Local server started on port 51514
+16:27:46.909 INFO  GPUUtil.java:109 ::: Strong GPU Detected. Options will be set accordingly.
+16:27:46.910 INFO  ConsoleProgressHandler.java:24 ::: INITIALIZING |> In progress...
+16:27:46.992 INFO  ConsoleProgressHandler.java:24 ::: INITIALIZED |> In progress...
+initialize on Thread[#65,AWT-EventQueue-0,6,ExceptionGroup] with library path C:\dev - Copy\vcci\vcci\data\jcef-bundle\Windows64
+[2648:34444:1006/162747.139:ERROR:chrome\installer\util\google_update_settings.cc:265] Failed opening key Software\Chromium to set usagestats; result: 5
+16:27:48.362 INFO  AARExerciseData.java:240 ::: Importing AAR file: C:\Users\f.nkutu\Aramis.aar
+16:27:48.550 INFO  VCCIDashBoard.java:415 ::: Task 3 Complete in 3221 milliseconds
+16:27:48.551 INFO  VCCIDashBoard.java:417 ::: Task 4 of 4 - Loading Exercise Panel
+16:27:48.560 INFO  VCCIDashBoard.java:432 ::: Task 4 Complete in 9 milliseconds
+16:27:48.921 INFO  STSDashBoard.java:1517 ::: Object type mapping thread has finished initialization.
+16:27:53.126 INFO  DBCacheLoader.java:864 ::: Completed DBCache Loading!
+16:27:53.126 INFO  OMAdaptor.java:1608 ::: Paradigm object model service has completed initialization
+16:27:53.160 INFO  AIService.java:134 ::: The Time service is initializing .........
+16:27:53.160 INFO  TimeService.java:193 ::: The Time service is initializing .........
+16:27:53.180 INFO  GISDataBank.java:59 ::: Initializing GIS Data Bank [GISService]
+16:27:53.181 INFO  GISDataBank.java:89 ::: Initializing GIS DB Writer. Checking if OM Adaptor Ready
+16:27:53.182 INFO  GISDataBank.java:106 ::: OM Adaptor Ready
+16:27:53.188 INFO  TimeService.java:255 ::: The Time service has completed initialization.
+16:27:53.195 INFO  GISDataBank.java:65 ::: Initializing GIS DB Cache [GISService]
+16:27:53.235 INFO  DBPaginatorConfig.java:35 ::: DBPaginator configuration - Page Interval Size: 1800000 (milliseconds)
+16:27:53.255 INFO  TimeService.java:382 ::: The TimeService run notification method has been called. The CLOCK_TYPE parameter value is WALL_CLOCK
+16:27:53.286 INFO  DBCacheLoader.java:864 ::: Completed DBCache Loading!
+16:27:53.605 INFO  GISDataBank.java:73 ::: GIS Data Bank Initialized [GISService]
+16:27:53.606 INFO  MediationService.java:200 ::: The mediation service is initializing .........
+16:27:53.858 INFO  MediationService.java:1659 ::: The mediation service has completed initialization.
+16:27:53.905 INFO  CursitPanel.java:695 ::: Sending Register Session request
+16:27:53.907 INFO  SessionManager.java:238 ::: GIS Lib received register session request
+16:27:53.921 INFO  SessionManager.java:268 ::: ++++++++++ Number of registered sessions: 1
+16:27:53.937 INFO  TimeService.java:288 ::: Processing GET_CLOCK feature request. Lastest published clock tick is Clock Tick : [Earliest Clock:16:27:53hrs  6 Oct 26, Clock:16:27:53hrs  6 Oct 26, Latest Clock:16:27:53hrs  6 Oct 26, Recommended Overlap:10000, Clock Speed:1, SimOffSet:-1]
+16:27:53.969 INFO  DBPaginator.java:260 ::: Exercise start time initialized. StartTime: 1791318473184 (ms), LatestEndTime: 1791318473184 (ms)
+16:27:53.970 INFO  CursitPanel.java:1068 ::: Cursit received Clock Tick response. Session Registered. Initializing Cursit. Clock tick is:Clock Tick : [Earliest Clock:16:27:53hrs  6 Oct 26, Clock:16:27:53hrs  6 Oct 26, Latest Clock:16:27:53hrs  6 Oct 26, Recommended Overlap:10000, Clock Speed:1, SimOffSet:-1]
+16:27:56.363 INFO  MilStd2525bCountryCodeMapper.java:131 ::: Read 2525b->OMDB country codes: 243, Ignored: 0
+16:27:56.365 INFO  MilStd2525bCountryCodeMapper.java:132 ::: Read OMDB->2525b country codes: 250, Ignored: 0
+16:27:56.791 WARN  VCCIControlPanel.java:3787 ::: Connection Type <DIS Audio-com.calian.paradigm.adaptor.disaudioadaptor.DISAudioAdaptor-> removed : Adaptor not available.
+16:27:56.792 WARN  VCCIControlPanel.java:3787 ::: Connection Type <PLAYBACK-com.calian.paradigm.adaptor.playbackadaptor.PlaybackAdaptor-> removed : Adaptor not available.
+16:27:56.792 WARN  VCCIControlPanel.java:3787 ::: Connection Type <DIS-com.calian.paradigm.adaptor.disadaptor.DISAdaptor-> removed : Adaptor not available.
+16:27:56.792 WARN  VCCIControlPanel.java:3787 ::: Connection Type <CATT DIS-com.calian.paradigm.adaptor.discattadaptor.DISCattAdaptor-> removed : Adaptor not available.
+16:27:56.794 WARN  VCCIControlPanel.java:3787 ::: Connection Type <JCATS-com.calian.paradigm.adaptor.jcatsadaptor.JCATSAdaptor-> removed : Adaptor not available.
+16:27:56.795 WARN  VCCIControlPanel.java:3787 ::: Connection Type <JTLS-GO-com.calian.paradigm.adaptor.jtlsgoadaptor.JTLSGOAdaptor-> removed : Adaptor not available.
+16:27:56.795 WARN  VCCIControlPanel.java:3787 ::: Connection Type <VR FORCES-com.calian.paradigm.adaptor.vrforcesadaptor.VRForcesAdaptor-> removed : Adaptor not available.
+16:27:56.795 WARN  VCCIControlPanel.java:3787 ::: Connection Type <WAMI-com.calian.paradigm.adaptor.wamiadaptor.WAMIAdaptor-> removed : Adaptor not available.
+16:27:56.796 WARN  VCCIControlPanel.java:3787 ::: Connection Type <ABACUS v35.x-com.calian.paradigm.adaptor.abacus35.ABACUSAdaptor-> removed : Adaptor not available.
+16:27:56.796 WARN  VCCIControlPanel.java:3787 ::: Connection Type <VBS Fusion-com.calian.paradigm.adaptor.vbsfusionadaptor.VBSFusionAdaptor-> removed : Adaptor not available.
+16:27:56.797 WARN  VCCIControlPanel.java:3787 ::: Connection Type <VAVI-com.calian.paradigm.adaptor.vaviadaptor.VAVIAdaptor-> removed : Adaptor not available.
+16:27:56.798 WARN  VCCIControlPanel.java:3787 ::: Connection Type <XMPP-com.calian.paradigm.adaptor.xmppadaptor.XmppAdaptor-> removed : Adaptor not available.
+16:27:56.798 WARN  VCCIControlPanel.java:3787 ::: Connection Type <TSI-com.calian.paradigm.adaptor.tsiadaptor.TSIAdaptor-> removed : Adaptor not available.
+16:27:56.799 WARN  VCCIControlPanel.java:3787 ::: Connection Type <ION-com.calian.paradigm.adaptor.ionadaptor.IonAdaptor-> removed : Adaptor not available.
+16:27:56.799 WARN  VCCIControlPanel.java:3787 ::: Connection Type <Link 16-com.calian.paradigm.adaptor.link16adaptor.Link16Adaptor-> removed : Adaptor not available.
+16:27:56.800 WARN  VCCIControlPanel.java:3787 ::: Connection Type <NVG-com.calian.paradigm.adaptor.nvgadaptor.NvgAdaptor-> removed : Adaptor not available.
+16:27:56.800 WARN  VCCIControlPanel.java:3787 ::: Connection Type <NVG Importer-com.calian.paradigm.adaptor.nvgadaptor.importer.NvgImportAdaptor-> removed : Adaptor not available.
+16:27:56.802 WARN  VCCIControlPanel.java:3787 ::: Connection Type <CORE-com.calian.paradigm.adaptor.coreadaptor.CoreAdaptor-> removed : Adaptor not available.
+16:27:56.802 WARN  VCCIControlPanel.java:3787 ::: Connection Type <OTHGOLD-com.calian.paradigm.adaptor.othgoldadaptor.OTHGoldAdaptor-> removed : Adaptor not available.
+16:27:56.803 WARN  VCCIControlPanel.java:3787 ::: Connection Type <VSM-com.calian.paradigm.adaptor.eoiradaptor.EOIRAdaptor-> removed : Adaptor not available.
+16:27:56.803 WARN  VCCIControlPanel.java:3787 ::: Connection Type <GMTI-com.calian.paradigm.adaptor.gmtiadaptor.GMTIAdaptor-> removed : Adaptor not available.
+16:27:56.804 WARN  VCCIControlPanel.java:3787 ::: Connection Type <HLA-com.calian.paradigm.adaptor.hlaadaptor.HlaAdaptor-> removed : Adaptor not available.
+16:27:56.804 WARN  VCCIControlPanel.java:3787 ::: Connection Type <VMF-com.calian.paradigm.adaptor.vmfadaptor.VMFAdaptor-> removed : Adaptor not available.
+16:27:56.805 WARN  VCCIControlPanel.java:3787 ::: Connection Type <NFFI-com.calian.paradigm.adaptor.nffiadaptor.NFFIAdaptor-> removed : Adaptor not available.
+16:27:56.805 WARN  VCCIControlPanel.java:3787 ::: Connection Type <FFI-com.calian.paradigm.adaptor.ffiadaptor.FFIAdaptor-> removed : Adaptor not available.
+16:27:56.806 WARN  VCCIControlPanel.java:3787 ::: Connection Type <CLOCS-com.calian.paradigm.adaptor.clocsadaptor.CLOCSAdaptor-> removed : Adaptor not available.
+16:27:56.806 WARN  VCCIControlPanel.java:3787 ::: Connection Type <TBMS-com.calian.paradigm.adaptor.ddsadaptor.DdsAdaptor-> removed : Adaptor not available.
+16:27:56.807 WARN  VCCIControlPanel.java:3787 ::: Connection Type <MASA SWORD-com.calian.paradigm.adaptor.masaswordadaptor.MasaSwordAdaptor-> removed : Adaptor not available.
+16:27:56.807 WARN  VCCIControlPanel.java:3787 ::: Connection Type <MIP44-com.calian.paradigm.adaptor.mip44adaptor.MIP44Adaptor-> removed : Adaptor not available.
+16:27:56.808 WARN  VCCIControlPanel.java:3787 ::: Connection Type <TAK-com.calian.paradigm.adaptor.takadaptor.TakAdaptor-> removed : Adaptor not available.
+16:27:56.808 WARN  VCCIControlPanel.java:3787 ::: Connection Type <SitaWare HQ-com.calian.paradigm.adaptor.sitawareadaptor.SitaWareAdaptor-> removed : Adaptor not available.
+16:27:56.809 WARN  VCCIControlPanel.java:3787 ::: Connection Type <SitaWare Frontline-com.calian.paradigm.adaptor.frontlineadaptor.FrontlineAdaptor-> removed : Adaptor not available.
+16:27:56.809 WARN  VCCIControlPanel.java:3787 ::: Connection Type <NMEA-0183-com.calian.paradigm.adaptor.nmea0183adaptor.NmeaAdaptor-> removed : Adaptor not available.
+16:27:56.810 WARN  VCCIControlPanel.java:3787 ::: Connection Type <LOGFAS-com.calian.paradigm.adaptor.logfasadaptor.LogfasAdaptor-> removed : Adaptor not available.
+16:27:56.810 WARN  VCCIControlPanel.java:3787 ::: Connection Type <C4 EDGE-com.calian.paradigm.adaptor.c4edgeadaptor.C4EdgeAdaptor-> removed : Adaptor not available.
+16:27:56.810 WARN  VCCIControlPanel.java:3787 ::: Connection Type <ASTERIX-com.calian.paradigm.adaptor.asterixadaptor.AsterixAdaptor-> removed : Adaptor not available.
+16:27:56.811 WARN  VCCIControlPanel.java:3787 ::: Connection Type <HIVE-com.calian.paradigm.adaptor.hiveadaptor.HiveAdaptor-> removed : Adaptor not available.
+16:27:56.812 WARN  VCCIControlPanel.java:3787 ::: Connection Type <AP TIMS-com.calian.paradigm.adaptor.aptimsadaptor.ApTimsAdaptor-> removed : Adaptor not available.
+16:27:56.812 WARN  VCCIControlPanel.java:3787 ::: Connection Type <ADSB-com.calian.paradigm.adaptor.adsbadaptor.AdsbAdaptor-> removed : Adaptor not available.
+16:27:56.813 WARN  VCCIControlPanel.java:3787 ::: Connection Type <Tacteris Maestro-com.calian.paradigm.adaptor.tacterismaestroadaptor.TacterisMaestroAdaptor-> removed : Adaptor not available.
+16:27:56.813 WARN  VCCIControlPanel.java:3787 ::: Connection Type <MSSV-com.calian.paradigm.adaptor.mssvadaptor.MSSVAdaptor-> removed : Adaptor not available.
+16:27:56.829 INFO  VCCIControlPanel.java:881 ::: Could not Find MIP capability
+16:27:56.844 INFO  VCCIControlPanel.java:881 ::: Could not Find Oth Server capability
+16:27:56.846 INFO  VCCIControlPanel.java:881 ::: Could not Find RAP capability
+16:27:56.847 INFO  VCCIControlPanel.java:881 ::: Could not Find Link-16 Server capability
+16:27:56.847 INFO  VCCIControlPanel.java:881 ::: Could not Find FFI Server capability
+16:27:56.848 INFO  VCCIControlPanel.java:881 ::: Could not Find Hive Server capability
+16:27:56.849 INFO  VCCIControlPanel.java:881 ::: Could not Find NMEA Server capability
+16:27:56.877 WARN  VCCIControlPanel.java:2690 ::: Unable to start OTH Server DataFlow due to classpath exception.
+16:27:56.878 WARN  VCCIControlPanel.java:2732 ::: Unable to start RAP Server DataFlow due to classpath exception.
+16:27:56.879 WARN  VCCIControlPanel.java:2802 ::: Unable to start Link16 Server DataFlow due to classpath exception.
+16:27:56.880 WARN  VCCIControlPanel.java:2766 ::: Unable to start FFI Server DataFlow due to classpath exception.
+16:27:57.024 INFO  STSDashBoard.java:847 ::: Sending system ready notification.
+16:27:57.046 INFO  DISRouter.java:166 ::: DISRouter : starting SchedulerThread for diagnostics...
+DEBUG VCCI: processResponse() called.
+DEBUG VCCI: Feature ID = CREATE_UPDATE_DATA_FLOW_SPECIFICATION
+DEBUG VCCI: State = EXECUTED
+DEBUG VCCI: Response object class = com.calian.paradigm.core.bto.requests.createupdatereq.CreateUpdateDataFlowSpecificationRequest
+DEBUG VCCI: processResponse() called.
+DEBUG VCCI: Feature ID = CREATE_UPDATE_DATA_FLOW_SPECIFICATION
+DEBUG VCCI: State = EXECUTED
+DEBUG VCCI: Response object class = com.calian.paradigm.core.bto.requests.createupdatereq.CreateUpdateDataFlowSpecificationRequest
+DEBUG VCCI: processResponse() called.
+DEBUG VCCI: Feature ID = CREATE_UPDATE_DATA_FLOW_SPECIFICATION
+DEBUG VCCI: State = EXECUTED
+DEBUG VCCI: Response object class = com.calian.paradigm.core.bto.requests.createupdatereq.CreateUpdateDataFlowSpecificationRequest
+DEBUG VCCI: processResponse() called.
+DEBUG VCCI: Feature ID = ISSUE_COMMANDS
+DEBUG VCCI: State = EXECUTED
+DEBUG VCCI: Response object class = com.calian.paradigm.core.bto.requests.MediationCommandsRequest
+DEBUG VCCI: processResponse() called.
+DEBUG VCCI: Feature ID = ISSUE_COMMANDS
+DEBUG VCCI: State = EXECUTED
+DEBUG VCCI: Response object class = com.calian.paradigm.core.bto.requests.MediationCommandsRequest
+16:27:58.235 INFO  FlexGISMapPanel.java:254 ::: FlexGIS Web Info: milsymbol.js 3.0.4 - Copyright (c) 2024 MÃ¥ns Beckman  http://www.spatialillusions.com :: THROTTLED LOG :: Log Attempts <1>
+16:27:58.300 INFO  FlexGISMapPanel.java:254 ::: FlexGIS Web Info: Port is: 58832 :: THROTTLED LOG :: Log Attempts <1>
+16:27:58.351 WARN  FlexGISMapPanel.java:248 ::: FlexGIS Web Warning: Cursor default not supported :: THROTTLED LOG :: Log Attempts <1>
+16:27:58.548 INFO  FlexGISMapDisplay.java:126 ::: Map Loaded Successfully.
+[2648:22820:1006/162801.405:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
+[2648:22820:1006/162804.208:ERROR:components\media_router\common\providers\cast\certificate\cast_crl.cc:444] CRL - Verification failed.
+DEBUG VCCI: sendMessageButtonPressed() ENTERED
+DEBUG VCCI: Sending AIService.LIST request...
+DEBUG VCCI: AIService.LIST request issued.
+DEBUG VCCI: requestAIServiceAgents() issued
+
+========================================
+DEBUG: loadAvailableAgents() STARTED
+========================================
+DEBUG: Calling AgentRegistryClient.getAgents()
+Discovering AI agents from: http://127.0.0.1:9999/agents
+DEBUG VCCI: processResponse() called.
+DEBUG VCCI: Feature ID = LIST
+DEBUG VCCI: State = EXECUTED
+DEBUG VCCI: Response object class = com.calian.paradigm.service.aiservice.objs.AISGetCommandsRequest
+DEBUG VCCI: AISGetCommandsRequest DISPATCHED
+
+========================================
+DEBUG VCCI: AGENT URL MAP = {Dice Agent=http://localhost:11000, SpeechAgent=http://127.0.0.1:15044/transcribe, Social media Posts generation Agent=http://127.0.0.1:5020, translation-agent=http://127.0.0.1:15048/translate, structuredtext-agent=http://127.0.0.1:15046/structurize, DBAgent=http://127.0.0.1:15044/dbAgent}
+DEBUG VCCI: AISGetCommandsRequest RECEIVED
+DEBUG VCCI: AI CORE RESPONSE RECEIVED
+========================================
+DEBUG VCCI: AI Core returned 6 agent(s)
+DEBUG VCCI: AI CORE AGENT -> GET_TRANSLATION | Commands = [translation-agent]
+DEBUG VCCI: AI CORE AGENT -> ROLL_DICE | Commands = [Dice Agent]
+DEBUG VCCI: AI CORE AGENT -> GET_STRUCTURED_TEXT | Commands = [structuredtext-agent]
+DEBUG VCCI: AI CORE AGENT -> GET_DB_AGENT | Commands = [db-agent]
+DEBUG VCCI: AI CORE AGENT -> GET_TEXT | Commands = [SpeechAgent]
+DEBUG VCCI: AI CORE AGENT -> GENERATE_POST | Commands = [Social media Posts generation Agent]
+DEBUG VCCI: AI Core agents cached successfully
+========================================
+
+Discovered 1 AI agent(s).
+  Faisalâ€™s agent -> http://127.0.0.1:9999
+DEBUG: AgentRegistryClient returned: 1 agents
+
+DEBUG: SwingWorker.done() started
+DEBUG: Original discovered agents = 1
+DEBUG: Original Agent -> Faisalâ€™s agent | Endpoint = http://127.0.0.1:9999
+
+========================================
+DEBUG: ADDING AI CORE AGENTS
+========================================
+DEBUG: AI Core cached agent count = 6
+DEBUG: AI Core Agent -> translation-agent | Commands = [translation-agent]
+DEBUG: AI Core Agent -> translation-agent | Commands = [translation-agent]
+DEBUG: ADDED AI CORE AGENT -> translation-agent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getDescription-> Commands: translation-agent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getEndpoint-> http://127.0.0.1:15048/translate
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getType-> AI_SERVICE
+DEBUG: AI Core Agent -> db-agent | Commands = [db-agent]
+DEBUG: AI Core Agent -> db-agent | Commands = [db-agent]
+DEBUG: ADDED AI CORE AGENT -> db-agent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getDescription-> Commands: db-agent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getEndpoint-> 
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getType-> AI_SERVICE
+DEBUG: AI Core Agent -> Dice Agent | Commands = [Dice Agent]
+DEBUG: AI Core Agent -> Dice Agent | Commands = [Dice Agent]
+DEBUG: ADDED AI CORE AGENT -> Dice Agent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getDescription-> Commands: Dice Agent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getEndpoint-> http://localhost:11000
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getType-> AI_SERVICE
+DEBUG: AI Core Agent -> SpeechAgent | Commands = [SpeechAgent]
+DEBUG: AI Core Agent -> SpeechAgent | Commands = [SpeechAgent]
+DEBUG: ADDED AI CORE AGENT -> SpeechAgent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getDescription-> Commands: SpeechAgent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getEndpoint-> http://127.0.0.1:15044/transcribe
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getType-> AI_SERVICE
+DEBUG: AI Core Agent -> Social media Posts generation Agent | Commands = [Social media Posts generation Agent]
+DEBUG: AI Core Agent -> Social media Posts generation Agent | Commands = [Social media Posts generation Agent]
+DEBUG: ADDED AI CORE AGENT -> Social media Posts generation Agent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getDescription-> Commands: Social media Posts generation Agent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getEndpoint-> http://127.0.0.1:5020
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getType-> AI_SERVICE
+DEBUG: AI Core Agent -> structuredtext-agent | Commands = [structuredtext-agent]
+DEBUG: AI Core Agent -> structuredtext-agent | Commands = [structuredtext-agent]
+DEBUG: ADDED AI CORE AGENT -> structuredtext-agent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getDescription-> Commands: structuredtext-agent
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getEndpoint-> http://127.0.0.1:15046/structurize
+DEBUG: ADDED AI CORE AGENT aiCoreAgent getType-> AI_SERVICE
+DEBUG: Combined agent count = 7
+========================================
+
+
+========================================
+DEBUG: FINAL availableAgents
+========================================
+DEBUG: Total availableAgents = 7
+DEBUG: availableAgents[0] = Faisalâ€™s agent | endpoint = http://127.0.0.1:9999
+DEBUG: availableAgents[1] = translation-agent | endpoint = http://127.0.0.1:15048/translate
+DEBUG: availableAgents[2] = db-agent | endpoint = 
+DEBUG: availableAgents[3] = Dice Agent | endpoint = http://localhost:11000
+DEBUG: availableAgents[4] = SpeechAgent | endpoint = http://127.0.0.1:15044/transcribe
+DEBUG: availableAgents[5] = Social media Posts generation Agent | endpoint = http://127.0.0.1:5020
+DEBUG: availableAgents[6] = structuredtext-agent | endpoint = http://127.0.0.1:15046/structurize
+
+========================================
+DEBUG: POPULATING COMBO BOX
+========================================
+
+
+Agent Selection Mode
+Mode     : Auto Select
+DEBUG: Added AUTO_SELECT_AGENT
+DEBUG: Adding to ComboBox -> Faisalâ€™s agent
+DEBUG: getDescription -> Ask questions and get answers based on your data sources.
+DEBUG: getEndpoint -> http://127.0.0.1:9999
+DEBUG: Adding to ComboBox -> translation-agent
+DEBUG: getDescription -> Commands: translation-agent
+DEBUG: getEndpoint -> http://127.0.0.1:15048/translate
+DEBUG: Adding to ComboBox -> db-agent
+DEBUG: getDescription -> Commands: db-agent
+DEBUG: getEndpoint -> 
+DEBUG: Adding to ComboBox -> Dice Agent
+DEBUG: getDescription -> Commands: Dice Agent
+DEBUG: getEndpoint -> http://localhost:11000
+DEBUG: Adding to ComboBox -> SpeechAgent
+DEBUG: getDescription -> Commands: SpeechAgent
+DEBUG: getEndpoint -> http://127.0.0.1:15044/transcribe
+DEBUG: Adding to ComboBox -> Social media Posts generation Agent
+DEBUG: getDescription -> Commands: Social media Posts generation Agent
+DEBUG: getEndpoint -> http://127.0.0.1:5020
+DEBUG: Adding to ComboBox -> structuredtext-agent
+DEBUG: getDescription -> Commands: structuredtext-agent
+DEBUG: getEndpoint -> http://127.0.0.1:15046/structurize
+
+========================================
+DEBUG: FINAL COMBO BOX CONTENT
+========================================
+DEBUG: ComboBox item count = 8
+DEBUG: ComboBox[0] = Auto Select
+DEBUG: ComboBox[1] = Faisalâ€™s agent
+DEBUG: ComboBox[2] = translation-agent
+DEBUG: ComboBox[3] = db-agent
+DEBUG: ComboBox[4] = Dice Agent
+DEBUG: ComboBox[5] = SpeechAgent
+DEBUG: ComboBox[6] = Social media Posts generation Agent
+DEBUG: ComboBox[7] = structuredtext-agent
+
+
+Agent Selection Mode
+Mode     : Auto Select
+DEBUG: Selected index = 0
+DEBUG: Selected item = Auto Select
+
+
+Agent Selection Mode
+Mode     : Auto Select
+
+========================================
+DEBUG: loadAvailableAgents() SUCCESS
+========================================
+
+DEBUG FINAL: ComboBox enabled = true
+DEBUG FINAL: ComboBox item count = 8
+DEBUG FINAL: selectedAgent = Auto Select
+[2648:22820:1006/162824.506:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
+[2648:22820:1006/162905.908:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: QUOTA_EXCEEDED
+
+
+========================================
+DEBUG AUTO: Calling Python /router/select
+DEBUG AUTO: Question = Translate sun into Russian
+DEBUG AUTO: Available agents = 7
+
+
+========================================
+DEBUG ROUTER: route() ENTERED
+DEBUG ROUTER: message = Translate sun into Russian
+DEBUG ROUTER: contextId = c8067b6a-9876-4e49-88d2-2b9c8b90ea93
+DEBUG ROUTER: previousAgentId = null
+DEBUG ROUTER: supplied agents = 7
+========================================
+DEBUG ROUTER LOCAL AGENT: id=ea698e8b-2240-45fb-97be-3ac37cf0d319 | name=Faisalâ€™s agent | endpoint=http://127.0.0.1:9999
+DEBUG ROUTER LOCAL AGENT: id=translation-agent | name=translation-agent | endpoint=http://127.0.0.1:15048/translate
+DEBUG ROUTER LOCAL AGENT: id=db-agent | name=db-agent | endpoint=
+DEBUG ROUTER LOCAL AGENT: id=Dice Agent | name=Dice Agent | endpoint=http://localhost:11000
+DEBUG ROUTER LOCAL AGENT: id=SpeechAgent | name=SpeechAgent | endpoint=http://127.0.0.1:15044/transcribe
+DEBUG ROUTER LOCAL AGENT: id=Social media Posts generation Agent | name=Social media Posts generation Agent | endpoint=http://127.0.0.1:5020
+DEBUG ROUTER LOCAL AGENT: id=structuredtext-agent | name=structuredtext-agent | endpoint=http://127.0.0.1:15046/structurize
+
+
+========================================
+DEBUG ROUTER REQUEST:
+{"contextId":"c8067b6a-9876-4e49-88d2-2b9c8b90ea93","message":"Translate sun into Russian","previousAgentId":null,"agents":[{"skills":[],"name":"Faisalâ€™s agent","description":"Ask questions and get answers based on your data sources.","id":"ea698e8b-2240-45fb-97be-3ac37cf0d319"},{"skills":[],"name":"translation-agent","description":"Commands: translation-agent","id":"translation-agent"},{"skills":[],"name":"db-agent","description":"Commands: db-agent","id":"db-agent"},{"skills":[],"name":"Dice Agent","description":"Commands: Dice Agent","id":"Dice Agent"},{"skills":[],"name":"SpeechAgent","description":"Commands: SpeechAgent","id":"SpeechAgent"},{"skills":[],"name":"Social media Posts generation Agent","description":"Commands: Social media Posts generation Agent","id":"Social media Posts generation Agent"},{"skills":[],"name":"structuredtext-agent","description":"Commands: structuredtext-agent","id":"structuredtext-agent"}]}
+========================================
+DEBUG ROUTER: POST http://127.0.0.1:9999/router/select
+
+
+========================================
+DEBUG ROUTER HTTP STATUS: 200
+DEBUG ROUTER RAW RESPONSE:
+{"agent":{"skills":[],"name":"translation-agent","description":"Commands: translation-agent","id":"translation-agent"},"confidence":0.9400000000000001,"reason":"Agent selected by matching request intent against agent name, description and skills. Matches: ['translator~translation', 'translate~translation', 'translation']"}
+========================================
+DEBUG ROUTER: agent node = {"skills":[],"name":"translation-agent","description":"Commands: translation-agent","id":"translation-agent"}
+
+
+DEBUG ROUTER SELECTED ID: translation-agent
+DEBUG ROUTER SELECTED NAME: translation-agent
+DEBUG ROUTER CONFIDENCE: 0.9400000000000001
+DEBUG ROUTER REASON: Agent selected by matching request intent against agent name, description and skills. Matches: ['translator~translation', 'translate~translation', 'translation']
+DEBUG ROUTER MATCHED BY ID: translation-agent
+
+
+========================================
+DEBUG ROUTER SUCCESS
+DEBUG ROUTER Agent Name = translation-agent
+DEBUG ROUTER Agent ID = translation-agent
+DEBUG ROUTER Endpoint = http://127.0.0.1:15048/translate
+DEBUG ROUTER Confidence = 0.9400000000000001
+========================================
+DEBUG AUTO: Router selected = translation-agent
+DEBUG AUTO: Confidence = 0.9400000000000001
+DEBUG AUTO: Reason = Agent selected by matching request intent against agent name, description and skills. Matches: ['translator~translation', 'translate~translation', 'translation']
+DEBUG AUTO: Matched local agent = translation-agent
+DEBUG AUTO: Local endpoint = http://127.0.0.1:15048/translate
+
+
+Automatic Agent Selection
+Question : Translate sun into Russian
+Agent    : translation-agent
+ID       : translation-agent
+Endpoint : http://127.0.0.1:15048/translate
+DEBUG SEND: agent name        =Auto Select
+DEBUG SEND: agent id          =__AUTO__
+DEBUG SEND: agent endpoint    =
+DEBUG SEND: agent type        =router
+
+
+========================================
+VCCI -> A2A REQUEST
+Agent Name : translation-agent
+Agent ID   : translation-agent
+Endpoint   : http://127.0.0.1:15048/translate
+Context ID : c8067b6a-9876-4e49-88d2-2b9c8b90ea93
+Message    : Translate sun into Russian
+JSON       : {"jsonrpc":"2.0","id":"2fc941d6-1321-4550-b1a4-dd2beeb7cb64","method":"SendMessage","params":{"message":{"role":"ROLE_USER","messageId":"fca8561e-7f7b-429e-b493-53d066d06038","contextId":"c8067b6a-9876-4e49-88d2-2b9c8b90ea93","parts":[{"text":"Translate sun into Russian"}]}}}
+========================================
+java.util.concurrent.ExecutionException: java.net.ConnectException
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at java.desktop/javax.swing.SwingWorker.get(SwingWorker.java:612)
+	at com.simfront.vcci.ui.dashboard.AIChatbotClient$2.done(AIChatbotClient.java:1217)
+	at java.desktop/javax.swing.SwingWorker$4.run(SwingWorker.java:749)
+	at java.desktop/javax.swing.SwingWorker$DoSubmitAccumulativeRunnable.run(SwingWorker.java:847)
+	at java.desktop/sun.swing.AccumulativeRunnable.run(AccumulativeRunnable.java:112)
+	at java.desktop/javax.swing.SwingWorker$DoSubmitAccumulativeRunnable.actionPerformed(SwingWorker.java:857)
+	at java.desktop/javax.swing.Timer.fireActionPerformed(Timer.java:311)
+	at java.desktop/javax.swing.Timer$DoPostEvent.run(Timer.java:243)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:117)
+	at java.desktop/java.awt.WaitDispatchSupport$2.run(WaitDispatchSupport.java:191)
+	at java.desktop/java.awt.WaitDispatchSupport$4.run(WaitDispatchSupport.java:236)
+	at java.desktop/java.awt.WaitDispatchSupport$4.run(WaitDispatchSupport.java:234)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:319)
+	at java.desktop/java.awt.WaitDispatchSupport.enter(WaitDispatchSupport.java:234)
+	at java.desktop/java.awt.Dialog.show(Dialog.java:1079)
+	at java.desktop/java.awt.Component.show(Component.java:1728)
+	at java.desktop/java.awt.Component.setVisible(Component.java:1675)
+	at java.desktop/java.awt.Window.setVisible(Window.java:1036)
+	at java.desktop/java.awt.Dialog.setVisible(Dialog.java:1015)
+	at com.simfront.vcci.ui.dashboard.VCCIControlPanel.sendMessageButtonPressed(VCCIControlPanel.java:622)
+	at com.simfront.vcci.ui.dashboard.VCCIControlPanel.lambda$addCapabilities$0(VCCIControlPanel.java:668)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:279)
+	at java.desktop/java.awt.AWTEventMulticaster.mouseReleased(AWTEventMulticaster.java:299)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6621)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6386)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4996)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4575)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:955)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133)
+	at com.calian.paradigm.service.aiservice.cohere.SendMessageClient.sendMessage(SendMessageClient.java:205)
+	at com.simfront.vcci.ui.dashboard.AIChatbotClient$2.doInBackground(AIChatbotClient.java:1204)
+	at com.simfront.vcci.ui.dashboard.AIChatbotClient$2.doInBackground(AIChatbotClient.java:1181)
+	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1065)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773)
+	... 3 more
+Caused by: java.nio.channels.ClosedChannelException
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:202)
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(SocketChannelImpl.java:786)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:874)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212)
+	... 9 more
