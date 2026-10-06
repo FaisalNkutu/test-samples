@@ -1,0 +1,3 @@
+C:\Users\f.nkutu>curl -X POST http://127.0.0.1:9999/router/select -H "Content-Type: application/json" -d "{\"message\":\"Translate hello into French\",\"contextId\":\"test-001\",\"previousAgentId\":\"\",\"agents\":[{\"id\":\"translation-agent\",\"name\":\"translation-agent\",\"description\":\"Commands: translation-agent\",\"skills\":[]},{\"id\":\"Dice Agent\",\"name\":\"Dice Agent\",\"description\":\"Commands: Dice Agent\",\"skills\":[]}]}"
+{"agent":null,"confidence":0.0,"reason":"No suitable agent could be selected."}
+C:\Users\f.nkutu>
