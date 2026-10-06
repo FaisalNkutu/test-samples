@@ -1,0 +1,31 @@
+JsonNode root =
+        objectMapper.readTree(
+                response.body()
+        );
+
+System.out.println(
+        "DEBUG ROUTER RESPONSE: "
+                + response.body());
+
+JsonNode agentNode =
+        root.get("agent");
+
+String selectedAgentId =
+        getText(
+                agentNode,
+                "id"
+        );
+
+String selectedAgentName =
+        getText(
+                agentNode,
+                "name"
+        );
+
+System.out.println(
+        "DEBUG ROUTER SELECTED ID: "
+                + selectedAgentId);
+
+System.out.println(
+        "DEBUG ROUTER SELECTED NAME: "
+                + selectedAgentName);
