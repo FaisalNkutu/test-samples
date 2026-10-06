@@ -1,0 +1,677 @@
+package com.calian.paradigm.service.aiservice.cohere;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+import java.time.Duration;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
+/**
+ * Client responsible for calling the Python AI agent router.
+ *
+ * Endpoint:
+ *
+ *     POST http://127.0.0.1:9999/router/select
+ *
+ * The router receives:
+ *
+ *     - user message
+ *     - conversation context ID
+ *     - previous agent ID
+ *     - currently available agents
+ *
+ * and returns the best matching agent.
+ */
+public class AgentRouterClient {
+
+    // =========================================================
+    // CONFIGURATION
+    // =========================================================
+
+    private static final String ROUTER_URL =
+            "http://127.0.0.1:9999/router/select";
+
+    private static final Duration CONNECT_TIMEOUT =
+            Duration.ofSeconds(10);
+
+    private static final Duration REQUEST_TIMEOUT =
+            Duration.ofSeconds(20);
+
+
+    // =========================================================
+    // CLIENTS
+    // =========================================================
+
+    private final HttpClient httpClient;
+
+    private final ObjectMapper objectMapper;
+
+
+    // =========================================================
+    // CONSTRUCTOR
+    // =========================================================
+
+    public AgentRouterClient() {
+
+        this.httpClient =
+                HttpClient.newBuilder()
+                        .connectTimeout(
+                                CONNECT_TIMEOUT
+                        )
+                        .build();
+
+        this.objectMapper =
+                new ObjectMapper();
+    }
+
+
+    // =========================================================
+    // ROUTE
+    // =========================================================
+
+    /**
+     * Selects the best AI agent for a user message.
+     *
+     * @param message
+     *      User's message.
+     *
+     * @param contextId
+     *      Current conversation/context ID.
+     *
+     * @param previousAgentId
+     *      Agent used for the previous message, if any.
+     *
+     * @param availableAgents
+     *      Agents currently available to VCCI.
+     *
+     * @return
+     *      AgentRoutingResult containing the selected agent,
+     *      confidence and explanation.
+     *
+     * @throws AgentRoutingException
+     *      When communication with the router fails.
+     */
+    public AgentRoutingResult route(
+            String message,
+            String contextId,
+            String previousAgentId,
+            List<AgentInfo> availableAgents)
+            throws AgentRoutingException {
+
+        // =====================================================
+        // VALIDATE MESSAGE
+        // =====================================================
+
+        if (message == null
+                || message.isBlank()) {
+
+            throw new IllegalArgumentException(
+                    "Message cannot be empty."
+            );
+        }
+
+
+        // =====================================================
+        // NO AVAILABLE AGENTS
+        // =====================================================
+
+        if (availableAgents == null
+                || availableAgents.isEmpty()) {
+
+            return new AgentRoutingResult(
+                    null,
+                    0.0,
+                    "No AI agents are currently available."
+            );
+        }
+
+
+        // =====================================================
+        // REMOVE NULL AGENTS
+        // =====================================================
+
+        List<AgentInfo> validAgents =
+                new ArrayList<>();
+
+        for (AgentInfo agent : availableAgents) {
+
+            if (agent != null) {
+                validAgents.add(agent);
+            }
+        }
+
+
+        if (validAgents.isEmpty()) {
+
+            return new AgentRoutingResult(
+                    null,
+                    0.0,
+                    "No valid AI agents are currently available."
+            );
+        }
+
+
+        // =====================================================
+        // ONLY ONE AGENT
+        // =====================================================
+
+        if (validAgents.size() == 1) {
+
+            AgentInfo agent =
+                    validAgents.get(0);
+
+            return new AgentRoutingResult(
+                    agent,
+                    1.0,
+                    "Only one AI agent is currently available."
+            );
+        }
+
+
+        try {
+
+            // =================================================
+            // BUILD JSON REQUEST
+            // =================================================
+
+            Map<String, Object> request =
+                    new HashMap<>();
+
+
+            request.put(
+                    "message",
+                    message
+            );
+
+
+            request.put(
+                    "contextId",
+                    contextId
+            );
+
+
+            request.put(
+                    "previousAgentId",
+                    previousAgentId
+            );
+
+
+            // =================================================
+            // AVAILABLE AGENTS
+            // =================================================
+
+            List<Map<String, Object>> agentsJson =
+                    new ArrayList<>();
+
+
+            for (AgentInfo agent
+                    : validAgents) {
+
+                Map<String, Object> agentJson =
+                        new HashMap<>();
+
+
+                agentJson.put(
+                        "id",
+                        safeString(
+                                agent.getId()
+                        )
+                );
+
+
+                agentJson.put(
+                        "name",
+                        safeString(
+                                agent.getName()
+                        )
+                );
+
+
+                agentJson.put(
+                        "description",
+                        safeString(
+                                agent.getDescription()
+                        )
+                );
+
+
+                // =============================================
+                // SKILLS
+                // =============================================
+
+                List<Map<String, Object>> skillsJson =
+                        new ArrayList<>();
+
+
+                if (agent.getSkills() != null) {
+
+                    for (AgentSkillInfo skill
+                            : agent.getSkills()) {
+
+                        if (skill == null) {
+                            continue;
+                        }
+
+
+                        Map<String, Object> skillJson =
+                                new HashMap<>();
+
+
+                        skillJson.put(
+                                "id",
+                                safeString(
+                                        skill.getId()
+                                )
+                        );
+
+
+                        skillJson.put(
+                                "name",
+                                safeString(
+                                        skill.getName()
+                                )
+                        );
+
+
+                        skillJson.put(
+                                "description",
+                                safeString(
+                                        skill.getDescription()
+                                )
+                        );
+
+
+                        skillJson.put(
+                                "tags",
+                                skill.getTags() != null
+                                        ? skill.getTags()
+                                        : List.of()
+                        );
+
+
+                        skillJson.put(
+                                "examples",
+                                skill.getExamples() != null
+                                        ? skill.getExamples()
+                                        : List.of()
+                        );
+
+
+                        skillsJson.add(
+                                skillJson
+                        );
+                    }
+                }
+
+
+                agentJson.put(
+                        "skills",
+                        skillsJson
+                );
+
+
+                agentsJson.add(
+                        agentJson
+                );
+            }
+
+
+            request.put(
+                    "agents",
+                    agentsJson
+            );
+
+
+            // =================================================
+            // CONVERT REQUEST TO JSON
+            // =================================================
+
+            String requestBody =
+                    objectMapper.writeValueAsString(
+                            request
+                    );
+
+
+            // =================================================
+            // CREATE HTTP REQUEST
+            // =================================================
+
+            HttpRequest httpRequest =
+                    HttpRequest.newBuilder()
+                            .uri(
+                                    URI.create(
+                                            ROUTER_URL
+                                    )
+                            )
+                            .timeout(
+                                    REQUEST_TIMEOUT
+                            )
+                            .header(
+                                    "Content-Type",
+                                    "application/json"
+                            )
+                            .header(
+                                    "Accept",
+                                    "application/json"
+                            )
+                            .POST(
+                                    HttpRequest
+                                            .BodyPublishers
+                                            .ofString(
+                                                    requestBody
+                                            )
+                            )
+                            .build();
+
+
+            // =================================================
+            // CALL PYTHON ROUTER
+            // =================================================
+
+            HttpResponse<String> response =
+                    httpClient.send(
+                            httpRequest,
+                            HttpResponse
+                                    .BodyHandlers
+                                    .ofString()
+                    );
+
+
+            // =================================================
+            // CHECK HTTP STATUS
+            // =================================================
+
+            if (response.statusCode() < 200
+                    || response.statusCode() >= 300) {
+
+                throw new AgentRoutingException(
+                        "Agent Router returned HTTP "
+                                + response.statusCode()
+                                + ": "
+                                + response.body()
+                );
+            }
+
+
+            // =================================================
+            // PARSE RESPONSE
+            // =================================================
+
+            JsonNode root =
+                    objectMapper.readTree(
+                            response.body()
+                    );
+
+
+            String selectedAgentId =
+                    getText(
+                            root,
+                            "agentId"
+                    );
+
+
+            String selectedAgentName =
+                    getText(
+                            root,
+                            "agentName"
+                    );
+
+
+            String reason =
+                    getText(
+                            root,
+                            "reason"
+                    );
+
+
+            double confidence =
+                    root.path(
+                            "confidence"
+                    ).asDouble(
+                            0.0
+                    );
+
+
+            // =================================================
+            // ROUTER COULD NOT SELECT AN AGENT
+            // =================================================
+
+            if ((selectedAgentId == null
+                    || selectedAgentId.isBlank())
+                    &&
+                    (selectedAgentName == null
+                    || selectedAgentName.isBlank())) {
+
+                return new AgentRoutingResult(
+                        null,
+                        confidence,
+                        reason != null
+                                ? reason
+                                : "No suitable AI agent was selected."
+                );
+            }
+
+
+            // =================================================
+            // FIND SELECTED AGENT
+            // =================================================
+
+            AgentInfo selectedAgent =
+                    findAgent(
+                            validAgents,
+                            selectedAgentId,
+                            selectedAgentName
+                    );
+
+
+            // =================================================
+            // ROUTER RETURNED UNKNOWN AGENT
+            // =================================================
+
+            if (selectedAgent == null) {
+
+                return new AgentRoutingResult(
+                        null,
+                        confidence,
+                        "The router selected agent '"
+                                + (
+                                selectedAgentName != null
+                                        ? selectedAgentName
+                                        : selectedAgentId
+                        )
+                                + "', but that agent is not "
+                                + "in the current available-agent list."
+                );
+            }
+
+
+            // =================================================
+            // SUCCESS
+            // =================================================
+
+            return new AgentRoutingResult(
+                    selectedAgent,
+                    confidence,
+                    reason != null
+                            ? reason
+                            : "Agent selected successfully."
+            );
+
+
+        } catch (AgentRoutingException e) {
+
+            throw e;
+
+
+        } catch (InterruptedException e) {
+
+            Thread.currentThread()
+                    .interrupt();
+
+            throw new AgentRoutingException(
+                    "Agent routing request was interrupted: "
+                            + e.getMessage()
+            );
+
+
+        } catch (Exception e) {
+
+            throw new AgentRoutingException(
+                    "Unable to route request to an AI agent: "
+                            + e.getMessage()
+            );
+        }
+    }
+
+
+    // =========================================================
+    // FIND AGENT
+    // =========================================================
+
+    /**
+     * Finds the AgentInfo corresponding to the agent returned
+     * by the Python router.
+     *
+     * ID is checked first.
+     * Name is used as a fallback.
+     */
+    private AgentInfo findAgent(
+            List<AgentInfo> agents,
+            String agentId,
+            String agentName) {
+
+        if (agents == null) {
+            return null;
+        }
+
+
+        // =====================================================
+        // SEARCH BY ID
+        // =====================================================
+
+        if (agentId != null
+                && !agentId.isBlank()) {
+
+            for (AgentInfo agent : agents) {
+
+                if (agent == null) {
+                    continue;
+                }
+
+
+                String currentId =
+                        agent.getId();
+
+
+                if (currentId != null
+                        && currentId.equalsIgnoreCase(
+                                agentId
+                        )) {
+
+                    return agent;
+                }
+            }
+        }
+
+
+        // =====================================================
+        // SEARCH BY NAME
+        // =====================================================
+
+        if (agentName != null
+                && !agentName.isBlank()) {
+
+            for (AgentInfo agent : agents) {
+
+                if (agent == null) {
+                    continue;
+                }
+
+
+                String currentName =
+                        agent.getName();
+
+
+                if (currentName != null
+                        && currentName.equalsIgnoreCase(
+                                agentName
+                        )) {
+
+                    return agent;
+                }
+            }
+        }
+
+
+        return null;
+    }
+
+
+    // =========================================================
+    // JSON HELPER
+    // =========================================================
+
+    /**
+     * Safely obtains a String property from a JSON object.
+     */
+    private String getText(
+            JsonNode root,
+            String fieldName) {
+
+        if (root == null
+                || fieldName == null) {
+
+            return null;
+        }
+
+
+        JsonNode value =
+                root.get(
+                        fieldName
+                );
+
+
+        if (value == null
+                || value.isNull()) {
+
+            return null;
+        }
+
+
+        String text =
+                value.asText();
+
+
+        if (text == null
+                || text.isBlank()) {
+
+            return null;
+        }
+
+
+        return text;
+    }
+
+
+    // =========================================================
+    // STRING HELPER
+    // =========================================================
+
+    private String safeString(
+            String value) {
+
+        return value != null
+                ? value
+                : "";
+    }
+}
