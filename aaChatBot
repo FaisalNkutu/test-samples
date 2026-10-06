@@ -1,0 +1,1741 @@
+package com.simfront.vcci.ui.dashboard;
+import com.calian.paradigm.service.aiservice.cohere.*;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
+/**
+ * VCCI AI Chatbot.
+ *
+ * Supports:
+ *
+ * 1. Discovery of available AI agents.
+ * 2. Manual agent selection.
+ * 3. Automatic agent selection based on the user's question.
+ * 4. A2A message sending through SendMessageClient.
+ * 5. Conversation context management.
+ */
+public class AIChatbotClient extends JDialog {
+
+    // =========================================================
+    // CONFIGURATION
+    // =========================================================
+
+    //private static final String AI_SERVICE_ADDRESS =
+    //        "http://127.0.0.1:9999";
+
+    private static final String AI_SERVICE_ADDRESS =
+            "127.0.0.1:9999";
+    // =========================================================
+    // AUTO SELECT AGENT
+    // =========================================================
+
+    /*
+     * This is not a real remote agent.
+     *
+     * It is a special UI option telling AIChatbotClientOld
+     * to determine which real agent should receive the request.
+     */
+    private static final AgentInfo AUTO_SELECT_AGENT =
+            new AgentInfo(
+                    "__AUTO__",
+                    "Auto Select",
+                    "Automatically selects the best AI agent "
+                            + "for the question.",
+                    "",
+                    false,
+                    "router"
+            );
+
+
+    // =========================================================
+    // UI COMPONENTS
+    // =========================================================
+
+    private JComboBox<AgentInfo>
+            agentComboBox;
+
+    private JButton
+            refreshAgentsButton;
+
+    private JButton
+            sendButton;
+
+    private JButton
+            newChatButton;
+
+    private JButton
+            closeButton;
+
+    private JTextArea
+            messageTextArea;
+
+    private JTextArea
+            responseTextArea;
+
+    private JLabel
+            agentDescriptionLabel;
+
+    private JLabel
+            statusLabel;
+
+
+    // =========================================================
+    // CURRENT STATE
+    // =========================================================
+
+    /*
+     * What is currently selected in the combo box.
+     *
+     * This can either be:
+     *
+     * - AUTO_SELECT_AGENT
+     *
+     * or
+     *
+     * - a real discovered AgentInfo.
+     */
+    private AgentInfo selectedAgent;
+
+
+    /*
+     * Real agents discovered from AgentRegistryClient.
+     *
+     * AUTO_SELECT_AGENT is deliberately NOT stored here.
+     */
+    private List<AgentInfo> availableAgents =
+            new ArrayList<>();
+
+
+    /*
+     * A2A conversation context.
+     */
+    private String contextId;
+
+
+    // =========================================================
+    // CONSTRUCTOR
+    // =========================================================
+
+    public AIChatbotClient(
+            Frame owner) {
+
+        super(
+                owner,
+                "AI Chatbot",
+                true);
+
+        contextId =
+                UUID.randomUUID()
+                        .toString();
+
+        initializeUI();
+
+        loadAvailableAgents();
+    }
+
+
+    // =========================================================
+    // INITIALIZE UI
+    // =========================================================
+
+    private void initializeUI() {
+
+        setDefaultCloseOperation(
+                DISPOSE_ON_CLOSE);
+
+        setSize(
+                800,
+                650);
+
+        setMinimumSize(
+                new Dimension(
+                        650,
+                        500));
+
+
+        JPanel root =
+                new JPanel(
+                        new BorderLayout(
+                                10,
+                                10));
+
+        root.setBorder(
+                new EmptyBorder(
+                        15,
+                        15,
+                        15,
+                        15));
+
+
+        // =====================================================
+        // AGENT SELECTION
+        // =====================================================
+
+        root.add(
+                createAgentPanel(),
+                BorderLayout.NORTH);
+
+
+        // =====================================================
+        // MESSAGE + RESPONSE
+        // =====================================================
+
+        JPanel center =
+                new JPanel(
+                        new GridLayout(
+                                2,
+                                1,
+                                10,
+                                10));
+
+
+        // -----------------------------------------------------
+        // Message
+        // -----------------------------------------------------
+
+        messageTextArea =
+                new JTextArea();
+
+        messageTextArea.setLineWrap(
+                true);
+
+        messageTextArea.setWrapStyleWord(
+                true);
+
+        messageTextArea.setFont(
+                new Font(
+                        Font.SANS_SERIF,
+                        Font.PLAIN,
+                        14));
+
+        messageTextArea.setMargin(
+                new Insets(
+                        8,
+                        8,
+                        8,
+                        8));
+
+
+        JPanel messagePanel =
+                new JPanel(
+                        new BorderLayout());
+
+        messagePanel.setBorder(
+                BorderFactory
+                        .createTitledBorder(
+                                "Message"));
+
+        messagePanel.add(
+                new JScrollPane(
+                        messageTextArea),
+                BorderLayout.CENTER);
+
+
+        // -----------------------------------------------------
+        // Response
+        // -----------------------------------------------------
+
+        responseTextArea =
+                new JTextArea();
+
+        responseTextArea.setEditable(
+                false);
+
+        responseTextArea.setLineWrap(
+                true);
+
+        responseTextArea.setWrapStyleWord(
+                true);
+
+        responseTextArea.setFont(
+                new Font(
+                        Font.SANS_SERIF,
+                        Font.PLAIN,
+                        14));
+
+        responseTextArea.setMargin(
+                new Insets(
+                        8,
+                        8,
+                        8,
+                        8));
+
+
+        JPanel responsePanel =
+                new JPanel(
+                        new BorderLayout());
+
+        responsePanel.setBorder(
+                BorderFactory
+                        .createTitledBorder(
+                                "Response"));
+
+        responsePanel.add(
+                new JScrollPane(
+                        responseTextArea),
+                BorderLayout.CENTER);
+
+
+        center.add(
+                messagePanel);
+
+        center.add(
+                responsePanel);
+
+        root.add(
+                center,
+                BorderLayout.CENTER);
+
+
+        // =====================================================
+        // BUTTON PANEL
+        // =====================================================
+
+        JPanel bottomPanel =
+                new JPanel(
+                        new BorderLayout());
+
+        JPanel buttons =
+                new JPanel(
+                        new FlowLayout(
+                                FlowLayout.RIGHT));
+
+
+        newChatButton =
+                new JButton(
+                        "New Chat");
+
+        sendButton =
+                new JButton(
+                        "Send");
+
+        closeButton =
+                new JButton(
+                        "Close");
+
+
+        buttons.add(
+                newChatButton);
+
+        buttons.add(
+                sendButton);
+
+        buttons.add(
+                closeButton);
+
+
+        bottomPanel.add(
+                buttons,
+                BorderLayout.EAST);
+
+        root.add(
+                bottomPanel,
+                BorderLayout.SOUTH);
+
+
+        setContentPane(
+                root);
+
+
+        // =====================================================
+        // EVENTS
+        // =====================================================
+
+        sendButton.addActionListener(
+                event ->
+                        sendMessage());
+
+        newChatButton.addActionListener(
+                event ->
+                        newChat());
+
+        closeButton.addActionListener(
+                event ->
+                        dispose());
+
+
+        // =====================================================
+        // POSITION
+        // =====================================================
+
+        /*
+         * Center the chatbot over the VCCI parent window.
+         */
+        setLocationRelativeTo(
+                getOwner());
+    }
+
+
+    // =========================================================
+    // AGENT PANEL
+    // =========================================================
+
+    private JPanel createAgentPanel() {
+
+        JPanel outer =
+                new JPanel(
+                        new BorderLayout(
+                                5,
+                                5));
+
+
+        JPanel selector =
+                new JPanel(
+                        new BorderLayout(
+                                10,
+                                0));
+
+
+        JLabel label =
+                new JLabel(
+                        "Agent:");
+
+        label.setFont(
+                label.getFont()
+                        .deriveFont(
+                                Font.BOLD));
+
+
+        agentComboBox =
+                new JComboBox<>();
+
+
+        refreshAgentsButton =
+                new JButton(
+                        "Refresh Agents");
+
+
+        selector.add(
+                label,
+                BorderLayout.WEST);
+
+        selector.add(
+                agentComboBox,
+                BorderLayout.CENTER);
+
+        selector.add(
+                refreshAgentsButton,
+                BorderLayout.EAST);
+
+
+        // -----------------------------------------------------
+        // Description / status
+        // -----------------------------------------------------
+
+        JPanel information =
+                new JPanel(
+                        new BorderLayout(
+                                10,
+                                0));
+
+
+        agentDescriptionLabel =
+                new JLabel(
+                        "Select an available AI agent.");
+
+        statusLabel =
+                new JLabel(
+                        "Not connected");
+
+
+        information.add(
+                agentDescriptionLabel,
+                BorderLayout.CENTER);
+
+        information.add(
+                statusLabel,
+                BorderLayout.EAST);
+
+
+        outer.add(
+                selector,
+                BorderLayout.NORTH);
+
+        outer.add(
+                information,
+                BorderLayout.SOUTH);
+
+
+        // -----------------------------------------------------
+        // Events
+        // -----------------------------------------------------
+
+        refreshAgentsButton
+                .addActionListener(
+                        event ->
+                                loadAvailableAgents());
+
+        agentComboBox
+                .addActionListener(
+                        event ->
+                                agentSelected());
+
+
+        return outer;
+    }
+
+
+    // =========================================================
+    // DISCOVER AGENTS
+    // =========================================================
+
+private void loadAvailableAgents() {
+
+    System.out.println("\n========================================");
+    System.out.println("DEBUG: loadAvailableAgents() STARTED");
+    System.out.println("========================================");
+
+    selectedAgent = null;
+
+    availableAgents = new ArrayList<>();
+
+    agentComboBox.removeAllItems();
+    agentComboBox.setEnabled(false);
+    refreshAgentsButton.setEnabled(false);
+    sendButton.setEnabled(false);
+
+    statusLabel.setText("Loading agents...");
+    agentDescriptionLabel.setText("Retrieving available agents...");
+
+
+    SwingWorker<List<AgentInfo>, Void> worker =
+            new SwingWorker<>() {
+
+                @Override
+                protected List<AgentInfo> doInBackground()
+                        throws Exception {
+
+                    System.out.println(
+                            "DEBUG: Calling AgentRegistryClient.getAgents()");
+
+                    List<AgentInfo> result =
+                            AgentRegistryClient.getAgents(
+                                    AI_SERVICE_ADDRESS);
+
+                    System.out.println(
+                            "DEBUG: AgentRegistryClient returned: "
+                                    + (result == null
+                                    ? "NULL"
+                                    : result.size() + " agents"));
+
+                    return result;
+                }
+
+
+                @Override
+                protected void done() {
+
+                    try {
+
+                        System.out.println(
+                                "\nDEBUG: SwingWorker.done() started");
+
+
+                        List<AgentInfo> agents = get();
+
+
+                        // ==========================================
+                        // ORIGINAL AGENTS
+                        // ==========================================
+
+                        if (agents != null) {
+
+                            availableAgents =
+                                    new ArrayList<>(agents);
+
+                            System.out.println(
+                                    "DEBUG: Original discovered agents = "
+                                            + availableAgents.size());
+
+                            for (AgentInfo agent : availableAgents) {
+
+                                System.out.println(
+                                        "DEBUG: Original Agent -> "
+                                                + agent.getName()
+                                                + " | Endpoint = "
+                                                + agent.getEndpoint());
+                            }
+
+                        } else {
+
+                            System.out.println(
+                                    "DEBUG: AgentRegistryClient returned NULL");
+                        }
+                        // ==========================================
+                        // ADD AGENTS RETURNED BY AI CORE
+                        // ==========================================
+
+                        HashMap<String, List<String>> aiCoreAgents = VCCIControlPanel.getAIServiceAgents();
+                        HashMap<String, String> aiServiceAgentURLs = VCCIControlPanel.getAIServiceAgentURLs();         
+
+
+                        System.out.println(
+                                "\n========================================");
+
+                        System.out.println(
+                                "DEBUG: ADDING AI CORE AGENTS");
+
+                        System.out.println(
+                                "========================================");
+
+                        System.out.println(
+                                "DEBUG: AI Core cached agent count = "
+                                        + aiCoreAgents.size());
+
+
+                        for (Map.Entry<String, List<String>> entry
+                                : aiCoreAgents.entrySet()) {
+
+                            //String agentName =
+                            //        commands.get(0);
+                            
+                            List<String> commands =
+                                    entry.getValue();
+                             
+                            String agentName =
+                                    commands.get(0);
+
+                            System.out.println(
+                                    "DEBUG: AI Core Agent -> "
+                                            + agentName
+                                            + " | Commands = "
+                                            + commands);
+
+                            System.out.println(
+                                    "DEBUG: AI Core Agent -> "
+                                            + agentName
+                                            + " | Commands = "
+                                            + commands);
+                            
+                            boolean alreadyExists =
+                                    false;
+
+
+                            for (AgentInfo existingAgent
+                                    : availableAgents) {
+
+                                if (existingAgent.getName() != null
+                                        && existingAgent.getName()
+                                                .equalsIgnoreCase(
+                                                        agentName)) {
+
+                                    alreadyExists =
+                                            true;
+
+                                    break;
+                                }
+                            }
+
+
+                            if (alreadyExists) {
+
+                                System.out.println(
+                                        "DEBUG: Agent already exists -> "
+                                                + agentName);
+
+                                continue;
+                            }
+
+
+                            String description =
+                                    "AI Service Agent";
+
+
+                            if (commands != null
+                                    && !commands.isEmpty()) {
+
+                                description =
+                                        "Commands: "
+                                                + String.join(
+                                                        ", ",
+                                                        commands);
+                            }
+
+
+                            AgentInfo aiCoreAgent =
+                                    new AgentInfo(
+                                            agentName,
+                                            agentName,
+                                            description,
+                                            aiServiceAgentURLs.get(agentName),
+                                            false,
+                                            "AI_SERVICE");
+
+
+                            availableAgents.add(
+                                    aiCoreAgent);
+
+
+                            System.out.println( "DEBUG: ADDED AI CORE AGENT -> " + agentName);
+                            System.out.println( "DEBUG: ADDED AI CORE AGENT aiCoreAgent getDescription-> " + aiCoreAgent.getDescription());
+                            System.out.println( "DEBUG: ADDED AI CORE AGENT aiCoreAgent getEndpoint-> " + aiCoreAgent.getEndpoint());
+                            System.out.println( "DEBUG: ADDED AI CORE AGENT aiCoreAgent getType-> " + aiCoreAgent.getType());
+                        }
+
+
+                        System.out.println(
+                                "DEBUG: Combined agent count = "
+                                        + availableAgents.size());
+
+                        System.out.println(
+                                "========================================\n");
+                        // ==========================================
+                        // CHECK FINAL availableAgents LIST
+                        // ==========================================
+
+                        System.out.println(
+                                "\n========================================");
+
+                        System.out.println(
+                                "DEBUG: FINAL availableAgents");
+
+                        System.out.println(
+                                "========================================");
+
+                        System.out.println(
+                                "DEBUG: Total availableAgents = "
+                                        + availableAgents.size());
+
+
+                        for (int i = 0;
+                             i < availableAgents.size();
+                             i++) {
+
+                            AgentInfo agent =
+                                    availableAgents.get(i);
+
+                            System.out.println(
+                                    "DEBUG: availableAgents["
+                                            + i
+                                            + "] = "
+                                            + agent.getName()
+                                            + " | endpoint = "
+                                            + agent.getEndpoint());
+                        }
+
+
+                        // ==========================================
+                        // CHECK FOR EMPTY LIST
+                        // ==========================================
+
+                        if (availableAgents.isEmpty()) {
+
+                            System.out.println(
+                                    "DEBUG ERROR: availableAgents is EMPTY");
+
+                            statusLabel.setText(
+                                    "No agents available");
+
+                            agentDescriptionLabel.setText(
+                                    "No agents were returned.");
+
+                            return;
+                        }
+
+
+                        // ==========================================
+                        // POPULATE COMBO BOX
+                        // ==========================================
+
+                        System.out.println(
+                                "\n========================================");
+
+                        System.out.println(
+                                "DEBUG: POPULATING COMBO BOX");
+
+                        System.out.println(
+                                "========================================");
+
+
+                        agentComboBox.addItem(
+                                AUTO_SELECT_AGENT);
+
+
+                        System.out.println(
+                                "DEBUG: Added AUTO_SELECT_AGENT");
+
+
+                        for (AgentInfo agent : availableAgents) {
+
+                            System.out.println(
+                                    "DEBUG: Adding to ComboBox -> "
+                                            + agent.getName());
+
+                            System.out.println(
+                                    "DEBUG: getDescription -> "
+                                            + agent.getDescription());
+                             System.out.println(
+                                    "DEBUG: getEndpoint -> "
+                                            + agent.getEndpoint());                           
+                            agentComboBox.addItem(
+                                    agent);
+                        }
+
+
+                        // ==========================================
+                        // CHECK ACTUAL COMBO BOX CONTENT
+                        // ==========================================
+
+                        System.out.println(
+                                "\n========================================");
+
+                        System.out.println(
+                                "DEBUG: FINAL COMBO BOX CONTENT");
+
+                        System.out.println(
+                                "========================================");
+
+
+                        System.out.println(
+                                "DEBUG: ComboBox item count = "
+                                        + agentComboBox.getItemCount());
+
+
+                        for (int i = 0;
+                             i < agentComboBox.getItemCount();
+                             i++) {
+
+                            Object item =
+                                    agentComboBox.getItemAt(i);
+
+                            System.out.println(
+                                    "DEBUG: ComboBox["
+                                            + i
+                                            + "] = "
+                                            + item);
+                        }
+
+
+                        // ==========================================
+                        // DEFAULT AUTO SELECT
+                        // ==========================================
+
+                        agentComboBox.setSelectedIndex(0);
+
+
+                        System.out.println(
+                                "DEBUG: Selected index = "
+                                        + agentComboBox.getSelectedIndex());
+
+                        System.out.println(
+                                "DEBUG: Selected item = "
+                                        + agentComboBox.getSelectedItem());
+
+
+                        agentSelected();
+
+
+                        System.out.println(
+                                "\n========================================");
+
+                        System.out.println(
+                                "DEBUG: loadAvailableAgents() SUCCESS");
+
+                        System.out.println(
+                                "========================================\n");
+
+
+                    } catch (Exception exception) {
+
+                        System.out.println(
+                                "\nDEBUG ERROR: Agent discovery failed");
+
+                        System.out.println(
+                                "DEBUG ERROR TYPE: "
+                                        + exception.getClass().getName());
+
+                        System.out.println(
+                                "DEBUG ERROR MESSAGE: "
+                                        + exception.getMessage());
+
+                        exception.printStackTrace();
+
+
+                        statusLabel.setText(
+                                "Agent discovery failed");
+
+                        agentDescriptionLabel.setText(
+                                "Unable to retrieve agents.");
+
+
+                        JOptionPane.showMessageDialog(
+                                AIChatbotClient.this,
+                                getRootMessage(exception),
+                                "Agent Discovery Error",
+                                JOptionPane.ERROR_MESSAGE);
+
+                    } finally {
+
+                        refreshAgentsButton.setEnabled(true);
+
+                        agentComboBox.setEnabled(
+                                agentComboBox.getItemCount() > 0);
+
+                        sendButton.setEnabled(
+                                selectedAgent != null);
+
+
+                        System.out.println(
+                                "DEBUG FINAL: ComboBox enabled = "
+                                        + agentComboBox.isEnabled());
+
+                        System.out.println(
+                                "DEBUG FINAL: ComboBox item count = "
+                                        + agentComboBox.getItemCount());
+
+                        System.out.println(
+                                "DEBUG FINAL: selectedAgent = "
+                                        + selectedAgent);
+                    }
+                }
+            };
+
+
+    worker.execute();
+}
+
+    // =========================================================
+    // AGENT SELECTED
+    // =========================================================
+
+    private void agentSelected() {
+
+        selectedAgent =
+                (AgentInfo)
+                        agentComboBox
+                                .getSelectedItem();
+
+
+        if (selectedAgent == null) {
+
+            agentDescriptionLabel
+                    .setText(
+                            "Select an available AI agent.");
+
+            statusLabel
+                    .setText(
+                            "No agent selected");
+
+            sendButton
+                    .setEnabled(
+                            false);
+
+            return;
+        }
+
+
+        // =====================================================
+        // AUTO SELECT
+        // =====================================================
+
+        if (isAutoSelect(
+                selectedAgent)) {
+
+            agentDescriptionLabel
+                    .setText(
+                            "Automatically selects the best "
+                                    + "AI agent for your question.");
+
+            statusLabel
+                    .setText(
+                            "Auto Select Ready");
+
+            sendButton
+                    .setEnabled(
+                            !availableAgents.isEmpty());
+
+            System.out.println();
+
+            System.out.println(
+                    "Agent Selection Mode");
+
+            System.out.println(
+                    "Mode     : Auto Select");
+
+            return;
+        }
+
+
+        // =====================================================
+        // MANUAL AGENT
+        // =====================================================
+
+        String description =
+                selectedAgent
+                        .getDescription();
+
+
+        if (description == null
+                || description.isBlank()) {
+
+            description =
+                    "A2A AI Agent";
+        }
+
+
+        agentDescriptionLabel
+                .setText(
+                        description);
+
+        statusLabel
+                .setText(
+                        "Ready");
+
+        sendButton
+                .setEnabled(
+                        true);
+
+
+        System.out.println();
+
+        System.out.println(
+                "Selected AI Agent");
+
+        System.out.println(
+                "Name     : "
+                        + selectedAgent
+                        .getName());
+
+        System.out.println(
+                "ID       : "
+                        + selectedAgent
+                        .getId());
+
+        System.out.println(
+                "Endpoint : "
+                        + selectedAgent
+                        .getEndpoint());
+    }
+
+
+    // =========================================================
+    // SEND MESSAGE
+    // =========================================================
+
+    private void sendMessage() {
+
+        if (selectedAgent == null) {
+
+            JOptionPane
+                    .showMessageDialog(
+                            this,
+                            "Please select an agent.",
+                            "No Agent Selected",
+                            JOptionPane.WARNING_MESSAGE);
+
+            return;
+        }
+
+
+        String message =
+                messageTextArea
+                        .getText()
+                        .trim();
+
+
+        if (message.isEmpty()) {
+
+            JOptionPane
+                    .showMessageDialog(
+                            this,
+                            "Please enter a message.",
+                            "Empty Message",
+                            JOptionPane.WARNING_MESSAGE);
+
+            messageTextArea
+                    .requestFocusInWindow();
+
+            return;
+        }
+
+
+        // =====================================================
+        // DETERMINE REQUEST AGENT
+        // =====================================================
+
+        final AgentInfo requestAgent;
+
+
+        if (isAutoSelect(
+                selectedAgent)) {
+
+            requestAgent =
+                    autoSelectAgent(
+                            message);
+
+
+            if (requestAgent == null) {
+
+                JOptionPane
+                        .showMessageDialog(
+                                this,
+                                "No suitable AI agent "
+                                        + "is currently available.",
+                                "Agent Selection",
+                                JOptionPane.WARNING_MESSAGE);
+
+                statusLabel
+                        .setText(
+                                "No suitable agent");
+
+                return;
+            }
+
+
+            /*
+             * Show which real agent the router selected.
+             */
+            statusLabel
+                    .setText(
+                            "Auto selected: "
+                                    + requestAgent
+                                    .getName());
+
+
+            System.out.println();
+
+            System.out.println(
+                    "Automatic Agent Selection");
+
+            System.out.println(
+                    "Question : "
+                            + message);
+
+            System.out.println(
+                    "Agent    : "
+                            + requestAgent
+                            .getName());
+
+            System.out.println(
+                    "ID       : "
+                            + requestAgent
+                            .getId());
+
+            System.out.println(
+                    "Endpoint : "
+                            + requestAgent
+                            .getEndpoint());
+
+        } else {
+
+            /*
+             * Manual selection.
+             */
+            requestAgent =
+                    selectedAgent;
+        }
+
+
+        // =====================================================
+        // DISABLE CONTROLS WHILE PROCESSING
+        // =====================================================
+
+        sendButton
+                .setEnabled(
+                        false);
+
+        agentComboBox
+                .setEnabled(
+                        false);
+
+        refreshAgentsButton
+                .setEnabled(
+                        false);
+
+        newChatButton
+                .setEnabled(
+                        false);
+
+
+        responseTextArea
+                .setText(
+                        "Sending to "
+                                + requestAgent
+                                .getName()
+                                + "...");
+
+
+        if (!isAutoSelect(
+                selectedAgent)) {
+
+            statusLabel
+                    .setText(
+                            "Processing...");
+        }
+
+
+        // =====================================================
+        // BACKGROUND REQUEST
+        // =====================================================
+
+        SwingWorker<
+                String,
+                Void> worker =
+                new SwingWorker<>() {
+
+                    @Override
+                    protected String
+                    doInBackground()
+                            throws Exception {
+
+                        /*
+                         * IMPORTANT:
+                         *
+                         * This is your existing working
+                         * A2A communication.
+                         *
+                         * The only difference is that
+                         * requestAgent may have been
+                         * automatically selected.
+                         */
+                        System.out.println("DEBUG SEND: agent name        =" + selectedAgent.getName());
+                        System.out.println("DEBUG SEND: agent id          =" + selectedAgent.getId());
+                        System.out.println("DEBUG SEND: agent endpoint    =" + selectedAgent.getEndpoint());
+                        System.out.println("DEBUG SEND: agent type        =" + selectedAgent.getType());
+                        
+                        return SendMessageClient
+                                .sendMessage(
+                                        requestAgent,
+                                        message,
+                                        contextId);
+                    }
+
+
+                    @Override
+                    protected void done() {
+
+                        try {
+
+                            String response =
+                                    get();
+
+
+                            if (response == null
+                                    || response.isBlank()) {
+
+                                response =
+                                        "No response was returned "
+                                                + "by the agent.";
+                            }
+
+
+                            responseTextArea
+                                    .setText(
+                                            response);
+
+                            responseTextArea
+                                    .setCaretPosition(
+                                            0);
+
+
+                            if (isAutoSelect(
+                                    selectedAgent)) {
+
+                                statusLabel
+                                        .setText(
+                                                "Auto selected: "
+                                                        + requestAgent
+                                                        .getName());
+
+                            } else {
+
+                                statusLabel
+                                        .setText(
+                                                "Response from "
+                                                        + requestAgent
+                                                        .getName());
+                            }
+
+
+                        } catch (Exception exception) {
+
+                            responseTextArea
+                                    .setText(
+                                            "Request failed:\n\n"
+                                                    + getRootMessage(
+                                                    exception));
+
+                            responseTextArea
+                                    .setCaretPosition(
+                                            0);
+
+                            statusLabel
+                                    .setText(
+                                            "Request failed");
+
+                            exception
+                                    .printStackTrace();
+
+
+                        } finally {
+
+                            sendButton
+                                    .setEnabled(
+                                            true);
+
+                            agentComboBox
+                                    .setEnabled(
+                                            true);
+
+                            refreshAgentsButton
+                                    .setEnabled(
+                                            true);
+
+                            newChatButton
+                                    .setEnabled(
+                                            true);
+                        }
+                    }
+                };
+
+
+        worker.execute();
+    }
+
+
+    // =========================================================
+    // AUTO SELECT AGENT
+    // =========================================================
+
+    /**
+     * Determines which discovered agent should receive
+     * the user's question.
+     *
+     * This first implementation uses deterministic
+     * capability/keyword routing.
+     *
+     * It can later be replaced by an LLM-based router
+     * without changing the rest of AIChatbotClient.
+     */
+    private AgentInfo autoSelectAgent(
+            String question) {
+
+        if (availableAgents == null
+                || availableAgents.isEmpty()) {
+
+            return null;
+        }
+
+
+        String text =
+                question == null
+                        ? ""
+                        : question
+                        .toLowerCase();
+
+
+        // =====================================================
+        // SQL / DATABASE
+        // =====================================================
+
+        if (containsAny(
+                text,
+                "sql",
+                "database",
+                "query",
+                "table",
+                "schema",
+                "select ",
+                "insert ",
+                "update ",
+                "join ",
+                "records",
+                "rows",
+                "columns")) {
+
+            AgentInfo agent =
+                    findAgent(
+                            "sql",
+                            "nl2sql",
+                            "database");
+
+            if (agent != null) {
+
+                return agent;
+            }
+        }
+
+
+        // =====================================================
+        // DOCUMENT ANALYSIS
+        // =====================================================
+
+        if (containsAny(
+                text,
+                "document",
+                "pdf",
+                "report",
+                "contract",
+                "file",
+                "summarize",
+                "summarise",
+                "summary",
+                "read this")) {
+
+            AgentInfo agent =
+                    findAgent(
+                            "document",
+                            "pdf",
+                            "file");
+
+            if (agent != null) {
+
+                return agent;
+            }
+        }
+
+
+        // =====================================================
+        // AUDIO / SPEECH
+        // =====================================================
+
+        if (containsAny(
+                text,
+                "audio",
+                "voice",
+                "speech",
+                "recording",
+                "transcribe",
+                "transcription",
+                "sound")) {
+
+            AgentInfo agent =
+                    findAgent(
+                            "audio",
+                            "speech",
+                            "transcri",
+                            "voice");
+
+            if (agent != null) {
+
+                return agent;
+            }
+        }
+
+
+        // =====================================================
+        // ORDER / SHIPMENT
+        // =====================================================
+
+        if (containsAny(
+                text,
+                "order",
+                "shipment",
+                "shipping",
+                "delivery",
+                "breakdown",
+                "customer order")) {
+
+            AgentInfo agent =
+                    findAgent(
+                            "order",
+                            "shipment",
+                            "delivery");
+
+            if (agent != null) {
+
+                return agent;
+            }
+        }
+
+
+        // =====================================================
+        // STRUCTURED TEXT
+        // =====================================================
+
+        if (containsAny(
+                text,
+                "structured text",
+                "structure this",
+                "convert this text",
+                "extract fields",
+                "extract data")) {
+
+            AgentInfo agent =
+                    findAgent(
+                            "structured",
+                            "struct",
+                            "text");
+
+            if (agent != null) {
+
+                return agent;
+            }
+        }
+
+
+        // =====================================================
+        // GENERAL ASSISTANT FALLBACK
+        // =====================================================
+
+        AgentInfo generalAgent =
+                findAgent(
+                        "general",
+                        "general assistant",
+                        "assistant");
+
+
+        if (generalAgent != null) {
+
+            return generalAgent;
+        }
+
+
+        /*
+         * Final fallback.
+         *
+         * If no specialist or general agent matched,
+         * use the first real discovered agent.
+         */
+        return availableAgents
+                .get(0);
+    }
+
+
+    // =========================================================
+    // FIND AGENT
+    // =========================================================
+
+    /**
+     * Searches the metadata of the discovered agents.
+     *
+     * It looks at:
+     *
+     * - agent name
+     * - description
+     * - type
+     */
+    private AgentInfo findAgent(
+            String... keywords) {
+
+        if (availableAgents == null) {
+
+            return null;
+        }
+
+
+        for (AgentInfo agent :
+                availableAgents) {
+
+            if (agent == null) {
+
+                continue;
+            }
+
+
+            String searchable =
+                    (
+                            safe(
+                                    agent.getName())
+                                    + " "
+                                    + safe(
+                                    agent.getDescription())
+                                    + " "
+                                    + safe(
+                                    agent.getType())
+                    )
+                            .toLowerCase();
+
+
+            for (String keyword :
+                    keywords) {
+
+                if (keyword != null
+                        && searchable.contains(
+                        keyword.toLowerCase())) {
+
+                    return agent;
+                }
+            }
+        }
+
+
+        return null;
+    }
+
+
+    // =========================================================
+    // QUESTION MATCHING
+    // =========================================================
+
+    private boolean containsAny(
+            String text,
+            String... values) {
+
+        if (text == null
+                || values == null) {
+
+            return false;
+        }
+
+
+        String normalized =
+                text.toLowerCase();
+
+
+        for (String value :
+                values) {
+
+            if (value != null
+                    && normalized.contains(
+                    value.toLowerCase())) {
+
+                return true;
+            }
+        }
+
+
+        return false;
+    }
+
+
+    // =========================================================
+    // AUTO SELECT CHECK
+    // =========================================================
+
+    private boolean isAutoSelect(
+            AgentInfo agent) {
+
+        return agent != null
+                && "__AUTO__"
+                .equals(
+                        agent.getId());
+    }
+
+
+    // =========================================================
+    // NULL SAFE STRING
+    // =========================================================
+
+    private String safe(
+            String value) {
+
+        return value == null
+                ? ""
+                : value;
+    }
+
+
+    // =========================================================
+    // NEW CHAT
+    // =========================================================
+
+    private void newChat() {
+
+        contextId =
+                UUID.randomUUID()
+                        .toString();
+
+
+        messageTextArea
+                .setText(
+                        "");
+
+        responseTextArea
+                .setText(
+                        "");
+
+
+        if (selectedAgent == null) {
+
+            statusLabel
+                    .setText(
+                            "Ready");
+
+        } else if (isAutoSelect(
+                selectedAgent)) {
+
+            statusLabel
+                    .setText(
+                            "Auto Select Ready");
+
+        } else {
+
+            statusLabel
+                    .setText(
+                            "New chat with "
+                                    + selectedAgent
+                                    .getName());
+        }
+
+
+        messageTextArea
+                .requestFocusInWindow();
+
+
+        System.out.println(
+                "New A2A context: "
+                        + contextId);
+    }
+
+
+    // =========================================================
+    // ROOT ERROR MESSAGE
+    // =========================================================
+
+    private String getRootMessage(
+            Throwable throwable) {
+
+        Throwable current =
+                throwable;
+
+
+        while (current.getCause()
+                != null) {
+
+            current =
+                    current.getCause();
+        }
+
+
+        if (current.getMessage()
+                != null) {
+
+            return current
+                    .getMessage();
+        }
+
+
+        return current
+                .getClass()
+                .getSimpleName();
+    }
+
+
+    // =========================================================
+    // STANDALONE TEST
+    // =========================================================
+
+    public static void main(
+            String[] args) {
+
+        SwingUtilities
+                .invokeLater(
+                        () -> {
+
+                            AIChatbotClient dialog =
+                                    new AIChatbotClient(
+                                            null);
+
+                            /*
+                             * When running standalone there
+                             * is no VCCI parent window,
+                             * therefore center on screen.
+                             */
+                            dialog
+                                    .setLocationRelativeTo(
+                                            null);
+
+                            dialog
+                                    .setVisible(
+                                            true);
+                        });
+    }
+}
