@@ -1,0 +1,14 @@
+| Agent we want selected | Test prompt |
+|---|---|
+| **Dice Agent** | `Roll two dice for me` |
+| **Dice Agent** | `Roll a six-sided dice` |
+| **structuredtext-agent** | `Convert this text into structured JSON: John is 35 years old and lives in Ottawa` |
+| **structuredtext-agent** | `Structurize this information into fields: Name John, Age 35, City Ottawa` |
+| **DB Agent** | `Query the database for all users created today` |
+| **DB Agent** | `Run a SQL query to find all active customers` |
+| **SpeechAgent** | `Transcribe this speech recording into text` |
+| **SpeechAgent** | `Convert this audio speech to text` |
+| **Social media Posts generation Agent** | `Generate a social media post about our new product launch` |
+| **Social media Posts generation Agent** | `Create a LinkedIn post announcing our new AI platform` |
+| **translation-agent** | `Translate good morning into French` |
+| **translation-agent** | `Translate the word sun into Russian` |
