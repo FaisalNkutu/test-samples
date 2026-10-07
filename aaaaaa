@@ -1,0 +1,63 @@
+synonym_groups = [
+    # Translation intent
+    {
+        "translate",
+        "translation",
+        "translator",
+        "language",
+        "french",
+        "spanish",
+        "german",
+        "italian",
+        "russian",
+    },
+
+    # Dice intent
+    {
+        "dice",
+        "die",
+        "roll",
+        "random",
+    },
+
+    # Structured-text intent
+    {
+        "structured",
+        "structuredtext",
+        "structure",
+        "structurize",
+        "json",
+        "fields",
+        "schema",
+        "format",
+    },
+
+    # Database intent
+    {
+        "db",
+        "database",
+        "sql",
+        "query",
+        "records",
+        "table",
+        "tables",
+    },
+
+    # Speech / transcription intent
+    {
+        "speech",
+        "transcribe",
+        "transcription",
+        "audio",
+        "voice",
+    },
+
+    # Social-media intent
+    {
+        "social",
+        "media",
+        "post",
+        "posts",
+        "linkedin",
+    },
+]
