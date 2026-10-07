@@ -1,14 +1,1494 @@
-| Agent we want selected | Test prompt |
-|---|---|
-| **Dice Agent** | `Roll two dice for me` |
-| **Dice Agent** | `Roll a six-sided dice` |
-| **structuredtext-agent** | `Convert this text into structured JSON: John is 35 years old and lives in Ottawa` |
-| **structuredtext-agent** | `Structurize this information into fields: Name John, Age 35, City Ottawa` |
-| **DB Agent** | `Query the database for all users created today` |
-| **DB Agent** | `Run a SQL query to find all active customers` |
-| **SpeechAgent** | `Transcribe this speech recording into text` |
-| **SpeechAgent** | `Convert this audio speech to text` |
-| **Social media Posts generation Agent** | `Generate a social media post about our new product launch` |
-| **Social media Posts generation Agent** | `Create a LinkedIn post announcing our new AI platform` |
-| **translation-agent** | `Translate good morning into French` |
-| **translation-agent** | `Translate the word sun into Russian` |
+import logging
+import re
+from typing import Optional
+
+from router_models import (
+    RouterAgent,
+    RouterRequest,
+    RouterResponse,
+)
+
+
+logger = logging.getLogger(
+    __name__
+)
+
+
+class AgentRouter:
+
+    def __init__(
+        self,
+        north_client=None,
+        router_agent_id: Optional[str] = None,
+    ):
+
+        self.north_client = north_client
+
+        self.router_agent_id = (
+            router_agent_id.strip()
+            if router_agent_id
+            else None
+        )
+
+
+    # ========================================================
+    # PUBLIC API
+    # ========================================================
+
+    async def route(
+        self,
+        request: RouterRequest,
+    ) -> RouterResponse:
+
+        message = (
+            request.message or ""
+        ).strip()
+
+
+        if not message:
+
+            return RouterResponse(
+                reason="The request is empty.",
+                method="none",
+            )
+
+
+        agents = request.agents or []
+
+
+        # ----------------------------------------------------
+        # No agents
+        # ----------------------------------------------------
+
+        if not agents:
+
+            return RouterResponse(
+                reason=(
+                    "No A2A agents are currently "
+                    "available."
+                ),
+                method="none",
+            )
+
+
+        # ----------------------------------------------------
+        # Exactly one agent
+        # ----------------------------------------------------
+
+        if len(agents) == 1:
+
+            agent = agents[0]
+
+            return RouterResponse(
+                agentId=agent.id,
+                agentName=agent.name,
+                confidence=1.0,
+                reason=(
+                    "Only one A2A agent is currently "
+                    "available."
+                ),
+                method="single-agent",
+            )
+
+
+        # ----------------------------------------------------
+        # Previous agent continuity
+        # ----------------------------------------------------
+
+        previous = self._find_agent(
+            agents,
+            request.previousAgentId,
+        )
+
+
+        if previous is not None:
+
+            if self._looks_like_followup(
+                message
+            ):
+
+                return RouterResponse(
+                    agentId=previous.id,
+                    agentName=previous.name,
+                    confidence=0.95,
+                    reason=(
+                        "The request appears to continue "
+                        "the previous conversation."
+                    ),
+                    method="conversation-continuity",
+                )
+
+
+        # ----------------------------------------------------
+        # Strong metadata match
+        # ----------------------------------------------------
+
+        metadata_result = (
+            self._metadata_route(
+                message,
+                agents,
+            )
+        )
+
+
+        if (
+            metadata_result is not None
+            and metadata_result.confidence >= 0.75
+        ):
+
+            return metadata_result
+
+
+        # ----------------------------------------------------
+        # LLM semantic routing
+        # ----------------------------------------------------
+
+        if self.has_llm_router():
+
+            try:
+
+                llm_result = (
+                    await self._llm_route(
+                        message,
+                        agents,
+                    )
+                )
+
+                if (
+                    llm_result is not None
+                    and llm_result.agentId
+                ):
+
+                    return llm_result
+
+            except Exception:
+
+                logger.exception(
+                    "LLM routing failed."
+                )
+
+
+        # ----------------------------------------------------
+        # Lower-confidence metadata fallback
+        # ----------------------------------------------------
+
+        if (
+            metadata_result is not None
+            and metadata_result.agentId
+        ):
+
+            return metadata_result
+
+
+        return RouterResponse(
+            confidence=0.0,
+            reason=(
+                "No available agent clearly "
+                "matches the request."
+            ),
+            method="none",
+        )
+
+
+    # ========================================================
+    # ROUTER STATUS
+    # ========================================================
+
+    def has_llm_router(self) -> bool:
+
+        return bool(
+            self.north_client
+            and self.router_agent_id
+        )
+
+
+    # ========================================================
+    # METADATA ROUTING
+    # ========================================================
+
+    def _metadata_route(
+        self,
+        message: str,
+        agents: list[RouterAgent],
+    ) -> Optional[RouterResponse]:
+
+        message_tokens = self._tokens(
+            message
+        )
+
+
+        if not message_tokens:
+
+            return None
+
+
+        best_agent = None
+
+        best_score = 0.0
+
+
+        for agent in agents:
+
+            score = self._score_agent(
+                message_tokens,
+                agent,
+            )
+
+
+            logger.debug(
+                "Agent routing candidate "
+                "%s score=%.3f",
+                agent.name,
+                score,
+            )
+
+
+            if score > best_score:
+
+                best_score = score
+
+                best_agent = agent
+
+
+        if best_agent is None:
+            return None
+
+
+        #
+        # Normalize into a 0..1 confidence.
+        #
+
+        confidence = min(
+            1.0,
+            best_score,
+        )
+
+
+        if confidence <= 0.0:
+            return None
+
+
+        return RouterResponse(
+            agentId=best_agent.id,
+            agentName=best_agent.name,
+            confidence=confidence,
+            reason=(
+                "The request matched the "
+                "agent's A2A AgentCard metadata."
+            ),
+            method="metadata",
+        )
+
+
+    def _score_agent(
+        self,
+        message_tokens: set[str],
+        agent: RouterAgent,
+    ) -> float:
+
+        score = 0.0
+
+
+        # ----------------------------------------------------
+        # Agent name
+        # ----------------------------------------------------
+
+        name_tokens = self._tokens(
+            agent.name
+        )
+
+
+        name_matches = (
+            message_tokens
+            & name_tokens
+        )
+
+
+        score += (
+            len(name_matches)
+            * 0.35
+        )
+
+
+        # ----------------------------------------------------
+        # Description
+        # ----------------------------------------------------
+
+        description_tokens = (
+            self._tokens(
+                agent.description
+            )
+        )
+
+
+        description_matches = (
+            message_tokens
+            & description_tokens
+        )
+
+
+        score += (
+            len(description_matches)
+            * 0.20
+        )
+
+
+        # ----------------------------------------------------
+        # Skills
+        # ----------------------------------------------------
+
+        for skill in agent.skills:
+
+            skill_name_tokens = (
+                self._tokens(
+                    skill.name or ""
+                )
+            )
+
+
+            score += (
+                len(
+                    message_tokens
+                    & skill_name_tokens
+                )
+                * 0.40
+            )
+
+
+            skill_description_tokens = (
+                self._tokens(
+                    skill.description
+                )
+            )
+
+
+            score += (
+                len(
+                    message_tokens
+                    & skill_description_tokens
+                )
+                * 0.25
+            )
+
+
+            for tag in skill.tags:
+
+                tag_tokens = (
+                    self._tokens(
+                        tag
+                    )
+                )
+
+                score += (
+                    len(
+                        message_tokens
+                        & tag_tokens
+                    )
+                    * 0.30
+                )
+
+
+            for example in skill.examples:
+
+                example_tokens = (
+                    self._tokens(
+                        example
+                    )
+                )
+
+                score += (
+                    len(
+                        message_tokens
+                        & example_tokens
+                    )
+                    * 0.20
+                )
+
+
+        return score
+
+
+    # ========================================================
+    # LLM ROUTING
+    # ========================================================
+
+    async def _llm_route(
+        self,
+        message: str,
+        agents: list[RouterAgent],
+    ) -> Optional[RouterResponse]:
+
+        if not self.has_llm_router():
+            return None
+
+
+        #
+        # Keep this method isolated because the exact
+        # North SDK invocation depends upon the version
+        # installed in your AIService.
+        #
+        # Until NORTH_ROUTER_AGENT_ID is configured,
+        # metadata routing continues to work.
+        #
+
+        logger.info(
+            "Dedicated North routing agent configured: %s",
+            self.router_agent_id,
+        )
+
+
+        return None
+
+
+    # ========================================================
+    # HELPERS
+    # ========================================================
+
+    @staticmethod
+    def _tokens(
+        value: str,
+    ) -> set[str]:
+
+        if not value:
+            return set()
+
+
+        words = re.findall(
+            r"[a-zA-Z0-9]+",
+            value.lower(),
+        )
+
+
+        stop_words = {
+            "a",
+            "an",
+            "and",
+            "are",
+            "for",
+            "in",
+            "is",
+            "of",
+            "on",
+            "or",
+            "the",
+            "to",
+            "what",
+            "which",
+            "who",
+            "with",
+        }
+
+
+        return {
+            word
+            for word in words
+            if (
+                len(word) > 1
+                and word not in stop_words
+            )
+        }
+
+
+    @staticmethod
+    def _find_agent(
+        agents: list[RouterAgent],
+        agent_id: Optional[str],
+    ) -> Optional[RouterAgent]:
+
+        if not agent_id:
+            return None
+
+
+        for agent in agents:
+
+            if (
+                agent.id == agent_id
+                or agent.name == agent_id
+            ):
+                return agent
+
+
+        return None
+
+
+    @staticmethod
+    def _looks_like_followup(
+        message: str,
+    ) -> bool:
+
+        value = message.lower().strip()
+
+
+        followups = (
+            "and ",
+            "also ",
+            "what about",
+            "how about",
+            "why ",
+            "explain that",
+            "explain this",
+            "tell me more",
+            "continue",
+            "more detail",
+            "give me more",
+        )
+
+
+        return any(
+            value.startswith(prefix)
+            for prefix in followups
+        )
+
+
+
+
+=================================================================================================================================
+
+import logging
+import os
+from typing import Any
+
+import uvicorn
+from dotenv import load_dotenv
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+
+from north import AsyncNorthClient, NorthClient
+
+from a2a.server.request_handlers import DefaultRequestHandler
+from a2a.server.routes import (
+    add_a2a_routes_to_fastapi,
+    create_agent_card_routes,
+    create_jsonrpc_routes,
+)
+from a2a.server.tasks import InMemoryTaskStore
+from a2a.types import (
+    AgentCapabilities,
+    AgentCard,
+    AgentInterface,
+    AgentSkill,
+)
+from a2a.utils import DEFAULT_RPC_URL, TransportProtocol
+
+from agent_executor import NorthAgentExecutor
+
+
+# ============================================================
+# ENVIRONMENT
+# ============================================================
+
+load_dotenv()
+
+HOST = os.getenv("HOST", "127.0.0.1")
+PORT = int(os.getenv("PORT", "9999"))
+
+NORTH_BASE_URL = os.getenv(
+    "NORTH_BASE_URL",
+    "https://north.canadacentral.cloudapp.azure.com/api",
+)
+
+NORTH_AUTH_TOKEN = os.environ["NORTH_AUTH_TOKEN"]
+NORTH_AGENT_ID = os.environ["NORTH_AGENT_ID"]
+
+
+# ============================================================
+# LOGGING
+# ============================================================
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s - %(message)s",
+)
+
+logger = logging.getLogger("main")
+
+
+# ============================================================
+# NORTH CLIENTS
+# ============================================================
+
+#
+# Async client:
+# Used by NorthAgentExecutor when VCCI sends an AI request.
+#
+north_client = AsyncNorthClient(
+    auth_token=NORTH_AUTH_TOKEN,
+    base_url=NORTH_BASE_URL,
+)
+
+#
+# Sync client:
+# Used for startup information and agent discovery.
+#
+north_sync_client = NorthClient(
+    auth_token=NORTH_AUTH_TOKEN,
+    base_url=NORTH_BASE_URL,
+)
+
+
+# ============================================================
+# LOAD DEFAULT NORTH AGENT
+# ============================================================
+
+logger.info(
+    "Loading default North agent: %s",
+    NORTH_AGENT_ID,
+)
+
+north_agent = north_sync_client.agents.get(
+    NORTH_AGENT_ID
+)
+
+logger.info(
+    "Default North agent loaded: %s",
+    getattr(
+        north_agent,
+        "name",
+        NORTH_AGENT_ID,
+    ),
+)
+
+
+# ============================================================
+# HELPER FUNCTIONS
+# ============================================================
+
+def get_value(
+    obj: Any,
+    *names: str,
+    default: Any = "",
+) -> Any:
+
+    if obj is None:
+        return default
+
+    for name in names:
+
+        if isinstance(obj, dict):
+            value = obj.get(name)
+        else:
+            value = getattr(
+                obj,
+                name,
+                None,
+            )
+
+        if value is not None:
+            return value
+
+    return default
+
+
+def normalize_agent(
+    agent: Any,
+) -> dict[str, Any]:
+
+    agent_id = str(
+        get_value(
+            agent,
+            "id",
+            "agent_id",
+            default="",
+        )
+    ).strip()
+
+    name = str(
+        get_value(
+            agent,
+            "name",
+            default=agent_id,
+        )
+    ).strip()
+
+    description = str(
+        get_value(
+            agent,
+            "description",
+            default="",
+        )
+    ).strip()
+
+    endpoint = str(
+        get_value(
+            agent,
+            "endpoint",
+            "url",
+            default="",
+        )
+    ).strip()
+
+    if not agent_id:
+        agent_id = name
+
+    if not name:
+        name = agent_id
+
+    return {
+        "id": agent_id,
+        "name": name,
+        "description": description,
+        "endpoint": endpoint,
+        "streaming": True,
+        "type": "north",
+        "configured": True,
+        "active": True,
+    }
+
+
+# ============================================================
+# NORTH AGENT DISCOVERY
+# ============================================================
+
+def discover_agents() -> list[dict[str, Any]]:
+
+    discovered: list[dict[str, Any]] = []
+
+    logger.info(
+        "Discovering available North agents..."
+    )
+
+    try:
+
+        result = north_sync_client.agents.list()
+
+        logger.info(
+            "North agents.list() returned type: %s",
+            type(result),
+        )
+
+        logger.info(
+            "North agents.list() returned: %s",
+            result,
+        )
+
+        # ----------------------------------------------------
+        # North SDK currently appears to return a normal list
+        # in your environment.
+        #
+        # But support several possible SDK return structures.
+        # ----------------------------------------------------
+
+        if result is None:
+
+            raw_agents = []
+
+        elif isinstance(
+            result,
+            (list, tuple),
+        ):
+
+            raw_agents = list(result)
+
+        elif isinstance(result, dict):
+
+            raw_agents = (
+                result.get("agents")
+                or result.get("items")
+                or result.get("data")
+                or []
+            )
+
+        else:
+
+            raw_agents = (
+                getattr(
+                    result,
+                    "agents",
+                    None,
+                )
+                or getattr(
+                    result,
+                    "items",
+                    None,
+                )
+                or getattr(
+                    result,
+                    "data",
+                    None,
+                )
+                or []
+            )
+
+        for item in raw_agents:
+
+            normalized = normalize_agent(
+                item
+            )
+
+            if (
+                normalized["id"]
+                or normalized["name"]
+            ):
+
+                discovered.append(
+                    normalized
+                )
+
+    except Exception as exc:
+
+        logger.exception(
+            "North agent discovery failed: %s",
+            exc,
+        )
+
+
+    # ========================================================
+    # IMPORTANT FALLBACK
+    #
+    # On your machine:
+    #
+    #     north_sync_client.agents.list()
+    #
+    # is returning:
+    #
+    #     []
+    #
+    # BUT:
+    #
+    #     north_sync_client.agents.get(NORTH_AGENT_ID)
+    #
+    # successfully returns Faisal's agent.
+    #
+    # Therefore NEVER return an empty registry when the
+    # configured/default agent was successfully loaded.
+    # ========================================================
+
+    default_agent = normalize_agent(
+        north_agent
+    )
+
+    if not default_agent["id"]:
+        default_agent["id"] = NORTH_AGENT_ID
+
+    if not default_agent["name"]:
+        default_agent["name"] = (
+            NORTH_AGENT_ID
+        )
+
+    already_present = any(
+        str(
+            item.get(
+                "id",
+                "",
+            )
+        ).strip()
+        == str(
+            default_agent["id"]
+        ).strip()
+        for item in discovered
+    )
+
+    if not already_present:
+
+        logger.info(
+            "Adding configured default North "
+            "agent to registry: %s",
+            default_agent["name"],
+        )
+
+        discovered.append(
+            default_agent
+        )
+
+
+    # Remove duplicates
+
+    unique_agents = {}
+
+    for agent in discovered:
+
+        key = (
+            agent.get("id")
+            or agent.get("name")
+        )
+
+        if key:
+            unique_agents[
+                str(key)
+            ] = agent
+
+
+    agents = list(
+        unique_agents.values()
+    )
+
+    agents.sort(
+        key=lambda item: str(
+            item.get(
+                "name",
+                "",
+            )
+        ).lower()
+    )
+
+    logger.info(
+        "Returning %d agent(s).",
+        len(agents),
+    )
+
+    for agent in agents:
+
+        logger.info(
+            "Agent: %s | id=%s",
+            agent.get("name"),
+            agent.get("id"),
+        )
+
+    return agents
+
+
+# ============================================================
+# A2A SKILL
+# ============================================================
+
+skill = AgentSkill(
+    id=NORTH_AGENT_ID,
+    name=north_agent.name,
+    description=north_agent.description,
+    tags=[
+        "north",
+    ],
+    input_modes=[
+        "text/plain",
+    ],
+    output_modes=[
+        "text/plain",
+    ],
+)
+
+
+# ============================================================
+# A2A AGENT CARD
+#
+# KEEP THIS IN THE SAME FORM AS YOUR ORIGINAL WORKING FILE.
+# ============================================================
+
+agent_card = AgentCard(
+    name=north_agent.name,
+    description=north_agent.description,
+    version="0.1.0",
+
+    default_input_modes=[
+        "text/plain",
+    ],
+
+    default_output_modes=[
+        "text/plain",
+    ],
+
+    capabilities=AgentCapabilities(
+        streaming=True
+    ),
+
+    supported_interfaces=[
+        AgentInterface(
+            url=f"http://{HOST}:{PORT}",
+            protocol_binding=(
+                TransportProtocol.JSONRPC
+            ),
+            protocol_version="1.0",
+        )
+    ],
+
+    skills=[
+        skill
+    ],
+)
+
+
+# ============================================================
+# A2A REQUEST HANDLER
+#
+# THIS IS THE SAME CONSTRUCTION AS YOUR WORKING VERSION.
+# ============================================================
+
+request_handler = DefaultRequestHandler(
+    agent_executor=NorthAgentExecutor(
+        north_client,
+        NORTH_AGENT_ID,
+    ),
+    task_store=InMemoryTaskStore(),
+    agent_card=agent_card,
+)
+
+
+# ============================================================
+# FASTAPI
+# ============================================================
+
+app = FastAPI(
+    title="VCCI AI Service",
+    version="1.0.0",
+)
+
+
+# ============================================================
+# HEALTH ENDPOINT
+# ============================================================
+
+@app.get("/health")
+async def health():
+
+    return {
+        "status": "ok",
+        "service": "VCCI AI Service",
+        "host": HOST,
+        "port": PORT,
+        "defaultAgentId": (
+            NORTH_AGENT_ID
+        ),
+        "defaultAgentName": (
+            north_agent.name
+        ),
+    }
+
+
+# ============================================================
+# AGENT REGISTRY
+#
+# Java AgentRegistryClient calls:
+#
+#     GET http://127.0.0.1:9999/agents
+#
+# ============================================================
+
+@app.get("/agents")
+async def get_agents():
+
+    logger.info(
+        "VCCI requested agent discovery."
+    )
+
+    agents = discover_agents()
+
+    return {
+        "agents": agents,
+        "count": len(agents),
+        "discovery": "north",
+    }
+
+
+# ============================================================
+# SIMPLE AUTO ROUTER
+# ============================================================
+
+def choose_agent(
+    message: str,
+    agents: list[dict[str, Any]],
+):
+
+    if not agents:
+        return None
+
+    text = message.lower().strip()
+
+    best_agent = None
+    best_score = 0
+    best_matches = []
+
+    # --------------------------------------------------------
+    # Intent synonyms.
+    #
+    # This bridges normal user language to agent names.
+    #
+    # Example:
+    #   "Translate hello into French"
+    #           ->
+    #   translation-agent
+    #
+    # We are NOT hard-coding an agent ID here.
+    # We are expanding words so "translate" can match
+    # "translation".
+    # --------------------------------------------------------
+
+    synonym_groups = [
+        {
+            "translate",
+            "translation",
+            "translator",
+            "language",
+            "french",
+            "spanish",
+            "german",
+            "italian",
+        },
+        {
+            "dice",
+            "die",
+            "roll",
+            "random",
+        },
+    ]
+
+    expanded_terms = set(
+        text
+        .replace("-", " ")
+        .replace("_", " ")
+        .split()
+    )
+
+    # Expand request terms with related intent words.
+
+    for group in synonym_groups:
+
+        if expanded_terms.intersection(group):
+            expanded_terms.update(group)
+
+    # --------------------------------------------------------
+    # Score each supplied agent.
+    # --------------------------------------------------------
+
+    for agent in agents:
+
+        score = 0
+        matches = []
+
+        name = str(
+            agent.get(
+                "name",
+                "",
+            )
+        ).lower()
+
+        description = str(
+            agent.get(
+                "description",
+                "",
+            )
+        ).lower()
+
+        # ----------------------------------------------------
+        # Build searchable agent text.
+        # ----------------------------------------------------
+
+        searchable_parts = [
+            name,
+            description,
+        ]
+
+        # Skills may be strings or dictionaries.
+
+        skills = agent.get(
+            "skills",
+            [],
+        )
+
+        if isinstance(skills, list):
+
+            for skill in skills:
+
+                if isinstance(skill, dict):
+
+                    searchable_parts.extend([
+                        str(
+                            skill.get(
+                                "id",
+                                "",
+                            )
+                        ),
+                        str(
+                            skill.get(
+                                "name",
+                                "",
+                            )
+                        ),
+                        str(
+                            skill.get(
+                                "description",
+                                "",
+                            )
+                        ),
+                    ])
+
+                    tags = skill.get(
+                        "tags",
+                        [],
+                    )
+
+                    if isinstance(tags, list):
+                        searchable_parts.extend(
+                            str(tag)
+                            for tag in tags
+                        )
+
+                    examples = skill.get(
+                        "examples",
+                        [],
+                    )
+
+                    if isinstance(examples, list):
+                        searchable_parts.extend(
+                            str(example)
+                            for example in examples
+                        )
+
+                else:
+
+                    searchable_parts.append(
+                        str(skill)
+                    )
+
+        searchable_text = " ".join(
+            searchable_parts
+        ).lower()
+
+        searchable_words = set(
+            searchable_text
+            .replace("-", " ")
+            .replace("_", " ")
+            .replace(",", " ")
+            .replace(".", " ")
+            .replace(":", " ")
+            .split()
+        )
+
+        # ----------------------------------------------------
+        # Direct request-word matches.
+        # ----------------------------------------------------
+
+        for term in expanded_terms:
+
+            if len(term) < 3:
+                continue
+
+            if term in searchable_words:
+
+                score += 4
+                matches.append(term)
+
+                continue
+
+            # ------------------------------------------------
+            # Prefix matching handles:
+            #
+            # translate   <-> translation
+            # translating <-> translator
+            #
+            # without requiring exact equality.
+            # ------------------------------------------------
+
+            for agent_word in searchable_words:
+
+                if len(agent_word) < 4:
+                    continue
+
+                common_length = min(
+                    len(term),
+                    len(agent_word),
+                    6,
+                )
+
+                if common_length >= 4:
+
+                    if (
+                        term[:common_length]
+                        == agent_word[:common_length]
+                    ):
+
+                        score += 2
+                        matches.append(
+                            f"{term}~{agent_word}"
+                        )
+                        break
+
+        # ----------------------------------------------------
+        # Give agent-name matches extra weight.
+        # ----------------------------------------------------
+
+        name_words = (
+            name
+            .replace("-", " ")
+            .replace("_", " ")
+            .split()
+        )
+
+        for name_word in name_words:
+
+            if (
+                len(name_word) >= 3
+                and name_word in expanded_terms
+            ):
+
+                score += 5
+
+        logger.info(
+            "Router candidate: %s | score=%s | matches=%s",
+            agent.get(
+                "name",
+                agent.get(
+                    "id",
+                    "",
+                ),
+            ),
+            score,
+            matches,
+        )
+
+        if score > best_score:
+
+            best_score = score
+            best_agent = agent
+            best_matches = matches
+
+    # --------------------------------------------------------
+    # Existing one-agent fallback.
+    # --------------------------------------------------------
+
+    if (
+        best_agent is None
+        and len(agents) == 1
+    ):
+
+        best_agent = agents[0]
+
+        return {
+            "agent": best_agent,
+            "confidence": 0.50,
+            "reason": (
+                "Only one available agent "
+                "is currently registered."
+            ),
+        }
+
+    # --------------------------------------------------------
+    # More than one agent and nothing matched.
+    # Do NOT guess.
+    # --------------------------------------------------------
+
+    if best_agent is None:
+
+        return None
+
+    confidence = min(
+        0.95,
+        0.55 + best_score * 0.03,
+    )
+
+    return {
+        "agent": best_agent,
+        "confidence": confidence,
+        "reason": (
+            "Agent selected by matching request "
+            "intent against agent name, description "
+            "and skills. "
+            f"Matches: {best_matches}"
+        ),
+    }
+
+# ============================================================
+# AUTO ROUTER ENDPOINT
+# ============================================================
+
+@app.post("/router/select")
+async def router_select(
+    payload: dict[str, Any],
+):
+
+    message = str(
+        payload.get(
+            "message",
+            "",
+        )
+    ).strip()
+
+    if not message:
+
+        return JSONResponse(
+            status_code=400,
+            content={
+                "agent": None,
+                "confidence": 0.0,
+                "reason": (
+                    "Message cannot be empty."
+                ),
+            },
+        )
+
+
+    available_agents = payload.get(
+        "agents",
+        [],
+    )
+
+    if not isinstance(
+        available_agents,
+        list,
+    ):
+
+        available_agents = []
+
+
+    # If Java did not send the list,
+    # discover it directly.
+
+    if not available_agents:
+
+        available_agents = (
+            discover_agents()
+        )
+
+
+    result = choose_agent(
+        message,
+        available_agents,
+    )
+
+
+    if result is None:
+
+        return {
+            "agent": None,
+            "confidence": 0.0,
+            "reason": (
+                "No suitable agent "
+                "could be selected."
+            ),
+        }
+
+
+    logger.info(
+        "Router selected agent: %s",
+        result["agent"].get(
+            "name"
+        ),
+    )
+
+    return result
+
+
+# ============================================================
+# A2A ROUTES
+#
+# THIS IS THE EXACT REGISTRATION STYLE FROM YOUR
+# ORIGINAL WORKING main.py.
+# ============================================================
+
+add_a2a_routes_to_fastapi(
+    app,
+
+    agent_card_routes=(
+        create_agent_card_routes(
+            agent_card
+        )
+    ),
+
+    jsonrpc_routes=(
+        create_jsonrpc_routes(
+            request_handler,
+            DEFAULT_RPC_URL,
+        )
+    ),
+)
+
+
+# ============================================================
+# START
+# ============================================================
+
+if __name__ == "__main__":
+
+    uvicorn.run(
+        app,
+        host=HOST,
+        port=PORT,
+    )
